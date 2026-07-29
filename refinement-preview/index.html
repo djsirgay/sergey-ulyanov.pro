@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Sergéy Ulyanov — refinement preview</title>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#080a08}iframe{display:block;width:100%;height:100%;border:0;background:#080a08}
+.loading{position:fixed;inset:0;display:grid;place-items:center;background:#080a08;color:#b8ff35;font:700 13px/1.4 ui-monospace,monospace;letter-spacing:.12em;z-index:2}
+</style>
+</head>
+<body>
+<div class="loading" id="loading">LOADING REFINEMENT PREVIEW…</div>
+<iframe id="site" title="Sergéy Ulyanov website refinement preview" src="https://htmlpreview.github.io/?https://github.com/djsirgay/sergey-ulyanov.pro/blob/main/index.html"></iframe>
+<script>
+const portrait='data:image/webp;base64,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';
+const frame=document.getElementById('site');
+const loading=document.getElementById('loading');
+frame.addEventListener('load',()=>{
+  try{
+    const doc=frame.contentDocument;
+    if(!doc)throw new Error('Preview document unavailable');
+    const photo=doc.querySelector('.portrait-card img');
+    if(photo){photo.src=portrait;photo.style.objectPosition='center 18%';photo.style.filter='saturate(.92) contrast(1.03)';}
+    const style=doc.createElement('style');
+    style.textContent=`
+      .proof-block+.proof-block{margin-top:88px}
+      .proof-title-row{display:flex;justify-content:space-between;align-items:end;gap:28px;margin:0 auto 26px;width:min(var(--max),calc(100% - 48px))}
+      .proof-title-row h3{font-size:clamp(2rem,4vw,4rem);letter-spacing:-.055em;line-height:.98;margin:10px 0 0}
+      .proof-title-row p{max-width:520px;color:#aeb6ae;line-height:1.6;margin:0}
+      .proof-rail-shell{position:relative}
+      .proof-rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,760px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding:6px max(24px,calc((100vw - var(--max))/2)) 24px;cursor:grab}
+      .proof-rail::-webkit-scrollbar{display:none}.proof-rail.dragging{cursor:grabbing;scroll-snap-type:none}
+      .proof-card{scroll-snap-align:center;min-height:430px;border:1px solid var(--line);border-radius:28px;overflow:hidden;background:var(--panel);display:grid;grid-template-columns:minmax(220px,.9fr) minmax(0,1.1fr);box-shadow:var(--shadow);transition:.25s}
+      .proof-card:hover{border-color:rgba(184,255,53,.42);transform:translateY(-3px)}
+      .proof-preview{position:relative;overflow:hidden;padding:28px;background:#0b0e0b;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:space-between}
+      .proof-preview:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,rgba(184,255,53,.16),transparent 42%),linear-gradient(160deg,transparent 55%,rgba(184,255,53,.06));pointer-events:none}
+      .proof-preview:after{content:"";position:absolute;inset:18px;border:1px solid rgba(184,255,53,.25);border-radius:18px;pointer-events:none}
+      .preview-top,.preview-main,.preview-bottom{position:relative;z-index:1}.preview-top{display:flex;justify-content:space-between;gap:14px;font-family:"Space Mono",monospace;color:#b7c0b7;font-size:.63rem;letter-spacing:.08em;text-transform:uppercase}
+      .preview-main strong{display:block;color:var(--acid);font-size:clamp(3rem,7vw,7rem);line-height:.82;letter-spacing:-.08em}.preview-main span{display:block;margin-top:16px;font-weight:800;font-size:clamp(1rem,2vw,1.45rem);line-height:1.05;max-width:17ch}
+      .preview-bottom{font-family:"Space Mono",monospace;color:#7e887e;font-size:.62rem}
+      .proof-copy{padding:clamp(28px,4vw,50px);display:flex;flex-direction:column;justify-content:space-between;gap:28px}.proof-copy .meta{font-family:"Space Mono",monospace;color:var(--acid);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase}
+      .proof-copy h4{font-size:clamp(1.8rem,3.6vw,3.7rem);letter-spacing:-.055em;line-height:1;margin:16px 0 15px}.proof-copy p{color:#aab2aa;line-height:1.62;margin:0;max-width:600px}
+      .proof-footer{display:flex;justify-content:space-between;gap:16px;align-items:end}.proof-source{font-family:"Space Mono",monospace;color:#737d73;font-size:.64rem;line-height:1.5}.proof-link{font-weight:800;color:var(--acid);font-size:.88rem;white-space:nowrap}
+      .edge-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:4;width:58px;height:58px;border-radius:50%;border:1px solid rgba(184,255,53,.4);background:rgba(8,10,8,.84);backdrop-filter:blur(12px);color:var(--acid);font-size:1.35rem;cursor:pointer;box-shadow:0 16px 40px rgba(0,0,0,.35)}
+      .edge-arrow.left{left:max(10px,calc((100vw - var(--max))/2 - 24px))}.edge-arrow.right{right:max(10px,calc((100vw - var(--max))/2 - 24px))}.edge-arrow:hover{background:var(--acid);color:#080a08}
+      .press-card .proof-preview{background:#f1f3ee;color:#0b0d0b}.press-card .proof-preview:before{background:linear-gradient(135deg,rgba(184,255,53,.85),transparent 38%),linear-gradient(160deg,#f1f3ee 0%,#d7ddd5 100%)}.press-card .proof-preview:after{border-color:rgba(8,10,8,.22)}
+      .press-card .preview-top{color:#2b312b}.press-card .preview-main strong,.press-card .preview-main span{color:#0a0c09}.press-card .preview-bottom{color:#465046}
+      .press-card:nth-child(even) .proof-preview{background:#0b0e0b;color:var(--text)}.press-card:nth-child(even) .proof-preview:before{background:linear-gradient(135deg,rgba(184,255,53,.18),transparent 45%),linear-gradient(160deg,#111611,#070907)}.press-card:nth-child(even) .proof-preview:after{border-color:rgba(184,255,53,.25)}
+      .press-card:nth-child(even) .preview-top{color:#aab2aa}.press-card:nth-child(even) .preview-main strong{color:var(--acid)}.press-card:nth-child(even) .preview-main span{color:var(--text)}.press-card:nth-child(even) .preview-bottom{color:#7e887e}
+      @media(max-width:980px){.proof-title-row{align-items:start;flex-direction:column}.proof-card{grid-template-columns:1fr}.proof-preview{min-height:290px;border-right:0;border-bottom:1px solid var(--line)}.proof-rail{grid-auto-columns:min(84vw,720px)}}
+      @media(max-width:640px){.proof-title-row{width:calc(100% - 30px)}.proof-rail{grid-auto-columns:88vw;padding-left:15px;padding-right:15px}.proof-preview{min-height:250px;padding:22px}.proof-copy{padding:25px 22px}.proof-footer{align-items:flex-start;flex-direction:column}.edge-arrow{display:none}}
+    `;
+    doc.head.appendChild(style);
+    const section=doc.querySelector('#recognition');
+    if(section){
+      section.innerHTML=`
+        <div class="wrap section-head reveal visible"><div><div class="eyebrow">Recognition & Press</div><h2>Proof beyond the portfolio.</h2></div><p>Awards and editorial coverage are separated into two visual galleries, with clear previews and navigation in both directions.</p></div>
+        <div class="proof-block">
+          <div class="proof-title-row"><div><div class="eyebrow">Awards & Competitive Selection</div><h3>Recognition with context.</h3></div><p>Each card shows the organization, year, result, and why the recognition matters.</p></div>
+          <div class="proof-rail-shell"><button class="edge-arrow left" data-prev="awards">←</button><div class="proof-rail" data-proof="awards">
+            ${award('Official Winner','2026','SCREAM 7','Complex Art Competition','Entertainment · Art Competition','Official winning artist selected for the SCREAM 7 × Complex gallery exhibition.','A five-piece campaign concept was selected for the Los Angeles exhibition connected to the film’s promotional rollout.','PARAMOUNT PICTURES × COMPLEX','https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=2','Open case ↗')}
+            ${award('Top 8%','2025','100 / 1,300+','AI Summer Camp selection','AI · Applied Innovation','Top 100 Innovators selection from more than 1,300 applicants.','Competitive selection focused on real-world AI problem solving, rapid prototyping, and enterprise workflow innovation.','CAL POLY DXHUB × AWS','https://www.linkedin.com/in/charaunic','Verify ↗')}
+            ${award('Special Prize','2019','HR BRAND','Best Corporate Video','Employer Brand · Film','HR Brand Awards — Best Corporate Video.','Recognized for a corporate film built around the people, work, and culture of the organization.','THE BATTLE FOR THE HARVEST','https://www.linkedin.com/in/charaunic','Details ↗')}
+            ${award('1st Place','2015','#1','Best Tech Bank Website','Digital Product · UX/UI','National rating: most technologically advanced banking website.','Recognized for UX/UI, communication strategy, and digital product experience.','BELROSBANK · SOCIÉTÉ GÉNÉRALE','https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=11','View case ↗')}
+            ${award('Winner','2014','WHITE SQUARE','Best Corporate Calendar','Creative Direction · Brand Design','White Square International Advertising Festival winner.','Awarded for a corporate calendar concept developed through strategy, design supervision, and creative direction.','INTERNATIONAL ADVERTISING FESTIVAL','https://www.linkedin.com/in/charaunic','Details ↗')}
+            ${award('Winner','2012','IDEA → PRODUCT','Innovation Idea Contest','Banking · Innovation','Winner of the internal Innovation Idea Contest.','Recognized for a strategic banking product and digital concept.','SOCIÉTÉ GÉNÉRALE GROUP','https://www.linkedin.com/in/charaunic','History ↗')}
+          </div><button class="edge-arrow right" data-next="awards">→</button><div class="rail-controls"><div class="rail-count"><strong data-current-proof="awards">01</strong> / 06 — SWIPE OR USE ARROWS</div><div class="arrow-set"><button class="arrow" data-prev="awards">←</button><button class="arrow" data-next="awards">→</button></div></div></div>
+        </div>
+        <div class="proof-block" id="press"><div class="proof-title-row"><div><div class="eyebrow">Selected Press & Public Stories</div><h3>Stories recognizable at a glance.</h3></div><p>Publication, headline, year, and context live together in one visual card.</p></div>
+          <div class="proof-rail-shell"><button class="edge-arrow left" data-prev="press">←</button><div class="proof-rail" data-proof="press">
+            ${press('Unfiltered Stories','2024','100K+','Targeted in His Country for Being Gay','Video Feature · United States','A first-person account of persecution, displacement, asylum, and rebuilding a creative life in Los Angeles.','UNFILTERED STORIES','https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs')}
+            ${press('SlavicSac','2024','HOLLYWOOD','An openly gay refugee from Belarus is building a career in the U.S.','Profile · California','A profile about migration, identity, acting, and rebuilding a career in California.','SLAVICSAC','https://www.slavicsac.com/2024/04/02/gay-refuge-belarus-hollywood/')}
+            ${press('Nasha Niva','2023','230K','A Belarusian performer sings NaviBand in Los Angeles','Culture · Viral Video','A spontaneous performance carried the Belarusian language into California street culture and international media.','NASHA NIVA','https://nashaniva.com/ru/327900')}
+            ${press('Rubic.us','2023','11×','Across the border, detention, and a new life in Los Angeles','Longform · Immigration','A detailed account of leaving Ukraine during the war, detention, instability, and beginning again in Los Angeles.','RUBIC.US','https://rubic.us/v-ssha-popal-s-11-raza-v-naruchnikah-otpravili-v-detenshn-spal-na-plyazhe-istoriya-geya-belarusa-bezhavshego-ot-vojny-v-ukraine/')}
+            ${press('Be Free Show','2023','SPECTRUM','Do Gay, Bi & Straight Men Think the Same?','Video Conversation · Los Angeles','A public roundtable on masculinity, attraction, vulnerability, and identity.','BE FREE SHOW','https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs')}
+            ${press('Complex LA','2026','GALLERY','SCREAM 7 × Complex exhibition coverage','Exhibition · Entertainment','Editorial and social coverage connected the winning poster concept to a major studio release.','COMPLEX LA','https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=2')}
+          </div><button class="edge-arrow right" data-next="press">→</button><div class="rail-controls"><div class="rail-count"><strong data-current-proof="press">01</strong> / 06 — SWIPE OR USE ARROWS</div><div class="arrow-set"><button class="arrow" data-prev="press">←</button><button class="arrow" data-next="press">→</button></div></div></div>
+        </div>`;
+      setupProof(doc,'awards');setupProof(doc,'press');
+    }
+    loading.remove();
+  }catch(e){loading.textContent='PREVIEW COULD NOT LOAD — REFRESH THE PAGE';console.error(e)}
+});
+function award(label,year,big,sub,meta,title,copy,source,href,cta){return `<article class="proof-card"><div class="proof-preview"><div class="preview-top"><span>${label}</span><span>${year}</span></div><div class="preview-main"><strong>${big}</strong><span>${sub}</span></div><div class="preview-bottom">${source}</div></div><div class="proof-copy"><div><div class="meta">${meta}</div><h4>${title}</h4><p>${copy}</p></div><div class="proof-footer"><span class="proof-source">${source} · ${year}</span><a class="proof-link" href="${href}" target="_blank">${cta}</a></div></div></article>`}
+function press(pub,year,big,sub,meta,copy,source,href){return `<article class="proof-card press-card"><div class="proof-preview"><div class="preview-top"><span>${pub}</span><span>${year}</span></div><div class="preview-main"><strong>${big}</strong><span>${sub}</span></div><div class="preview-bottom">${source} · EDITORIAL PREVIEW</div></div><div class="proof-copy"><div><div class="meta">${meta}</div><h4>${sub}</h4><p>${copy}</p></div><div class="proof-footer"><span class="proof-source">${source} · ${year}</span><a class="proof-link" href="${href}" target="_blank">Read story ↗</a></div></div></article>`}
+function setupProof(doc,name){
+  const rail=doc.querySelector(`[data-proof="${name}"]`),items=[...rail.children],current=doc.querySelector(`[data-current-proof="${name}"]`);
+  const go=dir=>{const w=items[0].getBoundingClientRect().width+18;rail.scrollBy({left:dir*w,behavior:'smooth'})};
+  doc.querySelectorAll(`[data-prev="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(-1)));doc.querySelectorAll(`[data-next="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(1)));
+  const update=()=>{let best=0,min=Infinity;items.forEach((item,i)=>{const d=Math.abs(item.getBoundingClientRect().left-frame.contentWindow.innerWidth*.1);if(d<min){min=d;best=i}});current.textContent=String(best+1).padStart(2,'0')};rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
+  let down=false,x=0,s=0;rail.addEventListener('pointerdown',e=>{down=true;x=e.clientX;s=rail.scrollLeft;rail.classList.add('dragging')});rail.addEventListener('pointermove',e=>{if(down)rail.scrollLeft=s-(e.clientX-x)});['pointerup','pointercancel','pointerleave'].forEach(ev=>rail.addEventListener(ev,()=>{down=false;rail.classList.remove('dragging')}));
+}
+</script>
+</body>
+</html>
