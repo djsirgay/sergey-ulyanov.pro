@@ -16,12 +16,13 @@
   <iframe id="site" title="Sergéy Ulyanov website"></iframe>
   <script>
   (async()=>{
-    const VERSION='20260729-9';
+    const VERSION='20260729-10';
     const frame=document.getElementById('site');
     const loading=document.getElementById('loading');
-    const portfolioView='https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view';
-    const portfolioDownload='https://drive.usercontent.google.com/download?id=1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW&export=download&confirm=t';
-    const resumeDownload='https://drive.usercontent.google.com/download?id=16L0W5TAmJ8d0t8E2KQbonYx-A3Pg2l3D&export=download&confirm=t';
+    const portfolioView='https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view?usp=sharing';
+    const resumeView='https://drive.google.com/file/d/1AR_x8Yz2VPqNgM4EuCvxo9J9bod5mINn/view?usp=sharing';
+    const contactEmail='ulyana@gmail.com';
+    const contactMailto='mailto:'+contactEmail+'?subject='+encodeURIComponent('Website inquiry for Sergéy Ulyanov');
     let headshotSrc='/assets/sergey-headshot.webp?v='+VERSION;
     try{
       const parts=await Promise.all([0,1,2,3].map(i=>fetch('/assets/sergey-headshot-hq-'+i+'.txt?v='+VERSION,{cache:'force-cache'}).then(r=>{if(!r.ok)throw new Error('headshot part '+i);return r.text()})));
@@ -32,7 +33,7 @@
       if(!parent||[...parent.querySelectorAll('a')].some(a=>a.textContent.includes('Download Portfolio')))return;
       const a=parent.ownerDocument.createElement('a');
       a.className='btn';
-      a.href=portfolioDownload;
+      a.href=portfolioView;
       a.textContent='Download Portfolio ↓';
       if(after)after.insertAdjacentElement('afterend',a);else parent.append(a);
     }
@@ -64,10 +65,10 @@
             portfolioLink.className='btn';
             parent.append(portfolioLink);
           }
-          portfolioLink.href=portfolioDownload;
+          portfolioLink.href=portfolioView;
           portfolioLink.target='_blank';
           portfolioLink.rel='noopener noreferrer';
-          portfolioLink.textContent='Download Portfolio ↓';
+          portfolioLink.textContent='Open Portfolio ↗';
           [...parent.querySelectorAll('a')].filter(a=>a!==portfolioLink&&/View (Full )?Portfolio|Download Portfolio/i.test(a.textContent)).forEach(a=>a.remove());
         };
         setSinglePortfolioDownload(doc.querySelector('.hero-actions'));
@@ -75,17 +76,31 @@
 
         const mobile=doc.querySelector('.mobile-bar');
         if(mobile&&mobile.children[1]){
-          mobile.children[1].href=portfolioDownload;
+          mobile.children[1].href=portfolioView;
           mobile.children[1].target='_blank';
           mobile.children[1].rel='noopener noreferrer';
-          mobile.children[1].textContent='Portfolio ↓';
+          mobile.children[1].textContent='Portfolio ↗';
         }
 
         doc.querySelectorAll('a').forEach(link=>{
           if(/résumé|resume/i.test(link.textContent)){
-            link.href=resumeDownload;
+            link.href=resumeView;
             link.target='_blank';
             link.rel='noopener noreferrer';
+            if(/download/i.test(link.textContent)) link.textContent='Open Résumé ↗';
+          }
+        });
+
+        doc.querySelectorAll('a').forEach(link=>{
+          if(/^mailto:/i.test(link.getAttribute('href')||'') || /email sergey/i.test(link.textContent)){
+            link.href=contactMailto;
+            link.target='_top';
+            link.removeAttribute('rel');
+            link.addEventListener('click',event=>{
+              event.preventDefault();
+              try{ window.top.location.href=contactMailto; }
+              catch(error){ window.location.href=contactMailto; }
+            });
           }
         });
 
