@@ -16,9 +16,10 @@
   <iframe id="site" title="Sergéy Ulyanov website"></iframe>
   <script>
   (async()=>{
-    const VERSION='20260729-1';
+    const VERSION='20260729-2';
     const frame=document.getElementById('site');
     const loading=document.getElementById('loading');
+    const portfolioView='https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view';
     const portfolioDownload='https://drive.google.com/uc?export=download&id=1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW';
 
     function addDownloadButton(parent,after){
@@ -38,8 +39,10 @@
         const photo=doc.querySelector('.portrait-card img');
         if(photo){
           photo.src='/assets/sergey-headshot.webp?v='+VERSION;
-          photo.style.objectPosition='center center';
+          photo.style.objectPosition='center 43%';
           photo.style.filter='saturate(.96) contrast(1.02)';
+          photo.style.transform='scale(1.27)';
+          photo.style.transformOrigin='center 43%';
         }
 
         const hero=doc.querySelector('.hero-actions');
@@ -61,13 +64,34 @@
           .brand-intro strong{font-size:1rem;letter-spacing:-.02em}.brand-intro span{font-family:"Space Mono",monospace;color:#707970;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase}
           .brand-mask{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
           .logo-row{display:flex;align-items:center;gap:14px;min-width:max-content;animation:logoRoll 38s linear infinite;padding:2px 0}
-          .logo-card{width:178px;height:86px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));display:flex;align-items:center;justify-content:center;padding:20px 24px;transition:.25s;position:relative;overflow:hidden}
+          .logo-card{width:214px;height:108px;border:1px solid var(--line);border-radius:20px;background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.015));display:flex;align-items:center;justify-content:center;padding:22px 28px;transition:.25s;position:relative;overflow:hidden}
           .logo-card:hover{transform:translateY(-4px);border-color:rgba(184,255,53,.5);box-shadow:0 18px 45px rgba(0,0,0,.28)}
-          .logo-card img{max-width:128px;max-height:40px;width:auto;height:auto;object-fit:contain;filter:grayscale(1) brightness(0) invert(1);opacity:.84;transition:.25s}
-          .logo-card:hover img{filter:none;opacity:1}.logo-card b{font-size:1.18rem;letter-spacing:-.04em;text-align:center;color:#edf2ed}
-          .logo-pair{display:flex;align-items:center;gap:12px}.logo-pair img{max-width:58px;max-height:31px}.logo-pair i{width:1px;height:30px;background:var(--line)}
+          .logo-card img{max-width:166px;max-height:58px;width:auto;height:auto;object-fit:contain;filter:grayscale(1) brightness(0) invert(1);opacity:.84;transition:.25s}
+          .logo-card:hover img{filter:none;opacity:1}.logo-card b{font-size:1.42rem;letter-spacing:-.04em;text-align:center;color:#edf2ed}
+          .logo-pair{display:flex;align-items:center;gap:12px}.logo-pair img{max-width:74px;max-height:42px}.logo-pair i{width:1px;height:38px;background:var(--line)}
           @keyframes logoRoll{to{transform:translateX(-50%)}}
-          @media(max-width:640px){.brand-intro{width:calc(100% - 30px);align-items:flex-start;flex-direction:column;gap:8px}.logo-card{width:150px;height:76px;padding:17px 20px}.logo-card img{max-width:112px;max-height:35px}}
+          @media(max-width:640px){.brand-intro{width:calc(100% - 30px);align-items:flex-start;flex-direction:column;gap:8px}.logo-card{width:178px;height:90px;padding:18px 22px}.logo-card img{max-width:142px;max-height:48px}}
+          @media(max-width:640px){
+            .portrait-card img{transform:scale(1.27)!important;transform-origin:center 43%!important;object-position:center 43%!important}
+            #work .section-head{margin-bottom:16px}
+            #work .section-head p{font-size:.82rem;line-height:1.45}
+            #work .rail{grid-auto-columns:82vw;gap:12px;padding:4px 15px 18px;touch-action:pan-y pinch-zoom;scroll-padding-inline:15px}
+            #work .case{scroll-snap-align:start;border-radius:22px}
+            #work .case-visual{min-height:235px;padding:20px}
+            #work .case-body{padding:22px 18px;gap:20px}
+            #work .case h3{font-size:2.15rem;margin:12px 0}
+            #work .case-body>div>p{font-size:.88rem;line-height:1.5}
+            #work .impact{gap:8px;margin-top:16px}
+            #work .impact div{padding:10px;border-radius:13px}
+            #work .impact b{font-size:1.02rem}
+            #work .impact span{font-size:.62rem}
+            #work .tags{margin-bottom:12px}
+            #work .tag{padding:6px 8px;font-size:.58rem}
+            #work .rail-controls{padding-top:4px}
+            .mobile-swipe-hint{display:flex!important}
+          }
+          .mobile-swipe-hint{display:none;align-items:center;justify-content:space-between;gap:12px;width:calc(100% - 30px);margin:0 auto 12px;padding:10px 13px;border:1px solid rgba(184,255,53,.25);border-radius:999px;background:rgba(184,255,53,.06);font-family:"Space Mono",monospace;font-size:.61rem;letter-spacing:.07em;color:#cbd3cb;text-transform:uppercase}
+          .mobile-swipe-hint b{color:var(--acid);font-size:.68rem}
           @media(prefers-reduced-motion:reduce){.logo-row{animation:none}}
         `;
         doc.head.append(style);
@@ -87,9 +111,25 @@
           logo('https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Global_Fund_logo.svg','The Global Fund')+
           word('COMPLEX');
 
+        const brandMarkup=`<div class="brand-intro"><strong>Selected brands & organizations</strong><span>Strategy · creative · digital products · AI workflows</span></div><div class="brand-mask"><div class="logo-row">${sequence+sequence}</div></div>`;
         const brands=doc.querySelector('.brands');
         if(brands){
-          brands.innerHTML=`<div class="brand-intro"><strong>Selected brands & organizations</strong><span>Strategy · creative · digital products · AI workflows</span></div><div class="brand-mask"><div class="logo-row">${sequence+sequence}</div></div>`;
+          brands.innerHTML=brandMarkup;
+          if(!doc.querySelector('.brands-top')){
+            const topBrands=doc.createElement('section');
+            topBrands.className='brands brands-top';
+            topBrands.innerHTML=brandMarkup;
+            const metricStrip=doc.querySelector('.metric-strip');
+            if(metricStrip)metricStrip.insertAdjacentElement('afterend',topBrands);
+          }
+        }
+
+        const workRail=doc.querySelector('#work .rail-shell');
+        if(workRail&&!doc.querySelector('.mobile-swipe-hint')){
+          const hint=doc.createElement('div');
+          hint.className='mobile-swipe-hint';
+          hint.innerHTML='<b>Swipe projects ↔</b><span>Scroll page ↓</span>';
+          workRail.insertAdjacentElement('beforebegin',hint);
         }
       }catch(error){console.error('Patch failed',error)}
     }
