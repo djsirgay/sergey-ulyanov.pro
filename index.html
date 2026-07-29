@@ -1,290 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sergey Ulyanov — AI Visionary</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#080a08" />
+  <meta name="description" content="Sergéy Ulyanov — Los Angeles-based creative marketing and AI workflow strategist building campaigns, digital products, commerce systems, and automations." />
+  <title>Sergéy Ulyanov — Creative Marketing & AI Workflow Strategist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root{--bg:#080a08;--panel:#101410;--line:rgba(255,255,255,.13);--muted:#9da59d;--text:#f5f7f4;--acid:#b8ff35;--max:1320px;--radius:28px;--shadow:0 30px 90px rgba(0,0,0,.35)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;background:var(--bg)}body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,-apple-system,sans-serif;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}::selection{background:var(--acid);color:#050705}
+    .noise{position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.045;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E")}.wrap{width:min(var(--max),calc(100% - 48px));margin-inline:auto}.eyebrow{font-family:"Space Mono",monospace;font-size:.73rem;letter-spacing:.12em;text-transform:uppercase;color:var(--acid)}
+    .nav{position:fixed;top:0;left:0;right:0;z-index:60;border-bottom:1px solid transparent;transition:.25s;background:linear-gradient(to bottom,rgba(8,10,8,.94),rgba(8,10,8,.68),transparent)}.nav.scrolled{border-color:var(--line);backdrop-filter:blur(18px);background:rgba(8,10,8,.82)}.nav-inner{height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}.wordmark{font-weight:800;letter-spacing:-.04em;font-size:1.1rem}.wordmark i{color:var(--acid);font-style:normal}.nav-links{display:flex;align-items:center;gap:24px;color:#c8cec8;font-size:.88rem}.nav-links a:hover{color:var(--acid)}.nav-cta{border:1px solid var(--line);padding:11px 15px;border-radius:999px;background:rgba(255,255,255,.035)}
+    .hero{min-height:100svh;padding:132px 0 72px;display:grid;align-items:center;position:relative}.hero:before{content:"";position:absolute;inset:-20% -20% auto 45%;height:70%;background:radial-gradient(circle,rgba(184,255,53,.13),transparent 63%);filter:blur(18px);pointer-events:none}.hero-grid{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(330px,.78fr);gap:clamp(44px,7vw,110px);align-items:center}.hero h1{font-size:clamp(3.55rem,7.6vw,7.8rem);line-height:.88;letter-spacing:-.075em;margin:20px 0 28px;max-width:930px}.hero h1 .outline{-webkit-text-stroke:1.5px rgba(245,247,244,.72);color:transparent}.hero-copy{font-size:clamp(1.08rem,1.7vw,1.42rem);line-height:1.55;color:#ced4ce;max-width:760px;margin:0 0 20px}.status{display:flex;align-items:center;gap:10px;font-size:.93rem;color:#dfe5df;margin:22px 0 30px}.status-dot{width:9px;height:9px;border-radius:50%;background:var(--acid);box-shadow:0 0 18px var(--acid)}.hero-actions{display:flex;flex-wrap:wrap;gap:11px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:50px;padding:0 19px;border-radius:999px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--text);font-weight:700;font-size:.92rem;transition:.2s;cursor:pointer}.btn:hover{transform:translateY(-2px);border-color:rgba(184,255,53,.6)}.btn.primary{background:var(--acid);color:#0a0c09;border-color:var(--acid)}.btn.small{min-height:42px;padding:0 15px;font-size:.84rem}.hero-note{font-family:"Space Mono",monospace;color:#7f887f;font-size:.68rem;margin-top:13px}
+    .portrait-wrap{position:relative;max-width:520px;justify-self:end}.portrait-card{position:relative;overflow:hidden;border-radius:38px;border:1px solid var(--line);aspect-ratio:.78;background:#171c17;box-shadow:var(--shadow)}.portrait-card img{width:100%;height:100%;object-fit:cover;object-position:center 22%;filter:saturate(.82) contrast(1.04)}.portrait-card:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(4,6,4,.72),transparent 48%)}.portrait-label{position:absolute;left:22px;right:22px;bottom:20px;z-index:2;display:flex;justify-content:space-between;align-items:end;gap:16px}.portrait-label strong{font-size:1.02rem}.portrait-label span{font-family:"Space Mono",monospace;font-size:.66rem;color:#c7cec7;text-align:right}.orbit{position:absolute;border:1px solid rgba(184,255,53,.32);border-radius:50%;pointer-events:none}.orbit.one{width:122px;height:122px;left:-47px;top:12%}.orbit.two{width:70px;height:70px;right:-26px;bottom:16%;background:rgba(184,255,53,.08)}
+    .metric-strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#0b0e0b}.metrics{display:grid;grid-template-columns:repeat(4,1fr)}.metric{padding:28px 26px;border-right:1px solid var(--line)}.metric:first-child{padding-left:0}.metric:last-child{border-right:0;padding-right:0}.metric b{display:block;font-size:clamp(1.65rem,3vw,2.7rem);letter-spacing:-.05em;color:var(--acid);line-height:1}.metric span{display:block;margin-top:8px;color:#a7afa7;font-size:.79rem;line-height:1.35}
+    .section{padding:112px 0}.section-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:42px}.section-head h2{font-size:clamp(2.55rem,5vw,5.2rem);line-height:.95;letter-spacing:-.065em;margin:13px 0 0;max-width:850px}.section-head p{justify-self:end;max-width:520px;color:#aeb6ae;line-height:1.65;margin:0}
+    .rail-shell{position:relative}.rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,1040px);gap:22px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(24px,calc((100vw - var(--max))/2)) 28px;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab}.rail::-webkit-scrollbar{display:none}.rail.dragging{cursor:grabbing;scroll-snap-type:none}.case{scroll-snap-align:center;min-height:590px;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--panel);display:grid;grid-template-columns:1.07fr .93fr;box-shadow:var(--shadow);position:relative}.case-visual{position:relative;min-height:100%;overflow:hidden;background:#141914;display:grid;place-items:center;padding:42px}.case-visual:after{content:"";position:absolute;inset:0;border-right:1px solid var(--line);pointer-events:none}.case-body{padding:clamp(34px,5vw,68px);display:flex;flex-direction:column;justify-content:space-between;gap:30px}.case-index{font-family:"Space Mono",monospace;font-size:.74rem;color:var(--acid)}.case h3{font-size:clamp(2.2rem,4.2vw,4.9rem);line-height:.95;letter-spacing:-.06em;margin:18px 0}.case-body>div>p{font-size:1rem;line-height:1.65;color:#b8c0b8;max-width:540px}.impact{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:25px}.impact div{padding:16px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.025)}.impact b{display:block;color:var(--acid);font-size:1.28rem;letter-spacing:-.03em}.impact span{font-size:.72rem;color:#929b92}.tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:17px}.tag{font-family:"Space Mono",monospace;font-size:.65rem;border:1px solid var(--line);border-radius:999px;padding:7px 10px;color:#aeb6ae}.case-footer{display:flex;align-items:center;justify-content:space-between;gap:15px}.case-meta{font-family:"Space Mono",monospace;font-size:.66rem;color:#737d73}
+    .visual-ai{background:radial-gradient(circle at 35% 32%,rgba(184,255,53,.2),transparent 35%),linear-gradient(145deg,#111a13,#060806)}.ai-grid{position:absolute;inset:0;opacity:.18;background-image:linear-gradient(rgba(184,255,53,.3) 1px,transparent 1px),linear-gradient(90deg,rgba(184,255,53,.3) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(to bottom right,#000,transparent)}.ai-core{position:relative;width:min(76%,430px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(184,255,53,.5);display:grid;place-items:center;box-shadow:inset 0 0 90px rgba(184,255,53,.08),0 0 70px rgba(184,255,53,.12)}.ai-core:before,.ai-core:after{content:"";position:absolute;border:1px solid rgba(184,255,53,.23);border-radius:50%}.ai-core:before{inset:13%}.ai-core:after{inset:28%}.ai-core strong{font-size:clamp(3.2rem,7vw,7.5rem);letter-spacing:-.09em;color:var(--acid);z-index:2}.ai-core small{position:absolute;bottom:24%;font-family:"Space Mono",monospace;color:#a5b0a5}
+    .visual-scream{background:radial-gradient(circle at 44% 40%,rgba(188,0,20,.36),transparent 36%),linear-gradient(135deg,#140206,#030303 70%)}.mask{width:min(48%,265px);height:72%;background:#e9ece7;border-radius:48% 52% 46% 54%/34% 36% 64% 66%;position:relative;filter:drop-shadow(0 0 55px rgba(255,255,255,.12));transform:rotate(-5deg)}.mask:before,.mask:after{content:"";position:absolute;background:#050505;border-radius:50%;top:25%;width:23%;height:34%}.mask:before{left:17%;transform:rotate(12deg)}.mask:after{right:17%;transform:rotate(-12deg)}.mouth{position:absolute;left:34%;right:34%;bottom:13%;height:36%;background:#050505;border-radius:50% 50% 44% 44%/25% 25% 75% 75%}.scream-type{position:absolute;left:32px;bottom:27px;font-weight:800;font-size:clamp(2.7rem,5vw,6rem);letter-spacing:-.08em;color:white}.scream-type i{color:#d90c25;font-style:normal}
+    .visual-vinyl{background:linear-gradient(135deg,#101010,#1b221a)}.record{width:min(78%,470px);aspect-ratio:1;border-radius:50%;background:repeating-radial-gradient(circle,#050505 0 3px,#151515 4px 6px);position:relative;box-shadow:0 30px 60px rgba(0,0,0,.45);animation:spin 18s linear infinite}.record:before{content:"t.A.T.u.";position:absolute;inset:31%;border-radius:50%;background:var(--acid);color:#080a08;display:grid;place-items:center;font-family:"Space Mono",monospace;font-weight:700;font-size:clamp(.75rem,2vw,1.6rem);transform:rotate(-12deg)}.record:after{content:"";position:absolute;inset:47%;border-radius:50%;background:#090909;border:4px solid #f1f2ed}@keyframes spin{to{transform:rotate(360deg)}}
+    .visual-mcd{background:#d71920}.arches{font-size:clamp(8rem,18vw,18rem);line-height:.7;color:#ffca05;font-family:Arial Black,Arial,sans-serif;letter-spacing:-.2em;transform:scaleX(1.22) rotate(-2deg);text-shadow:0 25px 50px rgba(70,0,0,.25)}.visual-mcd .mini{position:absolute;bottom:28px;left:32px;font-family:"Space Mono",monospace;font-size:.75rem;color:#fff5c2}.visual-fanta{background:radial-gradient(circle at 66% 24%,#ffca3a 0 13%,transparent 13.5%),radial-gradient(circle at 30% 76%,#f07b11 0 19%,transparent 19.5%),linear-gradient(135deg,#ff6b00,#ffb000)}.fanta-word{font-size:clamp(4rem,10vw,10rem);font-weight:800;letter-spacing:-.1em;color:white;transform:rotate(-8deg);text-shadow:9px 10px 0 #265fc4,16px 17px 0 rgba(0,0,0,.18)}.leaf{position:absolute;width:100px;height:52px;background:#47a447;border-radius:100% 0 100% 0;right:22%;top:18%;transform:rotate(-28deg)}.visual-bm{background:linear-gradient(to bottom,#f2b26f 0 43%,#d47747 43% 48%,#3b2a26 48% 100%)}.sun{position:absolute;width:190px;height:190px;border-radius:50%;background:#ffe0a3;top:12%;right:15%;box-shadow:0 0 70px #ffcb7a}.burning-type{position:relative;z-index:2;font-size:clamp(3.1rem,7vw,7rem);line-height:.84;letter-spacing:-.075em;font-weight:800;color:#0b0b09;text-transform:uppercase;max-width:580px;mix-blend-mode:multiply}.burning-type span{display:block;color:#fff0c7;mix-blend-mode:normal}.horizon{position:absolute;left:0;right:0;bottom:28%;height:2px;background:rgba(255,255,255,.35)}
+    .rail-controls{width:min(var(--max),calc(100% - 48px));margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding-top:12px}.rail-count{font-family:"Space Mono",monospace;font-size:.72rem;color:#899389}.rail-count strong{color:var(--text)}.arrow-set{display:flex;gap:9px}.arrow{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--panel);color:var(--text);cursor:pointer;transition:.2s}.arrow:hover{border-color:var(--acid);color:var(--acid)}
+    .cap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}.cap{min-height:270px;padding:28px;border:1px solid var(--line);border-radius:22px;background:var(--panel);display:flex;flex-direction:column;justify-content:space-between;transition:.25s}.cap:hover{transform:translateY(-6px);border-color:rgba(184,255,53,.5)}.cap-num{font-family:"Space Mono",monospace;color:var(--acid);font-size:.7rem}.cap h3{font-size:1.45rem;letter-spacing:-.04em;margin:0 0 10px}.cap p{font-size:.85rem;color:#9fa89f;line-height:1.55;margin:0}
+    .manifesto{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--acid);color:#090b08;padding:62px 0;overflow:hidden}.manifesto-track{white-space:nowrap;font-size:clamp(3rem,7vw,8rem);font-weight:800;letter-spacing:-.07em;animation:ticker 24s linear infinite}.manifesto-track span{padding-right:5vw}.manifesto-track i{font-style:normal;-webkit-text-stroke:1.5px #090b08;color:transparent}@keyframes ticker{to{transform:translateX(-50%)}}
+    .recognition-rail{grid-auto-columns:min(44vw,570px)}.recognition-card{scroll-snap-align:start;min-height:330px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,#151a15,#0c0f0c);padding:30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.recognition-card:before{content:"";position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(184,255,53,.17),transparent 66%);right:-70px;top:-70px}.recognition-card .year{font-family:"Space Mono",monospace;color:var(--acid);font-size:.7rem}.recognition-card h3{font-size:clamp(1.7rem,3vw,2.8rem);letter-spacing:-.05em;line-height:1.05;margin:18px 0 12px;max-width:430px}.recognition-card p{color:#9fa89f;line-height:1.55;font-size:.86rem;max-width:430px}.recognition-card .source{font-family:"Space Mono",monospace;color:#737d73;font-size:.64rem}
+    .press-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:16px;margin-top:18px}.press-lead,.press-side{border:1px solid var(--line);border-radius:24px;background:var(--panel);overflow:hidden}.press-lead{padding:38px;min-height:420px;background:radial-gradient(circle at 75% 25%,rgba(184,255,53,.14),transparent 34%),var(--panel)}.press-kicker{font-family:"Space Mono",monospace;font-size:.68rem;color:var(--acid)}.press-lead h3{font-size:clamp(2.1rem,4.4vw,4.8rem);line-height:.98;letter-spacing:-.06em;margin:30px 0 18px;max-width:720px}.press-lead p{color:#aab2aa;line-height:1.6;max-width:650px}.press-side{display:grid;grid-template-rows:repeat(3,1fr)}.story{padding:24px;border-bottom:1px solid var(--line);display:flex;gap:18px;justify-content:space-between;align-items:center;transition:.2s}.story:last-child{border-bottom:0}.story:hover{background:rgba(184,255,53,.045)}.story h4{font-size:1.04rem;line-height:1.35;margin:7px 0 0;max-width:500px}.story span{font-family:"Space Mono",monospace;color:#7d877d;font-size:.62rem}.story b{color:var(--acid);font-size:1.25rem}
+    .brands{padding:36px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}.brand-row{display:flex;gap:16px;min-width:max-content;animation:brandroll 32s linear infinite}.brand-pill{border:1px solid var(--line);border-radius:999px;padding:13px 20px;color:#a9b1a9;background:#0d100d;font-weight:700;font-size:.83rem}.brand-pill strong{color:var(--acid)}@keyframes brandroll{to{transform:translateX(-50%)}}
+    .contact{padding:130px 0 70px}.contact-card{border:1px solid var(--line);border-radius:36px;padding:clamp(34px,6vw,82px);background:radial-gradient(circle at 88% 12%,rgba(184,255,53,.13),transparent 31%),var(--panel);display:grid;grid-template-columns:1.2fr .8fr;gap:55px;align-items:end}.contact h2{font-size:clamp(3rem,6.7vw,7rem);line-height:.9;letter-spacing:-.075em;margin:14px 0 25px}.contact-copy{color:#acb4ac;line-height:1.65;max-width:720px}.contact-actions{display:flex;flex-direction:column;gap:10px}.contact-actions .btn{width:100%}.footer{padding:28px 0 45px;color:#717a71;font-family:"Space Mono",monospace;font-size:.66rem}.footer-inner{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:24px}.mobile-bar{display:none}.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}.reveal.visible{opacity:1;transform:none}
+    @media(max-width:980px){.nav-links a:not(.nav-cta){display:none}.hero{min-height:auto;padding-top:120px}.hero-grid{grid-template-columns:1fr}.portrait-wrap{justify-self:start;width:min(100%,520px)}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.metric:nth-child(3){padding-left:0}.section-head{grid-template-columns:1fr}.section-head p{justify-self:start}.case{grid-template-columns:1fr;min-height:auto}.case-visual{min-height:430px}.case-visual:after{border-right:0;border-bottom:1px solid var(--line)}.cap-grid{grid-template-columns:repeat(2,1fr)}.press-grid{grid-template-columns:1fr}.contact-card{grid-template-columns:1fr}.recognition-rail{grid-auto-columns:min(72vw,570px)}}
+    @media(max-width:640px){.wrap{width:min(var(--max),calc(100% - 30px))}.nav-inner{height:66px}.nav-cta{padding:9px 12px;font-size:.78rem}.hero{padding:104px 0 54px}.hero h1{font-size:clamp(3.2rem,17vw,5.2rem)}.hero-actions{display:grid;grid-template-columns:1fr 1fr}.btn{padding:0 12px;font-size:.79rem}.portrait-card{border-radius:28px}.metrics{grid-template-columns:1fr 1fr}.metric{padding:22px 14px}.metric b{font-size:1.65rem}.metric span{font-size:.69rem}.section{padding:82px 0}.section-head{margin-bottom:28px}.section-head h2{font-size:clamp(2.6rem,14vw,4.2rem)}.rail{grid-auto-columns:88vw;gap:14px;padding-left:15px;padding-right:15px}.case-visual{min-height:320px;padding:24px}.case-body{padding:28px 24px}.case h3{font-size:2.65rem}.impact{grid-template-columns:1fr 1fr}.impact div{padding:13px}.case-footer{align-items:flex-end}.case-meta{display:none}.rail-controls{width:calc(100% - 30px)}.cap-grid{grid-template-columns:1fr}.cap{min-height:220px}.recognition-rail{grid-auto-columns:84vw}.recognition-card{min-height:300px}.press-lead{padding:26px}.story{padding:20px}.contact{padding:90px 0 100px}.contact-card{border-radius:27px;padding:28px 23px}.contact h2{font-size:3.25rem}.footer-inner{flex-direction:column}.mobile-bar{display:grid;grid-template-columns:1fr 1fr;position:fixed;left:10px;right:10px;bottom:calc(10px + env(safe-area-inset-bottom));z-index:70;border:1px solid var(--line);border-radius:18px;padding:7px;background:rgba(8,10,8,.88);backdrop-filter:blur(18px);box-shadow:0 12px 40px rgba(0,0,0,.45)}.mobile-bar a{min-height:45px;display:grid;place-items:center;font-weight:800;font-size:.78rem;border-radius:12px}.mobile-bar a:first-child{background:var(--acid);color:#070907}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.record,.manifesto-track,.brand-row{animation:none}.reveal{opacity:1;transform:none;transition:none}}
+  </style>
 </head>
 <body>
-  <!-- Particles Background -->
-  <div id="particles-js"></div>
-  
-  <!-- Header -->
-  <header class="header">
-    <div class="container">
-      <nav class="nav">
-        <div class="logo">
-          <div class="logo-mark">SU</div>
-          <span class="logo-text">Sergéy Ulyanov</span>
-        </div>
-        <div class="theme-toggle" onclick="toggleTheme()">
-          <span class="theme-icon">🌙</span>
-        </div>
-        <div class="nav-links">
-          <a href="#contact" onclick="document.getElementById('contact').scrollIntoView()" class="cta-button">Become a Client & Get 20% Off</a>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Main content -->
-  <main>
-    <!-- Hero Section -->
-    <section id="hero" class="hero-section">
-      <div class="container">
-        <div class="hero-content">
-          <div class="hero-visual">
-            <div class="profile-photo">
-              <img src="sergey-ulyanov.jpg" alt="Sergéy Ulyanov" class="profile-img">
-              <div class="photo-glow"></div>
-            </div>
-          </div>
-          
-          <div class="hero-text">
-            <div class="typing-container">
-              <span class="typing-text"></span>
-              <span class="cursor">|</span>
-            </div>
-            <h1 class="hero-title">Sergéy Ulyanov</h1>
-            <p class="hero-subtitle">⚡ Creative Producer & Marketing/PR Strategist. Trusted by Global Leaders for Global campaigns + AI solutions</p>
-          </div>
-        </div>
-        
-        <!-- Clients Section -->
-        <div id="clients" class="clients-container">
-          <div class="clients-grid">
-            <div class="client-logo" data-name="Coca-Cola">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg" alt="Coca-Cola">
-            </div>
-            <div class="client-logo" data-name="McDonald's">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/McDonald%27s_Golden_Arches.svg" alt="McDonald's">
-            </div>
-            <div class="client-logo" data-name="Volkswagen">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/6/6d/Volkswagen_logo_2019.svg" alt="Volkswagen">
-            </div>
-            <div class="client-logo black-logo" data-name="Sony Music">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/b/b9/Sony_Music_Entertainment_Logo_2023.svg" alt="Sony Music">
-            </div>
-            <div class="client-logo black-logo" data-name="Universal Music Group">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c4/Universal_Music_Group_logo.svg" alt="Universal Music Group">
-            </div>
-            <div class="client-logo" data-name="Fanta">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/Fanta_2023.svg" alt="Fanta">
-            </div>
-            <div class="client-logo black-logo" data-name="BASF">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/BASF-Logo_bw.svg" alt="BASF">
-            </div>
-            <div class="client-logo" data-name="UNICEF">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/e/ed/Logo_of_UNICEF.svg" alt="UNICEF">
-            </div>
-            <div class="client-logo black-logo" data-name="Leo Burnett">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Leo_Burnett_Logo.png" alt="Leo Burnett">
-            </div>
-            <div class="client-logo" data-name="Société Générale">
-              <img src="https://www.societegenerale.com/sites/default/files/styles/rte_affichage_defaut_desktop/public/image/2023-04/logo-societe-generale.png?itok=9tsodGw3" alt="Société Générale">
-            </div>
-            <div class="client-logo black-logo" data-name="t.A.T.u.">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Tatu_wordmark.svg" alt="t.A.T.u.">
-            </div>
-            <div class="client-logo black-logo" data-name="Cal Poly">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Cal_Poly_Logo_2019.svg" alt="Cal Poly">
-            </div>
-            <div class="client-logo black-logo" data-name="The Global Fund">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/The_Global_Fund_logo.svg" alt="The Global Fund">
-            </div>
-            <div class="client-logo black-logo" data-name="MageWorx">
-              <img src="https://www.mageworx.com/blog/wp-content/uploads/2019/05/MageWorx-Logo.png" alt="MageWorx">
-            </div>
-            <div class="client-logo black-logo" data-name="Cannes Film Festival">
-              <img src="https://upload.wikimedia.org/wikipedia/sco/d/d8/Festival_de_Cannes_logo.svg" alt="Cannes">
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="container">
-      <div class="glass-card">
-        <h2 class="section-title">📬 Let's Build the Future Together</h2>
-        
-        <div class="contact-container">
-          <div class="contact-info">
-            <h3>Get in Touch</h3>
-            <p>Ready to transform your business with AI? Let's create innovative solutions.</p>
-            
-            <div class="contact-methods">
-              <div class="contact-item">
-                <div class="contact-icon">📧</div>
-                <div class="contact-details">
-                  <span class="contact-label">Email</span>
-                  <a href="mailto:ulyanoow@gmail.com">ulyanoow@gmail.com</a>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">📱</div>
-                <div class="contact-details">
-                  <span class="contact-label">Phone</span>
-                  <a href="tel:+13107137738">(310) 713-7738</a>
-                </div>
-              </div>
-              <div class="contact-item">
-                <div class="contact-icon">🌐</div>
-                <div class="contact-details">
-                  <span class="contact-label">Location</span>
-                  <span>Los Angeles, CA</span>
-                </div>
-              </div>
-            </div>
-            
-            <div class="availability">
-              <a href="https://www.linkedin.com/in/sergey-ulyanov" target="_blank" class="linkedin-link">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                </svg>
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
-          
-          <div class="contact-form">
-            <h3>Send a Message</h3>
-            <form id="contactForm">
-              <div class="form-group">
-                <input type="text" id="name" placeholder="Your Name" required>
-                <label for="name">Name</label>
-              </div>
-              <div class="form-group">
-                <input type="email" id="email" placeholder="your@email.com" required>
-                <label for="email">Email</label>
-              </div>
-              <div class="form-group">
-                <select id="project-type" required>
-                  <option value="">Select Project Type</option>
-                  <option value="ai-consulting">AI Consulting</option>
-                  <option value="ml-development">ML Development</option>
-                  <option value="digital-transformation">Digital Transformation</option>
-                  <option value="other">Other</option>
-                </select>
-                <label for="project-type">Project Type</label>
-              </div>
-              <div class="form-group">
-                <textarea id="message" placeholder="Tell me about your project..." rows="4" required></textarea>
-                <label for="message">Message</label>
-              </div>
-              <button type="submit" class="btn-primary glow">
-                <span>Send Message</span>
-                <div class="btn-particles"></div>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-  
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-content">
-        <div class="footer-left">
-          <div class="footer-logo">
-            <div class="logo-mark">SU</div>
-            <span class="logo-text">Sergéy Ulyanov</span>
-          </div>
-          <p>AI Visionary & Digital Transformation Architect</p>
-        </div>
-        <div class="footer-right">
-          <p>© 2025 Sergéy Ulyanov — Creative Producer & Marketing/PR Strategist — Los Angeles, CA</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    // Particles.js configuration
-    particlesJS('particles-js', {
-      particles: {
-        number: { value: 80, density: { enable: true, value_area: 800 } },
-        color: { value: '#00ff88' },
-        shape: { type: 'circle' },
-        opacity: { value: 0.5, random: false },
-        size: { value: 3, random: true },
-        line_linked: { enable: true, distance: 150, color: '#00ff88', opacity: 0.4, width: 1 },
-        move: { enable: true, speed: 6, direction: 'none', random: false, straight: false, out_mode: 'out', bounce: false }
-      },
-      interactivity: {
-        detect_on: 'canvas',
-        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
-        modes: { grab: { distance: 400, line_linked: { opacity: 1 } }, bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 }, repulse: { distance: 200, duration: 0.4 }, push: { particles_nb: 4 }, remove: { particles_nb: 2 } }
-      },
-      retina_detect: true
-    });
-
-    // Typing animation
-    const typingText = document.querySelector('.typing-text');
-    const phrases = ['AI Visionary', 'Creative Producer', 'Marketing Strategist', 'Digital Innovator'];
-    let phraseIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-
-    function typeWriter() {
-      const currentPhrase = phrases[phraseIndex];
-      
-      if (isDeleting) {
-        typingText.textContent = currentPhrase.substring(0, charIndex - 1);
-        charIndex--;
-      } else {
-        typingText.textContent = currentPhrase.substring(0, charIndex + 1);
-        charIndex++;
-      }
-
-      if (!isDeleting && charIndex === currentPhrase.length) {
-        setTimeout(() => isDeleting = true, 2000);
-      } else if (isDeleting && charIndex === 0) {
-        isDeleting = false;
-        phraseIndex = (phraseIndex + 1) % phrases.length;
-      }
-
-      setTimeout(typeWriter, isDeleting ? 50 : 100);
-    }
-
-    // Start typing animation
-    typeWriter();
-
-    // Animate elements on scroll
-    const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
-        }
-      });
-    }, observerOptions);
-
-    // Observe elements
-    document.querySelectorAll('.hero-content, .glass-card').forEach(el => observer.observe(el));
-
-    // Theme toggle
-    function toggleTheme() {
-      document.body.classList.toggle('light-theme');
-      const themeIcon = document.querySelector('.theme-icon');
-      if (document.body.classList.contains('light-theme')) {
-        themeIcon.textContent = '☀️';
-      } else {
-        themeIcon.textContent = '🌙';
-      }
-    }
-
-    // Form submission
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your message! I will get back to you soon.');
-    });
-  </script>
-</body>
-</html>
+<div class="noise"></div>
+<nav class="nav" id="nav"><div class="wrap nav-inner"><a class="wordmark" href="#top">SERGÉY<i>↗</i></a><div class="nav-links"><a href="#work">Selected Work</a><a href="#capabilities">Capabilities</a><a href="#recognition">Recognition</a><a href="#contact">Contact</a><a class="nav-cta" href="https://drive.google.com/uc?export=download&id=1AR_x8Yz2VPqNgM4EuCvxo9J9bod5mINn">Download Résumé ↓</a></div></div></nav>
+<main id="top">
+<section class="hero"><div class="wrap hero-grid"><div class="reveal"><div class="eyebrow">Creative Strategy × Marketing × AI Workflows</div><h1>Creative Marketing <span class="outline">& AI Workflow</span> Strategist</h1><p class="hero-copy">I turn complex business problems into campaigns, digital products, and AI-assisted workflows that increase revenue, reduce costs, and save teams time.</p><div class="status"><span class="status-dot"></span>Open to full-time roles and selected consulting engagements.</div><div class="hero-actions"><a class="btn primary" href="https://drive.google.com/uc?export=download&id=1AR_x8Yz2VPqNgM4EuCvxo9J9bod5mINn">Download Résumé ↓</a><a class="btn" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view" target="_blank">View Portfolio ↗</a><a class="btn" href="https://www.linkedin.com/in/charaunic" target="_blank">LinkedIn ↗</a><a class="btn" href="mailto:ulyanoow@gmail.com">Email Sergey ↗</a></div><div class="hero-note">Résumé · PDF · 1 page &nbsp;&nbsp; Portfolio · PDF · 17 pages</div></div><div class="portrait-wrap reveal"><span class="orbit one"></span><span class="orbit two"></span><div class="portrait-card"><img src="../sergey-ulyanov.jpg" alt="Sergéy Ulyanov"><div class="portrait-label"><strong>Sergéy Ulyanov</strong><span>LOS ANGELES, CA<br>AUTHORIZED TO WORK IN THE U.S.</span></div></div></div></div></section>
+<section class="metric-strip"><div class="wrap metrics"><div class="metric"><b>10+ years</b><span>Creative, marketing & operations</span></div><div class="metric"><b>90% less</b><span>Targeted manual work</span></div><div class="metric"><b>100M+</b><span>Streams across related releases</span></div><div class="metric"><b>200K</b><span>Campaign registrations</span></div></div></section>
+<section class="section" id="work"><div class="wrap section-head reveal"><div><div class="eyebrow">Selected Work</div><h2>Strategy is useful when it produces something real.</h2></div><p>Swipe, drag, use the arrows, or scroll your mouse wheel over the gallery. Each block opens a proof point from the full portfolio.</p></div><div class="rail-shell reveal"><div class="rail" data-rail="cases">
+<article class="case"><div class="case-visual visual-ai"><div class="ai-grid"></div><div class="ai-core"><strong>AI</strong><small>POLICY → TRAINING → REPORTING</small></div></div><div class="case-body"><div><div class="case-index">01 / CAL POLY × AWS</div><h3>AI Compliance Platform</h3><p>Built an Amazon Bedrock-powered system that transforms policy documents into automated training assignments, reporting, and compliance workflows.</p><div class="impact"><div><b>90% less</b><span>targeted manual work</span></div><div><b>2× faster</b><span>reporting workflow</span></div><div><b>+60%</b><span>compliance visibility</span></div><div><b>Top 100</b><span>of 1,300+ applicants</span></div></div></div><div><div class="tags"><span class="tag">Amazon Bedrock</span><span class="tag">RAG</span><span class="tag">Workflow design</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=7" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 7</span></div></div></div></article>
+<article class="case"><div class="case-visual visual-scream"><div class="mask"><span class="mouth"></span></div><div class="scream-type">SCREAM <i>7</i></div></div><div class="case-body"><div><div class="case-index">02 / PARAMOUNT PICTURES × COMPLEX</div><h3>Franchise Campaign Concepts</h3><p>Developed visual directions for the official SCREAM 7 × Complex exhibition, translating franchise recognition into suspense-driven audience-facing assets.</p><div class="impact"><div><b>5-piece</b><span>campaign series</span></div><div><b>Official</b><span>LA gallery exhibition</span></div></div></div><div><div class="tags"><span class="tag">Key art</span><span class="tag">Creative concepting</span><span class="tag">Entertainment</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=2" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 2</span></div></div></div></article>
+<article class="case"><div class="case-visual visual-vinyl"><div class="record"></div></div><div class="case-body"><div><div class="case-index">03 / UMG · INTERSCOPE · ELASTICSTAGE</div><h3>Release-to-Commerce System</h3><p>Led production, mastering, artwork, prepress, marketing, Shopify operations, and international fulfillment for a limited-edition vinyl release.</p><div class="impact"><div><b>10×</b><span>fan engagement</span></div><div><b>200 copies</b><span>limited physical run</span></div><div><b>500+</b><span>release/content assets</span></div><div><b>90+ countries</b><span>fulfillment reach</span></div></div></div><div><div class="tags"><span class="tag">Music strategy</span><span class="tag">Commerce</span><span class="tag">Production ops</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=3" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 3</span></div></div></div></article>
+<article class="case"><div class="case-visual visual-mcd"><div class="arches">M</div><div class="mini">MCHAPPY DAY · DIGITAL CAMPAIGN</div></div><div class="case-body"><div><div class="case-index">04 / McDONALD'S</div><h3>Participation Into Measurable Impact</h3><p>Led digital strategy across website, paid social, and CRM, turning a charitable campaign into a measurable registration and fundraising platform.</p><div class="impact"><div><b>200K</b><span>registrations</span></div><div><b>$230K+</b><span>donations</span></div><div><b>+20%</b><span>YoY social audience</span></div><div><b>Digital</b><span>website · paid · CRM</span></div></div></div><div><div class="tags"><span class="tag">Digital strategy</span><span class="tag">CRM</span><span class="tag">Social impact</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=8" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 8</span></div></div></div></article>
+<article class="case"><div class="case-visual visual-fanta"><span class="leaf"></span><div class="fanta-word">FANTA</div></div><div class="case-body"><div><div class="case-index">05 / COCA-COLA · FANTA</div><h3>Limited Budget. Multi-Video Impact.</h3><p>Created the campaign concept, slogan, storyboard, and visual direction for an animated Fanta Mandarin campaign, then led production through delivery.</p><div class="impact"><div><b>+60%</b><span>campaign reach</span></div><div><b>1 → many</b><span>multi-video system</span></div></div></div><div><div class="tags"><span class="tag">Campaign platform</span><span class="tag">Storyboarding</span><span class="tag">Animation direction</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=9" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 9</span></div></div></div></article>
+<article class="case"><div class="case-visual visual-bm"><div class="sun"></div><div class="horizon"></div><div class="burning-type">Belarus <span>in Exile</span></div></div><div class="case-body"><div><div class="case-index">06 / BURNING MAN</div><h3>From Dictatorship to the Dancefloor</h3><p>Created the first Belarusian-language Burning Man DJ set as a cultural statement against censorship, dictatorship, and the forced exile of artists.</p><div class="impact"><div><b>55 tracks</b><span>Belarusian-language set</span></div><div><b>10K+</b><span>audience reach</span></div><div><b>50+</b><span>featured exiled artists</span></div><div><b>2 hours</b><span>cultural storytelling</span></div></div></div><div><div class="tags"><span class="tag">Cultural strategy</span><span class="tag">Music curation</span><span class="tag">Human rights</span></div><div class="case-footer"><a class="btn small primary" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view#page=15" target="_blank">Open case ↗</a><span class="case-meta">PORTFOLIO · PAGE 15</span></div></div></div></article>
+</div><div class="rail-controls"><div class="rail-count"><strong data-current="cases">01</strong> / 06 &nbsp; — &nbsp; DRAG OR SCROLL</div><div class="arrow-set"><button class="arrow" data-prev="cases">←</button><button class="arrow" data-next="cases">→</button></div></div></div></section>
+<section class="section" id="capabilities"><div class="wrap"><div class="section-head reveal"><div><div class="eyebrow">What I Actually Do</div><h2>From unclear business need to working system.</h2></div><p>I do not add AI for decoration. I use technology where it can remove friction, shorten production cycles, improve decisions, or create revenue.</p></div><div class="cap-grid"><article class="cap reveal"><span class="cap-num">01</span><div><h3>Creative Strategy</h3><p>Campaign platforms, audience positioning, brand narratives, creative direction, and performance concepts.</p></div></article><article class="cap reveal"><span class="cap-num">02</span><div><h3>AI Workflow Design</h3><p>Document intelligence, prompt systems, customer-response tools, automation, and internal operational products.</p></div></article><article class="cap reveal"><span class="cap-num">03</span><div><h3>Digital Products & Commerce</h3><p>Web experiences, Shopify operations, inquiry flows, payments, dashboards, CRM, and release-to-commerce systems.</p></div></article><article class="cap reveal"><span class="cap-num">04</span><div><h3>Execution & Operations</h3><p>Cross-functional delivery, vendor management, SOPs, production workflows, stakeholder alignment, and optimization.</p></div></article></div></div></section>
+<section class="manifesto"><div class="manifesto-track"><span>Signal → Strategy → System → Scale → <i>Make complexity useful.</i> → </span><span>Signal → Strategy → System → Scale → <i>Make complexity useful.</i> → </span></div></section>
+<section class="section" id="recognition"><div class="wrap section-head reveal"><div><div class="eyebrow">Recognition & Press</div><h2>Proof beyond the portfolio.</h2></div><p>Awards, competitive selections, and international media coverage across technology, marketing, culture, and social impact.</p></div><div class="rail-shell reveal"><div class="rail recognition-rail" data-rail="recognition"><article class="recognition-card"><div><span class="year">2025 · AI / TECHNOLOGY</span><h3>Top 100 of 1,300+ applicants</h3><p>Selected for the Cal Poly DxHub × AWS AI Summer Camp, focused on real-world AI problem solving and rapid prototyping.</p></div><span class="source">CAL POLY DIGITAL TRANSFORMATION HUB × AWS</span></article><article class="recognition-card"><div><span class="year">2019 · EMPLOYER BRAND</span><h3>HR Brand Awards — Special Prize</h3><p>Recognized in the Best Corporate Video category for a campaign built around the people and culture of the organization.</p></div><span class="source">HR BRAND AWARDS</span></article><article class="recognition-card"><div><span class="year">2015 · INTERNATIONAL CREATIVE</span><h3>White Square — Best Corporate Calendar</h3><p>Winner at the international marketing and advertising festival for a brand-led calendar concept.</p></div><span class="source">WHITE SQUARE FESTIVAL</span></article><article class="recognition-card"><div><span class="year">2016 · CULTURAL RECOGNITION</span><h3>Creative Worker of Belarus</h3><p>Professional creative status awarded by the Ministry of Culture of the Republic of Belarus.</p></div><span class="source">MINISTRY OF CULTURE</span></article><article class="recognition-card"><div><span class="year">2015 · DIGITAL PRODUCT</span><h3>#1 technologically advanced banking website</h3><p>Top-rated Belarusian banking website in a national technology ranking conducted with industry partners.</p></div><span class="source">DIGITAL BANKING / PRODUCT EXPERIENCE</span></article></div><div class="rail-controls"><div class="rail-count"><strong data-current="recognition">01</strong> / 05</div><div class="arrow-set"><button class="arrow" data-prev="recognition">←</button><button class="arrow" data-next="recognition">→</button></div></div></div>
+<div class="wrap press-grid reveal"><a class="press-lead" href="https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs" target="_blank"><div class="press-kicker">FEATURED STORIES · MEDIA ARCHIVE ↗</div><h3>Over 300 verified publications across 100+ media outlets.</h3><p>Coverage spans creative work, LGBTQ+ visibility, refugee resilience, Belarusian culture, entertainment, and the rebuilding of a career in the United States.</p><div class="btn primary small" style="margin-top:30px">Open media archive ↗</div></a><div class="press-side"><a class="story" href="https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs" target="_blank"><div><span>HUMAN RIGHTS FIRST · USA</span><h4>Never Lose Yourself: How Music Helped Sergey Reclaim His Future</h4></div><b>↗</b></a><a class="story" href="https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs" target="_blank"><div><span>UNFILTERED STORIES · USA</span><h4>Targeted in His Country for Being Gay</h4></div><b>↗</b></a><a class="story" href="https://docs.google.com/document/d/141f_OhF4vgDPJbuJtR28bVcr5T3fiQoIOrAL4fjBgRs" target="_blank"><div><span>SLAVICSAC · LOS ANGELES</span><h4>An openly gay refugee from Belarus is building a career in the U.S.</h4></div><b>↗</b></a></div></div></section>
+<section class="brands"><div class="brand-row"><span class="brand-pill"><strong>Selected</strong> brands & organizations</span><span class="brand-pill">Coca-Cola</span><span class="brand-pill">McDonald's</span><span class="brand-pill">Volkswagen</span><span class="brand-pill">Paramount Pictures</span><span class="brand-pill">Universal Music Group</span><span class="brand-pill">Sony Music</span><span class="brand-pill">BASF</span><span class="brand-pill">UNICEF</span><span class="brand-pill">Cal Poly × AWS</span><span class="brand-pill">The Global Fund</span><span class="brand-pill">Complex</span><span class="brand-pill"><strong>Selected</strong> brands & organizations</span><span class="brand-pill">Coca-Cola</span><span class="brand-pill">McDonald's</span><span class="brand-pill">Volkswagen</span><span class="brand-pill">Paramount Pictures</span><span class="brand-pill">Universal Music Group</span><span class="brand-pill">Sony Music</span><span class="brand-pill">BASF</span><span class="brand-pill">UNICEF</span><span class="brand-pill">Cal Poly × AWS</span><span class="brand-pill">The Global Fund</span><span class="brand-pill">Complex</span></div></section>
+<section class="contact" id="contact"><div class="wrap contact-card reveal"><div><div class="eyebrow">Let's Connect</div><h2>Creativity, business, and AI — in one operator.</h2><p class="contact-copy">Currently open to full-time opportunities in creative strategy, marketing, AI-enabled operations, and related leadership roles — as well as selected consulting engagements.</p></div><div class="contact-actions"><a class="btn primary" href="mailto:ulyanoow@gmail.com">Email Sergey ↗</a><a class="btn" href="https://www.linkedin.com/in/charaunic" target="_blank">Connect on LinkedIn ↗</a><a class="btn" href="https://drive.google.com/uc?export=download&id=1AR_x8Yz2VPqNgM4EuCvxo9J9bod5mINn">Download Résumé ↓</a><a class="btn" href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view" target="_blank">View Full Portfolio ↗</a></div></div></section>
+</main><footer class="footer"><div class="wrap footer-inner"><span>© 2026 SERGÉY ULYANOV · LOS ANGELES, CA</span><span>CREATIVE MARKETING & AI WORKFLOW STRATEGIST</span></div></footer><div class="mobile-bar"><a href="https://drive.google.com/uc?export=download&id=1AR_x8Yz2VPqNgM4EuCvxo9J9bod5mINn">Résumé ↓</a><a href="https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view" target="_blank">Portfolio ↗</a></div>
+<script>
+const nav=document.getElementById('nav');addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));document.querySelectorAll('[data-rail]').forEach(rail=>{const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);const go=dir=>{const width=items[0].getBoundingClientRect().width+parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:dir*width,behavior:'smooth'})};document.querySelector(`[data-prev="${name}"]`)?.addEventListener('click',()=>go(-1));document.querySelector(`[data-next="${name}"]`)?.addEventListener('click',()=>go(1));const update=()=>{let best=0,min=Infinity;items.forEach((item,i)=>{const d=Math.abs(item.getBoundingClientRect().left-innerWidth*.1);if(d<min){min=d;best=i}});if(current)current.textContent=String(best+1).padStart(2,'0')};rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});let down=false,startX=0,startScroll=0;rail.addEventListener('pointerdown',e=>{down=true;rail.classList.add('dragging');startX=e.clientX;startScroll=rail.scrollLeft;rail.setPointerCapture(e.pointerId)});rail.addEventListener('pointermove',e=>{if(!down)return;rail.scrollLeft=startScroll-(e.clientX-startX)});const stop=()=>{down=false;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);rail.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&rail.scrollWidth>rail.clientWidth){const atStart=rail.scrollLeft<=1&&e.deltaY<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&e.deltaY>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=e.deltaY}}},{passive:false})});
+</script></body></html>
