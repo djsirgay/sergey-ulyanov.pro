@@ -16,20 +16,10 @@
   <iframe id="site" title="Sergéy Ulyanov website"></iframe>
   <script>
   (async()=>{
-    const VERSION='20260729-2';
+    const VERSION='20260729-3';
     const frame=document.getElementById('site');
     const loading=document.getElementById('loading');
-    const portfolioView='https://drive.google.com/file/d/1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW/view';
     const portfolioDownload='https://drive.google.com/uc?export=download&id=1fpVBAID1vf3_WA50vAyowC9YXSEx5uyW';
-
-    function addDownloadButton(parent,after){
-      if(!parent||[...parent.querySelectorAll('a')].some(a=>a.textContent.includes('Download Portfolio')))return;
-      const a=parent.ownerDocument.createElement('a');
-      a.className='btn';
-      a.href=portfolioDownload;
-      a.textContent='Download Portfolio ↓';
-      if(after)after.insertAdjacentElement('afterend',a);else parent.append(a);
-    }
 
     function patchApprovedVersion(){
       try{
@@ -39,16 +29,34 @@
         const photo=doc.querySelector('.portrait-card img');
         if(photo){
           photo.src='/assets/sergey-headshot.webp?v='+VERSION;
-          photo.style.objectPosition='center 43%';
+          photo.style.objectPosition='center bottom';
           photo.style.filter='saturate(.96) contrast(1.02)';
-          photo.style.transform='scale(1.27)';
-          photo.style.transformOrigin='center 43%';
+          photo.style.position='absolute';
+          photo.style.left='0';
+          photo.style.bottom='0';
+          photo.style.width='100%';
+          photo.style.height='114%';
+          photo.style.transform='none';
+          photo.style.transformOrigin='center bottom';
         }
 
-        const hero=doc.querySelector('.hero-actions');
-        const view=hero&&[...hero.querySelectorAll('a')].find(a=>a.textContent.includes('View Portfolio'));
-        addDownloadButton(hero,view);
-        addDownloadButton(doc.querySelector('.contact-actions'));
+        const setSinglePortfolioDownload=(parent)=>{
+          if(!parent)return;
+          const links=[...parent.querySelectorAll('a')];
+          let portfolioLink=links.find(a=>/View (Full )?Portfolio|Download Portfolio/i.test(a.textContent));
+          if(!portfolioLink){
+            portfolioLink=doc.createElement('a');
+            portfolioLink.className='btn';
+            parent.append(portfolioLink);
+          }
+          portfolioLink.href=portfolioDownload;
+          portfolioLink.removeAttribute('target');
+          portfolioLink.removeAttribute('rel');
+          portfolioLink.textContent='Download Portfolio ↓';
+          [...parent.querySelectorAll('a')].filter(a=>a!==portfolioLink&&/View (Full )?Portfolio|Download Portfolio/i.test(a.textContent)).forEach(a=>a.remove());
+        };
+        setSinglePortfolioDownload(doc.querySelector('.hero-actions'));
+        setSinglePortfolioDownload(doc.querySelector('.contact-actions'));
 
         const mobile=doc.querySelector('.mobile-bar');
         if(mobile&&mobile.children[1]){
@@ -72,7 +80,7 @@
           @keyframes logoRoll{to{transform:translateX(-50%)}}
           @media(max-width:640px){.brand-intro{width:calc(100% - 30px);align-items:flex-start;flex-direction:column;gap:8px}.logo-card{width:178px;height:90px;padding:18px 22px}.logo-card img{max-width:142px;max-height:48px}}
           @media(max-width:640px){
-            .portrait-card img{transform:scale(1.27)!important;transform-origin:center 43%!important;object-position:center 43%!important}
+            .portrait-card img{position:absolute!important;left:0!important;bottom:0!important;width:100%!important;height:114%!important;transform:none!important;transform-origin:center bottom!important;object-position:center bottom!important}
             #work .section-head{margin-bottom:16px}
             #work .section-head p{font-size:.82rem;line-height:1.45}
             #work .rail{grid-auto-columns:82vw;gap:12px;padding:4px 15px 18px;touch-action:pan-y pinch-zoom;scroll-padding-inline:15px}
