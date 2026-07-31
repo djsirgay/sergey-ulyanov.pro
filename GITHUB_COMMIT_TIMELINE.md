@@ -39,7 +39,6 @@
 
 ## Legacy publication history
 
-- `dfc34e21` is not a legacy commit; see the redesign sequence above.
 - `dfc8e6d7` — Create `CNAME` for the custom domain.
 - `e61c55eb`, `6d56340b`, `b3cb12f7`, `f0a7b65c` — Initial 2025 file uploads.
 - `426eb58e` — Update legacy `style.css`.
@@ -47,5 +46,7 @@
 ## Documentation recovery
 
 - `ec81d6a0` — Add recovered master project context.
+- `9186f616` — Add recovered Git commit timeline.
+- `bf1ffc02` — Add project changelog and recovery record.
 
 For future work, use `PROJECT_HISTORY_AND_CONTEXT.md` together with the latest `preview-2026` source.
