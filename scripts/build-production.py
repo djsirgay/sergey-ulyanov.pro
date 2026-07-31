@@ -18,7 +18,7 @@ checks = {
     "no iframe": "<iframe" not in html.lower(),
     "no dynamic code execution": "new Function" not in html,
     "six projects": html.count('class="case"') == 6,
-    "six awards": html.count('class="proof-card"') == 12,
+    "twelve proof cards": html.count('<article class="proof-card') == 12,
     "canonical URL": '<link rel="canonical" href="https://sergey-ulyanov.pro/">' in html,
     "structured data": 'type="application/ld+json"' in html,
     "analytics hooks": "data-track=" in html,
