@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /version-review/
+Disallow: /base-site/
+Disallow: /refinement-preview/
+Disallow: /site-fragments/
+Sitemap: https://sergey-ulyanov.pro/sitemap.xml
