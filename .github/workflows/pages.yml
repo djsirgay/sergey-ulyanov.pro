@@ -1,6 +1,7 @@
-name: Deploy production portfolio to GitHub Pages
+name: Validate and deploy production portfolio
 
 on:
+  pull_request:
   push:
     branches: ["main"]
   workflow_dispatch:
@@ -11,11 +12,23 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: "pages-${{ github.ref }}"
+  cancel-in-progress: true
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build and validate production HTML
+        run: python3 scripts/build-production.py
+      - name: Validate JavaScript syntax
+        run: node --check site.js
+
   deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: validate
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -23,7 +36,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build and validate production HTML
+      - name: Build production HTML
         run: python3 scripts/build-production.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
