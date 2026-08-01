@@ -1,0 +1,4 @@
+Live portfolio photo deployment
+2026-08-01
+Source: current production main
+Includes Cal Poly × AWS, SCREAM 7 × Complex, and HR Brand photography.
