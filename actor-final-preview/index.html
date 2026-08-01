@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="theme-color" content="#f4f1ea">
+  <title>Sergéy Ulyanov — final patch preview</title>
+  <style>
+    html,body{width:100%;height:100%;margin:0;background:#f4f1ea;overflow:hidden}
+    #site{display:block;width:100%;height:100%;border:0;background:#f4f1ea}
+    #status{position:fixed;inset:0;display:grid;place-items:center;background:#f4f1ea;color:#111;font:600 14px/1.4 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;z-index:2}
+    .ready #status{display:none}
+  </style>
+</head>
+<body>
+  <div id="status">Loading actor-site preview…</div>
+  <iframe id="site" title="Sergéy Ulyanov actor website final-patch preview" src="../actor-final/?preview=final-patch-v13"></iframe>
+  <script>
+  (()=>{
+    const frame=document.getElementById('site');
+    const labels=['Commercial','Theatrical','Full body'];
+    const patch=()=>{
+      const doc=frame.contentDocument;
+      const win=frame.contentWindow;
+      if(!doc||!doc.body)return;
+
+      const style=doc.createElement('style');
+      style.id='final-patch-preview-styles';
+      style.textContent=`
+        #materials .gallery-stage{
+          display:grid!important;
+          grid-template-columns:repeat(3,minmax(0,1fr))!important;
+          gap:clamp(10px,1.7vw,24px)!important;
+          height:auto!important;
+          min-height:0!important;
+          overflow:visible!important;
+          background:none!important;
+        }
+        #materials .gallery-slide,
+        #materials .gallery-slide.active,
+        #materials .gallery-slide[aria-hidden="true"]{
+          display:block!important;
+          position:relative!important;
+          inset:auto!important;
+          width:auto!important;
+          height:auto!important;
+          min-height:0!important;
+          aspect-ratio:2/3!important;
+          opacity:1!important;
+          visibility:visible!important;
+          transform:none!important;
+          pointer-events:auto!important;
+          overflow:hidden!important;
+          background:#e7e3da!important;
+          cursor:zoom-in!important;
+        }
+        #materials .gallery-slide img{
+          display:block!important;
+          position:relative!important;
+          inset:auto!important;
+          width:100%!important;
+          height:100%!important;
+          max-width:none!important;
+          object-fit:cover!important;
+          object-position:center center!important;
+          opacity:1!important;
+          transform:none!important;
+          transition:transform .3s ease!important;
+        }
+        #materials .gallery-slide:hover img{transform:scale(1.015)!important}
+        #materials .gallery-arrow,
+        #materials .gallery-info,
+        #materials .gallery-thumbs{display:none!important}
+        #materials .preview-photo-caption{
+          position:absolute;
+          left:12px;
+          right:12px;
+          bottom:12px;
+          z-index:5;
+          display:flex;
+          justify-content:space-between;
+          gap:12px;
+          padding:10px 12px;
+          background:rgba(10,10,10,.76);
+          color:#fff;
+          font:700 11px/1.2 Arial,sans-serif;
+          letter-spacing:.09em;
+          text-transform:uppercase;
+          backdrop-filter:blur(8px);
+          pointer-events:none;
+        }
+        .campaign-card{position:relative!important}
+        .preview-brand-mark{
+          position:absolute;
+          z-index:8;
+          top:18px;
+          left:18px;
+          max-width:calc(100% - 36px);
+          padding:9px 11px;
+          border:1px solid rgba(255,255,255,.72);
+          background:rgba(9,12,16,.76);
+          color:#fff;
+          font:800 10px/1.05 Arial,sans-serif;
+          letter-spacing:.12em;
+          text-transform:uppercase;
+          box-shadow:0 8px 25px rgba(0,0,0,.18);
+          backdrop-filter:blur(8px);
+          pointer-events:none;
+        }
+        .campaign-socgen .preview-brand-mark{background:rgba(255,255,255,.94);color:#111;border-color:#fff}
+        .campaign-samsung .preview-brand-mark{background:rgba(0,44,116,.9)}
+        .campaign-wife .preview-brand-mark{left:auto;right:18px;text-align:center;line-height:1.25}
+        .mobile-quick{
+          opacity:1!important;
+          visibility:visible!important;
+          transform:none!important;
+          background:#111417!important;
+          border:1px solid #5d6266!important;
+          box-shadow:0 16px 48px rgba(0,0,0,.62)!important;
+          bottom:max(8px,env(safe-area-inset-bottom))!important;
+          z-index:9999!important;
+        }
+        .mobile-quick a:first-child{background:#d8ff42!important;color:#111!important;font-weight:900!important}
+        @media(min-width:901px){.mobile-quick{display:none!important}}
+        @media(max-width:900px){
+          body{padding-bottom:84px!important}
+          #materials .gallery-stage{grid-template-columns:1fr!important;gap:16px!important}
+          #materials .gallery-slide{aspect-ratio:2/3!important}
+          .preview-brand-mark{top:12px;left:12px}
+          .campaign-wife .preview-brand-mark{left:auto;right:12px}
+        }
+        .preview-lightbox-meta{
+          position:absolute;
+          left:20px;
+          bottom:18px;
+          z-index:6;
+          padding:8px 10px;
+          background:rgba(0,0,0,.62);
+          color:#fff;
+          font:700 11px/1 Arial,sans-serif;
+          letter-spacing:.1em;
+          text-transform:uppercase;
+        }
+      `;
+      doc.head.appendChild(style);
+
+      const figures=[...doc.querySelectorAll('#materials .gallery-slide')];
+      figures.forEach((figure,index)=>{
+        figure.classList.add('active');
+        figure.removeAttribute('aria-hidden');
+        figure.setAttribute('role','button');
+        figure.setAttribute('tabindex','0');
+        figure.setAttribute('aria-label',`Open ${labels[index]} casting photo`);
+        figure.querySelector('.gallery-open')?.remove();
+        if(!figure.querySelector('.preview-photo-caption')){
+          const caption=doc.createElement('figcaption');
+          caption.className='preview-photo-caption';
+          caption.innerHTML=`<span>${labels[index]}</span><span>View full size ↗</span>`;
+          figure.appendChild(caption);
+        }
+      });
+
+      const marks=[
+        ['.campaign-wot','World of Tanks'],
+        ['.campaign-socgen','Société Générale'],
+        ['.campaign-samsung','Samsung Galaxy'],
+        ['.campaign-wife','Frameline50 · OutfestNEXT 2026']
+      ];
+      marks.forEach(([selector,text])=>{
+        const card=doc.querySelector(selector);
+        if(card&&!card.querySelector('.preview-brand-mark')){
+          const mark=doc.createElement('span');
+          mark.className='preview-brand-mark';
+          mark.textContent=text;
+          card.appendChild(mark);
+        }
+      });
+
+      const oldBox=doc.querySelector('.lightbox');
+      let box=oldBox;
+      if(oldBox){
+        box=oldBox.cloneNode(true);
+        oldBox.replaceWith(box);
+      }
+      const image=box?.querySelector('.lightbox-image');
+      const close=box?.querySelector('.lightbox-close');
+      const prev=box?.querySelector('.lightbox-prev');
+      const next=box?.querySelector('.lightbox-next');
+      const meta=doc.createElement('div');
+      meta.className='preview-lightbox-meta';
+      box?.appendChild(meta);
+      let current=0;
+      let lastTrigger=null;
+      let touchStart=0;
+      const show=index=>{
+        current=(index+figures.length)%figures.length;
+        const source=figures[current].querySelector('img');
+        if(image&&source){image.src=source.currentSrc||source.src;image.alt=source.alt}
+        meta.textContent=`${labels[current]} · ${String(current+1).padStart(2,'0')} / ${String(figures.length).padStart(2,'0')}`;
+      };
+      const open=index=>{
+        lastTrigger=figures[index];
+        show(index);
+        box?.classList.add('open');
+        box?.setAttribute('aria-hidden','false');
+        doc.body.classList.add('modal-open');
+        close?.focus();
+      };
+      const shut=()=>{
+        box?.classList.remove('open');
+        box?.setAttribute('aria-hidden','true');
+        doc.body.classList.remove('modal-open');
+        lastTrigger?.focus();
+      };
+      figures.forEach((figure,index)=>{
+        figure.addEventListener('click',()=>open(index));
+        figure.addEventListener('keydown',event=>{
+          if(event.key==='Enter'||event.key===' '){event.preventDefault();open(index)}
+        });
+      });
+      close?.addEventListener('click',shut);
+      prev?.addEventListener('click',()=>show(current-1));
+      next?.addEventListener('click',()=>show(current+1));
+      box?.addEventListener('click',event=>{if(event.target===box)shut()});
+      box?.addEventListener('touchstart',event=>{touchStart=event.changedTouches[0].clientX},{passive:true});
+      box?.addEventListener('touchend',event=>{
+        const delta=event.changedTouches[0].clientX-touchStart;
+        if(Math.abs(delta)>45)show(current+(delta<0?1:-1));
+      },{passive:true});
+      win.addEventListener('keydown',event=>{
+        if(!box?.classList.contains('open'))return;
+        if(event.key==='Escape')shut();
+        if(event.key==='ArrowLeft')show(current-1);
+        if(event.key==='ArrowRight')show(current+1);
+      });
+
+      document.documentElement.classList.add('ready');
+    };
+    frame.addEventListener('load',()=>{
+      try{patch()}catch(error){
+        document.getElementById('status').textContent='Preview failed to initialize. Open the source site instead.';
+        console.error(error);
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
