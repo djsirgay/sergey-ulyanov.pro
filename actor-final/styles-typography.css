@@ -1,0 +1,95 @@
+/* Typographic identity inspired by Sergéy's early editorial work.
+   Decorative symbols remain secondary to casting information. */
+:root{--type-red:#9f251f;--type-ghost:rgba(16,19,18,.065);--type-blue:var(--sergey-blue)}
+
+/* Navigation: punctuation appears only on interaction. */
+.nav a,.resume-top,.mobile-menu a{position:relative}
+.nav a:before,.nav a:after{display:inline-block;color:var(--type-red);opacity:0;transform:translateX(0);transition:opacity .18s ease,transform .18s ease}
+.nav a:before{content:"{";margin-right:3px;transform:translateX(4px)}
+.nav a:after{content:"}";margin-left:3px;transform:translateX(-4px)}
+.nav a:hover:before,.nav a:hover:after,.nav a:focus-visible:before,.nav a:focus-visible:after{opacity:1;transform:none}
+.resume-top:before{content:"(";margin-right:5px;color:#fff}.resume-top:after{content:")";margin-left:5px;color:#fff}
+
+/* Hero: symbols behave like editorial registration marks, not decoration. */
+.hero-personal:after{content:")   (   *   }   {";position:absolute;right:12px;bottom:82px;z-index:1;color:rgba(159,37,31,.38);font-family:Georgia,serif;font-size:.72rem;letter-spacing:.55em;writing-mode:vertical-rl;pointer-events:none}
+.hero-copy{position:relative}
+.hero-copy:before{content:"*";position:absolute;left:-34px;top:2px;color:var(--type-red);font-family:Georgia,serif;font-size:1.55rem;line-height:1}
+.hero h1{position:relative}
+.hero h1:after{content:"}";position:absolute;right:.03em;bottom:-.01em;color:rgba(159,37,31,.13);font-family:Georgia,serif;font-size:.78em;font-weight:400;line-height:1;transform:translateX(58%)}
+.origin-line:before{content:"(";color:var(--type-red);font-family:Georgia,serif;font-style:normal}.origin-line:after{content:")";color:var(--type-red);font-family:Georgia,serif;font-style:normal}
+.identity-rail span{position:relative}
+.identity-rail span+span:before{content:"*";position:absolute;left:-4px;top:50%;color:var(--type-red);font-family:Georgia,serif;font-size:.78rem;transform:translateY(-50%);background:rgba(255,255,255,.9);padding:0 2px}
+
+/* Section titles: each chapter gets one distinct typographic cue. */
+.section-head{position:relative;overflow:visible}
+.section-head h2{position:relative;display:inline-block}
+#reel .section-head h2:before{content:"(";margin-right:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#reel .section-head h2:after{content:")";margin-left:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#work .section-head h2:before{content:"{";margin-right:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#work .section-head h2:after{content:"}";margin-left:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#materials .section-head h2:before{content:"[";margin-right:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#materials .section-head h2:after{content:"]";margin-left:.12em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+#profile .section-head h2:before{content:"*";margin-right:.16em;color:var(--type-red);font-family:Georgia,serif;font-weight:400}
+.section-no:before{content:"/";margin-right:4px;color:var(--type-red)}
+.section-note:before{content:"— ";color:var(--type-red)}
+
+/* Reel: quotation marks echo the magazine spreads without obscuring video. */
+.reel-personal .video:before{content:"»";position:absolute;z-index:2;left:-20px;top:-38px;color:rgba(159,37,31,.22);font-family:Georgia,serif;font-size:7rem;line-height:1;pointer-events:none}
+.reel-personal .reel-side:before{content:"{ }";position:absolute;right:18px;bottom:14px;color:rgba(159,37,31,.14);font-family:Georgia,serif;font-size:2.2rem;letter-spacing:.08em;pointer-events:none}
+.micro-label:before{content:"* ";color:var(--type-red)}
+.reel-links a:before{content:")";margin-right:6px;color:var(--type-red);font-family:Georgia,serif}
+
+/* Work wall: controlled type collage. */
+.work-section{position:relative;overflow:hidden}
+.work-section:before{content:"WORK / WORK / WORK / WORK";position:absolute;left:-.02em;top:18px;color:rgba(16,19,18,.035);font-size:clamp(5rem,13vw,13rem);font-weight:950;letter-spacing:-.085em;white-space:nowrap;pointer-events:none}
+.work-intro{position:relative}
+.work-intro:after{content:")  (  *  }  {";position:absolute;right:0;top:-34px;color:rgba(159,37,31,.42);font-family:Georgia,serif;font-size:.72rem;letter-spacing:.38em}
+.project-card{isolation:isolate}
+.project-type:before,.project-more:before{position:absolute;z-index:0;right:-.04em;bottom:-.25em;color:rgba(16,19,18,.055);font-family:Georgia,serif;font-size:7.5rem;line-height:1;pointer-events:none}
+.project-type>* ,.project-more>*{position:relative;z-index:1}
+.p-apple:before{content:")";color:rgba(255,255,255,.1)}
+.p-tax:before{content:"{";color:rgba(159,37,31,.1)}
+.p-hacks:before{content:"*";color:rgba(255,255,255,.1)}
+.p-unstoppable:before{content:"("}
+.p-ericsson:before{content:"}"}
+.p-clippers:before{content:")"}
+.p-screws:before{content:"{"}
+.p-more:before{content:"*";color:rgba(255,255,255,.11)}
+.project-card b{position:relative}
+.project-card b:after{content:" /";color:var(--type-red);font-family:Georgia,serif;font-weight:400;opacity:.72}
+.project-image b:after,.p-apple b:after,.p-hacks b:after,.p-more b:after{color:rgba(255,255,255,.58)}
+.project-index:before{content:"{";display:grid;place-items:center;flex:0 0 34px;color:#fff;background:var(--type-red);font-family:Georgia,serif;font-size:1.2rem}
+.project-index:after{content:"}";display:grid;place-items:center;flex:0 0 34px;color:#fff;background:var(--type-red);font-family:Georgia,serif;font-size:1.2rem}
+
+/* Casting materials: editorial crop marks and numbered captions. */
+.material{position:relative}
+.material:before{position:absolute;z-index:3;left:8px;top:8px;display:grid;place-items:center;width:24px;height:24px;color:#fff;background:rgba(16,19,18,.86);font-family:Georgia,serif;font-size:.7rem;pointer-events:none}
+.material:nth-child(1):before{content:"("}.material:nth-child(2):before{content:"*"}.material:nth-child(3):before{content:"}"}
+.material button{position:relative}
+.material button:after{content:"";position:absolute;inset:9px;border:1px solid rgba(255,255,255,.52);pointer-events:none}
+.material figcaption span:before{content:"/ ";color:var(--type-red)}
+.material figcaption a:after{content:" )";color:var(--type-red);font-family:Georgia,serif}
+
+/* Profile and representation: strong but readable editorial punctuation. */
+.profile-monogram{position:relative}
+.profile-monogram:after{content:"*";position:absolute;right:-11px;top:-14px;color:var(--type-red);font-family:Georgia,serif;font-size:1.25rem;background:var(--paper);padding:0 2px}
+.profile-title{position:relative;padding-left:24px}
+.profile-title:before{content:"{";position:absolute;left:0;top:-.12em;color:var(--type-red);font-family:Georgia,serif;font-size:1.15em}
+.profile-title:after{content:"}";margin-left:.16em;color:rgba(159,37,31,.42);font-family:Georgia,serif}
+.snapshot small:before{content:"* ";color:var(--type-red)}
+.contact{position:relative;overflow:hidden}
+.contact:before{content:"{";position:absolute;right:-.08em;top:-.24em;color:rgba(255,255,255,.035);font-family:Georgia,serif;font-size:30rem;line-height:1;pointer-events:none}
+.contact h2:before{content:")";display:inline-block;margin-right:.08em;color:var(--accent);font-family:Georgia,serif;font-weight:400}
+.agent{position:relative}
+.agent:before{content:"*";position:absolute;right:18px;top:12px;color:var(--type-red);font-family:Georgia,serif;font-size:1.3rem}
+.profile-links a:before{content:"{";margin-right:5px;color:var(--accent)}
+.profile-links a:after{content:"}";margin-left:5px;color:var(--accent)}
+.footer span:before{content:"( ";color:#b44b43}.footer span:after{content:" )";color:#b44b43}
+
+@media(max-width:900px){
+ .hero-copy:before{left:-18px}.hero h1:after{right:.1em}.work-intro:after{display:none}
+ .project-index:before,.project-index:after{position:sticky;z-index:2;left:0;right:0}
+}
+@media(max-width:650px){
+ .nav a:before,.nav a:after{display:none}.hero-personal:after{display:none}.hero-copy:before{left:auto;right:0;top:-4px;font-size:1.2rem}.hero h1:after{font-size:.58em;right:.18em;bottom:.06em}.identity-rail span+span:before{left:0;top:-6px;transform:none}.section-head h2:before,.section-head h2:after{font-size:.72em}.reel-personal .video:before{left:-8px;top:-22px;font-size:4rem}.work-section:before{top:56px;font-size:5rem}.project-type:before,.project-more:before{font-size:5rem}.project-index:before,.project-index:after{display:none}.material:before{left:6px;top:6px}.profile-title{padding-left:18px}.contact:before{font-size:18rem;right:-.22em}}
+@media(prefers-reduced-motion:reduce){.nav a:before,.nav a:after{transition:none}}
