@@ -1,4 +1,4 @@
-/* Final vertical award photography and local brand treatments — 2026-08-01 */
+/* Prioritized award photography and local brand treatments — 2026-08-01 */
 
 /* Selected Work remains brand-led. Photography is reserved for Recognition. */
 .visual-vinyl{background:radial-gradient(circle at 32% 28%,rgba(184,255,53,.13),transparent 36%),linear-gradient(145deg,#121712,#050705)}
@@ -10,14 +10,19 @@
 .visual-fanta .fanta-word:after{content:"A COCA-COLA COMPANY";display:block;margin-top:18px;font:700 .66rem/1.2 "Space Mono",monospace;letter-spacing:.14em;text-shadow:none}
 .visual-bm .burning-type:after{content:"BURNING MAN";display:block;margin-top:18px;font:700 .68rem/1.2 "Space Mono",monospace;letter-spacing:.16em;color:#17100d}
 
-/* Award cards: true portrait layout, no horizontal crop, no text baked over faces. */
+/* Award cards: full-bleed photography with deliberate focal points and no letterboxing. */
 .award-card{grid-template-columns:minmax(280px,.82fr) minmax(0,1.18fr);min-height:0;align-items:stretch}
 .photo-preview{padding:0;min-height:0;aspect-ratio:4/5;background:#050705;display:block;border-right:1px solid var(--line)}
-.photo-preview:before{z-index:2;background:linear-gradient(180deg,rgba(5,7,5,.02) 55%,rgba(5,7,5,.34) 100%)}
+.photo-preview:before{z-index:2;background:linear-gradient(180deg,transparent 72%,rgba(5,7,5,.2) 100%)}
 .photo-preview:after{z-index:3;inset:14px;border:1px solid rgba(255,255,255,.24);border-radius:18px}
 .photo-preview>a{position:absolute;inset:0;display:block;z-index:1}
-.photo-preview img{width:100%;height:100%;object-fit:contain;object-position:center;background:#050505;transition:transform .35s ease}
-.award-card:hover .photo-preview img{transform:scale(1.012)}
+.photo-preview img{width:100%;height:100%;object-fit:cover;object-position:center;background:#050505;transition:transform .35s ease}
+.photo-calpoly img{object-position:center 43%}
+.photo-scream img{object-position:center 39%}
+.photo-hr img{object-position:center 24%}
+.photo-tech img{object-position:58% 50%}
+.photo-white-square img{object-position:center 50%}
+.award-card:hover .photo-preview img{transform:scale(1.018)}
 .photo-badge{position:absolute;z-index:4;top:20px;left:20px;padding:8px 10px;border:1px solid rgba(255,255,255,.35);border-radius:999px;background:rgba(5,7,5,.72);backdrop-filter:blur(10px);font:700 .58rem/1 "Space Mono",monospace;letter-spacing:.08em;color:#fff}
 
 /* Local logo-like treatments; no remote logo hosts. */
@@ -31,5 +36,5 @@
 .logo-card:nth-child(11n+11){background:#000}.logo-card:nth-child(11n+11) b{color:#fff;letter-spacing:.15em;font-size:.9rem}
 
 @media(max-width:980px){.award-card{grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr)}}
-@media(max-width:720px){.award-card{grid-template-columns:1fr}.photo-preview{aspect-ratio:4/5;border-right:0;border-bottom:1px solid var(--line)}.photo-badge{top:14px;left:14px}}
+@media(max-width:720px){.award-card{grid-template-columns:1fr}.photo-preview{aspect-ratio:4/5;border-right:0;border-bottom:1px solid var(--line)}.photo-tech img{object-position:61% 50%}.photo-badge{top:14px;left:14px}}
 @media(prefers-reduced-motion:reduce){.photo-preview img{transition:none}.award-card:hover .photo-preview img{transform:none}}
