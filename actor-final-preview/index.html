@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="theme-color" content="#f4f1ea">
-  <title>Sergéy Ulyanov — final patch preview</title>
+  <title>Sergéy Ulyanov — final visual patch preview</title>
+  <link rel="preconnect" href="https://heyitissergey-actor-image-proxy.vercel.app">
   <style>
     html,body{width:100%;height:100%;margin:0;background:#f4f1ea;overflow:hidden}
     #site{display:block;width:100%;height:100%;border:0;background:#f4f1ea}
@@ -14,24 +15,34 @@
   </style>
 </head>
 <body>
-  <div id="status">Loading actor-site preview…</div>
-  <iframe id="site" title="Sergéy Ulyanov actor website final-patch preview" src="../actor-final/?preview=final-patch-v13"></iframe>
+  <div id="status">Loading final actor-site preview…</div>
+  <iframe id="site" title="Sergéy Ulyanov actor website final visual-patch preview" src="../actor-final/?preview=final-patch-v14"></iframe>
   <script>
-  (()=>{
-    const frame=document.getElementById('site');
-    const labels=['Commercial','Theatrical','Full body'];
-    const patch=()=>{
-      const doc=frame.contentDocument;
-      const win=frame.contentWindow;
-      if(!doc||!doc.body)return;
+  (() => {
+    const frame = document.getElementById('site');
+    const labels = ['Commercial', 'Theatrical', 'Full body'];
+    const proxy = 'https://heyitissergey-actor-image-proxy.vercel.app/api/image?key=';
+    const assets = {
+      commercial: proxy + 'commercial',
+      theatrical: proxy + 'theatrical',
+      fullbody: proxy + 'fullbody',
+      wot: proxy + 'wot'
+    };
 
-      const style=doc.createElement('style');
-      style.id='final-patch-preview-styles';
-      style.textContent=`
+    const patch = () => {
+      const doc = frame.contentDocument;
+      const win = frame.contentWindow;
+      if (!doc || !doc.body) throw new Error('Source page is unavailable');
+
+      const existingStyle = doc.getElementById('final-patch-preview-styles');
+      if (existingStyle) existingStyle.remove();
+      const style = doc.createElement('style');
+      style.id = 'final-patch-preview-styles';
+      style.textContent = `
         #materials .gallery-stage{
           display:grid!important;
           grid-template-columns:repeat(3,minmax(0,1fr))!important;
-          gap:clamp(10px,1.7vw,24px)!important;
+          gap:clamp(12px,1.7vw,24px)!important;
           height:auto!important;
           min-height:0!important;
           overflow:visible!important;
@@ -46,7 +57,7 @@
           width:auto!important;
           height:auto!important;
           min-height:0!important;
-          aspect-ratio:2/3!important;
+          aspect-ratio:4/5!important;
           opacity:1!important;
           visibility:visible!important;
           transform:none!important;
@@ -66,180 +77,235 @@
           object-position:center center!important;
           opacity:1!important;
           transform:none!important;
-          transition:transform .3s ease!important;
+          transition:transform .28s ease!important;
         }
-        #materials .gallery-slide:hover img{transform:scale(1.015)!important}
+        #materials .gallery-slide:hover img{transform:scale(1.012)!important}
         #materials .gallery-arrow,
         #materials .gallery-info,
         #materials .gallery-thumbs{display:none!important}
         #materials .preview-photo-caption{
-          position:absolute;
-          left:12px;
-          right:12px;
-          bottom:12px;
-          z-index:5;
-          display:flex;
-          justify-content:space-between;
-          gap:12px;
-          padding:10px 12px;
-          background:rgba(10,10,10,.76);
-          color:#fff;
-          font:700 11px/1.2 Arial,sans-serif;
-          letter-spacing:.09em;
-          text-transform:uppercase;
-          backdrop-filter:blur(8px);
-          pointer-events:none;
+          position:absolute;left:12px;right:12px;bottom:12px;z-index:5;
+          display:flex;justify-content:space-between;align-items:center;gap:12px;
+          padding:10px 12px;background:rgba(10,10,10,.78);color:#fff;
+          font:700 11px/1.2 Arial,sans-serif;letter-spacing:.09em;text-transform:uppercase;
+          backdrop-filter:blur(8px);pointer-events:none;
         }
-        .campaign-card{position:relative!important}
-        .preview-brand-mark{
-          position:absolute;
-          z-index:8;
-          top:18px;
-          left:18px;
-          max-width:calc(100% - 36px);
-          padding:9px 11px;
-          border:1px solid rgba(255,255,255,.72);
-          background:rgba(9,12,16,.76);
-          color:#fff;
-          font:800 10px/1.05 Arial,sans-serif;
-          letter-spacing:.12em;
-          text-transform:uppercase;
-          box-shadow:0 8px 25px rgba(0,0,0,.18);
-          backdrop-filter:blur(8px);
-          pointer-events:none;
+
+        .campaign-card{position:relative!important;overflow:hidden!important}
+        .campaign-patch-layer{position:absolute;z-index:9;pointer-events:none;box-sizing:border-box}
+        .campaign-wot .campaign-patch-layer{
+          top:16px;left:16px;display:flex;align-items:center;gap:9px;padding:9px 12px;
+          color:#fff;background:rgba(9,12,15,.82);border:1px solid rgba(255,255,255,.72);
+          box-shadow:0 9px 28px rgba(0,0,0,.24);backdrop-filter:blur(8px);
+          font:800 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;
         }
-        .campaign-socgen .preview-brand-mark{background:rgba(255,255,255,.94);color:#111;border-color:#fff}
-        .campaign-samsung .preview-brand-mark{background:rgba(0,44,116,.9)}
-        .campaign-wife .preview-brand-mark{left:auto;right:18px;text-align:center;line-height:1.25}
+        .wot-emblem{display:grid;place-items:center;width:25px;height:25px;border:2px solid currentColor;border-radius:50%;font-size:10px;letter-spacing:0}
+        .campaign-wot img{object-position:center center!important}
+
+        .campaign-samsung img{transform:scale(1.085)!important;transform-origin:right center!important}
+        .campaign-samsung:hover img{transform:scale(1.095)!important}
+        .campaign-samsung .campaign-patch-layer{
+          top:16px;left:16px;padding:10px 13px 9px;color:#fff;background:rgba(6,31,74,.9);
+          border:1px solid rgba(255,255,255,.72);box-shadow:0 9px 28px rgba(0,0,0,.18);
+          backdrop-filter:blur(7px);font:800 11px/1.05 Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;
+        }
+        .campaign-samsung .campaign-patch-layer b{display:block;margin-top:4px;font-size:16px;letter-spacing:-.02em;text-transform:none}
+
+        .campaign-socgen .socgen-rebrand{
+          right:0;bottom:0;width:47%;height:28%;display:flex;align-items:center;justify-content:center;gap:12px;
+          padding:12px 16px;color:#111;background:rgba(255,255,255,.98);
+          border-top:1px solid rgba(0,0,0,.12);box-shadow:-12px -8px 30px rgba(0,0,0,.08);
+        }
+        .socgen-symbol{width:35px;height:35px;flex:0 0 auto;background:linear-gradient(to bottom,#e22 0 48%,#fff 48% 54%,#151515 54% 100%);box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+        .socgen-name{font:800 12px/1.05 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;text-align:left}
+
+        .campaign-wife .wife-meta{
+          top:16px;left:16px;max-width:min(46%,330px);padding:12px 14px;color:#fff;
+          background:rgba(12,10,9,.72);border:1px solid rgba(255,255,255,.48);
+          box-shadow:0 9px 28px rgba(0,0,0,.22);backdrop-filter:blur(7px);
+        }
+        .wife-meta strong{display:block;font:700 clamp(15px,1.4vw,22px)/1.05 Georgia,serif}
+        .wife-meta span{display:block;margin-top:5px;font:600 10px/1.2 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase}
+        .campaign-wife .wife-laurels{top:16px;right:16px;display:flex;gap:8px;align-items:center;color:rgba(255,255,255,.92)}
+        .wife-laurel{
+          min-width:88px;padding:7px 8px;border:1px solid rgba(255,255,255,.52);
+          background:rgba(12,10,9,.48);backdrop-filter:blur(5px);text-align:center;
+          font:700 8px/1.15 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;
+        }
+        .wife-laurel:before{content:'❬';margin-right:4px;font-size:13px;vertical-align:-1px}
+        .wife-laurel:after{content:'❭';margin-left:4px;font-size:13px;vertical-align:-1px}
+
         .mobile-quick{
-          opacity:1!important;
-          visibility:visible!important;
-          transform:none!important;
-          background:#111417!important;
-          border:1px solid #5d6266!important;
+          display:grid!important;grid-template-columns:repeat(3,1fr)!important;
+          opacity:1!important;visibility:visible!important;transform:none!important;min-height:56px!important;
+          background:#111417!important;border:1px solid #5d6266!important;
           box-shadow:0 16px 48px rgba(0,0,0,.62)!important;
-          bottom:max(8px,env(safe-area-inset-bottom))!important;
-          z-index:9999!important;
+          bottom:max(8px,env(safe-area-inset-bottom))!important;left:10px!important;right:10px!important;
+          width:auto!important;z-index:9999!important;border-radius:3px!important;overflow:hidden!important;
         }
+        .mobile-quick a{
+          min-height:56px!important;display:flex!important;align-items:center!important;justify-content:center!important;
+          color:#fff!important;font-weight:800!important;border-right:1px solid rgba(255,255,255,.18)!important;
+        }
+        .mobile-quick a:last-child{border-right:0!important}
         .mobile-quick a:first-child{background:#d8ff42!important;color:#111!important;font-weight:900!important}
         @media(min-width:901px){.mobile-quick{display:none!important}}
         @media(max-width:900px){
-          body{padding-bottom:84px!important}
+          body{padding-bottom:86px!important}
           #materials .gallery-stage{grid-template-columns:1fr!important;gap:16px!important}
-          #materials .gallery-slide{aspect-ratio:2/3!important}
-          .preview-brand-mark{top:12px;left:12px}
-          .campaign-wife .preview-brand-mark{left:auto;right:12px}
+          #materials .gallery-slide{aspect-ratio:4/5!important}
+          .campaign-wot .campaign-patch-layer,.campaign-samsung .campaign-patch-layer,.campaign-wife .wife-meta{top:12px;left:12px}
+          .campaign-wife .wife-laurels{top:12px;right:12px;gap:5px}
+          .wife-laurel{min-width:70px;padding:6px 5px;font-size:7px}
+          .campaign-socgen .socgen-rebrand{width:54%;height:29%;padding:8px 10px;gap:8px}
+          .socgen-symbol{width:29px;height:29px}
+          .socgen-name{font-size:9px}
         }
         .preview-lightbox-meta{
-          position:absolute;
-          left:20px;
-          bottom:18px;
-          z-index:6;
-          padding:8px 10px;
-          background:rgba(0,0,0,.62);
-          color:#fff;
-          font:700 11px/1 Arial,sans-serif;
-          letter-spacing:.1em;
-          text-transform:uppercase;
+          position:absolute;left:20px;bottom:18px;z-index:6;padding:8px 10px;
+          background:rgba(0,0,0,.64);color:#fff;font:700 11px/1 Arial,sans-serif;
+          letter-spacing:.1em;text-transform:uppercase;
         }
       `;
       doc.head.appendChild(style);
 
-      const figures=[...doc.querySelectorAll('#materials .gallery-slide')];
-      figures.forEach((figure,index)=>{
+      const figures = [...doc.querySelectorAll('#materials .gallery-slide')];
+      const photoSources = [assets.commercial, assets.theatrical, assets.fullbody];
+      figures.forEach((figure, index) => {
+        const img = figure.querySelector('img');
+        if (img) {
+          img.src = photoSources[index];
+          img.removeAttribute('srcset');
+          img.loading = index === 0 ? 'eager' : 'lazy';
+        }
+        figure.style.removeProperty('--gallery-bg');
         figure.classList.add('active');
         figure.removeAttribute('aria-hidden');
-        figure.setAttribute('role','button');
-        figure.setAttribute('tabindex','0');
-        figure.setAttribute('aria-label',`Open ${labels[index]} casting photo`);
+        figure.setAttribute('role', 'button');
+        figure.setAttribute('tabindex', '0');
+        figure.setAttribute('aria-label', `Open ${labels[index]} casting photo`);
         figure.querySelector('.gallery-open')?.remove();
-        if(!figure.querySelector('.preview-photo-caption')){
-          const caption=doc.createElement('figcaption');
-          caption.className='preview-photo-caption';
-          caption.innerHTML=`<span>${labels[index]}</span><span>View full size ↗</span>`;
+        if (!figure.querySelector('.preview-photo-caption')) {
+          const caption = doc.createElement('figcaption');
+          caption.className = 'preview-photo-caption';
+          caption.innerHTML = `<span>${labels[index]}</span><span>View full size ↗</span>`;
           figure.appendChild(caption);
         }
       });
 
-      const marks=[
-        ['.campaign-wot','World of Tanks'],
-        ['.campaign-socgen','Société Générale'],
-        ['.campaign-samsung','Samsung Galaxy'],
-        ['.campaign-wife','Frameline50 · OutfestNEXT 2026']
-      ];
-      marks.forEach(([selector,text])=>{
-        const card=doc.querySelector(selector);
-        if(card&&!card.querySelector('.preview-brand-mark')){
-          const mark=doc.createElement('span');
-          mark.className='preview-brand-mark';
-          mark.textContent=text;
-          card.appendChild(mark);
-        }
-      });
+      const wotCard = doc.querySelector('.campaign-wot');
+      const wotImage = wotCard?.querySelector('img');
+      if (wotImage) {
+        wotImage.src = assets.wot;
+        wotImage.removeAttribute('srcset');
+      }
+      if (wotCard && !wotCard.querySelector('.campaign-patch-layer')) {
+        const mark = doc.createElement('span');
+        mark.className = 'campaign-patch-layer';
+        mark.innerHTML = '<span class="wot-emblem">WOT</span><span>World of Tanks</span>';
+        wotCard.appendChild(mark);
+      }
 
-      const oldBox=doc.querySelector('.lightbox');
-      let box=oldBox;
-      if(oldBox){
-        box=oldBox.cloneNode(true);
+      const samsungCard = doc.querySelector('.campaign-samsung');
+      if (samsungCard && !samsungCard.querySelector('.campaign-patch-layer')) {
+        const mark = doc.createElement('span');
+        mark.className = 'campaign-patch-layer';
+        mark.innerHTML = 'Samsung <b>Galaxy</b>';
+        samsungCard.appendChild(mark);
+      }
+
+      const socgenCard = doc.querySelector('.campaign-socgen');
+      if (socgenCard && !socgenCard.querySelector('.socgen-rebrand')) {
+        const mark = doc.createElement('span');
+        mark.className = 'campaign-patch-layer socgen-rebrand';
+        mark.innerHTML = '<span class="socgen-symbol" aria-hidden="true"></span><span class="socgen-name">Societe<br>Generale</span>';
+        socgenCard.appendChild(mark);
+      }
+
+      const wifeCard = doc.querySelector('.campaign-wife');
+      if (wifeCard && !wifeCard.querySelector('.wife-meta')) {
+        const meta = doc.createElement('span');
+        meta.className = 'campaign-patch-layer wife-meta';
+        meta.innerHTML = '<strong>Wife Wife (2026)</strong><span>Dir. Sara Werner</span><span>Role: Husband</span>';
+        wifeCard.appendChild(meta);
+        const laurels = doc.createElement('span');
+        laurels.className = 'campaign-patch-layer wife-laurels';
+        laurels.innerHTML = '<span class="wife-laurel">Frameline50<br>World Premiere</span><span class="wife-laurel">OutfestNEXT<br>2026</span>';
+        wifeCard.appendChild(laurels);
+      }
+
+      const oldBox = doc.querySelector('.lightbox');
+      let box = oldBox;
+      if (oldBox) {
+        box = oldBox.cloneNode(true);
         oldBox.replaceWith(box);
       }
-      const image=box?.querySelector('.lightbox-image');
-      const close=box?.querySelector('.lightbox-close');
-      const prev=box?.querySelector('.lightbox-prev');
-      const next=box?.querySelector('.lightbox-next');
-      const meta=doc.createElement('div');
-      meta.className='preview-lightbox-meta';
+      const image = box?.querySelector('.lightbox-image');
+      const close = box?.querySelector('.lightbox-close');
+      const prev = box?.querySelector('.lightbox-prev');
+      const next = box?.querySelector('.lightbox-next');
+      const meta = doc.createElement('div');
+      meta.className = 'preview-lightbox-meta';
+      meta.setAttribute('aria-live', 'polite');
       box?.appendChild(meta);
-      let current=0;
-      let lastTrigger=null;
-      let touchStart=0;
-      const show=index=>{
-        current=(index+figures.length)%figures.length;
-        const source=figures[current].querySelector('img');
-        if(image&&source){image.src=source.currentSrc||source.src;image.alt=source.alt}
-        meta.textContent=`${labels[current]} · ${String(current+1).padStart(2,'0')} / ${String(figures.length).padStart(2,'0')}`;
+      let current = 0;
+      let lastTrigger = null;
+      let touchStart = 0;
+      const show = index => {
+        current = (index + figures.length) % figures.length;
+        const source = figures[current]?.querySelector('img');
+        if (image && source) {
+          image.src = source.src;
+          image.alt = source.alt;
+        }
+        meta.textContent = `${labels[current]} · ${String(current + 1).padStart(2, '0')} / ${String(figures.length).padStart(2, '0')}`;
       };
-      const open=index=>{
-        lastTrigger=figures[index];
+      const open = index => {
+        lastTrigger = figures[index];
         show(index);
         box?.classList.add('open');
-        box?.setAttribute('aria-hidden','false');
+        box?.setAttribute('aria-hidden', 'false');
         doc.body.classList.add('modal-open');
         close?.focus();
       };
-      const shut=()=>{
+      const shut = () => {
         box?.classList.remove('open');
-        box?.setAttribute('aria-hidden','true');
+        box?.setAttribute('aria-hidden', 'true');
         doc.body.classList.remove('modal-open');
         lastTrigger?.focus();
       };
-      figures.forEach((figure,index)=>{
-        figure.addEventListener('click',()=>open(index));
-        figure.addEventListener('keydown',event=>{
-          if(event.key==='Enter'||event.key===' '){event.preventDefault();open(index)}
+      figures.forEach((figure, index) => {
+        figure.addEventListener('click', () => open(index));
+        figure.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            open(index);
+          }
         });
       });
-      close?.addEventListener('click',shut);
-      prev?.addEventListener('click',()=>show(current-1));
-      next?.addEventListener('click',()=>show(current+1));
-      box?.addEventListener('click',event=>{if(event.target===box)shut()});
-      box?.addEventListener('touchstart',event=>{touchStart=event.changedTouches[0].clientX},{passive:true});
-      box?.addEventListener('touchend',event=>{
-        const delta=event.changedTouches[0].clientX-touchStart;
-        if(Math.abs(delta)>45)show(current+(delta<0?1:-1));
-      },{passive:true});
-      win.addEventListener('keydown',event=>{
-        if(!box?.classList.contains('open'))return;
-        if(event.key==='Escape')shut();
-        if(event.key==='ArrowLeft')show(current-1);
-        if(event.key==='ArrowRight')show(current+1);
+      close?.addEventListener('click', shut);
+      prev?.addEventListener('click', () => show(current - 1));
+      next?.addEventListener('click', () => show(current + 1));
+      box?.addEventListener('click', event => { if (event.target === box) shut(); });
+      box?.addEventListener('touchstart', event => { touchStart = event.changedTouches[0].clientX; }, {passive:true});
+      box?.addEventListener('touchend', event => {
+        const delta = event.changedTouches[0].clientX - touchStart;
+        if (Math.abs(delta) > 45) show(current + (delta < 0 ? 1 : -1));
+      }, {passive:true});
+      win.addEventListener('keydown', event => {
+        if (!box?.classList.contains('open')) return;
+        if (event.key === 'Escape') shut();
+        if (event.key === 'ArrowLeft') show(current - 1);
+        if (event.key === 'ArrowRight') show(current + 1);
       });
 
       document.documentElement.classList.add('ready');
     };
-    frame.addEventListener('load',()=>{
-      try{patch()}catch(error){
-        document.getElementById('status').textContent='Preview failed to initialize. Open the source site instead.';
+
+    frame.addEventListener('load', () => {
+      try { patch(); }
+      catch (error) {
+        document.getElementById('status').textContent = 'Preview failed to initialize.';
         console.error(error);
       }
     });
