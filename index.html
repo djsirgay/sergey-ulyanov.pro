@@ -1,13 +1,24 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="robots" content="noindex">
-  <title>Sergéy Ulyanov — production build source</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#080a08">
+<meta name="robots" content="noindex">
+<title>Sergéy Ulyanov — loading portfolio</title>
+<style>html,body{margin:0;min-height:100%;background:#080a08;color:#b8ff35;font:700 13px/1.5 ui-monospace,monospace}body{display:grid;place-items:center}.error{max-width:620px;padding:30px;color:#fff}.error b{color:#b8ff35}</style>
 </head>
-<body>
-  <!-- GitHub Pages replaces this file during deployment by running scripts/build-production.py. -->
-  <p>Production HTML is generated from the readable files in <code>site-fragments/</code>.</p>
+<body><div id="status">LOADING SERGÉY ULYANOV…</div>
+<script>
+(async()=>{
+  const files=['00-head.html','01-hero.html','02-metrics-brands.html','03-work.html','04-capabilities-manifesto.html','05-recognition.html','06-contact-tail.html'];
+  try{
+    const parts=await Promise.all(files.map(name=>fetch('/site-fragments/'+name+'?v=20260801-photos-2',{cache:'no-store'}).then(response=>{if(!response.ok)throw new Error(name+' '+response.status);return response.text()})));
+    document.open();document.write(parts.join(''));document.close();
+  }catch(error){
+    document.body.innerHTML='<div class="error"><b>THE PORTFOLIO COULD NOT LOAD.</b><br>Please refresh the page.<br><br>'+String(error)+'</div>';
+  }
+})();
+</script>
 </body>
 </html>
