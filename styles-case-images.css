@@ -1,8 +1,18 @@
-/* Real project imagery for Selected Work — 2026-08-01 */
+/* Selected Work imagery and overflow correction — 2026-08-01 */
+html,body{max-width:100%;overflow-x:hidden}
+@supports(overflow:clip){html,body{overflow-x:clip}}
+main,#work,#work .rail-shell{min-width:0;max-width:100%}
+#work .rail-shell{width:100%;overflow:hidden}
+#work .rail{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
+#work .case,#work .case-visual,#work .case-body{min-width:0}
+#work .case-body{overflow-wrap:anywhere}
+
 .case-visual.visual-image{
   --case-photo:none;
   position:relative;
+  align-self:stretch;
   padding:0;
+  overflow:hidden;
   background:#070907;
   isolation:isolate;
 }
@@ -11,16 +21,14 @@
   position:absolute;
   inset:-12%;
   z-index:0;
-  background-image:linear-gradient(180deg,rgba(7,9,7,.08),rgba(7,9,7,.38)),var(--case-photo);
+  background-image:linear-gradient(180deg,rgba(7,9,7,.05),rgba(7,9,7,.4)),var(--case-photo);
   background-size:cover;
   background-position:center;
-  filter:blur(24px) brightness(.6) saturate(.9);
+  filter:blur(24px) brightness(.58) saturate(.9);
   transform:scale(1.08);
   pointer-events:none;
 }
-.case-visual.visual-image::after{
-  z-index:4;
-}
+.case-visual.visual-image::after{z-index:3}
 .case-visual.visual-image>img{
   position:absolute;
   inset:0;
@@ -29,58 +37,26 @@
   width:100%;
   height:100%;
   object-fit:contain;
-  object-position:center;
+  object-position:center center;
+  background:transparent;
 }
-.case-visual.visual-image .visual-caption{
-  position:absolute;
-  left:22px;
-  right:22px;
-  bottom:22px;
-  z-index:3;
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:16px;
-  padding:13px 15px;
-  border:1px solid rgba(255,255,255,.25);
-  border-radius:15px;
-  background:rgba(6,8,6,.76);
-  backdrop-filter:blur(14px);
-  color:#fff;
-}
-.case-visual.visual-image .visual-caption strong{
-  font-size:clamp(1rem,2vw,1.3rem);
-  line-height:1;
-  letter-spacing:-.035em;
-}
-.case-visual.visual-image .visual-caption span{
-  max-width:48%;
-  font:700 .58rem/1.35 "Space Mono",monospace;
-  letter-spacing:.08em;
-  text-align:right;
-  color:var(--acid);
-}
+
 .visual-mchappy-image{--case-photo:url("https://drive.google.com/thumbnail?id=1QUJ_j1JOsKPRoFKfj4nxE7-PtaQfDnWy&sz=w1600")}
 .visual-fanta-image{--case-photo:url("https://drive.google.com/thumbnail?id=188pC5us7521nsKzAIx5Qg6LZ85pCeygx&sz=w1600")}
 .visual-volkswagen-image{--case-photo:url("https://drive.google.com/thumbnail?id=1Su6jxTtAN3IcPB4aajrL5wvhhhBJurUe&sz=w1600")}
 .visual-sg-image{--case-photo:url("https://drive.google.com/thumbnail?id=1dUi48nTKn1K9AtrX_q2n5e7ken5xyMfN&sz=w1600")}
-.visual-mageworx-image{--case-photo:url("https://drive.google.com/thumbnail?id=1DUW2VaTzcUiRa75lLQjv4xe_M7v7wMho&sz=w1600")}
-.visual-xfactor-image{--case-photo:url("https://drive.google.com/thumbnail?id=1Iuf0QCsv6mh8SSn2IqM1yvu6UcImhMWA&sz=w1600")}
 
 @media(max-width:640px){
   #work .case-visual.visual-image{
-    min-height:250px;
-    height:250px;
+    width:100%;
+    height:auto;
+    min-height:0;
+    aspect-ratio:4/5;
     padding:0;
   }
-  .case-visual.visual-image .visual-caption{
-    left:11px;
-    right:11px;
-    bottom:11px;
-    padding:10px 11px;
-    border-radius:12px;
-  }
-  .case-visual.visual-image .visual-caption span{
-    font-size:.52rem;
+  #work .case-visual.visual-image>img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
   }
 }
