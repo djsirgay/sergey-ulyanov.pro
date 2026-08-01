@@ -1,0 +1,88 @@
+name: Sync approved portfolio photos to live site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".github/workflows/sync-portfolio-photos-to-live.yml"
+      - "assets/portfolio/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync-live-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout full repository history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Apply approved photos to preview-2026
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin main preview-2026
+          git checkout -B preview-2026 origin/preview-2026
+
+          mkdir -p assets/portfolio
+          git show origin/main:assets/portfolio/award-calpoly-aws.webp > assets/portfolio/award-calpoly-aws.webp
+          git show origin/main:assets/portfolio/award-scream7-complex.webp > assets/portfolio/award-scream7-complex.webp
+          git show origin/main:assets/portfolio/award-hr-brand.webp > assets/portfolio/award-hr-brand.webp
+
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          base = Path('base-site/index.html')
+          html = base.read_text(encoding='utf-8')
+          start = '<!-- APPROVED PORTFOLIO PHOTOS START -->'
+          end = '<!-- APPROVED PORTFOLIO PHOTOS END -->'
+          patch = r'''<!-- APPROVED PORTFOLIO PHOTOS START -->
+          <style id="approved-portfolio-photos">
+          .case-visual{isolation:isolate;background-size:cover!important;background-repeat:no-repeat!important}
+          .case-visual>*{position:relative;z-index:2}
+          .case-visual:before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(5,7,5,.05) 18%,rgba(5,7,5,.22) 54%,rgba(5,7,5,.88) 100%);pointer-events:none}
+          .visual-ai{background-image:url('/assets/portfolio/award-calpoly-aws.webp')!important;background-position:center 43%!important}
+          .visual-ai .ai-grid{display:none!important}
+          .visual-ai .ai-core{position:absolute!important;left:28px!important;bottom:28px!important;width:auto!important;aspect-ratio:auto!important;padding:13px 17px!important;border-radius:15px!important;background:rgba(6,10,8,.78)!important;backdrop-filter:blur(14px)!important}
+          .visual-ai .ai-core:before{content:"CAL POLY DXHUB × AWS"!important;position:static!important;border:0!important;font:700 .68rem/1.25 "Space Mono",monospace!important;letter-spacing:.08em!important;color:#fff!important}
+          .visual-ai .ai-core:after,.visual-ai .ai-core small{display:none!important}
+          .visual-ai .ai-core strong{font-size:1.45rem!important;color:var(--acid)!important}
+          .visual-scream{background-image:url('/assets/portfolio/award-scream7-complex.webp')!important;background-position:center 30%!important}
+          .visual-scream .mask{display:none!important}
+          .visual-scream .scream-type{left:28px!important;right:28px!important;bottom:28px!important;text-shadow:0 8px 35px rgba(0,0,0,.8)!important}
+          .visual-scream .scream-type:after{content:"PARAMOUNT PICTURES × COMPLEX";display:block;margin-top:12px;font:700 .68rem/1.3 "Space Mono",monospace;letter-spacing:.12em;color:#fff}
+          [data-rail="awards"] .proof-card:nth-child(1) .proof-preview{background-image:url('/assets/portfolio/award-scream7-complex.webp')!important;background-position:center 28%!important}
+          [data-rail="awards"] .proof-card:nth-child(2) .proof-preview{background-image:url('/assets/portfolio/award-calpoly-aws.webp')!important;background-position:center 42%!important}
+          [data-rail="awards"] .proof-card:nth-child(3) .proof-preview{background-image:url('/assets/portfolio/award-hr-brand.webp')!important;background-position:center 20%!important}
+          [data-rail="awards"] .proof-card:nth-child(-n+3) .proof-preview{background-size:cover!important;background-repeat:no-repeat!important;color:#fff!important}
+          [data-rail="awards"] .proof-card:nth-child(-n+3) .proof-preview:before{background:linear-gradient(180deg,rgba(6,8,6,.04),rgba(6,8,6,.12) 35%,rgba(6,8,6,.9) 100%)!important}
+          [data-rail="awards"] .proof-card:nth-child(-n+3) .preview-main strong,[data-rail="awards"] .proof-card:nth-child(-n+3) .preview-main span,[data-rail="awards"] .proof-card:nth-child(-n+3) .preview-top,[data-rail="awards"] .proof-card:nth-child(-n+3) .preview-bottom{color:#fff!important;text-shadow:0 4px 22px rgba(0,0,0,.95)!important}
+          @media(max-width:640px){.visual-ai .ai-core{left:14px!important;bottom:14px!important;padding:9px 11px!important}.visual-scream .scream-type{left:16px!important;bottom:16px!important;font-size:2.2rem!important}}
+          </style>
+          <!-- APPROVED PORTFOLIO PHOTOS END -->'''
+          if start in html and end in html:
+              html = re.sub(re.escape(start) + r'.*?' + re.escape(end), patch, html, flags=re.S)
+          else:
+              html = html.replace('</head>', patch + '\n</head>')
+          base.write_text(html, encoding='utf-8')
+
+          root = Path('index.html')
+          wrapper = root.read_text(encoding='utf-8')
+          wrapper = re.sub(r"const VERSION='[^']+';", "const VERSION='20260801-photos-live';", wrapper, count=1)
+          root.write_text(wrapper, encoding='utf-8')
+          PY
+
+          git add index.html base-site/index.html assets/portfolio
+          if git diff --cached --quiet; then
+            echo "Live branch already contains the approved photo patch."
+            exit 0
+          fi
+          git commit -m "Publish approved portfolio photography"
+          git push origin HEAD:preview-2026
