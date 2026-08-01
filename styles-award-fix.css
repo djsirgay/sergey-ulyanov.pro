@@ -1,0 +1,87 @@
+/* Award-card layout hardening — 2026-08-01
+   Photo and copy are separate flex items, so they cannot overlap. */
+.proof-card.award-card{
+  display:flex;
+  align-items:stretch;
+  min-height:560px;
+  isolation:isolate;
+}
+.proof-card.award-card>.photo-preview{
+  position:relative;
+  flex:0 0 42%;
+  width:42%;
+  min-width:0;
+  min-height:560px;
+  height:auto;
+  aspect-ratio:auto;
+  overflow:hidden;
+  border-right:1px solid var(--line);
+  border-bottom:0;
+  z-index:1;
+  box-sizing:border-box;
+}
+.proof-card.award-card>.photo-preview>a{
+  position:absolute;
+  inset:0;
+  display:block;
+  overflow:hidden;
+}
+.proof-card.award-card>.photo-preview img{
+  position:absolute;
+  inset:0;
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:none;
+  object-fit:cover;
+}
+.proof-card.award-card>.proof-copy{
+  position:relative;
+  flex:1 1 58%;
+  min-width:0;
+  width:auto;
+  z-index:2;
+  background:var(--panel);
+  overflow:hidden;
+  box-sizing:border-box;
+}
+
+@media(max-width:980px) and (min-width:721px){
+  .proof-card.award-card{
+    display:flex;
+    flex-direction:row;
+    min-height:520px;
+  }
+  .proof-card.award-card>.photo-preview{
+    flex-basis:44%;
+    width:44%;
+    min-height:520px;
+    border-right:1px solid var(--line);
+    border-bottom:0;
+  }
+  .proof-card.award-card>.proof-copy{
+    flex-basis:56%;
+  }
+}
+
+@media(max-width:720px){
+  .proof-card.award-card{
+    display:flex;
+    flex-direction:column;
+    min-height:0;
+  }
+  .proof-card.award-card>.photo-preview{
+    flex:0 0 auto;
+    width:100%;
+    min-height:0;
+    height:auto;
+    aspect-ratio:4/5;
+    border-right:0;
+    border-bottom:1px solid var(--line);
+  }
+  .proof-card.award-card>.proof-copy{
+    flex:0 0 auto;
+    width:100%;
+    min-height:0;
+  }
+}
