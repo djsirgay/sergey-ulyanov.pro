@@ -46,8 +46,45 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
 .visual-volkswagen-image{--case-photo:url("https://drive.google.com/thumbnail?id=1Su6jxTtAN3IcPB4aajrL5wvhhhBJurUe&sz=w1600")}
 .visual-sg-image{--case-photo:url("https://drive.google.com/thumbnail?id=1dUi48nTKn1K9AtrX_q2n5e7ken5xyMfN&sz=w1600")}
 
+/* Clean vertical previews: visual evidence + large logos only. All project copy remains in the adjacent case body. */
+#work .case-visual.visual-ai,
+#work .case-visual.visual-scream,
+#work .case-visual.visual-vinyl,
+#work .case-visual.visual-bm{
+  position:relative;
+  align-self:stretch;
+  padding:0!important;
+  overflow:hidden;
+  background-color:#050705!important;
+  background-image:var(--clean-preview)!important;
+  background-repeat:no-repeat!important;
+  background-position:center!important;
+  background-size:contain!important;
+  isolation:isolate;
+}
+#work .case-visual.visual-ai{--clean-preview:url("https://drive.google.com/thumbnail?id=1fq3__9qopTWPYMM3pQpZA-PdnE2vlTmu&sz=w1600")}
+#work .case-visual.visual-scream{--clean-preview:url("https://drive.google.com/thumbnail?id=1MVKA_74KmMUM2dPC8RY0FDaTMzHrIglH&sz=w1600")}
+#work .case-visual.visual-vinyl{--clean-preview:url("https://drive.google.com/thumbnail?id=1oYpzvYQphKdGiA-sR5tSnjb9oLTi6x7E&sz=w1600")}
+#work .case-visual.visual-bm{--clean-preview:url("https://drive.google.com/thumbnail?id=1_K7pOU92PA-_sRYhY4r7VP1jHWTFJD1z&sz=w1600")}
+#work .case-visual.visual-ai::before,
+#work .case-visual.visual-ai::after,
+#work .case-visual.visual-scream::before,
+#work .case-visual.visual-scream::after,
+#work .case-visual.visual-vinyl::before,
+#work .case-visual.visual-vinyl::after,
+#work .case-visual.visual-bm::before,
+#work .case-visual.visual-bm::after{display:none!important}
+#work .case-visual.visual-ai>*,
+#work .case-visual.visual-scream>*,
+#work .case-visual.visual-vinyl>*,
+#work .case-visual.visual-bm>*{display:none!important}
+
 @media(max-width:640px){
-  #work .case-visual.visual-image{
+  #work .case-visual.visual-image,
+  #work .case-visual.visual-ai,
+  #work .case-visual.visual-scream,
+  #work .case-visual.visual-vinyl,
+  #work .case-visual.visual-bm{
     width:100%;
     height:auto;
     min-height:0;
