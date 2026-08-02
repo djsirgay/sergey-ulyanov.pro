@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="SU monogram">
+  <rect width="128" height="128" rx="18" fill="#07111c"/>
+  <rect x="4" y="4" width="120" height="120" rx="15" fill="none" stroke="#173c59" stroke-width="4"/>
+  <path d="M29 38c0-11 8-18 21-18h15v14H51c-5 0-8 2-8 6 0 5 4 7 12 10 11 4 18 10 18 22 0 15-10 24-27 24H28V82h18c7 0 10-3 10-8 0-5-4-8-13-11-9-3-14-7-17-12-2-4-3-8-3-13Z" fill="#f7f5ef"/>
+  <path d="M70 21h16v48c0 9 4 13 11 13 7 0 11-4 11-13V21h16v49c0 18-10 27-27 27S70 88 70 70V21Z" fill="#f7f5ef"/>
+  <path d="M102 16 55 112" stroke="#0b75c9" stroke-width="7" stroke-linecap="round"/>
+</svg>
