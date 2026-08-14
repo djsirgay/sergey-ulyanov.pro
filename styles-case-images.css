@@ -97,3 +97,8 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
     object-fit:contain;
   }
 }
+
+.visual-xfactor-image{--case-photo:url("/assets/portfolio/case-xfactor.webp")}
+.visual-mageworx-image{--case-photo:url("/assets/portfolio/case-mageworx.webp")}
+.visual-unicef-image{--case-photo:url("/assets/portfolio/case-unicef.webp")}
+.visual-globalfund-image{--case-photo:url("/assets/portfolio/case-global-fund.webp")}

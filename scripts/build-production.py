@@ -17,7 +17,7 @@ checks = {
     "closed document": html.rstrip().endswith("</html>"),
     "no iframe": "<iframe" not in html.lower(),
     "no dynamic code execution": "new Function" not in html,
-    "eight selected projects": html.count('class="case"') == 8,
+    "twelve selected projects": html.count('class="case"') == 12,
     "eleven proof cards": html.count('<article class="proof-card') == 11,
     "five priority awards": html.count('class="proof-card award-card"') == 5,
     "canonical URL": '<link rel="canonical" href="https://sergey-ulyanov.pro/">' in html,

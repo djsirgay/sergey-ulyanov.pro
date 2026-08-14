@@ -23,7 +23,7 @@
     rail.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;down=true;rail.classList.add('dragging');startX=e.clientX;startScroll=rail.scrollLeft;rail.setPointerCapture?.(e.pointerId)});
     rail.addEventListener('pointermove',e=>{if(down)rail.scrollLeft=startScroll-(e.clientX-startX)});
     const stop=()=>{down=false;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);
-    rail.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&rail.scrollWidth>rail.clientWidth){const atStart=rail.scrollLeft<=1&&e.deltaY<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&e.deltaY>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=e.deltaY}}},{passive:false});
+    rail.addEventListener('wheel',e=>{const horizontalIntent=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey;if(!horizontalIntent||rail.scrollWidth<=rail.clientWidth)return;const delta=e.shiftKey&&Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;const atStart=rail.scrollLeft<=1&&delta<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&delta>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=delta}},{passive:false});
   };
   document.querySelectorAll('[data-rail]').forEach(setupRail);
   document.querySelectorAll('#work .case').forEach(card=>{
