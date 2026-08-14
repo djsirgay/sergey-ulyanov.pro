@@ -1,6 +1,6 @@
 (()=>{
   const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+  addEventListener('scroll',()=>nav?.classList.toggle('scrolled',scrollY>20),{passive:true});
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
   const track=(name,params={})=>{
@@ -9,7 +9,7 @@
     window.dispatchEvent(new CustomEvent('sergey:analytics',{detail:event}));
     if(typeof window.gtag==='function') window.gtag('event',name,params);
   };
-  document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>track(el.dataset.track,{label:(el.textContent||'').trim(),href:el.href||''})));
+  document.querySelectorAll('a[href],button[data-track]').forEach(el=>el.addEventListener('click',()=>track(el.dataset.track||'link_click',{label:(el.textContent||'').trim(),href:el.href||''})));
   const setupRail=(rail)=>{
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
     if(!items.length)return;
