@@ -19,10 +19,10 @@
     document.querySelectorAll(`[data-next="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(1)));
     const update=()=>{let best=0,min=Infinity;const left=rail.getBoundingClientRect().left;items.forEach((item,i)=>{const d=Math.abs(item.getBoundingClientRect().left-left);if(d<min){min=d;best=i}});if(current)current.textContent=String(best+1).padStart(2,'0')};
     rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
-    let down=false,startX=0,startScroll=0;
-    rail.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;down=true;rail.classList.add('dragging');startX=e.clientX;startScroll=rail.scrollLeft;rail.setPointerCapture?.(e.pointerId)});
-    rail.addEventListener('pointermove',e=>{if(down)rail.scrollLeft=startScroll-(e.clientX-startX)});
-    const stop=()=>{down=false;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);
+    let down=false,startX=0,startY=0,startScroll=0,gesture=null;
+    rail.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'&&e.button!==0)return;down=true;gesture=null;startX=e.clientX;startY=e.clientY;startScroll=rail.scrollLeft;if(e.pointerType==='mouse')rail.classList.add('dragging');rail.setPointerCapture?.(e.pointerId)});
+    rail.addEventListener('pointermove',e=>{if(!down)return;const dx=e.clientX-startX,dy=e.clientY-startY;if(!gesture&&(Math.abs(dx)>5||Math.abs(dy)>5))gesture=Math.abs(dx)>Math.abs(dy)?'horizontal':'vertical';if(gesture==='horizontal')rail.scrollLeft=startScroll-dx});
+    const stop=()=>{down=false;gesture=null;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);
     rail.addEventListener('wheel',e=>{const horizontalIntent=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey;if(!horizontalIntent||rail.scrollWidth<=rail.clientWidth)return;const delta=e.shiftKey&&Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;const atStart=rail.scrollLeft<=1&&delta<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&delta>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=delta}},{passive:false});
   };
   document.querySelectorAll('[data-rail]').forEach(setupRail);
