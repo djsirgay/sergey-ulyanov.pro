@@ -31,4 +31,34 @@
     card.addEventListener('click',e=>{if(!e.target.closest('a,button')&&matchMedia('(min-width:641px)').matches){track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
     card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){e.preventDefault();track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
   });
+  const inquiryForm=document.getElementById('inquiry');
+  if(inquiryForm){
+    const inquiryStatus=document.getElementById('inquiry-status');
+    inquiryForm.addEventListener('submit',event=>{
+      event.preventDefault();
+      if(!inquiryForm.reportValidity())return;
+      const data=new FormData(inquiryForm);
+      const name=String(data.get('name')||'').trim();
+      const email=String(data.get('email')||'').trim();
+      const organization=String(data.get('organization')||'').trim();
+      const inquiryType=String(data.get('inquiry_type')||'Website inquiry').trim();
+      const message=String(data.get('message')||'').trim();
+      const subject=`Website inquiry: ${inquiryType} — ${name}`;
+      const body=[
+        'Hi Sergéy,',
+        '',
+        message,
+        '',
+        '—',
+        `Name: ${name}`,
+        `Email: ${email}`,
+        `Organization: ${organization||'Not provided'}`,
+        `Inquiry type: ${inquiryType}`
+      ].join('\n');
+      if(inquiryStatus)inquiryStatus.textContent='Opening your email app with the message ready…';
+      track('inquiry_form_prepare',{inquiry_type:inquiryType});
+      location.href=`mailto:ulyanoow@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
+  }
+
 })();
