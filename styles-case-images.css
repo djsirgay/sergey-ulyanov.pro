@@ -5,7 +5,8 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
 #work .rail-shell{width:100%;overflow:hidden}
 #work .rail{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
 #work .case,#work .case-visual,#work .case-body{min-width:0}
-#work .case-body{overflow-wrap:anywhere}
+#work .case-body{overflow-wrap:normal;word-break:normal}
+#work .case h3{text-wrap:balance;overflow-wrap:normal;hyphens:none}
 
 .case-visual.visual-image{
   --case-photo:none;
@@ -24,30 +25,34 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
   background-image:linear-gradient(180deg,rgba(7,9,7,.05),rgba(7,9,7,.4)),var(--case-photo);
   background-size:cover;
   background-position:center;
-  filter:blur(24px) brightness(.58) saturate(.9);
+  filter:blur(24px) brightness(.72) saturate(.92);
   transform:scale(1.08);
   pointer-events:none;
 }
 .case-visual.visual-image::after{z-index:3}
 .case-visual.visual-image>img{
   position:absolute;
-  inset:0;
+  top:0;
+  right:0;
+  bottom:auto;
+  left:0;
   z-index:1;
   display:block;
   width:100%;
-  height:100%;
+  height:auto;
   object-fit:contain;
-  object-position:center center;
+  object-position:center top;
   background:transparent;
 }
 
-.visual-calpoly-source{--case-photo:url("https://drive.google.com/thumbnail?id=1rUxDpAvqtmpGmtaYwuUVgP1QITN-FQ-U&sz=w2000")}
-.visual-scream-source{--case-photo:url("https://drive.google.com/thumbnail?id=1O-RLM8SrEDKILLnpN-GokMciTaXJTnuu&sz=w2000")}
-.visual-mchappy-image{--case-photo:url("https://drive.google.com/thumbnail?id=1-AskPbMGxPo8dzkOr0fBQmveBbqpoZww&sz=w2000")}
-.visual-fanta-image{--case-photo:url("https://drive.google.com/thumbnail?id=1-QaCwlW4Ff5A01N-zWltuQnlWl-HOaDx&sz=w2000")}
-.visual-volkswagen-image{--case-photo:url("https://drive.google.com/thumbnail?id=1-LrUupy7a8BA3UgD8E65bTaZNgqOLO0W&sz=w2000")}
-.visual-sg-image{--case-photo:url("https://drive.google.com/thumbnail?id=1-HLFUwuBgW40VrJWjMvmxBFh5sBjlQGc&sz=w2000")}
-.visual-burning-source{--case-photo:url("https://drive.google.com/thumbnail?id=1VAVjp4pCTiLxFTwWtyeaYoKD6xYGXnT5&sz=w2000")}
+.visual-calpoly-source{--case-photo:url("/assets/portfolio/folio-06-calpoly.webp")}
+.visual-scream-source{--case-photo:url("/assets/portfolio/folio-01-scream.webp")}
+.visual-vinyl-source{--case-photo:url("/assets/portfolio/folio-02-vinyl.webp")}
+.visual-mchappy-image{--case-photo:url("/assets/portfolio/folio-07-mchappy.webp")}
+.visual-fanta-image{--case-photo:url("/assets/portfolio/folio-08-fanta.webp")}
+.visual-volkswagen-image{--case-photo:url("/assets/portfolio/folio-05-volkswagen.webp")}
+.visual-sg-image{--case-photo:url("/assets/portfolio/folio-10-societe-generale.webp")}
+.visual-burning-source{--case-photo:url("/assets/portfolio/folio-14-burning-man.webp")}
 
 /* Clean vertical previews: visual evidence + large logos only. All project copy remains in the adjacent case body. */
 #work .case-visual.visual-ai,
@@ -91,7 +96,7 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
     width:100%;
     height:auto;
     min-height:0;
-    aspect-ratio:4/5;
+    aspect-ratio:3/2;
     padding:0;
   }
   #work .case-visual.visual-image>img{
@@ -101,7 +106,12 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
   }
 }
 
-.visual-xfactor-image{--case-photo:url("https://drive.google.com/thumbnail?id=1VvrPMfACpVO7H8dwTxalXaVVuDXS4_sT&sz=w2000")}
-.visual-mageworx-image{--case-photo:url("https://drive.google.com/thumbnail?id=1ZFwnUm1U3G5mN47zqrv5fg4c4pJW3rQH&sz=w2000")}
-.visual-unicef-image{--case-photo:url("/assets/portfolio/case-unicef.webp")}
-.visual-globalfund-image{--case-photo:url("/assets/portfolio/case-global-fund.webp")}
+.visual-xfactor-image{--case-photo:url("/assets/portfolio/folio-09-xfactor.webp")}
+.visual-mageworx-image{--case-photo:url("/assets/portfolio/folio-11-mageworx.webp")}
+.visual-unicef-image{--case-photo:url("/assets/portfolio/folio-12-unicef.webp")}
+.visual-globalfund-image{--case-photo:url("/assets/portfolio/folio-13-global-fund.webp")}
+
+@media(max-width:640px){
+  #work .case h3{font-size:clamp(1.78rem,8.1vw,2.15rem);line-height:.98;letter-spacing:-.052em}
+  #work .case-index{font-size:.62rem;line-height:1.35}
+}

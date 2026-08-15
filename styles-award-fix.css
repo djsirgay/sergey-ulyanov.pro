@@ -33,7 +33,9 @@
   width:100%;
   height:100%;
   max-width:none;
-  object-fit:cover;
+  object-fit:contain;
+  padding:14px;
+  background:radial-gradient(circle at 50% 35%,#1c221c,#050705 72%);
 }
 .proof-card.award-card>.proof-copy{
   position:relative;
