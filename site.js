@@ -1,4 +1,15 @@
 (()=>{
+  const GA4_ID='G-RQBHK9BCRX';
+  window.dataLayer=window.dataLayer||[];
+  window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+  window.gtag('js',new Date());
+  window.gtag('config',GA4_ID);
+  if(!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA4_ID}"]`)){
+    const analyticsScript=document.createElement('script');
+    analyticsScript.async=true;
+    analyticsScript.src=`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
+    document.head.append(analyticsScript);
+  }
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>nav?.classList.toggle('scrolled',scrollY>20),{passive:true});
   const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
