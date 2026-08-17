@@ -32,27 +32,34 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
 .case-visual.visual-image::after{z-index:3}
 .case-visual.visual-image>img{
   position:absolute;
-  top:0;
-  right:0;
-  bottom:auto;
-  left:0;
+  inset:0;
   z-index:1;
   display:block;
   width:100%;
-  height:auto;
+  height:100%;
   object-fit:contain;
-  object-position:center top;
+  object-position:center;
   background:transparent;
 }
 
 .visual-calpoly-source{--case-photo:url("/assets/portfolio/folio-06-calpoly.webp")}
 .visual-scream-source{--case-photo:url("/assets/portfolio/folio-01-scream.webp")}
 .visual-vinyl-source{--case-photo:url("/assets/portfolio/folio-02-vinyl.webp")}
-.visual-mchappy-image{--case-photo:url("/assets/portfolio/folio-07-mchappy.webp")}
-.visual-fanta-image{--case-photo:url("/assets/portfolio/folio-08-fanta.webp")}
+.visual-mchappy-image{--case-photo:url("/assets/portfolio/case-mchappy.jpg")}
+.visual-fanta-image{--case-photo:url("/assets/portfolio/case-fanta.jpg")}
 .visual-volkswagen-image{--case-photo:url("/assets/portfolio/folio-05-volkswagen.webp")}
-.visual-sg-image{--case-photo:url("/assets/portfolio/folio-10-societe-generale.webp")}
+.visual-sg-image{--case-photo:url("/assets/portfolio/case-societe-generale.jpg")}
 .visual-burning-source{--case-photo:url("/assets/portfolio/folio-14-burning-man.webp")}
+
+@media(min-width:981px){
+  #work .case{min-height:660px}
+  #work .case-body{padding:40px 42px;gap:22px}
+  #work .case h3{font-size:clamp(2.55rem,3.45vw,4.2rem);margin:14px 0}
+  #work .case-body>div>p{font-size:.93rem;line-height:1.55}
+  #work .impact{margin-top:18px}
+  #work .impact div{padding:12px 14px}
+  #work .case-visual.visual-image>img{padding:16px;box-sizing:border-box}
+}
 
 /* Clean vertical previews: visual evidence + large logos only. All project copy remains in the adjacent case body. */
 #work .case-visual.visual-ai,
@@ -106,12 +113,15 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
   }
 }
 
-.visual-xfactor-image{--case-photo:url("/assets/portfolio/folio-09-xfactor.webp")}
-.visual-mageworx-image{--case-photo:url("/assets/portfolio/folio-11-mageworx.webp")}
-.visual-unicef-image{--case-photo:url("/assets/portfolio/folio-12-unicef.webp")}
-.visual-globalfund-image{--case-photo:url("/assets/portfolio/folio-13-global-fund.webp")}
+.visual-xfactor-image{--case-photo:url("/assets/portfolio/case-xfactor.webp")}
+.visual-mageworx-image{--case-photo:url("/assets/portfolio/case-mageworx.webp")}
+.visual-unicef-image{--case-photo:url("/assets/portfolio/case-unicef.webp")}
+.visual-globalfund-image{--case-photo:url("/assets/portfolio/case-global-fund.webp")}
 
 @media(max-width:640px){
   #work .case h3{font-size:clamp(1.78rem,8.1vw,2.15rem);line-height:.98;letter-spacing:-.052em}
   #work .case-index{font-size:.62rem;line-height:1.35}
+  #work .case-body>div>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  #work .impact div:nth-child(n+3),#work .tags .tag:nth-child(n+3),#work .case-meta{display:none}
+  #work .case-footer{justify-content:flex-start}
 }
