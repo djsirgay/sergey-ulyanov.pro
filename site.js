@@ -1,7 +1,7 @@
 (()=>{
   const boot=document.querySelector('[data-culture-boot]');
   if(boot){
-    const bootKey='sergey-cultural-boot-seen';
+    const bootKey='sergey-cultural-boot-seen-v2';
     let seen=false;
     try{seen=sessionStorage.getItem(bootKey)==='1'}catch(error){}
     const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -28,7 +28,7 @@
       }
       try{sessionStorage.setItem(bootKey,'1')}catch(error){}
       boot.querySelector('[data-boot-skip]')?.addEventListener('click',finish);
-      setTimeout(finish,1600);
+      setTimeout(finish,3200);
     }
   }
 
