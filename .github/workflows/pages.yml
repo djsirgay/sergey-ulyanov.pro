@@ -5,8 +5,6 @@ on:
   push:
     branches: ["main"]
   workflow_dispatch:
-  schedule:
-    - cron: "*/5 * * * *"
 
 permissions:
   contents: read
@@ -42,10 +40,27 @@ jobs:
         run: python3 scripts/build-production.py
       - name: Configure Pages
         uses: actions/configure-pages@v5
+      - name: Prepare public artifact
+        run: |
+          mkdir _site
+          rsync -a ./ _site/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '_site/' \
+            --exclude 'actor-final/' \
+            --exclude 'actor-final-preview/' \
+            --exclude 'actor-preview/' \
+            --exclude 'actor-preview-v2/' \
+            --exclude 'base-site/' \
+            --exclude 'refinement-preview/' \
+            --exclude 'version-review/' \
+            --exclude 'site-fragments/' \
+            --exclude 'scripts/' \
+            --exclude '*.md'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: "."
+          path: "_site"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -1,78 +1,69 @@
 (()=>{
   const GA4_ID='G-RQBHK9BCRX';
-  window.dataLayer=window.dataLayer||[];
-  window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
-  window.gtag('js',new Date());
-  window.gtag('config',GA4_ID);
-  if(!document.querySelector(`script[src*="googletagmanager.com/gtag/js?id=${GA4_ID}"]`)){
-    const analyticsScript=document.createElement('script');
-    analyticsScript.async=true;
-    analyticsScript.src=`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;
-    document.head.append(analyticsScript);
-  }
+  const consentKey='sergey-portfolio-analytics-consent';
+  const consent=document.getElementById('analytics-consent');
+  const loadAnalytics=()=>{
+    if(window.__sergeyAnalyticsLoaded)return;
+    window.__sergeyAnalyticsLoaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+    window.gtag('js',new Date());
+    window.gtag('config',GA4_ID,{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false});
+    const script=document.createElement('script');script.async=true;script.src=`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;document.head.appendChild(script);
+  };
+  let choice='';
+  try{choice=localStorage.getItem(consentKey)||''}catch(error){}
+  if(choice==='accepted')loadAnalytics();
+  else if(!choice&&consent)consent.hidden=false;
+  consent?.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{
+    const accepted=button.dataset.consent==='accept';
+    try{localStorage.setItem(consentKey,accepted?'accepted':'declined')}catch(error){}
+    consent.hidden=true;if(accepted)loadAnalytics();
+  }));
+
   const nav=document.getElementById('nav');
   addEventListener('scroll',()=>nav?.classList.toggle('scrolled',scrollY>20),{passive:true});
-  const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+  const reveal=[...document.querySelectorAll('.reveal')];
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});
+    reveal.forEach(element=>observer.observe(element));
+  }else reveal.forEach(element=>element.classList.add('visible'));
+
   const track=(name,params={})=>{
-    const event={event:'portfolio_interaction',interaction:name,page_path:location.pathname,...params};
-    window.dataLayer=window.dataLayer||[];window.dataLayer.push(event);
-    window.dispatchEvent(new CustomEvent('sergey:analytics',{detail:event}));
-    if(typeof window.gtag==='function') window.gtag('event',name,params);
+    const detail={event:name,page_path:location.pathname,...params};
+    window.dispatchEvent(new CustomEvent('sergey:analytics',{detail}));
+    if(window.__sergeyAnalyticsLoaded&&typeof window.gtag==='function')window.gtag('event',name,{page_path:location.pathname,...params});
   };
-  document.querySelectorAll('a[href],button[data-track]').forEach(el=>el.addEventListener('click',()=>track(el.dataset.track||'link_click',{label:(el.textContent||'').trim(),href:el.href||''})));
-  const setupRail=(rail)=>{
+  document.querySelectorAll('a[href],button[data-track]').forEach(element=>element.addEventListener('click',()=>track(element.dataset.track||'link_click',{label:(element.textContent||'').trim().slice(0,100),href:element.href||''})));
+
+  const setupRail=rail=>{
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
     if(!items.length)return;
-    const gap=()=>parseFloat(getComputedStyle(rail).gap||0);
-    const go=dir=>{const width=items[0].getBoundingClientRect().width+gap();rail.scrollBy({left:dir*width,behavior:'smooth'});track(`rail_${name}_${dir>0?'next':'prev'}`);};
-    document.querySelectorAll(`[data-prev="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(-1)));
-    document.querySelectorAll(`[data-next="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(1)));
-    const update=()=>{let best=0,min=Infinity;const left=rail.getBoundingClientRect().left;items.forEach((item,i)=>{const d=Math.abs(item.getBoundingClientRect().left-left);if(d<min){min=d;best=i}});if(current)current.textContent=String(best+1).padStart(2,'0')};
+    const update=()=>{let best=0,min=Infinity,left=rail.getBoundingClientRect().left;items.forEach((item,index)=>{const distance=Math.abs(item.getBoundingClientRect().left-left);if(distance<min){min=distance;best=index}});if(current)current.textContent=String(best+1).padStart(2,'0')};
+    const go=direction=>{const gap=parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:direction*(items[0].getBoundingClientRect().width+gap),behavior:'smooth'});track(`rail_${name}_${direction>0?'next':'prev'}`)};
+    document.querySelectorAll(`[data-prev="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(-1)));
+    document.querySelectorAll(`[data-next="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(1)));
     rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
-    /* Touch and pen stay fully native: Safari can then arbitrate horizontal
-       swipes without trapping the page's vertical scroll. Mouse drag keeps
-       the desktop interaction without pointer-capturing mobile gestures. */
-    let down=false,startX=0,startScroll=0;
-    rail.addEventListener('pointerdown',e=>{if(e.pointerType!=='mouse'||e.button!==0)return;down=true;startX=e.clientX;startScroll=rail.scrollLeft;rail.classList.add('dragging');rail.setPointerCapture?.(e.pointerId)});
-    rail.addEventListener('pointermove',e=>{if(!down||e.pointerType!=='mouse')return;rail.scrollLeft=startScroll-(e.clientX-startX)});
-    const stop=()=>{down=false;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);
-    rail.addEventListener('wheel',e=>{const horizontalIntent=Math.abs(e.deltaX)>Math.abs(e.deltaY)||e.shiftKey;if(!horizontalIntent||rail.scrollWidth<=rail.clientWidth)return;const delta=e.shiftKey&&Math.abs(e.deltaY)>=Math.abs(e.deltaX)?e.deltaY:e.deltaX;const atStart=rail.scrollLeft<=1&&delta<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&delta>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=delta}},{passive:false});
   };
   document.querySelectorAll('[data-rail]').forEach(setupRail);
-  document.querySelectorAll('#work .case').forEach(card=>{
-    const link=card.querySelector('.case-link');if(!link)return;
-    card.addEventListener('click',e=>{if(!e.target.closest('a,button')&&matchMedia('(min-width:641px)').matches){track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
-    card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){e.preventDefault();track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
-  });
-  const inquiryForm=document.getElementById('inquiry');
-  if(inquiryForm){
-    const inquiryStatus=document.getElementById('inquiry-status');
-    inquiryForm.addEventListener('submit',event=>{
-      event.preventDefault();
-      if(!inquiryForm.reportValidity())return;
-      const data=new FormData(inquiryForm);
-      const name=String(data.get('name')||'').trim();
-      const email=String(data.get('email')||'').trim();
-      const organization=String(data.get('organization')||'').trim();
-      const inquiryType=String(data.get('inquiry_type')||'Website inquiry').trim();
-      const message=String(data.get('message')||'').trim();
-      const subject=`Website inquiry: ${inquiryType} — ${name}`;
-      const body=[
-        'Hi Sergéy,',
-        '',
-        message,
-        '',
-        '—',
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Organization: ${organization||'Not provided'}`,
-        `Inquiry type: ${inquiryType}`
-      ].join('\n');
-      if(inquiryStatus)inquiryStatus.textContent='Opening your email app with the message ready…';
-      track('inquiry_form_prepare',{inquiry_type:inquiryType});
-      location.href=`mailto:ulyanoow@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+  const form=document.getElementById('inquiry');
+  if(form){
+    const status=document.getElementById('inquiry-status');
+    form.addEventListener('submit',async event=>{
+      event.preventDefault();if(!form.reportValidity())return;
+      const data=new FormData(form);if(String(data.get('_honey')||''))return;
+      const button=form.querySelector('button[type=submit]');button.disabled=true;
+      if(status)status.textContent='Sending…';
+      data.append('_subject',`Website inquiry: ${String(data.get('inquiry_type')||'New opportunity')} — ${String(data.get('name')||'Visitor')}`);
+      data.append('_template','table');data.append('_captcha','false');
+      try{
+        const response=await fetch('https://formsubmit.co/ajax/ulyanoow@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:data});
+        if(!response.ok)throw new Error('Submission failed');
+        form.reset();if(status)status.textContent='Thank you — your inquiry has been sent.';track('inquiry_sent',{inquiry_type:String(data.get('inquiry_type')||'')});
+      }catch(error){
+        if(status)status.innerHTML='The secure form could not send. Please <a href="mailto:ulyanoow@gmail.com">email Sergéy directly</a>.';
+      }finally{button.disabled=false}
     });
   }
-
 })();
