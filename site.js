@@ -58,7 +58,7 @@
       data.append('_subject',`Website inquiry: ${String(data.get('inquiry_type')||'New opportunity')} — ${String(data.get('name')||'Visitor')}`);
       data.append('_template','table');data.append('_captcha','false');
       try{
-        const response=await fetch('https://formsubmit.co/ajax/ulyanoow@gmail.com',{method:'POST',headers:{Accept:'application/json'},body:data});
+        const response=await fetch('https://formsubmit.co/ajax/5fbc3aa60c7f89f0edb8afa14702e228',{method:'POST',headers:{Accept:'application/json'},body:data});
         if(!response.ok)throw new Error('Submission failed');
         form.reset();if(status)status.textContent='Thank you — your inquiry has been sent.';track('inquiry_sent',{inquiry_type:String(data.get('inquiry_type')||'')});
       }catch(error){
