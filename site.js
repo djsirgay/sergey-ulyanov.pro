@@ -14,9 +14,21 @@
     if(seen||reduceMotion)boot.remove();
     else{
       document.documentElement.classList.add('boot-active');
+      const rain=boot.querySelector('[data-boot-rain]');
+      const glyphs=['◆◇╳┼▰▱','◇◆┼╳▱▰','╳┼◇◆▰▱','▰◇┼◆╳▱','┼╳◆◇▱▰'];
+      if(rain){
+        for(let index=0;index<24;index+=1){
+          const column=document.createElement('span');
+          column.textContent=Array.from({length:12},(_,row)=>glyphs[(index+row)%glyphs.length]).join('\n');
+          column.style.setProperty('--column',String(index));
+          column.style.setProperty('--delay',`${-(index%7)*.17}s`);
+          column.style.setProperty('--speed',`${1.05+(index%5)*.13}s`);
+          rain.appendChild(column);
+        }
+      }
       try{sessionStorage.setItem(bootKey,'1')}catch(error){}
       boot.querySelector('[data-boot-skip]')?.addEventListener('click',finish);
-      setTimeout(finish,1500);
+      setTimeout(finish,1600);
     }
   }
 
