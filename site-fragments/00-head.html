@@ -32,6 +32,23 @@
   "@context":"https://schema.org",
   "@graph":[
     {
+      "@type":"WebSite",
+      "@id":"https://sergey-ulyanov.pro/#website",
+      "url":"https://sergey-ulyanov.pro/",
+      "name":"Sergéy Ulyanov — Creative Technology, AI & Culture",
+      "publisher":{"@id":"https://sergey-ulyanov.pro/#person"},
+      "inLanguage":"en-US"
+    },
+    {
+      "@type":"ProfilePage",
+      "@id":"https://sergey-ulyanov.pro/#profile",
+      "url":"https://sergey-ulyanov.pro/",
+      "name":"Sergéy Ulyanov — Creative Technologist & AI Workflow Strategist",
+      "isPartOf":{"@id":"https://sergey-ulyanov.pro/#website"},
+      "mainEntity":{"@id":"https://sergey-ulyanov.pro/#person"},
+      "dateModified":"2026-08-18"
+    },
+    {
       "@type":"Person",
       "@id":"https://sergey-ulyanov.pro/#person",
       "name":"Sergéy Ulyanov",
@@ -43,12 +60,23 @@
       "address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},
       "sameAs":[
         "https://www.linkedin.com/in/charaunic",
+        "https://www.imdb.com/name/nm14717237/",
+        "https://heyitissergey.com/",
         "https://www.youtube.com/channel/UCWCpF7j2pasikggcEqquI-w",
         "https://www.nostalgairecordz.com/"
       ],
       "knowsAbout":["Creative strategy","Creative operations","Marketing strategy","AI workflow design","Media systems","Digital products","Commerce operations","Cultural production"],
       "knowsLanguage":["English","Russian","Belarusian"],
-      "founder":{"@id":"https://sergey-ulyanov.pro/#nostalgai"}
+      "alumniOf":[
+        {"@type":"CollegeOrUniversity","name":"Belarusian State University of Culture and Arts"},
+        {"@type":"CollegeOrUniversity","name":"Belarus State Economic University"}
+      ],
+      "affiliation":{"@id":"https://sergey-ulyanov.pro/#nostalgai"},
+      "award":["Official Winner — SCREAM 7 × Complex Art Competition, 2026","Special Prize — HR Brand Awards, 2019"],
+      "subjectOf":[
+        {"@type":"Article","url":"https://www.humanrightsfirst.org/library/never-lose-yourself-how-music-helped-sergey-reclaim-his-future","name":"Never Lose Yourself: How Music Helped Sergey Reclaim His Future"},
+        {"@type":"VideoObject","url":"https://www.youtube.com/watch?v=bTn2yMBUBG0","name":"Targeted in His Country for Being Gay"}
+      ]
     },
     {
       "@type":"Organization",
@@ -67,7 +95,12 @@
   <div class="culture-boot-rain" data-boot-rain aria-hidden="true"></div>
   <div class="culture-boot-panel">
     <div class="culture-boot-label">BELARUS / CULTURE / SYSTEMS</div>
-    <div class="culture-boot-ornament" aria-hidden="true"><span>◆</span><span>◇</span><span>╳</span><span>◇</span><span>◆</span></div>
+    <div class="culture-boot-ornament" aria-hidden="true">
+      <svg viewBox="0 0 840 132" role="presentation" focusable="false">
+        <defs><g id="boot-motif"><path d="M0 66 48 18l48 48-48 48Z M20 66l28-28 28 28-28 28Z"/><path d="M48 0v18M48 114v18M0 66h20M76 66h20"/></g></defs>
+        <g class="ornament-line"><use href="#boot-motif" x="0"/><use href="#boot-motif" x="124"/><use href="#boot-motif" x="248"/><use href="#boot-motif" x="372"/><use href="#boot-motif" x="496"/><use href="#boot-motif" x="620"/><use href="#boot-motif" x="744"/></g>
+      </svg>
+    </div>
     <div class="culture-boot-copy"><strong>БЕЛАРУСЬ → LOS ANGELES</strong><span>INITIALIZING CULTURAL MEMORY</span></div>
     <div class="culture-boot-progress" aria-hidden="true"><i></i></div>
     <button class="culture-boot-skip" type="button" data-boot-skip>Skip intro</button>
