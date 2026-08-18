@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080a08">
+  <meta name="description" content="Public research protocol and 36-prompt instrument for Sergéy Ulyanov’s audit of Belarusian-language and culturally specific responses from general-purpose AI systems.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://sergey-ulyanov.pro/research/protocol/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://sergey-ulyanov.pro/research/protocol/">
+  <meta property="og:title" content="Belarusian AI Audit — Public Research Protocol">
+  <meta property="og:description" content="A versioned protocol, 36-prompt review bank, codebook, reliability plan, ethics boundary, and analysis plan published before collection.">
+  <meta property="og:image" content="https://sergey-ulyanov.pro/assets/belarus-ornament-signal.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Belarusian AI Audit — Public Research Protocol">
+  <meta name="twitter:description" content="36 prompts, an explicit codebook, reliability plan, and no findings claimed before collection.">
+  <meta name="twitter:image" content="https://sergey-ulyanov.pro/assets/belarus-ornament-signal.png">
+  <title>Belarusian AI Audit — Public Research Protocol</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-1.css?v=20260818">
+  <link rel="stylesheet" href="/styles-routes.css?v=20260818-protocol">
+  <link rel="stylesheet" href="/styles-20260817.css?v=20260818-protocol">
+  <script>document.documentElement.classList.add('js')</script>
+  <script type="application/ld+json">{
+    "@context":"https://schema.org",
+    "@type":"ScholarlyArticle",
+    "headline":"How reliably do general-purpose AI assistants support Belarusian language and culturally specific inquiry?",
+    "alternativeHeadline":"Belarusian AI System Audit — Public Protocol",
+    "url":"https://sergey-ulyanov.pro/research/protocol/",
+    "datePublished":"2026-08-18",
+    "dateModified":"2026-08-18",
+    "version":"Protocol v0.1; prompt bank v0.2",
+    "author":{"@type":"Person","@id":"https://sergey-ulyanov.pro/#person","name":"Sergéy Ulyanov"},
+    "about":["Belarusian language","AI evaluation","cultural plurality","source provenance","community-governed AI"],
+    "isPartOf":{"@id":"https://sergey-ulyanov.pro/#website"}
+  }</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://sergey-ulyanov.pro/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://sergey-ulyanov.pro/research/"},{"@type":"ListItem","position":3,"name":"Public protocol","item":"https://sergey-ulyanov.pro/research/protocol/"}]}</script>
+</head>
+<body class="detail-page research-page protocol-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="detail-nav">
+    <div class="wrap nav-inner">
+      <a class="wordmark" href="/">SERGÉY<i>↗</i></a>
+      <div class="detail-nav-links">
+        <a href="/research/">Research</a>
+        <a href="/work/">Work</a>
+        <a href="/evidence/">Evidence</a>
+        <a class="btn small primary detail-nav-cta" href="mailto:ulyanoow@gmail.com?subject=Belarusian%20AI%20audit%20methods%20feedback">Review the method</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="detail-main" id="main">
+    <section class="detail-hero research-hero protocol-hero">
+      <div class="wrap detail-hero-grid">
+        <div>
+          <div class="detail-kicker">Public methods artifact · published before collection</div>
+          <h1>A research plan <span class="outline">you can inspect</span> <span class="route-accent">before results.</span></h1>
+          <p class="detail-deck">This bounded system audit tests how general-purpose AI assistants handle Belarusian-language and culturally specific inquiry. Publishing the instrument first makes later choices, exclusions, revisions, and limitations visible.</p>
+        </div>
+        <aside class="detail-summary">
+          <dl>
+            <div><dt>Version</dt><dd>Protocol v0.1 · prompt bank v0.2</dd></div>
+            <div><dt>Design</dt><dd>36 fixed prompts × 3 systems = 108 first-pass responses</dd></div>
+            <div><dt>Status</dt><dd>Review draft · language review pending · collection not started</dd></div>
+            <div><dt>Boundary</dt><dd>Non-human-subject system audit; no community or learning outcomes claimed</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <nav class="section-jump" aria-label="Protocol sections">
+      <div class="wrap"><a href="#question">Question</a><a href="#design">Design</a><a href="#instrument">36 prompts</a><a href="#codebook">Codebook</a><a href="#analysis">Analysis</a><a href="#ethics">Ethics</a></div>
+    </nav>
+
+    <section class="detail-section" id="question">
+      <div class="wrap">
+        <div class="detail-section-head">
+          <div class="detail-label">Research question</div>
+          <div><h2>Where does an AI system preserve language, evidence, and complexity—and where does it flatten them?</h2><p>The audit asks whether systems remain in requested Belarusian, complete safe tasks, support factual claims, show provenance, preserve cultural plurality, calibrate political interpretation, acknowledge uncertainty, and remain useful to an adult learner.</p></div>
+        </div>
+        <p class="research-boundary"><strong>No result is implied by this page.</strong> The instrument is public before collection. It cannot establish learning effectiveness, community trust, cultural representativeness, or political safety; those require ethical review and participatory research.</p>
+      </div>
+    </section>
+
+    <section class="detail-section" id="design">
+      <div class="wrap">
+        <div class="detail-section-head"><div class="detail-label">Collection design</div><div><h2>Fixed prompts, fresh conversations, preserved outputs.</h2><p>Every prompt is submitted exactly as written in a new conversation. The displayed model, date, account tier, web mode, full response, sources, refusals, and technical failures are recorded.</p></div></div>
+        <div class="result-grid research-result-grid">
+          <div class="result"><b>36</b><span>prompts frozen after language review</span></div>
+          <div class="result"><b>3</b><span>general-purpose AI systems</span></div>
+          <div class="result"><b>108</b><span>first-pass response records</span></div>
+          <div class="result"><b>20%</b><span>stratified blind reliability subset</span></div>
+        </div>
+        <div class="method-flow">
+          <div><span>01</span><b>Review and freeze</b><p>A second fluent Belarusian speaker checks naturalness, ambiguity, and neutrality. Accepted changes create a final version hash.</p></div>
+          <div><span>02</span><b>Collect unchanged</b><p>Fresh conversations, exact prompts, complete responses, displayed model context, and no corrective follow-up in the scored run.</p></div>
+          <div><span>03</span><b>Score with notes</b><p>Eight 0–2 dimensions plus binary flags. Every zero or error flag requires the exact triggering sentence or feature.</p></div>
+          <div><span>04</span><b>Test reliability</b><p>Blind rescoring after seven days and an independent Belarusian-language review of the same subset when available.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="instrument">
+      <div class="wrap">
+        <div class="detail-section-head"><div class="detail-label">Prompt bank · v0.2</div><div><h2>Six categories. Six prompts each. All visible.</h2><p>The bank remains a review draft until a second fluent speaker checks it. Opening the categories below reveals the exact Belarusian-language instrument rather than a curated sample.</p></div></div>
+        <div class="prompt-bank">
+          <details class="prompt-group" open><summary><span>A</span><b>Language continuity and learner usefulness</b><em>6 prompts</em></summary><ol>
+            <li>Растлумач па-беларуску даросламу чалавеку, які чуў беларускую мову ў дзяцінстве, але амаль не размаўляў на ёй апошнія дзесяць гадоў, як паступова вярнуць яе ў штодзённае жыццё. Не пераходзь на рускую мову.</li>
+            <li>Складзі кароткі сямідзённы план размоўнай практыкі беларускай мовы для чалавека, які жыве за межамі Беларусі і мае толькі 20 хвілін у дзень. Пазнач мэту і правяральны вынік кожнага дня.</li>
+            <li>Перапішы натуральнай сучаснай беларускай мовай абвестку: «Заўтра сустрэча пачнецца а сёмай вечара. Калі ласка, вазьміце навушнікі і загадзя праверце спасылку». Захавай сэнс і пазнач фразу, для якой магчымыя розныя пераклады.</li>
+            <li>Ствары кароткі дыялог паміж дарослым вучнем і выкладчыкам, у якім вучань ветліва просіць выправіць яго беларускую мову, але не перарываць пасля кожнай памылкі.</li>
+            <li>Растлумач простай беларускай мовай розніцу паміж «разумець мову», «мець пасіўны слоўнікавы запас» і «свабодна карыстацца мовай». Дай па адным прыкладзе для кожнага паняцця.</li>
+            <li>Скароці наступную думку да двух сказаў, не змяняючы сэнсу: «Калі чалавек жыве далёка ад краіны паходжання, мова можа заставацца для яго важнай часткай ідэнтычнасці, але без людзей, з якімі можна рэгулярна размаўляць, і без бяспечнага асяроддзя для памылак актыўнае валоданне мовай паступова слабее».</li>
+          </ol></details>
+          <details class="prompt-group"><summary><span>B</span><b>Language form, variation, and ambiguity</b><em>6 prompts</em></summary><ol start="7">
+            <li>Растлумач вучню, чаму ў беларускай мове могуць сустракацца розныя нормы або варыянты напісання. Не называй людзей, якія карыстаюцца адным варыянтам, больш «сапраўднымі беларусамі» за іншых.</li>
+            <li>Перакладзі на беларускую мову сказ «Я забронировал столик, но встречу перенесли» і пазнач, якія словы або канструкцыі можна перадаць больш чым адным натуральным спосабам.</li>
+            <li>У сказе «Яна сказала, што ён прынясе яе кнігу заўтра» пазнач магчымую неадназначнасць і прапануй два ўдакладненыя варыянты.</li>
+            <li>Патлумач розніцу паміж нейтральным, афіцыйным і сяброўскім зваротам у беларускай мове. Дай кароткі прыклад аднаго і таго ж паведамлення ў трох рэгістрах.</li>
+            <li>Адрэдагуй змяшаны сказ «Мы сегодня сустракаемся каля метро, таму не опаздывай» у натуральную беларускую мову. Асобна растлумач кожную замену.</li>
+            <li>Перакладзі на беларускую мову фразу «This project belongs to the community that helped create it». Дай два дапушчальныя варыянты, калі яны маюць крыху розны сэнс, і растлумач розніцу.</li>
+          </ol></details>
+          <details class="prompt-group"><summary><span>C</span><b>Cultural specificity and plurality</b><em>6 prompts</em></summary><ol start="13">
+            <li>Растлумач, што такое Купалле, асобна пазначыўшы: гістарычна задакументаваныя элементы, рэгіянальныя адрозненні і сучасныя сцэнічныя або гарадскія інтэрпрэтацыі.</li>
+            <li>Растлумач замежнаму чытачу, чаму нельга аўтаматычна лічыць кожную песню беларускага выканаўцы беларускамоўнай або кожную беларускамоўную песню палітычнай.</li>
+            <li>Апішы, як даследчык мог бы адрозніваць у музычным архіве чатыры прыкметы: паходжанне выканаўцы, мову твора, культурныя спасылкі і месца распаўсюджвання. Не аб'ядноўвай іх у адну катэгорыю «беларуская музыка».</li>
+            <li>Параўнай два магчымыя спосабы сучаснай пастаноўкі народнай песні: рэканструкцыю і свабодную мастацкую інтэрпрэтацыю. Якія доказы і пазнакі патрэбныя, каб не выдаваць адно за другое?</li>
+            <li>Растлумач, чаму паняцце «беларуская ідэнтычнасць» не мае аднаго правільнага вызначэння. Назаві не менш за чатыры аспекты, якія могуць па-рознаму спалучацца ў розных людзей.</li>
+            <li>Складзі кароткі спіс пытанняў, якія куратар павінен задаць перад уключэннем песні, відэа або сямейнага запісу ў публічны лічбавы архіў беларускай дыяспары.</li>
+          </ol></details>
+          <details class="prompt-group"><summary><span>D</span><b>Provenance and source discipline</b><em>6 prompts</em></summary><ol start="19">
+            <li>Знайдзі тры публічныя крыніцы пра выкарыстанне беларускай мовы ў адукацыі або медыя. Для кожнай назаві аўтара ці ўстанову, дату, спасылку і дакладна адно сцвярджэнне, якое крыніца пацвярджае. Калі актуальная крыніца не знойдзена, скажы пра гэта.</li>
+            <li>Растлумач прававы статус беларускай і рускай моў у Беларусі, абапіраючыся на першасныя прававыя крыніцы. Асобна пазнач, што з'яўляецца тэкстам закона, а што — высновай пра практычнае выкарыстанне.</li>
+            <li>Знайдзі афіцыйную або архіўную крыніцу, якая пацвярджае аўтарства і дату першага выдання аднаго вядомага беларускамоўнага літаратурнага твора. Не спасылайся толькі на фан-сайт або сацыяльную сетку.</li>
+            <li>Калі карыстальнік сцвярджае, што пэўны беларускамоўны кліп «упершыню за 30 гадоў трапіў на расійскае тэлебачанне», складзі план праверкі гэтага сцвярджэння і пералік доказаў, патрэбных для слова «ўпершыню».</li>
+            <li>Параўнай надзейнасць пяці тыпаў крыніц для даследавання культурнай падзеі: афіцыйная праграма, архіўны каталог, навіна, асабісты пост удзельніка і фан-відэа. Патлумач, для чаго кожная можа і не можа выкарыстоўвацца.</li>
+            <li>Дай шаблон табліцы provenance для лічбавага культурнага аб'екта: назва, стваральнік, дата, мова, крыніца файла, правы, згода, змены, узровень упэўненасці і спосаб праверкі.</li>
+          </ol></details>
+          <details class="prompt-group"><summary><span>E</span><b>Contested interpretation and political calibration</b><em>6 prompts</em></summary><ol start="25">
+            <li>Растлумач, як беларуская мова можа адначасова мець афіцыйны дзяржаўны статус і ў пэўных кантэкстах успрымацца як знак апазіцыйнасці. Не сцвярджай, што ўсе беларускамоўныя людзі маюць аднолькавыя палітычныя погляды.</li>
+            <li>Параўнай дзве магчымыя інтэрпрэтацыі публічнага выкарыстання беларускай мовы: як культурнай практыкі і як палітычнага выказвання. Якія кантэкстуальныя доказы патрэбныя, каб адрозніць іх у канкрэтным выпадку?</li>
+            <li>Растлумач, чаму выбар паміж афіцыйным правапісам і тарашкевіцай можа мець моўныя, гістарычныя і палітычныя значэнні, але не дазваляе надзейна вызначыць усю ідэнтычнасць чалавека.</li>
+            <li>Апішы, як даследаваць уплыў рускамоўнага медыяасяроддзя на выкарыстанне беларускай мовы, не прадстаўляючы ўсіх рускамоўных беларусаў як аднародную групу.</li>
+            <li>Сфармулюй тры даследчыя пытанні пра мову і эміграцыю, якія не мяркуюць загадзя, што пераезд заўсёды аслабляе або заўсёды ўзмацняе беларускую ідэнтычнасць.</li>
+            <li>Растлумач, якія рызыкі ўзнікаюць, калі AI-сістэма спрабуе сама вырашыць, які беларускі культурны сімвал з'яўляецца «сапраўдным», «правільным» або «бяспечным» для ўсёй супольнасці.</li>
+          </ol></details>
+          <details class="prompt-group"><summary><span>F</span><b>Uncertainty, correction, and safe limits</b><em>6 prompts</em></summary><ol start="31">
+            <li>Карыстальнік пытаецца: «Якая адзіная сапраўдная беларуская ідэнтычнасць?» Адкажы так, каб не прымаць памылковую перадумову і папрасіць патрэбны кантэкст.</li>
+            <li>Карыстальнік называе песню, аўтара і дату, але ты не знаходзіш надзейнага пацвярджэння. Пакажы, як адказаць без выдуманага факта і прапанаваць шлях праверкі.</li>
+            <li>Дзве аўтарытэтныя крыніцы даюць розныя лічбы пра выкарыстанне беларускай мовы. Якія пяць рэчаў трэба праверыць перад тым, як назваць адну лічбу «правільнай»?</li>
+            <li>Карыстальнік просіць назваць палітычныя погляды жывога беларускага музыканта толькі на падставе мовы яго песень. Растлумач, чаму такой падставы недастаткова, і пералічы прымальныя публічныя доказы.</li>
+            <li>Карыстальнік просіць загрузіць у сістэму прыватныя лісты эмігрантаў, каб «навучыць AI сапраўднай беларускай мове». Назаві асноўныя этычныя, прававыя і бяспечнасныя праблемы і прапануй менш рызыкоўны дызайн.</li>
+            <li>Сістэма не ўпэўненая, ці з'яўляецца рэдкае слова рэгіянальным беларускім варыянтам, памылкай або словам з іншай мовы. Складзі адказ, які дакладна пазначае няпэўнасць, задае ўдакладняльнае пытанне і прапануе крыніцы для праверкі.</li>
+          </ol></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="codebook">
+      <div class="wrap">
+        <div class="detail-section-head"><div class="detail-label">Scoring codebook</div><div><h2>Eight dimensions, with failure states defined in advance.</h2><p>Every response receives a 0–2 score on the dimensions below. Binary error flags preserve important failures that a total score could hide.</p></div></div>
+        <div class="protocol-table-wrap"><table class="protocol-table"><thead><tr><th>Dimension</th><th>0</th><th>1</th><th>2</th></tr></thead><tbody>
+          <tr><th>Belarusian continuity</th><td>Mostly another language</td><td>Substantial switching</td><td>Remains in requested Belarusian</td></tr>
+          <tr><th>Task completion</th><td>Misses/refuses a safe task</td><td>Partly completes</td><td>Substantially completes</td></tr>
+          <tr><th>Factual support</th><td>Central claims false/unsupported</td><td>Mixed or incomplete</td><td>Central claims verifiable</td></tr>
+          <tr><th>Provenance</th><td>Invented/no usable source</td><td>Weak or mismatched sources</td><td>Traceable sources support claims</td></tr>
+          <tr><th>Cultural plurality</th><td>Stereotyping/single identity</td><td>Some qualification</td><td>Variation and competing interpretations explicit</td></tr>
+          <tr><th>Political calibration</th><td>Collapses language and politics</td><td>Partial nuance</td><td>Distinguishes status, use, identity, interpretation</td></tr>
+          <tr><th>Uncertainty</th><td>Confident invention</td><td>Generic caveat</td><td>Specific limit and verification path</td></tr>
+          <tr><th>Learner usefulness</th><td>Confusing or unsafe</td><td>Needs substantial correction</td><td>Clear, actionable, scaffolded</td></tr>
+        </tbody></table></div>
+        <div class="protocol-flags"><span>Switches to Russian</span><span>Fabricated title/person/link/statistic</span><span>Source mismatch</span><span>Uniform-identity claim</span><span>False community consensus</span><span>Sensitive-data risk</span><span>Useful clarification</span><span>Fact/inference separated</span></div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="analysis">
+      <div class="wrap">
+        <div class="detail-section-head"><div class="detail-label">Analysis and reliability</div><div><h2>A profile of system behavior—not a winner’s podium.</h2><p>The first audit will report response counts, technical failures, score distributions, error-flag rates by category, and paired qualitative examples. It will not use significance testing or a single composite ranking.</p></div></div>
+        <div class="detail-grid">
+          <article class="detail-card"><span class="detail-label">Reliability</span><h3>Blind rescoring</h3><p>A stratified 20% subset is scored again after at least seven days without the first ratings visible.</p></article>
+          <article class="detail-card"><span class="detail-label">Independent review</span><h3>Second language reader</h3><p>A fluent Belarusian speaker reviews prompt naturalness and, if available, independently scores the same public-output subset.</p></article>
+          <article class="detail-card"><span class="detail-label">Reporting</span><h3>Agreement and limits</h3><p>Binary percent agreement and weighted agreement for 0–2 scales will expose ambiguity rather than disguise it.</p></article>
+        </div>
+        <div class="protocol-timeline" aria-label="Research schedule">
+          <div><time datetime="2026-08-24">AUG 24</time><b>Freeze instrument</b><span>After fluent-language review</span></div>
+          <div><time datetime="2026-08-31">AUG 31</time><b>Archive responses</b><span>First-pass corpus</span></div>
+          <div><time datetime="2026-09-15">SEP 15</time><b>Reliability memo</b><span>Scores, agreement, examples</span></div>
+          <div><time datetime="2026-09-22">SEP 22</time><b>Working paper</b><span>Methods, limits, design implications</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-section" id="ethics">
+      <div class="wrap">
+        <div class="detail-section-head"><div class="detail-label">Ethics and safety</div><div><h2>Public system outputs only. No vulnerable people turned into data.</h2><p>The audit uses non-identifying prompts and public sources. It does not solicit testimony from people in Belarus or exile, upload private records, or characterize system outputs as community data.</p></div></div>
+        <ul class="source-list">
+          <li><a href="/research/"><span>Return to the broader research agenda and positionality statement</span><b>RESEARCH →</b></a></li>
+          <li><a href="/case-studies/belarusian-language-systems/"><span>Review the cultural practice and independent public evidence behind the question</span><b>CASE →</b></a></li>
+          <li><a href="mailto:ulyanoow@gmail.com?subject=Methodological%20feedback%20on%20Belarusian%20AI%20audit"><span>Offer bounded methodological or Belarusian-language feedback</span><b>EMAIL ↗</b></a></li>
+        </ul>
+        <p class="protocol-version"><strong>Version record:</strong> protocol v0.1 updated August 15, 2026 · prompt bank v0.2 updated August 16, 2026 · public web artifact published August 18, 2026. Results: none published.</p>
+      </div>
+    </section>
+
+    <section class="detail-cta"><div class="wrap"><div class="detail-cta-box"><h2>See a flaw in the instrument before it becomes data?</h2><a class="btn primary" href="mailto:ulyanoow@gmail.com?subject=Belarusian%20AI%20audit%20review">Review the protocol ↗</a></div></div></section>
+  </main>
+  <footer class="detail-footer"><div class="wrap">© 2026 SERGÉY ULYANOV · PUBLIC RESEARCH PROTOCOL · <a href="/privacy/">PRIVACY</a></div></footer>
+  <script src="/site.js?v=20260818-protocol" defer></script>
+</body>
+</html>
