@@ -70,6 +70,8 @@
 .press-card-hrf{background:linear-gradient(135deg,#003b42,#087f83 62%,#75d6ca)}
 .press-card-tuzin{background:radial-gradient(circle at 90% 0,rgba(184,255,53,.3),transparent 42%),linear-gradient(135deg,#141714,#080a08)}
 .press-card-tuzin span{color:var(--acid)}
+.press-card-charter{background:radial-gradient(circle at 92% 8%,rgba(184,255,53,.24),transparent 38%),linear-gradient(135deg,#161a16,#060806)}
+.press-card-charter span{color:var(--acid)}
 .press-card h3{margin-top:24px}
 .case-evidence{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(280px,.75fr);gap:18px;align-items:stretch}
 .case-image{min-height:500px;border:1px solid var(--line);border-radius:26px;overflow:hidden;background:#060806;display:grid;place-items:center;position:relative}
