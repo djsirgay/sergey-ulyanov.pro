@@ -1,4 +1,25 @@
 (()=>{
+  const boot=document.querySelector('[data-culture-boot]');
+  if(boot){
+    const bootKey='sergey-cultural-boot-seen';
+    let seen=false;
+    try{seen=sessionStorage.getItem(bootKey)==='1'}catch(error){}
+    const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finish=()=>{
+      if(!boot.isConnected)return;
+      document.documentElement.classList.remove('boot-active');
+      boot.classList.add('is-leaving');
+      setTimeout(()=>boot.remove(),360);
+    };
+    if(seen||reduceMotion)boot.remove();
+    else{
+      document.documentElement.classList.add('boot-active');
+      try{sessionStorage.setItem(bootKey,'1')}catch(error){}
+      boot.querySelector('[data-boot-skip]')?.addEventListener('click',finish);
+      setTimeout(finish,1500);
+    }
+  }
+
   const GA4_ID='G-RQBHK9BCRX';
   const consentKey='sergey-portfolio-analytics-consent';
   const consent=document.getElementById('analytics-consent');
