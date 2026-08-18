@@ -32,6 +32,23 @@
   "@context":"https://schema.org",
   "@graph":[
     {
+      "@type":"WebSite",
+      "@id":"https://sergey-ulyanov.pro/#website",
+      "url":"https://sergey-ulyanov.pro/",
+      "name":"Sergéy Ulyanov — Creative Technology, AI & Culture",
+      "publisher":{"@id":"https://sergey-ulyanov.pro/#person"},
+      "inLanguage":"en-US"
+    },
+    {
+      "@type":"ProfilePage",
+      "@id":"https://sergey-ulyanov.pro/#profile",
+      "url":"https://sergey-ulyanov.pro/",
+      "name":"Sergéy Ulyanov — Creative Technologist & AI Workflow Strategist",
+      "isPartOf":{"@id":"https://sergey-ulyanov.pro/#website"},
+      "mainEntity":{"@id":"https://sergey-ulyanov.pro/#person"},
+      "dateModified":"2026-08-18"
+    },
+    {
       "@type":"Person",
       "@id":"https://sergey-ulyanov.pro/#person",
       "name":"Sergéy Ulyanov",
@@ -43,12 +60,23 @@
       "address":{"@type":"PostalAddress","addressLocality":"Los Angeles","addressRegion":"CA","addressCountry":"US"},
       "sameAs":[
         "https://www.linkedin.com/in/charaunic",
+        "https://www.imdb.com/name/nm14717237/",
+        "https://heyitissergey.com/",
         "https://www.youtube.com/channel/UCWCpF7j2pasikggcEqquI-w",
         "https://www.nostalgairecordz.com/"
       ],
       "knowsAbout":["Creative strategy","Creative operations","Marketing strategy","AI workflow design","Media systems","Digital products","Commerce operations","Cultural production"],
       "knowsLanguage":["English","Russian","Belarusian"],
-      "founder":{"@id":"https://sergey-ulyanov.pro/#nostalgai"}
+      "alumniOf":[
+        {"@type":"CollegeOrUniversity","name":"Belarusian State University of Culture and Arts"},
+        {"@type":"CollegeOrUniversity","name":"Belarus State Economic University"}
+      ],
+      "affiliation":{"@id":"https://sergey-ulyanov.pro/#nostalgai"},
+      "award":["Official Winner — SCREAM 7 × Complex Art Competition, 2026","Special Prize — HR Brand Awards, 2019"],
+      "subjectOf":[
+        {"@type":"Article","url":"https://www.humanrightsfirst.org/library/never-lose-yourself-how-music-helped-sergey-reclaim-his-future","name":"Never Lose Yourself: How Music Helped Sergey Reclaim His Future"},
+        {"@type":"VideoObject","url":"https://www.youtube.com/watch?v=bTn2yMBUBG0","name":"Targeted in His Country for Being Gay"}
+      ]
     },
     {
       "@type":"Organization",
@@ -67,7 +95,12 @@
   <div class="culture-boot-rain" data-boot-rain aria-hidden="true"></div>
   <div class="culture-boot-panel">
     <div class="culture-boot-label">BELARUS / CULTURE / SYSTEMS</div>
-    <div class="culture-boot-ornament" aria-hidden="true"><span>◆</span><span>◇</span><span>╳</span><span>◇</span><span>◆</span></div>
+    <div class="culture-boot-ornament" aria-hidden="true">
+      <svg viewBox="0 0 840 132" role="presentation" focusable="false">
+        <defs><g id="boot-motif"><path d="M0 66 48 18l48 48-48 48Z M20 66l28-28 28 28-28 28Z"/><path d="M48 0v18M48 114v18M0 66h20M76 66h20"/></g></defs>
+        <g class="ornament-line"><use href="#boot-motif" x="0"/><use href="#boot-motif" x="124"/><use href="#boot-motif" x="248"/><use href="#boot-motif" x="372"/><use href="#boot-motif" x="496"/><use href="#boot-motif" x="620"/><use href="#boot-motif" x="744"/></g>
+      </svg>
+    </div>
     <div class="culture-boot-copy"><strong>БЕЛАРУСЬ → LOS ANGELES</strong><span>INITIALIZING CULTURAL MEMORY</span></div>
     <div class="culture-boot-progress" aria-hidden="true"><i></i></div>
     <button class="culture-boot-skip" type="button" data-boot-skip>Skip intro</button>
@@ -110,8 +143,8 @@
 <section class="brands compact-brands" aria-label="Selected brand experience">
   <div class="brand-intro"><strong>Work seen through brands people recognize.</strong><span>EMPLOYERS · AGENCIES · PARTNERSHIPS · INDEPENDENT PROJECTS</span></div>
   <div class="brand-mask"><div class="logo-row">
-    <div class="logo-card"><b>PARAMOUNT</b></div><div class="logo-card"><b>COMPLEX</b></div><div class="logo-card"><b>Cal Poly × AWS</b></div><div class="logo-card"><b>Coca-Cola</b></div><div class="logo-card"><b>McDonald’s</b></div><div class="logo-card"><b>Volkswagen</b></div><div class="logo-card"><b>Universal Music</b></div><div class="logo-card"><b>Sony Music</b></div><div class="logo-card"><b>UNICEF</b></div><div class="logo-card"><b>The Global Fund</b></div>
-    <div class="logo-card"><b>PARAMOUNT</b></div><div class="logo-card"><b>COMPLEX</b></div><div class="logo-card"><b>Cal Poly × AWS</b></div><div class="logo-card"><b>Coca-Cola</b></div><div class="logo-card"><b>McDonald’s</b></div><div class="logo-card"><b>Volkswagen</b></div><div class="logo-card"><b>Universal Music</b></div><div class="logo-card"><b>Sony Music</b></div><div class="logo-card"><b>UNICEF</b></div><div class="logo-card"><b>The Global Fund</b></div>
+    <div class="logo-card brand-paramount"><b>PARAMOUNT</b></div><div class="logo-card brand-complex"><b>COMPLEX</b></div><div class="logo-card brand-calpoly"><b>Cal Poly × AWS</b></div><div class="logo-card brand-coke"><b>Coca-Cola</b></div><div class="logo-card brand-mcd"><b>McDonald’s</b></div><div class="logo-card brand-vw"><b>Volkswagen</b></div><div class="logo-card brand-umg"><b>Universal Music</b></div><div class="logo-card brand-sony"><b>Sony Music</b></div><div class="logo-card brand-unicef"><b>UNICEF</b></div><div class="logo-card brand-globalfund"><b>The Global Fund</b></div>
+    <div class="logo-card brand-paramount"><b>PARAMOUNT</b></div><div class="logo-card brand-complex"><b>COMPLEX</b></div><div class="logo-card brand-calpoly"><b>Cal Poly × AWS</b></div><div class="logo-card brand-coke"><b>Coca-Cola</b></div><div class="logo-card brand-mcd"><b>McDonald’s</b></div><div class="logo-card brand-vw"><b>Volkswagen</b></div><div class="logo-card brand-umg"><b>Universal Music</b></div><div class="logo-card brand-sony"><b>Sony Music</b></div><div class="logo-card brand-unicef"><b>UNICEF</b></div><div class="logo-card brand-globalfund"><b>The Global Fund</b></div>
   </div></div>
   <p class="brand-disclaimer">Names identify project context; they do not imply current endorsement.</p>
 </section>
@@ -139,7 +172,7 @@
 </section>
 <section class="section compact-recognition" id="recognition">
   <div class="wrap compact-section-head reveal">
-    <div><div class="eyebrow">Recognition</div><h2>Three signals. No press dump.</h2></div>
+    <div><div class="eyebrow">Recognition</div><h2>Three signals. Each with evidence.</h2></div>
     <div class="compact-arrows" aria-label="Recognition navigation"><button class="arrow" data-prev="recognition" type="button" aria-label="Previous recognition">←</button><button class="arrow" data-next="recognition" type="button" aria-label="Next recognition">→</button></div>
   </div>
   <div class="recognition-rail reveal" data-rail="recognition" aria-label="Selected awards and competitive recognition">

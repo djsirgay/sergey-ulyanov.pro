@@ -34,9 +34,9 @@ Elements use `data-track` attributes. `site.js` sends interactions to:
 
 1. `window.dataLayer`;
 2. a `sergey:analytics` custom browser event;
-3. `gtag`, when a Google Analytics tag is connected later.
+3. `gtag`, after privacy consent, using GA4 property `G-RQBHK9BCRX` with advertising signals disabled.
 
-This means event instrumentation is active now, while persistent reporting requires an analytics provider ID.
+Google Search Console verification and sitemap discovery are present in production. Analytics remains opt-in and the privacy page documents the behavior.
 
 ## Deployment safety
 

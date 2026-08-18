@@ -1,7 +1,7 @@
 (()=>{
   const boot=document.querySelector('[data-culture-boot]');
   if(boot){
-    const bootKey='sergey-cultural-boot-seen-v2';
+    const bootKey='sergey-cultural-boot-seen-v3';
     let seen=false;
     try{seen=sessionStorage.getItem(bootKey)==='1'}catch(error){}
     const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -47,11 +47,11 @@
   let choice='';
   try{choice=localStorage.getItem(consentKey)||''}catch(error){}
   if(choice==='accepted')loadAnalytics();
-  else if(!choice&&consent)consent.hidden=false;
+  else if(!choice&&consent){consent.hidden=false;document.body.classList.add('consent-active')}
   consent?.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{
     const accepted=button.dataset.consent==='accept';
     try{localStorage.setItem(consentKey,accepted?'accepted':'declined')}catch(error){}
-    consent.hidden=true;if(accepted)loadAnalytics();
+    consent.hidden=true;document.body.classList.remove('consent-active');if(accepted)loadAnalytics();
   }));
 
   const nav=document.getElementById('nav');
