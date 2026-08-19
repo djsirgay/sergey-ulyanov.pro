@@ -67,7 +67,31 @@
     window.dispatchEvent(new CustomEvent('sergey:analytics',{detail}));
     if(window.__sergeyAnalyticsLoaded&&typeof window.gtag==='function')window.gtag('event',name,{page_path:location.pathname,...params});
   };
-  document.querySelectorAll('a[href],button[data-track]').forEach(element=>element.addEventListener('click',()=>track(element.dataset.track||'link_click',{label:(element.textContent||'').trim().slice(0,100),href:element.href||''})));
+  const classifyLink=element=>{
+    if(element.dataset.track)return element.dataset.track;
+    const href=element.getAttribute('href')||'';
+    if(href.startsWith('/case-studies/'))return 'case_open';
+    if(href==='/hire/'||href==='/work/'||href==='/research/'||href==='/press/')return 'route_open';
+    if(href.startsWith('/evidence/'))return 'evidence_open';
+    if(element.closest('.press-card'))return 'press_open';
+    if(/drive\.google\.com/.test(href)&&/résumé|resume/i.test(element.textContent||''))return 'resume_open';
+    if(href.startsWith('mailto:'))return 'contact_open';
+    return 'link_click';
+  };
+  document.querySelectorAll('a[href],button[data-track]').forEach(element=>element.addEventListener('click',()=>track(classifyLink(element),{
+    label:(element.textContent||'').trim().replace(/\s+/g,' ').slice(0,100),
+    href:element.href||'',
+    link_domain:element.href?new URL(element.href,location.href).hostname:''
+  })));
+
+  const depthMarks=[25,50,75,90],seenDepth=new Set();
+  const reportDepth=()=>{
+    const available=document.documentElement.scrollHeight-innerHeight;
+    if(available<=0)return;
+    const depth=Math.min(100,Math.round(scrollY/available*100));
+    depthMarks.forEach(mark=>{if(depth>=mark&&!seenDepth.has(mark)){seenDepth.add(mark);track('scroll_depth',{percent_scrolled:mark})}});
+  };
+  addEventListener('scroll',reportDepth,{passive:true});
 
   const setupRail=rail=>{
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
@@ -83,6 +107,7 @@
   const form=document.getElementById('inquiry');
   if(form){
     const status=document.getElementById('inquiry-status');
+    form.addEventListener('focusin',()=>track('inquiry_start'),{once:true});
     form.addEventListener('submit',async event=>{
       event.preventDefault();if(!form.reportValidity())return;
       const data=new FormData(form);if(String(data.get('_honey')||''))return;
