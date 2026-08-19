@@ -128,6 +128,7 @@
 .research-evidence-grid .detail-card{min-height:520px}
 .research-evidence-grid .detail-card-media{height:220px;aspect-ratio:auto;object-fit:contain;background:radial-gradient(circle at 50% 40%,rgba(219,164,255,.08),transparent 62%),#060806}
 .research-evidence-grid .detail-card h3{font-size:1.7rem}
+.research-evidence-note{display:block;margin-top:auto;padding-top:20px;color:#7f8b82;font:600 .61rem/1.55 "Space Mono",monospace;text-transform:uppercase;letter-spacing:.035em}
 .research-text-card{background:radial-gradient(circle at 80% 12%,rgba(92,238,255,.13),transparent 38%),linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.015))}
 .research-text-card::before{content:"BE";display:grid;place-items:center;width:96px;height:96px;margin-bottom:30px;border:1px solid rgba(92,238,255,.4);border-radius:50%;color:var(--research-cyan);font:700 1.35rem/1 "Space Mono",monospace;box-shadow:0 0 45px rgba(92,238,255,.08)}
 .research-language-card::before{content:"АЎ";color:var(--research-violet);border-color:rgba(219,164,255,.42)}
