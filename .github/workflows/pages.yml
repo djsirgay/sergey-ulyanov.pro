@@ -47,7 +47,6 @@ jobs:
             --exclude '.git/' \
             --exclude '.github/' \
             --exclude '_site/' \
-            --exclude 'actor-final/' \
             --exclude 'actor-final-preview/' \
             --exclude 'actor-preview/' \
             --exclude 'actor-preview-v2/' \
