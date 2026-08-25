@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /part-
 
 Sitemap: https://heyitissergey.com/sitemap.xml

@@ -50,6 +50,17 @@ jobs:
             --exclude 'actor-final-preview/' \
             --exclude 'actor-preview/' \
             --exclude 'actor-preview-v2/' \
+            --exclude 'actor-final/part-*.html' \
+            --exclude 'actor-final/script.js' \
+            --exclude 'actor-final/styles-1.css' \
+            --exclude 'actor-final/styles-2.css' \
+            --exclude 'actor-final/styles-3.css' \
+            --exclude 'actor-final/styles-final-v11.css' \
+            --exclude 'actor-final/styles-personality-base.css' \
+            --exclude 'actor-final/styles-personality.css' \
+            --exclude 'actor-final/styles-typography.css' \
+            --exclude 'actor-final/styles-v9.css' \
+            --exclude 'actor-final/styles-v10.css' \
             --exclude 'base-site/' \
             --exclude 'refinement-preview/' \
             --exclude 'version-review/' \
