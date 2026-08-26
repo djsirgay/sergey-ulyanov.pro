@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://heyitissergey.com/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <image:image><image:loc>https://heyitissergey.com/hero.jpg</image:loc><image:title>Sergéy Ulyanov commercial actor headshot</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-world-of-tanks.webp</image:loc><image:title>Sergéy Ulyanov in World of Tanks campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-turbotax.webp</image:loc><image:title>Sergéy Ulyanov in Intuit TurboTax campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-lays-movie-time.webp</image:loc><image:title>Sergéy Ulyanov in Lay’s Movie Time campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-samsung-galaxy.webp</image:loc><image:title>Sergéy Ulyanov in Samsung Galaxy campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-apple-vision-pro.webp</image:loc><image:title>Sergéy Ulyanov in Apple Vision Pro project</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-la-clippers-intuit-dome.webp</image:loc><image:title>Sergéy Ulyanov in LA Clippers and Intuit Dome campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-societe-generale.webp</image:loc><image:title>Sergéy Ulyanov in Société Générale campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-epam-kids-app.webp</image:loc><image:title>Sergéy Ulyanov in EPAM Kids App campaign</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-theatrical-headshot.webp</image:loc><image:title>Sergéy Ulyanov theatrical headshot</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-full-body.webp</image:loc><image:title>Sergéy Ulyanov full-body casting photo</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-wife-wife.webp</image:loc><image:title>Sergéy Ulyanov in Wife Wife (2026)</image:title></image:image>
   </url>
 </urlset>
