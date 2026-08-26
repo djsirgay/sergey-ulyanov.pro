@@ -25,7 +25,7 @@
 .character-copy dt{color:#9bc6d8;font-size:.56rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
 .character-copy dd{margin:7px 0 0;font-size:.78rem;font-weight:750}
 .character-image{margin:0;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.2)}
-.character-image img{width:100%;aspect-ratio:16/9;object-fit:cover;object-position:center}
+.character-image img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center}
 .character-image figcaption{position:absolute;left:11px;bottom:11px;padding:8px 10px;background:rgba(0,0,0,.72);font-size:.58rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase}
 
 .brand-marquee-bottom{border-top:0;background:#f7f8f7}
