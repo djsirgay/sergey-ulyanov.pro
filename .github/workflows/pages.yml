@@ -24,7 +24,9 @@ jobs:
       - name: Build and validate production HTML
         run: python3 scripts/build-production.py
       - name: Validate JavaScript syntax
-        run: node --check site.js
+        run: |
+          node --check site.js
+          node --check actor-final/analytics.js
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'

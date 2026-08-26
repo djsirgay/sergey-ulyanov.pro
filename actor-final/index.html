@@ -45,7 +45,7 @@
   <link rel="preload" as="image" href="hero.jpg?v=15" fetchpriority="high">
   <link rel="stylesheet" href="styles-v12.css?v=15">
   <link rel="stylesheet" href="styles-v13.css?v=15">
-  <link rel="stylesheet" href="styles-v14.css?v=15">
+  <link rel="stylesheet" href="styles-v14.css?v=16">
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -221,12 +221,17 @@
   </section>
 </main>
 
-<footer class="site-footer"><div class="shell"><span>SERGÉY ULYANOV · COMMERCIAL ACTOR · LOS ANGELES · SAG-AFTRA ELIGIBLE</span><a href="#top">Back to top ↑</a></div></footer>
+<footer class="site-footer"><div class="shell"><span>SERGÉY ULYANOV · COMMERCIAL ACTOR · LOS ANGELES · SAG-AFTRA ELIGIBLE</span><span class="footer-links"><a href="/privacy/">Privacy</a><a href="#top">Back to top ↑</a></span></div></footer>
 <nav class="mobile-quick" aria-label="Quick casting actions">
   <a href="#reel" aria-label="Watch reel"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span>Reel</span></a>
   <a class="mobile-quick-agent" href="#contact" aria-label="Contact agent"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8c.7-4 3-6 7-6s6.3 2 7 6"/></svg><span>Agent</span></a>
   <a href="https://drive.google.com/file/d/1ISf_pKSOTyc8U9aeBbFmDwLNNJI3ct7V/view?usp=sharing" target="_blank" rel="noreferrer" aria-label="Open résumé"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l4 4v14H7zM14 3v5h5M10 13h5M10 17h5"/></svg><span>Résumé</span></a>
 </nav>
+
+<aside class="analytics-consent" id="analytics-consent" aria-labelledby="analytics-consent-title" hidden>
+  <div><strong id="analytics-consent-title">Optional analytics</strong><p>Allow anonymous measurement of visits and casting-material clicks. Advertising and personalization signals stay off. <a href="/privacy/">Privacy details</a>.</p></div>
+  <div class="analytics-consent-actions"><button type="button" data-analytics-consent="decline">Not now</button><button type="button" data-analytics-consent="accept">Allow</button></div>
+</aside>
 
 <div class="lightbox" aria-hidden="true" aria-modal="true" role="dialog" aria-label="Casting photo viewer"><button class="lightbox-close" type="button">Close ×</button><button class="lightbox-arrow lightbox-prev" type="button" aria-label="Previous photo">‹</button><img class="lightbox-image" alt="Casting photo of Sergéy Ulyanov"><div class="lightbox-meta" aria-live="polite"></div><button class="lightbox-arrow lightbox-next" type="button" aria-label="Next photo">›</button></div>
 
@@ -255,5 +260,6 @@
   document.addEventListener('keydown', event => { if (!lightbox.classList.contains('open')) return; if (event.key === 'Escape') closeLightbox(); if (event.key === 'ArrowLeft') showPhoto(current - 1); if (event.key === 'ArrowRight') showPhoto(current + 1); });
 })();
 </script>
+<script src="analytics.js?v=1" defer></script>
 </body>
 </html>
