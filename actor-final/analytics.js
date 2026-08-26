@@ -14,9 +14,10 @@
     const href = element.getAttribute('href') || '';
     const text = (element.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80);
     if (element.matches('[data-photo-index]')) return { name: 'casting_photo_open', parameters: { photo_index: Number(element.dataset.photoIndex) + 1 } };
+    if (element.matches('[data-campaign]')) return { name: 'campaign_interest', parameters: { campaign: element.dataset.campaign } };
     if (href === '#reel') return { name: 'reel_open', parameters: { link_text: text } };
     if (href === '#contact' || href.startsWith('mailto:') || href.startsWith('tel:')) return { name: 'agent_contact', parameters: { contact_method: href.startsWith('mailto:') ? 'email' : href.startsWith('tel:') ? 'phone' : 'section' } };
-    if (/drive\.google\.com/.test(href) && /résumé|resume/i.test(text)) return { name: 'resume_open', parameters: { link_text: text } };
+    if (/Sergey_Ulyanov_Resume\.pdf|drive\.google\.com/.test(href) && /résumé|resume/i.test(text)) return { name: 'resume_open', parameters: { link_text: text } };
     if (/actorsaccess\.com|imdb\.com|backstage\.com/.test(href)) {
       const profile = href.includes('actorsaccess.com') ? 'actors_access' : href.includes('imdb.com') ? 'imdb' : 'backstage';
       return { name: 'industry_profile_open', parameters: { profile } };
@@ -73,6 +74,42 @@
     }
   };
 
+  const setupReelPlaybackTracking = () => {
+    const iframe = document.querySelector('#commercial-reel-player');
+    if (!iframe || iframe.dataset.analyticsPlayerReady === 'true') return;
+    iframe.dataset.analyticsPlayerReady = 'true';
+    let firstPlay = true;
+
+    const mountPlayer = () => {
+      if (!window.YT || typeof window.YT.Player !== 'function') return;
+      new window.YT.Player(iframe, {
+        events: {
+          onStateChange: event => {
+            if (event.data !== window.YT.PlayerState.PLAYING) return;
+            send('reel_play', { video_id: 'xgd7Q4ECHSE', first_play: firstPlay });
+            firstPlay = false;
+          }
+        }
+      });
+    };
+
+    if (window.YT && typeof window.YT.Player === 'function') mountPlayer();
+    else {
+      const previousReady = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof previousReady === 'function') previousReady();
+        mountPlayer();
+      };
+      if (!document.querySelector('script[data-youtube-iframe-api]')) {
+        const script = document.createElement('script');
+        script.async = true;
+        script.dataset.youtubeIframeApi = 'true';
+        script.src = 'https://www.youtube.com/iframe_api';
+        document.head.appendChild(script);
+      }
+    }
+  };
+
   const loadAnalytics = () => {
     if (window.__heyItIsSergeyAnalytics) return;
     window.__heyItIsSergeyAnalytics = true;
@@ -95,6 +132,7 @@
     script.src = `https://www.googletagmanager.com/gtag/js?id=${MEASUREMENT_ID}`;
     document.head.appendChild(script);
     setupInteractionTracking();
+    setupReelPlaybackTracking();
   };
 
   let choice = '';
