@@ -22,7 +22,7 @@
       const profile = href.includes('actorsaccess.com') ? 'actors_access' : href.includes('imdb.com') ? 'imdb' : href.includes('backstage.com') ? 'backstage' : href.includes('instagram.com') ? 'instagram' : 'youtube';
       return { name: 'industry_profile_open', parameters: { profile } };
     }
-    if (href === '/privacy.html' || href === '/' || href === '/about/' || href.startsWith('/#')) return { name: 'navigation_click', parameters: { destination: href } };
+    if (href === '/privacy.html' || href === '/' || href === '/about/index.html' || href.startsWith('/#')) return { name: 'navigation_click', parameters: { destination: href } };
     if (href.startsWith('http')) {
       try { return { name: 'outbound_click', parameters: { link_domain: new URL(href).hostname, link_text: text } }; } catch {}
     }
