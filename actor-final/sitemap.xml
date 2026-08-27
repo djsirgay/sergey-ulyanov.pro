@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://heyitissergey.com/</loc>
-    <lastmod>2026-08-25</lastmod>
+    <lastmod>2026-08-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image><image:loc>https://heyitissergey.com/hero.jpg</image:loc><image:title>Sergéy Ulyanov commercial actor headshot</image:title></image:image>
@@ -17,5 +17,13 @@
     <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-theatrical-headshot.webp</image:loc><image:title>Sergéy Ulyanov theatrical headshot</image:title></image:image>
     <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-full-body.webp</image:loc><image:title>Sergéy Ulyanov full-body casting photo</image:title></image:image>
     <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-wife-wife.webp</image:loc><image:title>Sergéy Ulyanov in Wife Wife (2026)</image:title></image:image>
+  </url>
+  <url>
+    <loc>https://heyitissergey.com/about/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image><image:loc>https://heyitissergey.com/media/sergey-ulyanov-theatrical-headshot.webp</image:loc><image:title>Current theatrical headshot of Sergéy Ulyanov</image:title></image:image>
+    <image:image><image:loc>https://heyitissergey.com/hero.jpg</image:loc><image:title>Current commercial headshot of Sergéy Ulyanov</image:title></image:image>
   </url>
 </urlset>
