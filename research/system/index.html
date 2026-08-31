@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles-1.css?v=20260818">
   <link rel="stylesheet" href="/styles-routes.css?v=20260830-unmute-system">
-  <link rel="stylesheet" href="/styles-unmute-belarus.css?v=20260830-1">
+  <link rel="stylesheet" href="/styles-unmute-belarus.css?v=20260830-2">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"ResearchProject","name":"Unmute Belarus","url":"https://sergey-ulyanov.pro/research/system/","description":"A public research system for provenance-aware discovery, contextualization, and responsible restoration of Belarusian music.","founder":{"@id":"https://sergey-ulyanov.pro/#person"}}</script>
 </head>
 <body class="detail-page ub-page">
@@ -66,6 +66,15 @@
       </div>
     </section>
 
+    <nav class="ub-module-nav" aria-label="Unmute Belarus modules">
+      <div class="wrap">
+        <a class="is-live" href="/research/tools/unmute-the-archive/"><b>01</b><span>Archive Passport<small>Working now</small></span></a>
+        <a href="#atlas"><b>02</b><span>Music Atlas<small>Next functional build</small></span></a>
+        <a href="#restoration"><b>03</b><span>Restoration Lab<small>Next functional build</small></span></a>
+        <a href="#data"><b>DATA</b><span>Corpus &amp; analytics<small>What exists now</small></span></a>
+      </div>
+    </nav>
+
     <section class="ub-pipeline" id="architecture">
       <div class="wrap">
         <div class="ub-section-top"><p class="ub-kicker">Research pipeline</p><p>Each stage distinguishes evidence from inference.</p></div>
@@ -76,6 +85,17 @@
           <li><b>04</b><h3>Analysis &amp; restoration</h3><p>Search, relationships, transparent derivatives, and human review.</p></li>
           <li><b>05</b><h3>Research &amp; reuse</h3><p>Auditable findings, teaching artifacts, citations, and responsible creative work.</p></li>
         </ol>
+        <div class="ub-record-flow" aria-label="How one recording connects across modules">
+          <div><span>Audio file</span><b>The file stays where its owner keeps it.</b></div>
+          <i aria-hidden="true">→</i>
+          <div class="hub"><span>Shared record ID</span><b>Passport, evidence, rights, and exact fingerprint.</b></div>
+          <i aria-hidden="true">→</i>
+          <div class="ub-record-branches">
+            <div><span>Atlas enrichment</span><b>Search tags, relationships, sources, and reviewed context.</b></div>
+            <div><span>Lab derivative</span><b>A processed copy receives a new fingerprint and intervention log.</b></div>
+          </div>
+        </div>
+        <p class="ub-flow-note"><strong>The track does not “move” or disappear into another app.</strong> The three modules read or add to one linked research record. The original audio is never silently uploaded, replaced, or rewritten.</p>
       </div>
     </section>
 
@@ -87,7 +107,7 @@
         </div>
         <div class="ub-tool-grid">
           <article class="ub-tool ub-tool-live">
-            <div class="ub-status live"><i></i>Live prototype</div>
+            <div class="ub-tool-meta"><span class="ub-tool-number">01</span><div class="ub-status live"><i></i>Working now</div></div>
             <div class="ub-tool-icon" aria-hidden="true">⌾</div>
             <h3>Archive Passport</h3>
             <p class="ub-subhead">Verifiable file identity &amp; provenance</p>
@@ -96,7 +116,7 @@
             <div class="ub-tool-links"><a href="/research/tools/unmute-the-archive/">Launch live tool ↗</a><a href="/research/tools/unmute-the-archive/#guide">3-minute guide →</a></div>
           </article>
           <article class="ub-tool">
-            <div class="ub-status planned"><i></i>Planned module</div>
+            <div class="ub-tool-meta"><span class="ub-tool-number">02</span><div class="ub-status planned"><i></i>Next functional build</div></div>
             <div class="ub-tool-icon" aria-hidden="true">◎</div>
             <h3>Music Atlas</h3>
             <p class="ub-subhead">Discovery &amp; context engine</p>
@@ -105,7 +125,7 @@
             <a href="#atlas">Inspect planned interface ↓</a>
           </article>
           <article class="ub-tool">
-            <div class="ub-status planned"><i></i>Planned module</div>
+            <div class="ub-tool-meta"><span class="ub-tool-number">03</span><div class="ub-status planned"><i></i>Next functional build</div></div>
             <div class="ub-tool-icon ub-wave-icon" aria-hidden="true">≋</div>
             <h3>Restoration Lab</h3>
             <p class="ub-subhead">Authentic, documented derivatives</p>
@@ -113,6 +133,21 @@
             <ul><li>Untouched master preserved</li><li>Reversible documented processing</li><li>Before / after comparison</li><li>Human authenticity review</li></ul>
             <a href="#restoration">Inspect planned method ↓</a>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ub-section ub-data" id="data">
+      <div class="wrap">
+        <div class="ub-heading">
+          <div><p class="ub-kicker">Data view · current truth</p><h2>Where is the database?</h2></div>
+          <p>Today, Archive Passport creates a private corpus inside this browser and exports it as JSON or CSV. There is not yet a central public database or cross-user analytics dashboard. That shared layer is the next build—not something the site should pretend already exists.</p>
+        </div>
+        <div class="ub-data-grid">
+          <article class="live"><span>LIVE · LOCAL</span><h3>My browser corpus</h3><p>Every passport created on this device appears as a list with basic counts, source status, language, date span, and export controls.</p><a href="/research/tools/unmute-the-archive/#corpus">Open local corpus ↗</a></article>
+          <article><span>NEXT · SHARED</span><h3>Pilot database</h3><p>An opt-in, moderated dataset for rights-cleared metadata and selected audio deposits. Contribution consent will be separate from audio permission.</p><b>Not collecting public submissions yet</b></article>
+          <article><span>NEXT · SEARCH</span><h3>Music Atlas analytics</h3><p>Filters, relationships, duplicate candidates, language, year, remix status, dance characteristics, evidence coverage, and confidence.</p><a href="#atlas">Inspect the Atlas direction ↓</a></article>
+          <article><span>LIVE · PORTABLE</span><h3>Research exports</h3><p>JSON preserves complete records; CSV opens as a table for analysis. Both remain user-controlled and can seed the future shared pilot.</p><a href="/research/tools/unmute-the-archive/#corpus">Export from Archive Passport ↗</a></article>
         </div>
       </div>
     </section>
