@@ -183,8 +183,14 @@
 .research-system-banner>span{gap:9px;color:#c5cec6;font-size:.8rem}.research-system-banner b{padding:5px 7px;border:1px solid rgba(184,255,53,.35);border-radius:6px;color:var(--acid);font:700 .52rem "Space Mono",monospace}
 .research-system-banner>strong{color:#071007;background:var(--acid);font:700 .7rem "Space Mono",monospace;text-transform:uppercase}
 .research-system-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}.research-system-actions .btn:not(.primary){color:var(--text);border-color:var(--line);background:transparent}
+.research-atlas-banner{display:grid;grid-template-columns:1.1fr 1.3fr auto;gap:1px;overflow:hidden;margin-top:18px;border:1px solid rgba(184,255,53,.28);border-radius:20px;background:var(--line)}
+.research-atlas-banner>span,.research-atlas-banner>strong{display:flex;min-height:120px;align-items:center;padding:22px;background:#0a160f}
+.research-atlas-banner>span:first-child{align-items:flex-start;flex-direction:column;justify-content:center}.research-atlas-banner>span:first-child b{color:var(--acid);font:700 .52rem "Space Mono",monospace}.research-atlas-banner>span:first-child strong{margin-top:8px;font-size:1.1rem}.research-atlas-banner>span:first-child small{margin-top:4px;color:#89998d;font-size:.67rem}
+.research-atlas-banner>span:nth-child(2){color:#aab7ad;font-size:.76rem;line-height:1.6}.research-atlas-banner>strong{color:#071007;background:var(--acid);font:700 .65rem "Space Mono",monospace;text-transform:uppercase}
 @media(max-width:980px){.research-system-banner{grid-template-columns:1fr 1fr}.research-system-banner>strong{grid-column:1/-1}}
+@media(max-width:980px){.research-atlas-banner{grid-template-columns:1fr 1fr}.research-atlas-banner>strong{grid-column:1/-1;min-height:74px}}
 @media(max-width:640px){.research-system-banner{grid-template-columns:1fr}.research-system-banner>strong{grid-column:auto}.research-system-banner>span,.research-system-banner>strong{min-height:74px}.research-system-actions{display:grid}.research-system-actions .btn{width:100%}}
+@media(max-width:640px){.research-atlas-banner{grid-template-columns:1fr}.research-atlas-banner>strong{grid-column:auto}.research-atlas-banner>span,.research-atlas-banner>strong{min-height:88px}}
 
 @media(max-width:1180px) and (min-width:641px){.research-page .research-evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.research-page .method-flow{grid-template-columns:repeat(2,minmax(0,1fr))}}
 

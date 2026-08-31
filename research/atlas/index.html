@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#06110f">
+  <meta name="description" content="Living Belarus Atlas is a public research index for lost Belarusian digital heritage and contemporary Belarusian-language voices.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sergey-ulyanov.pro/research/atlas/">
+  <meta property="og:title" content="Living Belarus Atlas — Sergéy Ulyanov">
+  <meta property="og:description" content="A provenance-first public pilot connecting endangered digital heritage with Belarusian-language podcasts, video, music, and learning resources.">
+  <link rel="canonical" href="https://sergey-ulyanov.pro/research/atlas/">
+  <title>Living Belarus Atlas — Sergéy Ulyanov</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-atlas.css?v=20260831">
+  <script src="/research/atlas/atlas.js?v=20260831" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="atlas-header">
+    <a class="atlas-mark" href="/research/" aria-label="Back to Sergéy's research"><span>L/B</span><b>Living Belarus Atlas</b></a>
+    <nav aria-label="Atlas navigation">
+      <a href="#directory" data-copy="nav-directory">Directory</a>
+      <a href="#mapa" data-copy="nav-heritage">Lost heritage</a>
+      <a href="#method" data-copy="nav-method">Method</a>
+      <a href="/research/system/" data-copy="nav-unmute">Unmute Belarus ↗</a>
+    </nav>
+    <div class="atlas-lang" role="group" aria-label="Language">
+      <button type="button" data-lang="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang="be" aria-pressed="false">БЕЛ</button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="atlas-hero">
+      <div class="atlas-hero-grid" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+      <div class="atlas-orbit atlas-orbit-a" aria-hidden="true"></div>
+      <div class="atlas-orbit atlas-orbit-b" aria-hidden="true"></div>
+      <div class="atlas-wrap atlas-hero-inner">
+        <div class="atlas-kicker"><span>PUBLIC RESEARCH PILOT · 2026</span><span class="atlas-live">LIVE INDEX</span></div>
+        <h1 data-copy="hero-title">What disappeared from the web — <em>and who is speaking now?</em></h1>
+        <p data-copy="hero-deck">A provenance-first map of endangered Belarusian digital heritage and contemporary Belarusian-language voices: archives, podcasts, video, music commentary, short-form creators, and learning resources.</p>
+        <form class="atlas-search" role="search" id="atlas-search-form">
+          <label for="atlas-query" data-copy="search-label">Search the living archive</label>
+          <div class="atlas-search-row">
+            <span aria-hidden="true">⌕</span>
+            <input id="atlas-query" type="search" autocomplete="off" data-placeholder-en="Try “podcasts about music” or “TikToks about language”" data-placeholder-be="Напрыклад: «падкасты пра музыку» або «ціктокі пра мову»" placeholder="Try “podcasts about music” or “TikToks about language”">
+            <button type="submit" data-copy="search-button">Search</button>
+          </div>
+        </form>
+        <div class="atlas-examples" aria-label="Example searches">
+          <button type="button" data-query="podcasts music" data-copy="example-podcasts">Podcasts about music</button>
+          <button type="button" data-query="short video language" data-copy="example-language">Short video about language</button>
+          <button type="button" data-query="lost digital heritage" data-copy="example-lost">Lost digital heritage</button>
+        </div>
+        <dl class="atlas-metrics" aria-label="Pilot scope">
+          <div><dt id="metric-records">0</dt><dd data-copy="metric-records">verified seed records</dd></div>
+          <div><dt id="metric-types">0</dt><dd data-copy="metric-types">media and archive types</dd></div>
+          <div><dt>2</dt><dd data-copy="metric-modules">connected research modules</dd></div>
+          <div><dt>1</dt><dd data-copy="metric-boundary">explicit rights boundary</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="atlas-strip" aria-label="Project boundary">
+      <div class="atlas-wrap"><b data-copy="boundary-label">Honest pilot</b><p data-copy="boundary-text">This is a curated seed index and functional search interface — not yet a comprehensive archive or an autonomous AI researcher.</p><a href="#method" data-copy="boundary-link">See the method ↓</a></div>
+    </section>
+
+    <section class="atlas-section" id="directory">
+      <div class="atlas-wrap">
+        <div class="atlas-section-head">
+          <div><span class="atlas-number">01</span><span class="atlas-label" data-copy="directory-label">BELARUSIAN VOICES DIRECTORY</span></div>
+          <div><h2 data-copy="directory-title">One door into a scattered cultural web.</h2><p data-copy="directory-deck">Search across formats and topics without erasing the original source. Every result opens the creator, publisher, museum, or directory that made it available.</p></div>
+        </div>
+
+        <div class="atlas-filter-panel" aria-label="Directory filters">
+          <div class="atlas-filter-field atlas-filter-query"><label for="filter-query" data-copy="filter-query">Keywords</label><input id="filter-query" type="search" placeholder="music, history, language…"></div>
+          <div class="atlas-filter-field"><label for="filter-type" data-copy="filter-type">Format</label><select id="filter-type"><option value="all">All formats</option></select></div>
+          <div class="atlas-filter-field"><label for="filter-topic" data-copy="filter-topic">Topic</label><select id="filter-topic"><option value="all">All topics</option></select></div>
+          <div class="atlas-filter-field"><label for="filter-language" data-copy="filter-language">Language</label><select id="filter-language"><option value="all">All languages</option></select></div>
+          <button class="atlas-reset" type="button" id="filter-reset" data-copy="filter-reset">Reset</button>
+        </div>
+
+        <div class="atlas-results-head"><p><strong id="result-count">0</strong> <span data-copy="results-found">records found</span></p><p data-copy="results-note">Descriptions are concise research annotations. Ownership remains with the linked sources.</p></div>
+        <div class="atlas-card-grid" id="atlas-results" aria-live="polite"></div>
+        <div class="atlas-empty" id="atlas-empty" hidden><h3 data-copy="empty-title">No record matches all filters.</h3><p data-copy="empty-text">Try a broader topic or remove one filter. The index will grow through verified community suggestions.</p></div>
+        <div class="atlas-submit"><div><b data-copy="submit-title">Know a Belarusian-language creator or endangered project?</b><p data-copy="submit-text">Suggest the original source. Nothing is copied into the index without a visible link, status, and research note.</p></div><a href="mailto:ulyanoow@gmail.com?subject=Living%20Belarus%20Atlas%20source%20suggestion" data-copy="submit-button">Suggest a source ↗</a></div>
+      </div>
+    </section>
+
+    <section class="atlas-section atlas-modules">
+      <div class="atlas-wrap">
+        <div class="atlas-section-head compact">
+          <div><span class="atlas-label" data-copy="modules-label">SYSTEM ARCHITECTURE</span></div>
+          <div><h2 data-copy="modules-title">Two modules. One evidence trail.</h2></div>
+        </div>
+        <div class="atlas-module-grid">
+          <article>
+            <span class="atlas-number">01</span><h3 data-copy="module-one-title">Lost Digital Heritage</h3><p data-copy="module-one-text">Find dead, blocked, or at-risk Belarusian projects; document archived captures, authorship, functionality, sources, and permission status before any reconstruction is published.</p>
+            <ul><li data-copy="module-one-a">Archived captures</li><li data-copy="module-one-b">Creator credits</li><li data-copy="module-one-c">Rights and access status</li></ul><a href="#mapa" data-copy="module-one-link">Open the first preservation dossier ↓</a>
+          </article>
+          <article>
+            <span class="atlas-number">02</span><h3 data-copy="module-two-title">Belarusian Voices Directory</h3><p data-copy="module-two-text">A source-visible route to podcasts, video, short-form language creators, cultural commentary, museums, and learning resources across platforms.</p>
+            <ul><li data-copy="module-two-a">Multi-format search</li><li data-copy="module-two-b">Belarusian and English interface</li><li data-copy="module-two-c">Direct links to original publishers</li></ul><a href="#directory" data-copy="module-two-link">Search the seed directory ↑</a>
+          </article>
+        </div>
+        <div class="atlas-connection"><span>ATLAS</span><i>→</i><span data-copy="connection-context">cultural context + sources</span><i>→</i><span>UNMUTE BELARUS</span><i>→</i><span data-copy="connection-output">archival passports + research corpus</span></div>
+      </div>
+    </section>
+
+    <section class="atlas-section atlas-mapa" id="mapa">
+      <div class="atlas-wrap">
+        <div class="atlas-section-head">
+          <div><span class="atlas-number">02</span><span class="atlas-label" data-copy="mapa-label">FIRST PRESERVATION DOSSIER</span></div>
+          <div><h2 data-copy="mapa-title">The Interactive Map of Belarusian History deserves to remain findable.</h2><p data-copy="mapa-deck">The original MAPA interface is currently unavailable at its former address. Archived captures and the project authors’ own documentation make a careful digital reconstruction technically possible. This public page documents that work without republishing the original site before permission.</p></div>
+        </div>
+        <div class="atlas-mapa-grid">
+          <div class="atlas-map-visual" aria-hidden="true">
+            <div class="atlas-map-shape"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <span>1067</span><span>1569</span><span>1918</span><span>1991</span>
+            <b>MAPA</b>
+          </div>
+          <div class="atlas-mapa-facts">
+            <div class="atlas-status"><span data-copy="status-attributed">Attributed preservation record</span><strong data-copy="status-pending">Permissions pending</strong></div>
+            <dl>
+              <div><dt data-copy="mapa-original">Original</dt><dd>The Interactive Map of Belarusian History · map.letapis.by</dd></div>
+              <div><dt data-copy="mapa-recovered">Recovered evidence</dt><dd data-copy="mapa-recovered-value">Belarusian archived interface and embedded timeline data; navigation also documents English, Russian, and Polish editions.</dd></div>
+              <div><dt data-copy="mapa-scope">Documented scope</dt><dd data-copy="mapa-scope-value">63 historical border states and approximately 170 dated events in the recovered Belarusian build.</dd></div>
+              <div><dt data-copy="mapa-public">Public boundary</dt><dd data-copy="mapa-public-value">No original mirror, interface, illustrations, or dataset is republished here until written permission is received.</dd></div>
+            </dl>
+          </div>
+        </div>
+        <div class="atlas-credits">
+          <h3 data-copy="credits-title">Original project credits</h3>
+          <div><p><b>Аляксей Чаранкевіч</b><span data-copy="credit-idea">idea and design</span></p><p><b>Яўген Шпілеўскі</b><span>front-end</span></p><p><b>Ганна Шыраева</b><span data-copy="credit-texts">texts and translations</span></p><p><b>Віктар Якунін</b><span data-copy="credit-management">management</span></p><p><b>Павел Кедзіч</b><span data-copy="credit-advice">advice</span></p></div>
+        </div>
+        <div class="atlas-source-links">
+          <a href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer"><span data-copy="source-process">Original process article</span> ↗</a>
+          <a href="https://blog.cherenkevich.com/blog/mapa-results/" target="_blank" rel="noopener noreferrer"><span data-copy="source-results">Original results article</span> ↗</a>
+          <a href="https://arquivo.pt/wayback/20190923020214/http://map.letapis.by/by/" target="_blank" rel="noopener noreferrer"><span data-copy="source-archive">Public archived capture</span> ↗</a>
+          <a href="https://cherenkevich.com/" target="_blank" rel="noopener noreferrer"><span data-copy="source-author">Creator’s current portfolio</span> ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="atlas-section atlas-method" id="method">
+      <div class="atlas-wrap">
+        <div class="atlas-section-head">
+          <div><span class="atlas-number">03</span><span class="atlas-label" data-copy="method-label">METHOD &amp; PROVENANCE</span></div>
+          <div><h2 data-copy="method-title">Preservation is not permission. Discovery is not ownership.</h2><p data-copy="method-deck">The atlas separates public facts, archived evidence, independent research annotations, and material that requires a creator’s consent. Attribution is mandatory but does not replace permission.</p></div>
+        </div>
+        <ol class="atlas-workflow">
+          <li><span>01</span><h3 data-copy="workflow-one-title">Find</h3><p data-copy="workflow-one-text">Locate the original source, live page, archive capture, or creator documentation.</p></li>
+          <li><span>02</span><h3 data-copy="workflow-two-title">Verify</h3><p data-copy="workflow-two-text">Separate what the source proves from what remains an inference or research lead.</p></li>
+          <li><span>03</span><h3 data-copy="workflow-three-title">Credit</h3><p data-copy="workflow-three-text">Name the original creators and link to their surviving pages before adding interpretation.</p></li>
+          <li><span>04</span><h3 data-copy="workflow-four-title">Ask</h3><p data-copy="workflow-four-text">Request written permission before mirroring or adapting protected content.</p></li>
+          <li><span>05</span><h3 data-copy="workflow-five-title">Connect</h3><p data-copy="workflow-five-text">Turn approved material into searchable context and provenance-aware research records.</p></li>
+        </ol>
+        <div class="atlas-legend">
+          <h3 data-copy="legend-title">Status language used across the atlas</h3>
+          <div><p><i class="original"></i><b data-copy="legend-original">Original work</b><span data-copy="legend-original-text">Linked directly to its creator or publisher.</span></p><p><i class="record"></i><b data-copy="legend-record">Attributed record</b><span data-copy="legend-record-text">Our annotation about a source; the source is not copied.</span></p><p><i class="reconstruction"></i><b data-copy="legend-reconstruction">Independent reconstruction</b><span data-copy="legend-reconstruction-text">New research work based on verifiable facts, clearly separated from the original.</span></p><p><i class="pending"></i><b data-copy="legend-pending">Permissions pending</b><span data-copy="legend-pending-text">Identified for preservation, but protected material is not publicly mirrored.</span></p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="atlas-section atlas-next">
+      <div class="atlas-wrap">
+        <span class="atlas-label" data-copy="next-label">NEXT RESEARCH PASS</span>
+        <h2 data-copy="next-title">Ask the people who built the culture where the gaps are.</h2>
+        <p data-copy="next-text">The next review will invite cultural practitioners — including Siarhei Budkin, Volia Broman, and other domain experts who choose to participate — to identify missing archives, creators, genres, regions, and ethical risks. Their participation is not presumed.</p>
+        <div><a href="/research/" data-copy="next-research">Return to the research agenda ↗</a><a href="/research/system/" data-copy="next-unmute">Explore Unmute Belarus ↗</a></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="atlas-footer"><div><b>LIVING BELARUS ATLAS</b><span data-copy="footer-text">A public research pilot by Sergéy Ulyanov · updated August 31, 2026</span></div><a href="mailto:ulyanoow@gmail.com?subject=Living%20Belarus%20Atlas">Contact ↗</a></footer>
+</body>
+</html>
