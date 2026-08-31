@@ -1,4 +1,4 @@
-import"./corpus-Bzua_H7b.js";import{r as L,p as j,s as A,a as E,i as M,d as x,e as i,c as m,b as T,f as w,m as R}from"./suite-shell-D2L70m2x.js";const q=document.querySelector("#app");q.innerHTML=`${A("atlas")}
+import"./corpus-Bzua_H7b.js";import{r as L,p as j,s as A,a as E,i as M,d as x,e as i,c as m,b as T,f as w,m as R}from"./suite-shell-DLoYTT6N.js";const q=document.querySelector("#app");q.innerHTML=`${A("atlas")}
 <main class="suite-main">
   <section class="suite-hero shell atlas-hero">
     <p class="suite-eyebrow">02 · Searchable cultural context</p>

@@ -27,6 +27,7 @@ jobs:
         run: |
           node --check site.js
           node --check actor-final/analytics.js
+          node --check research/i18n.js
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
