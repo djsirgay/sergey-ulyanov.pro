@@ -32,9 +32,12 @@ jobs:
           node --check research/atlas/atlas.js
           node --check research/atlas/mapa/mapa.js
           node --check research/atlas/mapa/history.js
+          node --check research/atlas/mapa/chronology.js
           node --check research/atlas/mapa/events.js
       - name: Verify research routes and assets
         run: node scripts/check-research.mjs
+      - name: Verify MAPA geometry and chronology regressions
+        run: node --test tests/mapa-*.test.mjs
 
   deploy:
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
@@ -76,6 +79,8 @@ jobs:
             --exclude 'version-review/' \
             --exclude 'site-fragments/' \
             --exclude 'scripts/' \
+            --exclude 'tests/' \
+            --include 'LICENSE*.md' \
             --exclude '*.md'
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

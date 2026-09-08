@@ -43,5 +43,17 @@ for (const item of manifest.years) {
   geometries.add(JSON.stringify(data.features.map(feature => feature.geometry)));
 }
 assert.equal(geometries.size, 7, 'Historical layers must contain seven distinct geometry sets');
+// Rejected source candidates remain available for traceability, not in the
+// map controls: 1500 misses the Homiel transition and 1800 the Prussian west.
+const displayedYears = [1700, 1914, 1938, 1945, 1994];
+for (const year of displayedYears) {
+  const focus = JSON.parse(fs.readFileSync(path.join(historicalRoot, `focus_${year}.geojson`), 'utf8'));
+  assert.equal(focus.type, 'FeatureCollection');
+  assert.equal(focus.license, 'GPL-3.0-only');
+  assert.equal(focus.reference, 'belarus-reference.geojson');
+  assert.equal(focus.unmatchedGeometry.type, 'MultiPolygon');
+  assert.ok(focus.features.length > 0);
+  assert.ok(focus.features.every(feature => feature.geometry.type === 'MultiPolygon'));
+}
 assert.ok(fs.existsSync(path.join(historicalRoot, 'LICENSE-GPL-3.0.txt')));
-console.log(`Research release checks passed: ${pages.length} pages, four task entry points, seven distinct historical layers, no missing local assets.`);
+console.log(`Research release checks passed: ${pages.length} pages, four task entry points, five Belarus-focused map layers, seven retained source snapshots, no missing local assets.`);
