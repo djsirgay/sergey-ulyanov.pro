@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#06110f">
-  <meta name="description" content="Explore ten moments of Belarusian history across seven places. A bilingual interactive map with sources, a timeline, and exportable records, inspired by the original MAPA team.">
+  <meta name="description" content="Watch historical territories change across seven sourced map snapshots, 1500–1994. Explore the places and documents of Belarusian history in English and Belarusian.">
   <meta property="og:type" content="website">
   <meta property="og:title" content="MAPA · Belarus, in time and place">
   <meta property="og:description" content="A public map of selected Belarusian history: places, documents, and cultural connections. English and Belarusian.">
@@ -16,12 +16,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles-atlas.css?v=20260908">
-  <link rel="stylesheet" href="./mapa.css?v=20260908">
+  <link rel="stylesheet" href="./mapa.css?v=20260908b">
   <script src="./events.js?v=20260908" defer></script>
-  <script src="./mapa.js?v=20260908" defer></script>
+  <script src="./mapa.js?v=20260908b" defer></script>
+  <script src="./history.js?v=20260908b" defer></script>
 </head>
 <body class="mapa-page">
-  <a class="skip-link" href="#explore" data-i18n="skip">Skip to the map</a>
+  <a class="skip-link" href="#borders" data-i18n="skip">Skip to the map</a>
   <header class="atlas-header mapa-header">
     <a class="atlas-mark" href="/research/atlas/"><img src="./belarus-outline.svg" width="38" height="38" alt=""><b>Living Belarus Atlas <span class="mapa-breadcrumb">/ MAPA</span></b></a>
     <nav aria-label="Research navigation"><a href="/research/" data-i18n="research">Research</a><a href="/research/atlas/" data-i18n="directory">Culture directory</a><a href="#guide" data-i18n="guide">How to use</a></nav>
@@ -33,7 +34,23 @@
         <div><p class="mapa-eyebrow">MAPA · <span data-i18n="scope">10 selected events · 7 places · 1067–2016</span></p><h1 id="mapa-title" data-i18n="title">Belarus, in time and place.</h1><p data-i18n="intro">Explore ten moments through the places, documents, and cultural connections behind them.</p></div>
         <a class="mapa-origin-link" href="#credits" data-i18n="credits">Original creators ↓</a>
       </section>
+      <section id="borders" class="history-explorer" aria-labelledby="history-title">
+        <div class="history-section-heading"><div><p class="mapa-eyebrow" data-history="eyebrow">01 · Changing territories</p><h2 id="history-title" data-history="title">Move through time. Watch the borders change.</h2></div><a href="#explore" class="mapa-text-link" data-history="jumpEvents">Explore places and documents ↓</a></div>
+        <p class="history-intro" data-history="intro">These are seven dated regional maps, not a modern outline with changing pins. Choose a year, drag the timeline, or play the sequence.</p>
+        <div class="history-layout">
+          <div class="history-map-column">
+            <div class="history-map-frame"><svg id="history-map" viewBox="0 0 960 700" role="img" aria-labelledby="history-map-title history-map-desc"><title id="history-map-title">Historical territories, 1500</title><desc id="history-map-desc">Loading the historical map.</desc><rect width="960" height="700" fill="#071914"/><g id="history-shapes"></g><g id="history-prior" hidden></g><g id="history-reference" hidden></g><g id="history-labels"></g></svg><div class="history-year-stamp" aria-hidden="true"><span id="history-map-year">1500</span><small data-history="snapshot">dated snapshot</small></div><p id="history-load-status" role="status" class="history-load-status" data-history="loading">Loading source geometry…</p></div>
+            <div class="history-player"><button id="history-play" class="mapa-button primary" type="button" aria-pressed="false" data-history="play">Play timeline</button><button id="history-prev" class="mapa-button quiet" type="button" data-history="previous">Previous</button><div class="history-range-field"><label for="history-range" data-history="slider">Map year</label><input id="history-range" type="range" min="0" max="6" step="1" value="0" aria-valuetext="1500"><span class="history-range-ends" aria-hidden="true"><span>1500</span><span>1994</span></span></div><button id="history-next" class="mapa-button quiet" type="button" data-history="next">Next</button></div>
+            <div class="history-year-buttons" id="history-years" role="group" aria-label="Map snapshots"></div>
+            <div class="history-overlays"><label><input id="history-show-reference" type="checkbox"><span data-history="modernOverlay">Show present-day Belarus · dashed white</span></label><label><input id="history-show-prior" type="checkbox"><span data-history="previousOverlay">Compare previous territory · dashed coral</span></label></div>
+            <p class="history-map-note" data-history="accuracy">Approximate regional reconstructions, not survey boundaries. Only these seven years have map data; no intermediate borders are invented.</p>
+          </div>
+          <aside class="history-context" aria-labelledby="history-era-title"><p id="history-era-year" class="mapa-eyebrow">1500 · 1 / 7</p><h3 id="history-era-title"></h3><p id="history-era-text"></p><div class="history-legend" id="history-legend"></div><p class="history-era-warning" id="history-era-warning"></p><p class="history-context-label" data-history="whatChanged">What changes in this view</p><p id="history-change"></p><a id="history-data-link" class="mapa-button primary" href="./history/world_1500.geojson" data-history="download">Open this map’s GeoJSON</a><a id="history-source-link" class="mapa-text-link" href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener noreferrer" data-history="datasetSource">Original geometry and revision ↗</a><a class="mapa-text-link" href="#history-method" data-history="methodLink">Sources, accuracy and missing periods ↓</a></aside>
+        </div>
+        <details id="history-method" class="history-method"><summary data-history="methodTitle">How these historical maps were made — and what is missing</summary><div><p data-history="method1">Geometry: André Ourednik and contributors’ Historical Basemaps, an openly licensed, work-in-progress dataset designed for continental and regional views. We clipped seven source files to this region; we did not draw new borders by eye. The original MAPA’s 63 drawings are not used.</p><p data-history="method2">The maps represent political regions, not the borders of a timeless Belarusian nation. The 1500 layer combines Poland and the Grand Duchy of Lithuania; the Soviet layers show the USSR’s external extent, not the Belarusian SSR’s internal boundary. Modern Belarus appears only as an optional, explicitly labeled reference.</p><p data-history="method3">Missing: the medieval principalities, the full sequence of partitions, BNR territorial claims, and internal BSSR boundary changes. Several candidate source years failed our basic place checks and were excluded. The remaining regional outlines still require specialist cartographic review; do not use them as legal or detailed academic boundary evidence.</p><p><a href="https://github.com/aourednik/historical-basemaps/tree/62d8f1a03a71f2d3ff17f2d166f7553f256bce68" target="_blank" rel="noopener noreferrer">Historical Basemaps · André Ourednik &amp; contributors</a> · <a href="./history/LICENSE-GPL-3.0.txt">GPL-3.0</a> · <a href="./history/build-data.mjs" data-history="rebuild">Reproducible clipping script</a> · <a href="./history/README.md" data-history="review">Review notes and provenance</a></p><p><a href="https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf" target="_blank" rel="noopener noreferrer">Belarus in Maps · Historical, cultural and ethnic roots (Zsolt Bottlik)</a> · <a href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer" data-history="originalBehavior">How the original MAPA changed borders</a></p><p class="history-license-note" data-history="license">Modified geometry is distributed under GPL-3.0, with its editable GeoJSON, source revision and license. Data is provided without warranty. The separate present-day reference comes from Natural Earth, public domain.</p></div></details>
+      </section>
       <section id="explore" class="mapa-explorer" aria-label="History explorer">
+        <div class="history-section-heading"><div><p class="mapa-eyebrow" data-history="eventEyebrow">02 · Places and documents</p><h2 data-history="eventHeading">Follow the evidence behind an event.</h2></div><a href="#borders" class="mapa-text-link" data-history="backBorders">Back to changing borders ↑</a></div>
         <form id="mapa-search" class="mapa-filters" role="search">
           <div class="mapa-search-field"><label for="mapa-query" data-i18n="search">Search events or places</label><input id="mapa-query" type="search" placeholder="Try Skaryna, language, Riga, or 1918" autocomplete="off"></div>
           <div><label for="mapa-topic" data-i18n="topic">Topic</label><select id="mapa-topic"><option value="all" data-i18n="all">All topics</option><option value="places" data-i18n="places">Places &amp; origins</option><option value="language" data-i18n="language">Language &amp; print</option><option value="politics" data-i18n="politics">Statehood &amp; borders</option><option value="heritage" data-i18n="heritage">Built heritage</option><option value="digital" data-i18n="digital">Digital culture</option></select></div>

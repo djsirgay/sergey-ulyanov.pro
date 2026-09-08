@@ -1,0 +1,49 @@
+{
+  "revision": "62d8f1a03a71f2d3ff17f2d166f7553f256bce68",
+  "bounds": [
+    12,
+    46,
+    40,
+    61
+  ],
+  "years": [
+    {
+      "year": 1500,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1500.geojson",
+      "featureCount": 14
+    },
+    {
+      "year": 1700,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1700.geojson",
+      "featureCount": 10
+    },
+    {
+      "year": 1800,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1800.geojson",
+      "featureCount": 13
+    },
+    {
+      "year": 1914,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1914.geojson",
+      "featureCount": 9
+    },
+    {
+      "year": 1938,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1938.geojson",
+      "featureCount": 23
+    },
+    {
+      "year": 1945,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1945.geojson",
+      "featureCount": 16
+    },
+    {
+      "year": 1994,
+      "source": "https://raw.githubusercontent.com/aourednik/historical-basemaps/62d8f1a03a71f2d3ff17f2d166f7553f256bce68/geojson/world_1994.geojson",
+      "featureCount": 24
+    }
+  ],
+  "license": "GPL-3.0-only",
+  "source": "https://github.com/aourednik/historical-basemaps",
+  "limitations": "Selected regional state snapshots, not continuous annual data, internal SSR boundaries, or historical national/ethnic territories."
+}

@@ -31,6 +31,7 @@ jobs:
           node --check research/shared-language.js
           node --check research/atlas/atlas.js
           node --check research/atlas/mapa/mapa.js
+          node --check research/atlas/mapa/history.js
           node --check research/atlas/mapa/events.js
       - name: Verify research routes and assets
         run: node scripts/check-research.mjs

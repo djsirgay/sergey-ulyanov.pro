@@ -84,12 +84,12 @@
     'hero-deck':'Find music, podcasts, language resources, and cultural archives. Explore history on MAPA, or follow a directory entry to its original publisher.',
     'metric-records':'curated directory entries','metric-modules':'mapped historical events','metric-boundary':'interface languages',
     'boundary-label':'Start here','boundary-text':'Search the selected directory below, or open MAPA to explore ten moments in history. This index searches its listed sources; it does not crawl the entire web.','boundary-link':'Explore MAPA ↗',
-    'module-one-title':'MAPA · History & places','module-one-text':'Follow ten independently sourced events across seven places. Use the map, read the evidence, and share a specific event. Inspired by the original MAPA team.',
+    'module-one-title':'MAPA · Territories through time','module-one-text':'Play seven historical territory snapshots, 1500–1994. Compare the changing polygons, inspect their sources, then explore ten events and their places.',
     'module-one-a':'Map and table views','module-one-b':'English and Belarusian notes','module-one-c':'Source links and data export','module-one-link':'Explore the history map ↗',
-    'mapa-title':'History you can explore, place by place.','mapa-deck':'Follow ten sourced events across seven places. An independent map inspired by Alexey Cherenkevich and the original MAPA team, with new code, bilingual notes, and links to the evidence.',
-    'status-attributed':'Independent reconstruction','status-pending':'Open to explore','mapa-recovered':'Use it now','mapa-recovered-value':'Choose a date, locate the place, read an English or Belarusian annotation, and open its source.',
-    'mapa-scope':'Current coverage','mapa-scope-value':'10 selected events, 1067–2016, across 7 places. Map and table views, filters, direct event links, and data export.',
-    'mapa-public':'About this edition','mapa-public-value':'New interface and independently written records. Modern geographic context; the original MAPA’s historical border layers are not reproduced.',
+    'mapa-title':'Watch territories change through time.','mapa-deck':'Seven sourced territory snapshots, 1500–1994, with a timeline, playback and comparison overlays. Then follow ten events across seven places. Inspired by Alexey Cherenkevich and the original MAPA team.',
+    'status-attributed':'Independent reconstruction','status-pending':'Open to explore','mapa-recovered':'Use it now','mapa-recovered-value':'Choose a year or press Play to see territories change. Compare the previous outline, inspect the source, or continue to the event explorer.',
+    'mapa-scope':'Current coverage','mapa-scope-value':'7 territory snapshots, 1500–1994, plus 10 selected events, 1067–2016, across 7 places. Historical comparisons, source links, and editable data export.',
+    'mapa-public':'About this edition','mapa-public-value':'Real historical polygons from an openly licensed dataset, with limits explained. Not the original MAPA’s full 63-state reconstruction; internal BSSR boundaries and medieval periods remain absent.',
     'person-cherenkevich':'Alexey Cherenkevich','person-shpileuski':'Yauhen Shpileuski','person-shyrayeva':'Hanna Shyrayeva','person-yakunin':'Viktar Yakunin','person-kedzich':'Pavel Kedzich',
     'method-title':'Follow every entry back to its source.','method-deck':'Use this directory to discover a resource, then read or listen on the original publisher’s page. Our short annotations explain what you can find there; the map adds independently written historical context.',
     'footer-text':'A public research pilot by Sergéy Ulyanov · updated September 8, 2026','independent':'Independent reconstruction','open-map':'Open interactive map',
@@ -100,20 +100,20 @@
     'hero-deck':'Знаходзьце музыку, падкасты, моўныя рэсурсы і культурныя архівы. Вывучайце гісторыю праз MAPA або пераходзьце з каталога да арыгінальнага выдаўца.',
     'metric-records':'адабраных рэсурсаў','metric-modules':'падзей на мапе','metric-boundary':'мовы інтэрфейсу',
     'boundary-label':'Пачніце тут','boundary-text':'Шукайце ў каталогу ніжэй або адкрыйце MAPA, каб вывучыць дзесяць гістарычных падзей. Пошук ахоплівае пералічаныя рэсурсы, а не ўсё сеціва.','boundary-link':'Адкрыць MAPA ↗',
-    'module-one-title':'MAPA · Гісторыя і месцы','module-one-text':'Вывучайце дзесяць падзей з незалежнымі крыніцамі ў сямі месцах. Карыстайцеся мапай, чытайце сведчанні і дзяліцеся асобнай падзеяй. Натхнёна арыгінальнай камандай MAPA.',
+    'module-one-title':'MAPA · Тэрыторыі ў часе','module-one-text':'Запусціце сем гістарычных тэрытарыяльных зрэзаў, 1500–1994. Параўноўвайце палігоны, правярайце крыніцы, а потым вывучайце дзесяць падзей і іх месцы.',
     'module-one-a':'Мапа і табліца','module-one-b':'Беларускія і англійскія анатацыі','module-one-c':'Крыніцы і экспарт даных','module-one-link':'Адкрыць гістарычную мапу ↗',
-    'mapa-title':'Гісторыя, якую можна вывучаць месца за месцам.','mapa-deck':'Дзесяць падзей з крыніцамі ў сямі месцах. Незалежная мапа, натхнёная праектам Аляксея Чаранкевіча і каманды MAPA: новы код, двухмоўныя анатацыі і спасылкі на сведчанні.',
-    'status-attributed':'Незалежная рэканструкцыя','status-pending':'Адкрыта для вывучэння','mapa-recovered':'Як карыстацца','mapa-recovered-value':'Абярыце дату, знайдзіце месца, прачытайце беларускую або англійскую анатацыю і адкрыйце крыніцу.',
-    'mapa-scope':'Цяперашні абсяг','mapa-scope-value':'10 адабраных падзей за 1067–2016 гады ў 7 месцах. Мапа і табліца, фільтры, прамыя спасылкі на падзеі і экспарт даных.',
-    'mapa-public':'Пра гэтую версію','mapa-public-value':'Новы інтэрфейс і самастойна напісаныя запісы. Сучасны геаграфічны кантэкст; гістарычныя межы арыгінальнай MAPA тут не ўзнаўляюцца.',
+    'mapa-title':'Глядзіце, як мяняюцца тэрыторыі ў часе.','mapa-deck':'Сем тэрытарыяльных зрэзаў з крыніцамі, 1500–1994: храналогія, прайграванне і контуры для параўнання. Далей — дзесяць падзей у сямі месцах. Натхнёна праектам Аляксея Чаранкевіча і каманды MAPA.',
+    'status-attributed':'Незалежная рэканструкцыя','status-pending':'Адкрыта для вывучэння','mapa-recovered':'Як карыстацца','mapa-recovered-value':'Абярыце год або запусціце храналогію, каб пабачыць змену тэрыторый. Параўнайце папярэдні контур, праверце крыніцу або перайдзіце да падзей.',
+    'mapa-scope':'Цяперашні абсяг','mapa-scope-value':'7 тэрытарыяльных зрэзаў за 1500–1994 гады і 10 адабраных падзей за 1067–2016 гады ў 7 месцах. Гістарычныя параўнанні, крыніцы і экспарт рэдагуемых даных.',
+    'mapa-public':'Пра гэтую версію','mapa-public-value':'Гістарычныя палігоны з адкрытага набору даных з тлумачэннем абмежаванняў. Не ўсе 63 станы арыгінальнай MAPA: унутраныя межы БССР і сярэднявечныя перыяды пакуль адсутнічаюць.',
     'method-title':'Кожны запіс вядзе да сваёй крыніцы.','method-deck':'Знайдзіце рэсурс у каталогу, а затым чытайце або слухайце на старонцы выдаўца. Кароткія анатацыі тлумачаць, што там ёсць; мапа дадае самастойна напісаны гістарычны кантэкст.',
     'footer-text':'Публічны даследчы пілот Сяргея Ульянава · абноўлена 8 верасня 2026','independent':'Незалежная рэканструкцыя','open-map':'Адкрыць інтэрактыўную мапу',
     'skip':'Перайсці да зместу','filter-placeholder':'музыка, гісторыя, мова…'
   });
   Object.assign(records.find(record=>record.id==='mapa'), {
-    name:'MAPA · History & places',nameBe:'MAPA · Гісторыя і месцы',status:'independent',url:'/research/atlas/mapa/',languages:['be','en'],
-    description:'Explore ten sourced historical events across seven places, with a geographic map, bilingual notes, table view, and export. Independently rebuilt; the original MAPA team is credited.',
-    descriptionBe:'Дзесяць гістарычных падзей з крыніцамі ў сямі месцах: геаграфічная мапа, двухмоўныя анатацыі, табліца і экспарт. Створана незалежна, з пазначэннем арыгінальнай каманды MAPA.'
+    name:'MAPA · Territories through time',nameBe:'MAPA · Тэрыторыі ў часе',status:'independent',url:'/research/atlas/mapa/',languages:['be','en'],
+    description:'Seven changing historical territory maps, 1500–1994: timeline, play/pause, comparison overlays and open source geometry. Also ten events with places and evidence. Credits and limitations are visible.',
+    descriptionBe:'Сем гістарычных мапаў са зменай тэрыторый, 1500–1994: храналогія, прайграванне, параўнанне контураў і адкрытая геаметрыя. Таксама дзесяць падзей з месцамі і сведчаннямі. Аўтары і абмежаванні пазначаныя.'
   });
   document.querySelector('[data-copy="boundary-link"]').href='/research/atlas/mapa/';
   const state = {lang:'en',query:'',type:'all',topic:'all',language:'all'};

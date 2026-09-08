@@ -30,4 +30,18 @@ assert.equal([...home.matchAll(/class="research-start-card"/g)].length, 4, 'Keep
 assert.match(home, /AI systems planned for comparison/);
 assert.match(home, /stored in this browser only/);
 assert.match(home, /research\/atlas\/mapa\//);
-console.log(`Research release checks passed: ${pages.length} pages, four task entry points, no missing local assets.`);
+assert.match(home, /atlas\/#external-discovery/);
+const historicalRoot = path.join(root, 'research/atlas/mapa/history');
+const manifest = JSON.parse(fs.readFileSync(path.join(historicalRoot, 'manifest.json'), 'utf8'));
+assert.deepEqual(manifest.years.map(item => item.year), [1500, 1700, 1800, 1914, 1938, 1945, 1994]);
+const geometries = new Set();
+for (const item of manifest.years) {
+  const data = JSON.parse(fs.readFileSync(path.join(historicalRoot, `world_${item.year}.geojson`), 'utf8'));
+  assert.equal(data.type, 'FeatureCollection');
+  assert.equal(data.features.length, item.featureCount);
+  assert.ok(data.features.every(feature => ['Polygon', 'MultiPolygon'].includes(feature.geometry.type)));
+  geometries.add(JSON.stringify(data.features.map(feature => feature.geometry)));
+}
+assert.equal(geometries.size, 7, 'Historical layers must contain seven distinct geometry sets');
+assert.ok(fs.existsSync(path.join(historicalRoot, 'LICENSE-GPL-3.0.txt')));
+console.log(`Research release checks passed: ${pages.length} pages, four task entry points, seven distinct historical layers, no missing local assets.`);

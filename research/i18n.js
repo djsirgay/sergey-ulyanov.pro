@@ -1,5 +1,9 @@
 (() => {
   const be = new Map([
+    ['Find music by description.','Знайдзіце музыку паводле апісання.'],
+    ['Describe an artist, style, period, or format. Explore external catalog records with sources, then examine your own local collection separately. Missing language or mood evidence stays visible.','Апішыце выканаўцу, стыль, перыяд або фармат. Знаходзьце запісы ў знешнім каталогу з крыніцамі, а сваю лакальную калекцыю даследуйце асобна. Адсутнасць сведчанняў пра мову або настрой пазначаецца выразна.'],
+    ['Describe the music you want ↗','Апішыце музыку, якую шукаеце ↗'],
+    ['Start with music discovery, the changing historical map, or the synthetic audio demo. Your own passports and annotations are stored in this browser only: export a backup before clearing browser data or changing devices.','Пачніце з пошуку музыкі, зменлівай гістарычнай мапы або дэма са штучным аўдыя. Вашы пашпарты і анатацыі захоўваюцца толькі ў гэтым браўзеры: экспартуйце рэзервовую копію перад ачысткай даных або зменай прылады.'],
     ["I build tools to help people find, preserve, and understand Belarusian culture across borders. Music is the starting point. The research asks how AI could support language learning while keeping sources visible and cultural judgment with people.", "Я ствараю інструменты, якія дапамагаюць знаходзіць, захоўваць і разумець беларускую культуру па-за межамі краіны. Музыка — адпраўны пункт. Даследаванне вывучае, як ШІ можа падтрымліваць вывучэнне мовы, захоўваючы бачныя крыніцы і права людзей на культурную ацэнку."],
     ["Try the tools ↓", "Паспрабаваць інструменты ↓"],
     ["Unmute Belarus · working prototypes", "Unmute Belarus · працоўныя прататыпы"],

@@ -5,13 +5,13 @@
   const $ = selector => document.querySelector(selector);
   const text = {
     en: {
-      title:'Belarus, in time and place.', intro:'Explore ten moments through the places, documents, and cultural connections behind them.',
+      title:'Belarus, in time and place.', intro:'Watch regional territories change across seven historical maps, then explore the places and documents behind ten selected events.',
       research:'Research', directory:'Culture directory', guide:'How to use', credits:'Original creators', skip:'Skip to the map',
       search:'Search events or places', placeholder:'Try Skaryna, language, Riga, or 1918', topic:'Topic', period:'Period', reset:'Clear filters',
       all:'All topics', places:'Places & origins', language:'Language & print', politics:'Statehood & borders', heritage:'Built heritage', digital:'Digital culture',
       anytime:'All periods', early:'Before 1900', twentieth:'1900–1999', recent:'2000 onward',
       map:'Map', table:'Table', timeline:'Choose an event', region:'Regional map', modern:'Modern geographic context · event locations, not historical borders',
-      scope:'10 selected events · 7 places · 1067–2016', scopeNote:'An independent edition inspired by MAPA, with new code and source-linked notes.',
+      scope:'7 territory snapshots · 1500–1994 · 10 sourced events', scopeNote:'An independent edition inspired by MAPA, with new code and source-linked notes.',
       results:'events', of:'of', locations:'places', source:'Read the source', context:'A question to explore', sourceLanguage:'Source language',
       sourceType:'Source type', checked:'Source checked September 8, 2026', document:'Historical document / official record', institution:'Institutional reference', creator:'Creator’s own account',
       date:'Date', event:'Event', place:'Place', sourceColumn:'Source', inspect:'Explore event',
@@ -22,13 +22,13 @@
       coordinateNote:'Markers show approximate city or site locations, not exact historical venues.',
       english:'English', belarusian:'Belarusian', russian:'Russian', polish:'Polish',
       guideTitle:'Start with one connection.',
-      guide1:'Choose a date or search a place, person, or topic. Filters combine, so “Skaryna” plus “Language & print” gives two linked stops.',
+      guide1:'Start with the historical map: choose a year or press Play. The territory polygons change between seven real source snapshots. Enable the previous contour or present-day reference to compare.',
       guide2:'Select an event to find its place and read a short note. Use the source button to examine the evidence in its original language.',
       guide3:'Switch to the table for a full list. Copy an event link for a reader, or download the filtered records and source URLs as JSON.',
       keyboard:'Keyboard: Tab reaches every control; ↑/↓ move between event buttons; Home/End select the first/last visible event. Enter or Space opens a place marker.',
       editionTitle:'A new map, with its origins visible.',
       editionText:'The original Interactive Map of Belarusian History (MAPA) was created by Alexey Cherenkevich and his collaborators. This edition by Sergéy Ulyanov independently implements a map-and-timeline idea, adding accessible navigation, bilingual annotations, direct event links, and exports.',
-      editionLimit:'This is a selected set of ten entry points, not a comprehensive history or a recovery of the original MAPA database. Its historical border animations, illustrations, and code are not reproduced. The original creators have not endorsed this edition.',
+      editionLimit:'Seven historical map snapshots and ten events form a starting edition, not a comprehensive history or recovery of the original MAPA database. Territory geometry comes from a separately licensed dataset; the original drawings, illustrations and code are not reproduced. The original creators have not endorsed this edition.',
       credited:'Original MAPA credits, as documented by its creator',
       creditIdea:'Idea and design',creditFront:'Front-end',creditText:'Texts and translations',creditManager:'Management',creditAdvice:'Advice',
       author:'Alexey Cherenkevich',front:'Yauhen Shpileuski',translations:'Hanna Shyrayeva',manager:'Viktar Yakunin',advisor:'Pavel Kedzich',
@@ -39,13 +39,13 @@
       countryBelarus:'BELARUS',countryLithuania:'LITHUANIA',countryLatvia:'LATVIA',countryPoland:'POLAND',countryUkraine:'UKRAINE',countryGermany:'GERMANY',countryCzechia:'CZECHIA',countryRussia:'RUSSIA'
     },
     be: {
-      title:'Беларусь у часе і прасторы.',intro:'Вывучайце дзесяць падзей праз месцы, дакументы і культурныя сувязі.',
+      title:'Беларусь у часе і прасторы.',intro:'Глядзіце, як мяняюцца тэрыторыі на сямі гістарычных мапах, а потым вывучайце месцы і дакументы дзесяці адабраных падзей.',
       research:'Даследаванне',directory:'Каталог культуры',guide:'Як карыстацца',credits:'Аўтары арыгінала',skip:'Перайсці да мапы',
       search:'Пошук падзей або месцаў',placeholder:'Напрыклад: Скарына, мова, Рыга або 1918',topic:'Тэма',period:'Перыяд',reset:'Скінуць фільтры',
       all:'Усе тэмы',places:'Месцы і вытокі',language:'Мова і друк',politics:'Дзяржаўнасць і межы',heritage:'Архітэктурная спадчына',digital:'Лічбавая культура',
       anytime:'Усе перыяды',early:'Да 1900 года',twentieth:'1900–1999',recent:'Ад 2000 года',
       map:'Мапа',table:'Табліца',timeline:'Абярыце падзею',region:'Мапа рэгіёна',modern:'Сучасная геаграфія · месцы падзей, а не гістарычныя межы',
-      scope:'10 адабраных падзей · 7 месцаў · 1067–2016',scopeNote:'Незалежная версія, натхнёная MAPA: новы код і анатацыі са спасылкамі на крыніцы.',
+      scope:'7 тэрытарыяльных зрэзаў · 1500–1994 · 10 падзей з крыніцамі',scopeNote:'Незалежная версія, натхнёная MAPA: новы код і анатацыі са спасылкамі на крыніцы.',
       results:'падзей',of:'з',locations:'месцаў',source:'Прачытаць крыніцу',context:'Пытанне для разважання',sourceLanguage:'Мова крыніцы',
       sourceType:'Тып крыніцы',checked:'Крыніца праверана 8 верасня 2026 года',document:'Гістарычны дакумент / афіцыйны запіс',institution:'Даведка ўстановы',creator:'Аповед аўтара праекта',
       date:'Дата',event:'Падзея',place:'Месца',sourceColumn:'Крыніца',inspect:'Вывучыць падзею',
@@ -56,13 +56,13 @@
       coordinateNote:'Маркеры паказваюць прыблізнае месцазнаходжанне гарадоў або помнікаў, а не дакладныя гістарычныя пляцоўкі.',
       english:'Англійская',belarusian:'Беларуская',russian:'Руская',polish:'Польская',
       guideTitle:'Пачніце з адной сувязі.',
-      guide1:'Абярыце дату або знайдзіце месца, асобу ці тэму. Фільтры спалучаюцца: «Скарына» і «Мова і друк» пакажуць два звязаныя месцы.',
+      guide1:'Пачніце з гістарычнай мапы: абярыце год або запусціце храналогію. Палігоны тэрыторый мяняюцца паміж сямю зрэзамі крыніцы. Уключыце папярэдні контур або сучасны арыенцір для параўнання.',
       guide2:'Абярыце падзею, каб знайсці яе месца і прачытаць кароткую анатацыю. Кнопка крыніцы адкрывае сведчанне на мове арыгінала.',
       guide3:'Пераключыцеся на табліцу для поўнага спіса. Скапіюйце спасылку для чытача або спампуйце адабраныя запісы і крыніцы ў JSON.',
       keyboard:'Клавіятура: Tab пераходзіць паміж элементамі; ↑/↓ — паміж кнопкамі падзей; Home/End выбіраюць першую/апошнюю бачную падзею. Enter або прабел адкрываюць маркер месца.',
       editionTitle:'Новая мапа з бачнымі вытокамі.',
       editionText:'Арыгінальную Інтэрактыўную мапу беларускай гісторыі (MAPA) стварылі Аляксей Чаранкевіч і яго калегі. Гэтая версія Сяргея Ульянава незалежна ўвасабляе ідэю мапы з храналогіяй, дадаючы даступную навігацыю, двухмоўныя анатацыі, прамыя спасылкі і экспарт.',
-      editionLimit:'Гэта дзесяць пунктаў уваходу ў тэму, а не поўная гісторыя або адноўленая база арыгінальнай MAPA. Яе анімацыі гістарычных межаў, ілюстрацыі і код тут не ўзнаўляюцца. Аўтары арыгінала не ўхвалялі гэтую версію.',
+      editionLimit:'Сем гістарычных мапаў і дзесяць падзей — гэта пачатковая версія, а не поўная гісторыя або адноўленая база арыгінальнай MAPA. Геаметрыя ўзятая з асобнага ліцэнзаванага набору; арыгінальныя выявы, ілюстрацыі і код не ўзнаўляюцца. Аўтары арыгінала не ўхвалялі гэтую версію.',
       credited:'Каманда арыгінальнай MAPA паводле дакументацыі аўтара',
       creditIdea:'Ідэя і дызайн',creditFront:'Front-end',creditText:'Тэксты і пераклады',creditManager:'Менеджмент',creditAdvice:'Парады',
       author:'Аляксей Чаранкевіч',front:'Яўген Шпілеўскі',translations:'Ганна Шыраева',manager:'Віктар Якунін',advisor:'Павел Кедзіч',
@@ -203,7 +203,7 @@
   $('#mapa-topic').addEventListener('change',updateFilters);$('#mapa-period').addEventListener('change',updateFilters);
   $('#mapa-search').addEventListener('submit',event=>{event.preventDefault();updateFilters()});
   document.querySelectorAll('[data-reset]').forEach(button=>button.addEventListener('click',reset));
-  document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{state.lang=button.dataset.lang;applyLanguage();syncURL()}));
+  document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{state.lang=button.dataset.lang;applyLanguage();const url=new URL(location.href);url.searchParams.set('lang',state.lang);history.replaceState({},'',url)}));
   document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;render();syncURL(true)}));
   $('#mapa-events').addEventListener('click',event=>{const button=event.target.closest('[data-event]');if(button)select(button.dataset.event)});
   $('#mapa-events').addEventListener('keydown',event=>{
