@@ -8,7 +8,7 @@ import polygonClipping from '../research/atlas/mapa/history/vendor/polygon-clipp
 const historyDir = new URL('../research/atlas/mapa/history/', import.meta.url);
 const readJSON = name => JSON.parse(readFileSync(new URL(name, historyDir), 'utf8'));
 const reference = readJSON('belarus-reference.geojson').features[0].geometry.coordinates;
-const years = [1700, 1914, 1938, 1945, 1994];
+const years = [1492, 1600, 1700, 1914, 1938, 1945, 1994];
 const layers = new Map(years.map(year => [year, readJSON(`focus_${year}.geojson`)]));
 const epsilon = 1e-9;
 

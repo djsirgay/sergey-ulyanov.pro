@@ -2,9 +2,12 @@
 // Regional adaptation of André Ourednik and contributors' historical-basemaps.
 // Modified 2026-09-08: clip to the display window, retain provenance and source fields.
 // Run with Node 20+: node research/atlas/mapa/history/build-data.mjs
-import { mkdir, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 const revision='62d8f1a03a71f2d3ff17f2d166f7553f256bce68';
-const years=[1500,1700,1800,1914,1938,1945,1994];
+const years=[1492,1500,1600,1700,1800,1914,1938,1945,1994];
+const displayedYears=[1492,1600,1700,1914,1938,1945,1994];
+// Preserve reviewed local inputs by default. --refresh deliberately re-fetches them.
+const refresh=process.argv.includes('--refresh');
 const bounds=[12,46,40,61];
 const directory=new URL('./',import.meta.url);
 await mkdir(directory,{recursive:true});
@@ -35,6 +38,14 @@ function clipped(geometry){
 const states=[];
 for(const year of years){
   const source=`https://raw.githubusercontent.com/aourednik/historical-basemaps/${revision}/geojson/world_${year}.geojson`;
+  if(!refresh){
+    const stored=await readFile(new URL(`world_${year}.geojson`,directory),'utf8').then(JSON.parse).catch(error=>{if(error.code==='ENOENT')return null;throw error});
+    if(stored){
+      if(stored.revision!==revision||stored.upstream!==source)throw Error(`${year}: cached provenance differs; inspect before replacing`);
+      states.push({year,source,featureCount:stored.features.length});
+      continue;
+    }
+  }
   const response=await fetch(source);if(!response.ok)throw Error(`${year}: ${response.status}`);
   const original=await response.json();
   const features=original.features.map(f=>{
@@ -46,11 +57,19 @@ for(const year of years){
   await writeFile(new URL(`world_${year}.geojson`,directory),JSON.stringify(data));
   states.push({year,source,featureCount:features.length});
 }
-const response=await fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson');
-const modern=await response.json();
-const belarus=modern.features.find(f=>f.properties.ADMIN==='Belarus');
-await writeFile(new URL('belarus-reference.geojson',directory),JSON.stringify({type:'FeatureCollection',license:'public domain',source:'https://www.naturalearthdata.com/about/terms-of-use/',purpose:'Explicitly contemporary orientation overlay, not historical territory.',features:[{type:'Feature',properties:{NAME:'Belarus — contemporary reference'},geometry:clipped(belarus.geometry)}]}));
-const license=await(await fetch(`https://raw.githubusercontent.com/aourednik/historical-basemaps/${revision}/LICENSE`)).text();
-await writeFile(new URL('LICENSE-GPL-3.0.txt',directory),license);
-await writeFile(new URL('manifest.json',directory),JSON.stringify({revision,bounds,years:states,license:'GPL-3.0-only',source:'https://github.com/aourednik/historical-basemaps',limitations:'Selected regional state snapshots, not continuous annual data, internal SSR boundaries, or historical national/ethnic territories.'},null,2));
+const existingReference=await readFile(new URL('belarus-reference.geojson',directory),'utf8').catch(error=>{if(error.code==='ENOENT')return null;throw error});
+if(refresh||!existingReference){
+  const response=await fetch('https://raw.githubusercontent.com/nvkelso/natural-earth-vector/master/geojson/ne_50m_admin_0_countries.geojson');
+  if(!response.ok)throw Error(`Modern reference: ${response.status}`);
+  const modern=await response.json();
+  const belarus=modern.features.find(f=>f.properties.ADMIN==='Belarus');
+  await writeFile(new URL('belarus-reference.geojson',directory),JSON.stringify({type:'FeatureCollection',license:'public domain',source:'https://www.naturalearthdata.com/about/terms-of-use/',purpose:'Explicitly contemporary orientation overlay, not historical territory.',features:[{type:'Feature',properties:{NAME:'Belarus — contemporary reference'},geometry:clipped(belarus.geometry)}]}));
+}
+const existingLicense=await readFile(new URL('LICENSE-GPL-3.0.txt',directory),'utf8').catch(error=>{if(error.code==='ENOENT')return null;throw error});
+if(refresh||!existingLicense){
+  const response=await fetch(`https://raw.githubusercontent.com/aourednik/historical-basemaps/${revision}/LICENSE`);
+  if(!response.ok)throw Error(`License: ${response.status}`);
+  await writeFile(new URL('LICENSE-GPL-3.0.txt',directory),await response.text());
+}
+await writeFile(new URL('manifest.json',directory),JSON.stringify({revision,bounds,years:states,displayedYears,excludedStoredYears:[1500,1800],audit:'snapshot-audit.json',license:'GPL-3.0-only',source:'https://github.com/aourednik/historical-basemaps',limitations:'Selected regional state snapshots, not continuous annual data, internal GDL/SSR boundaries, or historical national/ethnic territories.'},null,2));
 console.log(JSON.stringify({snapshots:states,bounds}));

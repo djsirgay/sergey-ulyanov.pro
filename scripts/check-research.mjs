@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import assert from 'node:assert/strict';
+import vm from 'node:vm';
 
 // Static release gate: public research routes must not ship broken local assets.
 const root = path.resolve(import.meta.dirname, '..');
@@ -17,11 +18,13 @@ const failures = [];
 for (const file of pages) {
   const source = fs.readFileSync(file, 'utf8');
   for (const [, raw] of source.matchAll(/(?:href|src)=["']([^"']+)["']/g)) {
-    if (!raw.startsWith('/') || raw.startsWith('//')) continue;
-    const location = decodeURIComponent(raw.split(/[?#]/)[0]).slice(1);
-    let target = path.resolve(root, location);
+    if (/^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(raw)) continue;
+    const location = decodeURIComponent(raw.split(/[?#]/)[0]);
+    if (!location) continue;
+    let target = location.startsWith('/') ? path.resolve(root, location.slice(1)) : path.resolve(path.dirname(file), location);
     if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
     if (!fs.existsSync(target)) failures.push(`${path.relative(root, file)} → ${raw}`);
+    if (target.endsWith('.md') && !/^LICENSE.*\.md$/.test(path.basename(target))) failures.push(`${path.relative(root, file)} → ${raw} (excluded from the public Pages artifact)`);
   }
 }
 assert.deepEqual(failures, [], `Broken local research links:\n${failures.join('\n')}`);
@@ -33,7 +36,8 @@ assert.match(home, /research\/atlas\/mapa\//);
 assert.match(home, /atlas\/#external-discovery/);
 const historicalRoot = path.join(root, 'research/atlas/mapa/history');
 const manifest = JSON.parse(fs.readFileSync(path.join(historicalRoot, 'manifest.json'), 'utf8'));
-assert.deepEqual(manifest.years.map(item => item.year), [1500, 1700, 1800, 1914, 1938, 1945, 1994]);
+const sourceYears = [1492, 1500, 1600, 1700, 1800, 1914, 1938, 1945, 1994];
+assert.deepEqual(manifest.years.map(item => item.year), sourceYears);
 const geometries = new Set();
 for (const item of manifest.years) {
   const data = JSON.parse(fs.readFileSync(path.join(historicalRoot, `world_${item.year}.geojson`), 'utf8'));
@@ -42,10 +46,12 @@ for (const item of manifest.years) {
   assert.ok(data.features.every(feature => ['Polygon', 'MultiPolygon'].includes(feature.geometry.type)));
   geometries.add(JSON.stringify(data.features.map(feature => feature.geometry)));
 }
-assert.equal(geometries.size, 7, 'Historical layers must contain seven distinct geometry sets');
+assert.equal(geometries.size, sourceYears.length, 'Retained historical sources must have distinct geometry sets');
 // Rejected source candidates remain available for traceability, not in the
 // map controls: 1500 misses the Homiel transition and 1800 the Prussian west.
-const displayedYears = [1700, 1914, 1938, 1945, 1994];
+const displayedYears = [1492, 1600, 1700, 1914, 1938, 1945, 1994];
+assert.deepEqual(manifest.displayedYears, displayedYears);
+assert.deepEqual(manifest.excludedStoredYears, [1500, 1800]);
 for (const year of displayedYears) {
   const focus = JSON.parse(fs.readFileSync(path.join(historicalRoot, `focus_${year}.geojson`), 'utf8'));
   assert.equal(focus.type, 'FeatureCollection');
@@ -56,4 +62,12 @@ for (const year of displayedYears) {
   assert.ok(focus.features.every(feature => feature.geometry.type === 'MultiPolygon'));
 }
 assert.ok(fs.existsSync(path.join(historicalRoot, 'LICENSE-GPL-3.0.txt')));
-console.log(`Research release checks passed: ${pages.length} pages, four task entry points, five Belarus-focused map layers, seven retained source snapshots, no missing local assets.`);
+const chronology = fs.readFileSync(path.join(historicalRoot, '../chronology.js'), 'utf8');
+const chronologyContext = {};
+const dataStart = chronology.indexOf('  const sources='), dataEnd = chronology.indexOf('  const words=');
+assert.ok(dataStart >= 0 && dataEnd > dataStart, 'Chronology data section must remain inspectable');
+vm.runInNewContext(chronology.slice(dataStart, dataEnd) + '\nglobalThis.stages=records', chronologyContext);
+const stages = JSON.parse(JSON.stringify(chronologyContext.stages));
+assert.equal(stages.length, 28, 'Chronology must expose all 28 reviewed stages');
+assert.deepEqual(stages.filter(stage => stage.map).map(stage => stage.map), displayedYears);
+console.log(`Research release checks passed: ${pages.length} pages, four task entry points, ${displayedYears.length} Belarus-focused map layers, ${stages.length} chronology stages, ${sourceYears.length} retained source snapshots, no missing local assets.`);

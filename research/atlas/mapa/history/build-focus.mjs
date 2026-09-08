@@ -3,7 +3,7 @@
 // These are derived display areas, NOT historical borders of a Belarusian state.
 import {readFile,writeFile} from 'node:fs/promises';
 import polygonClipping from './vendor/polygon-clipping.cjs';
-const dir=new URL('./',import.meta.url),years=[1700,1914,1938,1945,1994];
+const dir=new URL('./',import.meta.url),years=[1492,1600,1700,1914,1938,1945,1994];
 const modern=JSON.parse(await readFile(new URL('belarus-reference.geojson',dir),'utf8'));
 const reference=modern.features[0].geometry.coordinates;
 const coordinateArea=multi=>multi.reduce((sum,poly)=>sum+poly.reduce((sub,ring,i)=>sub+(i?-1:1)*Math.abs(ring.slice(1).reduce((area,p,n)=>area+ring[n][0]*p[1]-p[0]*ring[n][1],0))/2,0),0);

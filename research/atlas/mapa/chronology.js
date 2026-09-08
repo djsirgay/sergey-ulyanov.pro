@@ -17,6 +17,7 @@
   sources.congress={label:'Central Archives of Historical Records · transition in 1815',url:'https://www.agad.gov.pl/inwentarze/rntkw181.xml'};
   sources.census={label:'Henryk Grossman · urban censuses, 1808 / 1810 (1925), table XXXIX, p. 102',url:'https://sbc.org.pl/Content/79470/iii5038-1925-01.pdf'};
   sources.postwar={label:'Treaty boundary map, 16 August 1945 · University of Wisconsin–Milwaukee',url:'https://collections.lib.uwm.edu/digital/collection/agdm/id/32932/'};
+  sources.bottlik={label:'Zsolt Bottlik · Belarus in Maps (2017), historical roots and the Grand Duchy, pp. 40–43',url:'https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf'};
   sources.atlas.label='Belarus in Maps · state formation, historical maps and chronology (2017)';
   sources.west.url='http://bg.uwb.edu.pl/pcr/BKWP/files/BKWP_2008_14_009.pdf';sources.west.label+=' · public PDF over HTTP';
   const records=[
@@ -51,13 +52,51 @@
   records.splice(records.indexOf(tilsit)+1,0,{id:'congress-1815',year:1815,date:['1815','1815'],kind:'union',title:['A kingdom under the Russian emperor','Каралеўства пад уладай расійскага імператара'],body:['The Sapoćkin area entered Congress Poland, whose monarch was the Russian emperor. This local constitutional history differs from direct incorporation into an imperial province in 1807.','Сапоцкінскі ўчастак увайшоў у Царства Польскае, манархам якога быў расійскі імператар. Гэтая мясцовая канстытуцыйная гісторыя адрозніваецца ад прамога ўключэння ў імперскую вобласць у 1807 годзе.'],areas:[[['Most Belarusian lands','Большасць беларускіх зямель'],['Russian Empire','Расійская імперыя']],[['Sapoćkin area','Сапоцкінскі ўчастак'],['Congress Poland under the Russian emperor','Царства Польскае пад уладай расійскага імператара']]],sources:['sapockin','congress']});
   tilsit.sources=['tilsit','census','warsaw'];
   records.find(r=>r.id==='postwar-1945').sources=['postwar','atlas'];
+  const additionalMaps=[
+    {id:'gdl-1492',year:1492,map:1492,date:['1492','1492'],kind:'state',title:['The Grand Duchy before the sixteenth-century wars','ВКЛ перад войнамі XVI стагоддзя'],body:['The lands in the Belarus comparison area were within the Grand Duchy of Lithuania. The source combines Poland and Lithuania in one outer polygon; it does not establish the Grand Duchy’s own full boundary or make it part of Poland.','Землі беларускага акна параўнання ўваходзілі ў Вялікае Княства Літоўскае. Крыніца аб’ядноўвае Польшчу і Літву ў адзін знешні палігон; ён не вызначае асобнай поўнай мяжы ВКЛ і не робіць княства часткай Польшчы.'],areas:[[['Belarusian lands','Беларускія землі'],['Grand Duchy of Lithuania','Вялікае Княства Літоўскае']]],sources:['atlas']},
+    {id:'commonwealth-1600',year:1600,map:1600,date:['1600','1600'],kind:'state',title:['The Grand Duchy in the Commonwealth','ВКЛ у Рэчы Паспалітай'],body:['After the Union of Lublin, the Grand Duchy retained its distinct institutions within the Polish–Lithuanian Commonwealth. This source snapshot shows the wider state framework, not a separate digitization of the duchy’s internal boundary.','Пасля Люблінскай уніі ВКЛ захавала асобныя ўстановы ў Рэчы Паспалітай. Гэты зрэз паказвае шырэйшую дзяржаўную сістэму, а не асобна алічбаваную ўнутраную мяжу княства.'],areas:[[['State framework','Дзяржаўная сістэма'],['Polish–Lithuanian Commonwealth','Рэч Паспалітая']],[['Constituent polity','Складовая дзяржава'],['Grand Duchy of Lithuania','Вялікае Княства Літоўскае']]],sources:['atlas']},
+  ];
+  for(const record of additionalMaps){record.sources.push('bottlik');const next=records.findIndex(item=>item.year>record.year);records.splice(next<0?records.length:next,0,record)}
   const count=records.filter(r=>r.map).length;
   const words={en:{mapTab:`Territory map · ${count} source years`,timelineTab:`Political chronology · ${records.length} stages`,eyebrow:'02 · Political chronology',title:'One place. More than one political story.',intro:'Follow the changes that a handful of map snapshots cannot explain. State membership, a republic’s internal boundary, a declaration, and military occupation are different things.',choose:'Choose a transition',previous:'Previous',next:'Next',sources:'Sources for this transition',openMap:'Open this dated map',scope:'Scope: lands inside the modern Belarus outline, not an unchanging ethnic or national territory. This is a selected chronology, not the original MAPA’s complete 63-state sequence.',unmapped:'Context only — no verified geometry for this exact stage. No other year’s borders are substituted.',mapped:'A dated source geometry is available. Open it to inspect the political division and its accuracy notes.',kinds:{formation:'Gradual political formation',union:'Union / constitutional framework',state:'Dated affiliation snapshot',partition:'Partition / territorial division',transfer:'Territorial transfer',occupation:'Military occupation / control',declaration:'Declaration — not proof of full control',conflict:'Contested rule / changing front',internal:'Internal republic boundary',independence:'Independent statehood'}},be:{mapTab:`Тэрытарыяльная мапа · ${count} гадоў`,timelineTab:`Палітычная храналогія · ${records.length} этапаў`,eyebrow:'02 · Палітычная храналогія',title:'Адно месца. Некалькі палітычных гісторый.',intro:'Прасачыце змены, якія некалькі мапаў не могуць растлумачыць. Дзяржаўная прыналежнасць, унутраная мяжа рэспублікі, дэкларацыя і ваенная акупацыя — розныя рэчы.',choose:'Абярыце пераход',previous:'Назад',next:'Далей',sources:'Крыніцы гэтага пераходу',openMap:'Адкрыць гэтую датаваную мапу',scope:'Фокус: землі ў сучасным беларускім контуры, а не нязменная этнічная або нацыянальная тэрыторыя. Гэта выбраная храналогія, а не ўсе 63 станы арыгінальнай MAPA.',unmapped:'Толькі кантэкст — праверанай геаметрыі гэтага дакладнага этапу няма. Межы іншага года не падстаўляюцца.',mapped:'Даступная датаваная геаметрыя крыніцы. Адкрыйце яе, каб убачыць падзел і заўвагі аб дакладнасці.',kinds:{formation:'Паступовае палітычнае станаўленне',union:'Унія / канстытуцыйная сістэма',state:'Датаваны зрэз прыналежнасці',partition:'Падзел тэрыторыі',transfer:'Тэрытарыяльная перадача',occupation:'Ваенная акупацыя / кантроль',declaration:'Абвяшчэнне — не доказ поўнага кантролю',conflict:'Спрэчная ўлада / зменлівы фронт',internal:'Унутраная мяжа рэспублікі',independence:'Незалежная дзяржаўнасць'}}};
   const $=id=>document.getElementById(id),local=x=>x[document.documentElement.lang==='be'?1:0],t=key=>words[document.documentElement.lang==='be'?'be':'en'][key];
-  let current=records.findIndex(r=>r.id==='division-1938'),panel='borders';
-  function setPanel(next,canonical=false){panel=next;$('borders').hidden=panel!=='borders';$('chronology').hidden=panel!=='chronology';document.querySelectorAll('[data-history-panel]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.historyPanel===panel)));if(panel==='chronology')window.dispatchEvent(new Event('mapa-pause-history'));else if(canonical)window.dispatchEvent(new Event('mapa-canonical-map'))}
+  let current=records.findIndex(r=>r.id==='division-1938'),panel='borders',routeIssue=null;
+  const tabs=document.querySelector('.mapa-history-tabs');
+  const stageNav=document.createElement('div');stageNav.className='mapa-stage-nav';
+  const stageLabel=document.createElement('label');stageLabel.htmlFor='mapa-stage-select';
+  const stageSelect=document.createElement('select');stageSelect.id='mapa-stage-select';stageSelect.className='mapa-stage-select';stageSelect.setAttribute('aria-describedby','mapa-stage-help');
+  const stageHelp=document.createElement('p');stageHelp.id='mapa-stage-help';
+  stageNav.append(stageLabel,stageSelect,stageHelp);
+  const routeNotice=document.createElement('p');routeNotice.id='history-route-notice';routeNotice.role='status';routeNotice.hidden=true;
+  tabs.before(stageNav,routeNotice);
+  function setPanel(next){
+    panel=next;$('borders').hidden=panel!=='borders';$('chronology').hidden=panel!=='chronology';
+    document.querySelectorAll('[data-history-panel]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.historyPanel===panel)));
+    if(panel==='chronology')window.dispatchEvent(new Event('mapa-pause-history'));
+  }
+  function mappedIndex(year){return records.findIndex(record=>record.map===Number(year))}
+  function renderedMapYear(){const year=Number($('history-map-year').textContent);return mappedIndex(year)>=0?year:1938}
+  function writeContextURL(replace=false){
+    const url=new URL(location.href);url.searchParams.set('stage',records[current].id);url.hash='chronology';
+    if(url.href!==location.href)history[replace?'replaceState':'pushState']({},'',url);
+  }
+  function renderRouteNotice(){
+    routeNotice.hidden=routeIssue===null;
+    routeNotice.textContent=routeIssue===null?'':local([
+      `The requested stage (${routeIssue}) is not available. The map below has its own explicit date; no border was inferred for the requested stage.`,
+      `Запытаны этап (${routeIssue}) недаступны. Мапа ніжэй мае ўласную выразную дату; межы запытанага этапу не выдумляліся.`
+    ]);
+  }
   function render(){
+    renderRouteNotice();
     document.querySelectorAll('[data-chrono]').forEach(el=>el.textContent=t(el.dataset.chrono));
+    stageLabel.textContent=local([`Choose an era or transition · all ${records.length} stages`,`Абярыце эпоху або пераход · усе ${records.length} этапаў`]);
+    stageHelp.textContent=local([
+      `${count} stages have a dated map. Every other stage opens a historical explanation and sources, not an invented border.`,
+      `${count} этапаў маюць датаваную мапу. Астатнія адкрываюць гістарычнае тлумачэнне і крыніцы, а не выдуманыя межы.`
+    ]);
+    stageSelect.replaceChildren();
+    for(const r of records){const option=document.createElement('option');option.value=r.id;option.textContent=`${local(r.date)} · ${local(r.title)} — ${local(r.map?['map available','ёсць мапа']:['context + sources','кантэкст + крыніцы'])}`;stageSelect.append(option)}stageSelect.value=records[current].id;
     const record=records[current],select=$('chronology-stage');select.replaceChildren();
     for(const r of records){const o=document.createElement('option');o.value=r.id;o.textContent=`${local(r.date)} · ${local(r.title)}`;select.append(o)}select.value=record.id;
     $('chronology-range').max=records.length-1;$('chronology-range').value=current;$('chronology-range').setAttribute('aria-valuetext',local(record.date));$('chronology-position').textContent=`${current+1} / ${records.length}`;
@@ -67,15 +106,41 @@
     $('chronology-geometry').textContent=record.geometryNote?`${t('unmapped')} ${local(record.geometryNote)}`:t(record.map?'mapped':'unmapped');$('chronology-geometry').dataset.geometry=record.map?'mapped':'context-only';$('chronology-open-map').hidden=!record.map;
     $('chronology-sources').replaceChildren();for(const id of record.sources){const source=sources[id],a=document.createElement('a');a.href=source.url;a.textContent=source.label+' ↗';a.target='_blank';a.rel='noopener noreferrer';$('chronology-sources').append(a)}
   }
-  function choose(i){current=Math.max(0,Math.min(records.length-1,i));setPanel('chronology');const url=new URL(location.href);url.searchParams.set('stage',records[current].id);url.hash='chronology';history.replaceState({},'',url);render()}
-  document.querySelectorAll('[data-history-panel]').forEach(button=>button.addEventListener('click',()=>{if(button.dataset.historyPanel==='chronology'&&panel==='borders'){const year=+new URLSearchParams(location.search).get('year')||1938,found=records.findIndex(r=>r.map===year);if(found>=0)current=found}setPanel(button.dataset.historyPanel,true);const url=new URL(location.href);if(panel==='chronology')url.searchParams.set('stage',records[current].id);else url.searchParams.delete('stage');url.hash=panel;history.replaceState({},'',url);render()}));
+  function choose(i,replace=false){if(!Number.isInteger(i)||i<0||i>=records.length)return;routeIssue=null;current=i;setPanel('chronology');writeContextURL(replace);render()}
+  function openMap(year){
+    const found=mappedIndex(year);if(found<0)return;
+    routeIssue=null;current=found;setPanel('borders');
+    window.dispatchEvent(new CustomEvent('mapa-select-year',{detail:Number(year)}));render();
+  }
+  stageSelect.addEventListener('change',event=>{const found=records.findIndex(r=>r.id===event.target.value);if(found<0)return;const record=records[found];if(record.map)openMap(record.map);else choose(found)});
+  document.querySelectorAll('[data-history-panel]').forEach(button=>button.addEventListener('click',()=>{
+    if(button.dataset.historyPanel==='borders'){openMap(records[current].map||renderedMapYear());return}
+    if(panel==='borders'){const found=mappedIndex(renderedMapYear());if(found>=0)current=found}
+    choose(current);
+  }));
   $('chronology-stage').addEventListener('change',e=>choose(records.findIndex(r=>r.id===e.target.value)));$('chronology-range').addEventListener('input',e=>choose(+e.target.value));$('chronology-prev').addEventListener('click',()=>choose(current-1));$('chronology-next').addEventListener('click',()=>choose(current+1));
-  $('chronology-open-map').addEventListener('click',()=>{const record=records[current];if(!record.map)return;setPanel('borders');const url=new URL(location.href);url.searchParams.delete('stage');history.replaceState({},'',url);window.dispatchEvent(new CustomEvent('mapa-select-year',{detail:record.map}))});
-  document.querySelectorAll('a[href="#borders"]').forEach(a=>a.addEventListener('click',()=>setPanel('borders',true)));
-  const routeNotice=document.createElement('p');routeNotice.id='history-route-notice';routeNotice.role='status';routeNotice.hidden=true;document.querySelector('.mapa-history-tabs').before(routeNotice);
-  function readURL(){const p=new URLSearchParams(location.search),stage=p.get('stage'),year=+p.get('year');const found=records.findIndex(r=>r.id===stage||(!stage&&!records.some(item=>item.map===year)&&(r.year===year||r.aliases?.includes(year))));if(found>=0){current=found;setPanel('chronology')}else if(location.hash==='#chronology')setPanel('chronology');else{setPanel('borders');if((year&&!records.some(r=>r.map===year))||(stage&&!records.some(r=>r.id===stage))){routeNotice.hidden=false;routeNotice.textContent=local([`The requested stage (${stage||year}) is not available. Showing the explicitly dated 1938 map, not an inferred border for that stage.`,`Запытаны этап (${stage||year}) недаступны. Паказана датаваная мапа 1938 года, а не выдуманая мяжа запытанага этапу.`]);setPanel('borders',true)}}}
+  $('chronology-open-map').addEventListener('click',()=>openMap(records[current].map));
+  document.querySelectorAll('a[href="#borders"]').forEach(a=>a.addEventListener('click',event=>{event.preventDefault();openMap(records[current].map||renderedMapYear());$('borders').scrollIntoView({behavior:'smooth'})}));
+  function readURL(){
+    routeIssue=null;
+    const params=new URLSearchParams(location.search),stage=params.get('stage'),rawYear=params.get('year'),year=Number(rawYear);
+    const exactStage=records.findIndex(record=>record.id===stage),mapIndex=mappedIndex(year);
+    const contextual=records.findIndex(record=>record.year===year||record.aliases?.includes(year));
+    if(stage!==null&&exactStage<0){routeIssue=stage||'(empty stage)';setPanel('borders');window.dispatchEvent(new Event('mapa-canonical-map'));return}
+    if(exactStage>=0){current=exactStage;setPanel('chronology');return}
+    if(rawYear!==null&&mapIndex<0&&contextual<0){routeIssue=rawYear||'(empty year)';setPanel('borders');window.dispatchEvent(new Event('mapa-canonical-map'));return}
+    if(mapIndex<0&&contextual>=0){current=contextual;setPanel('chronology');return}
+    if(mapIndex>=0)current=mapIndex;
+    setPanel(location.hash==='#chronology'?'chronology':'borders');
+  }
   window.addEventListener('mapa-read-context',event=>{const found=records.findIndex(r=>r.map===event.detail);if(found>=0){choose(found);$('chronology').scrollIntoView({behavior:'smooth'})}});
-  window.addEventListener('popstate',()=>{readURL();render()});new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
+  window.addEventListener('mapa-year-changed',event=>{if(panel!=='borders')return;const found=mappedIndex(event.detail);if(found>=0){current=found;routeIssue=null;render()}});
+  window.addEventListener('popstate',()=>{readURL();render()});
+  window.addEventListener('hashchange',()=>{
+    if(location.hash==='#borders'){routeIssue=null;setPanel('borders');const found=mappedIndex(renderedMapYear());if(found>=0)current=found;window.dispatchEvent(new Event('mapa-canonical-map'));render()}
+    else if(location.hash==='#chronology'){readURL();if(routeIssue===null){setPanel('chronology');writeContextURL(true)}render()}
+  });
+  new MutationObserver(render).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
   window.MAPA_CHRONOLOGY=Object.freeze(records.map(r=>Object.freeze({...r})));
   readURL();render();
 })();

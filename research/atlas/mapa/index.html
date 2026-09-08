@@ -16,11 +16,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles-atlas.css?v=20260908">
-  <link rel="stylesheet" href="./mapa.css?v=20260908c">
+  <link rel="stylesheet" href="./mapa.css?v=20260908d">
   <script src="./events.js?v=20260908" defer></script>
-  <script src="./mapa.js?v=20260908c" defer></script>
-  <script src="./history.js?v=20260908c" defer></script>
-  <script src="./chronology.js?v=20260908c" defer></script>
+  <script src="./mapa.js?v=20260908d" defer></script>
+  <script src="./history/places.js?v=20260908d" defer></script>
+  <script src="./history.js?v=20260908d" defer></script>
+  <script src="./chronology.js?v=20260908d" defer></script>
 </head>
 <body class="mapa-page">
   <a class="skip-link" href="#borders" data-i18n="skip">Skip to the map</a>
@@ -32,27 +33,79 @@
   <main>
     <div class="mapa-shell">
       <section class="mapa-intro" aria-labelledby="mapa-title">
-        <div><p class="mapa-eyebrow">MAPA · <span data-i18n="scope">5 mapped years · 26 chronology stages · EN / БЕЛ</span></p><h1 id="mapa-title" data-i18n="title">Belarusian lands. Changing states.</h1><p data-i18n="intro">Which states governed these lands — and when were they divided? Keep Belarus in view and follow the political transitions.</p></div>
+        <div><p class="mapa-eyebrow">MAPA · <span data-i18n="scope">7 mapped years · 28 chronology stages · EN / БЕЛ</span></p><h1 id="mapa-title" data-i18n="title">Belarusian lands. Changing states.</h1><p data-i18n="intro">Which states governed these lands — and when were they divided? Keep Belarus in view and follow the political transitions.</p></div>
         <a class="mapa-origin-link" href="#credits" data-i18n="credits">Original creators ↓</a>
       </section>
-      <nav class="mapa-history-tabs" aria-label="History views"><button type="button" data-history-panel="borders" aria-pressed="true" aria-controls="borders" data-chrono="mapTab">Territory map · 5 source years</button><button type="button" data-history-panel="chronology" aria-pressed="false" aria-controls="chronology" data-chrono="timelineTab">Political chronology</button></nav>
+      <nav class="mapa-history-tabs" aria-label="History views"><button type="button" data-history-panel="borders" aria-pressed="true" aria-controls="borders" data-chrono="mapTab">Territory map · 7 source years</button><button type="button" data-history-panel="chronology" aria-pressed="false" aria-controls="chronology" data-chrono="timelineTab">Political chronology · 28 stages</button></nav>
       <section id="borders" class="history-explorer" aria-labelledby="history-title">
         <div class="history-section-heading"><div><p class="mapa-eyebrow" data-history="eyebrow">01 · Belarusian lands through time</p><h2 id="history-title" data-history="title">Which states were these lands part of?</h2></div><a href="#explore" class="mapa-text-link" data-history="jumpEvents">Explore places and documents ↓</a></div>
         <p class="history-intro" data-history="intro">The modern Belarus reference stays fixed while source-based political divisions change inside it. Start with the Polish–Soviet division in 1938.</p>
         <div class="history-layout">
           <div class="history-map-column">
             <div class="history-mode-control" role="group" aria-label="Map focus"><button type="button" data-history-mode="focus" aria-pressed="true" data-history="focusMode">Belarusian lands</button><button type="button" data-history-mode="region" aria-pressed="false" data-history="regionMode">Wider states</button></div>
-            <div class="history-map-frame"><svg id="history-map" viewBox="0 0 960 700" role="img" aria-labelledby="history-map-title history-map-desc"><title id="history-map-title">Political affiliation of Belarusian lands</title><desc id="history-map-desc">Loading the historical map.</desc><defs><pattern id="history-unresolved-pattern" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#34433b"/><path d="M0 7L7 0" stroke="#718076" stroke-width="1"/></pattern></defs><rect x="0" y="0" width="960" height="700" fill="#071914"/><g id="history-surrounding" hidden></g><g id="history-reference-fill"></g><g id="history-shapes"></g><g id="history-prior" hidden></g><g id="history-reference"></g><g id="history-labels"></g></svg><div class="history-year-stamp" aria-hidden="true"><span id="history-map-year">1938</span><small data-history="snapshot">dated snapshot</small></div><p id="history-load-status" role="status" class="history-load-status" data-history="loading">Loading source geometry…</p></div>
-            <div class="history-player"><button id="history-play" class="mapa-button primary" type="button" aria-pressed="false" data-history="play">Play timeline</button><button id="history-prev" class="mapa-button quiet" type="button" data-history="previous">Previous</button><div class="history-range-field"><label for="history-range" data-history="slider">Map year</label><input id="history-range" type="range" min="0" max="4" step="1" value="2" aria-valuetext="1938"><span class="history-range-ends" aria-hidden="true"><span>1700</span><span>1994</span></span></div><button id="history-next" class="mapa-button quiet" type="button" data-history="next">Next</button></div>
+            <p id="history-answer" class="history-answer" aria-live="polite" aria-atomic="true">1938: western lands were in Poland; eastern lands were in the Belarusian SSR, within the USSR.</p>
+            <div class="history-legend" id="history-legend" role="group" aria-label="States shown on the map"></div>
+            <p id="history-country-result" class="history-country-result" role="status"></p>
+            <div class="history-map-frame">
+              <svg id="history-map" viewBox="0 0 960 700" role="img" aria-labelledby="history-map-title history-map-desc">
+                <title id="history-map-title">Political affiliation of Belarusian lands</title>
+                <desc id="history-map-desc">Loading the historical map.</desc>
+                <defs><pattern id="history-unresolved-pattern" width="7" height="7" patternUnits="userSpaceOnUse"><rect width="7" height="7" fill="#34433b"/><path d="M0 7L7 0" stroke="#718076" stroke-width="1"/></pattern></defs>
+                <rect x="0" y="0" width="960" height="700" fill="#071914"/>
+                <g id="history-surrounding" hidden></g>
+                <g id="history-reference-fill"></g>
+                <g id="history-shapes"></g>
+                <g id="history-prior" hidden></g>
+                <g id="history-reference"></g>
+                <g id="history-polity-labels"></g>
+                <g id="history-labels"></g>
+              </svg>
+              <div class="history-year-stamp" aria-hidden="true"><span id="history-map-year">1938</span><small data-history="snapshot">dated snapshot</small></div>
+              <div class="history-map-controls" role="group" aria-label="Map zoom">
+                <button id="history-zoom-in" class="mapa-button quiet" type="button" aria-label="Zoom in">+</button>
+                <button id="history-zoom-out" class="mapa-button quiet" type="button" aria-label="Zoom out">−</button>
+                <button id="history-zoom-reset" class="mapa-button quiet" type="button">Reset</button>
+              </div>
+              <p id="history-load-status" role="status" class="history-load-status" data-history="loading">Loading source geometry…</p>
+              <button id="history-retry" class="mapa-button quiet history-retry" type="button" data-history="retry" hidden>Try loading the map again</button>
+            </div>
+            <div class="history-player"><button id="history-play" class="mapa-button primary" type="button" aria-pressed="false" data-history="play">Play timeline</button><button id="history-prev" class="mapa-button quiet" type="button" data-history="previous">Previous</button><div class="history-range-field"><label for="history-range" data-history="slider">Map year</label><input id="history-range" type="range" min="0" max="6" step="1" value="4" aria-valuetext="1938"><span class="history-range-ends" aria-hidden="true"><span>1492</span><span>1994</span></span></div><button id="history-next" class="mapa-button quiet" type="button" data-history="next">Next</button></div>
             <div class="history-year-buttons" id="history-years" role="group" aria-label="Map snapshots"></div>
             <p class="history-fixed-scope" data-history="fixedScope">White outline: present-day Belarus, held constant as a comparison window — not a historical state border.</p>
             <div class="history-overlays"><label><input id="history-show-prior" type="checkbox"><span data-history="previousOverlay">Compare previous division · dashed coral</span></label></div>
-            <div class="history-city-explorer"><p data-history="cityPrompt">Check a city in this year</p><div id="history-cities" role="group" aria-label="City affiliation"></div><p id="history-city-result" role="status"></p></div>
-            <p class="history-map-note" data-history="accuracy">Approximate regional reconstructions, not survey boundaries. Only five selected years have displayed map data; context-only chronology stages do not invent intermediate borders.</p>
+            <div class="history-city-explorer">
+              <p data-history="cityPrompt">Check a city in this year</p>
+              <div class="history-city-field">
+                <label for="history-place-select" data-history="chooseCity">Choose a city or town</label>
+                <select id="history-place-select" aria-describedby="history-city-hint"></select>
+                <p id="history-city-hint" class="history-city-hint">25 present-day places for orientation. These points do not establish historical borders or founding dates.</p>
+              </div>
+              <div id="history-cities" role="group" aria-label="City affiliation"></div>
+              <p id="history-city-result" role="status"></p>
+              <details class="history-places-table">
+                <summary data-history="allCities">View all 25 places in this year</summary>
+                <div class="history-places-table-wrap"><table aria-describedby="history-city-hint"><thead><tr><th scope="col" data-history="cityColumn">City or town</th><th scope="col" data-history="affiliationColumn">Political affiliation in this map</th></tr></thead><tbody id="history-places-body"></tbody></table></div>
+              </details>
+            </div>
+            <div id="history-share" class="history-share">
+              <button id="history-copy-url" class="mapa-button quiet" type="button" data-history="copyLink">Copy a link to this map view</button>
+              <input id="history-copy-fallback" class="history-copy-fallback" type="url" aria-label="Link to this map view" readonly hidden>
+              <span id="history-copy-status" class="history-copy-status" aria-live="polite"></span>
+            </div>
+            <p class="history-map-note" data-history="accuracy">Approximate regional reconstructions, not survey boundaries. Seven selected years have displayed map data; context-only chronology stages do not invent intermediate borders.</p>
           </div>
-          <aside class="history-context" aria-labelledby="history-era-title"><p id="history-era-year" class="mapa-eyebrow">1938 · 3 / 5</p><h3 id="history-era-title"></h3><p id="history-era-text"></p><div class="history-legend" id="history-legend"></div><p class="history-era-warning" id="history-era-warning"></p><p class="history-context-label" data-history="whatChanged">What changes in this view</p><p id="history-change"></p><a id="history-data-link" class="mapa-button primary" href="./history/focus_1938.geojson" data-history="download">Open this map’s GeoJSON</a><a id="history-source-link" class="mapa-text-link" href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener noreferrer" data-history="datasetSource">Original geometry and revision ↗</a><a class="mapa-text-link" href="#history-method" data-history="methodLink">Sources, accuracy and missing periods ↓</a></aside>
+          <aside class="history-context" aria-labelledby="history-era-title">
+            <p id="history-era-year" class="mapa-eyebrow">1938 · 5 / 7</p>
+            <h3 id="history-era-title"></h3>
+            <p id="history-era-text"></p>
+            <p class="history-era-warning" id="history-era-warning"></p>
+            <p class="history-context-label" data-history="whatChanged">What changes in this view</p>
+            <p id="history-change"></p>
+            <button id="history-read-context" class="mapa-button primary" type="button" data-history="readContext">Read the historical context</button>
+            <a class="mapa-text-link" href="#history-method" data-history="methodLink">Sources, accuracy and missing periods ↓</a>
+          </aside>
         </div>
-        <details id="history-method" class="history-method"><summary data-history="methodTitle">How these historical maps were made — and what is missing</summary><div><p data-history="method1">Geometry: André Ourednik and contributors’ Historical Basemaps, an openly licensed, work-in-progress dataset designed for continental and regional views. We intersected five selected source files with a constant modern Belarus reference; no dividing lines were drawn by eye. The original MAPA’s 63 drawings are not used.</p><p data-history="method2">The maps represent political regions, not the borders of a timeless Belarusian nation. The Soviet layers resolve country-level affiliation, not internal Belarusian SSR borders. A fixed modern Belarus reference is always visible for orientation.</p><p data-history="method3">Missing: the medieval principalities, the full sequence of partitions, BNR territorial claims, and internal BSSR boundary changes. Several candidate source years failed our basic place checks and were excluded. The 1500 and 1800 maps were excluded after historical checks. Retained polygons still require specialist review and are not legal or fine-grained boundary evidence.</p><p><a href="https://github.com/aourednik/historical-basemaps/tree/62d8f1a03a71f2d3ff17f2d166f7553f256bce68" target="_blank" rel="noopener noreferrer">Historical Basemaps · André Ourednik &amp; contributors</a> · <a href="./history/LICENSE-GPL-3.0.txt">GPL-3.0</a> · <a href="./history/build-focus.mjs" data-history="rebuild">Reproducible clipping script</a> · <a href="./history/README.md" data-history="review">Review notes and provenance</a></p><p><a href="https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf" target="_blank" rel="noopener noreferrer">Belarus in Maps · Historical, cultural and ethnic roots (Zsolt Bottlik)</a> · <a href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer" data-history="originalBehavior">How the original MAPA changed borders</a></p><p class="history-license-note" data-history="license">Modified geometry is distributed under GPL-3.0, with its editable GeoJSON, source revision and license. Data is provided without warranty. The separate present-day reference comes from Natural Earth, public domain.</p></div></details>
+        <details id="history-method" class="history-method"><summary data-history="methodTitle">How these historical maps were made — and what is missing</summary><div><p data-history="method1">Geometry: André Ourednik and contributors’ Historical Basemaps, an openly licensed, work-in-progress dataset designed for continental and regional views. We intersected seven selected source files with a constant modern Belarus reference; no dividing lines were drawn by eye. The original MAPA’s 63 drawings are not used.</p><p data-history="method2">The maps represent political regions, not the borders of a timeless Belarusian nation. The Soviet layers resolve country-level affiliation, not internal Belarusian SSR borders. A fixed modern Belarus reference is always visible for orientation.</p><p data-history="method3">Missing: the medieval principalities, the full sequence of partitions, BNR territorial claims, and internal BSSR boundary changes. Several candidate source years failed our basic place checks and were excluded. The 1500 and 1800 maps were excluded after historical checks. Retained polygons still require specialist review and are not legal or fine-grained boundary evidence.</p><p><a id="history-data-link" class="mapa-button quiet" href="./history/focus_1938.geojson" data-history="download">Open this map’s GeoJSON</a> <a id="history-source-link" class="mapa-text-link" href="https://github.com/aourednik/historical-basemaps" target="_blank" rel="noopener noreferrer" data-history="datasetSource">Original geometry and revision ↗</a></p><p><a href="https://github.com/aourednik/historical-basemaps/tree/62d8f1a03a71f2d3ff17f2d166f7553f256bce68" target="_blank" rel="noopener noreferrer">Historical Basemaps · André Ourednik &amp; contributors</a> · <a href="./history/LICENSE-GPL-3.0.txt">GPL-3.0</a> · <a href="./history/build-focus.mjs" data-history="rebuild">Reproducible clipping script</a> · <a href="https://github.com/djsirgay/sergey-ulyanov.pro/blob/main/research/atlas/mapa/history/README.md" data-history="review">Review notes and provenance</a> · <a href="https://github.com/djsirgay/sergey-ulyanov.pro/blob/main/research/atlas/mapa/history/city-source.md">GeoNames · CC BY 4.0</a></p><p><a href="https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf" target="_blank" rel="noopener noreferrer">Belarus in Maps · Historical, cultural and ethnic roots (Zsolt Bottlik)</a> · <a href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer" data-history="originalBehavior">How the original MAPA changed borders</a></p><p class="history-license-note" data-history="license">Modified geometry is distributed under GPL-3.0, with its editable GeoJSON, source revision and license. Data is provided without warranty. The separate present-day reference comes from Natural Earth, public domain.</p></div></details>
       </section>
       <section id="chronology" class="mapa-chronology" aria-labelledby="chronology-title" hidden>
         <div class="history-section-heading"><div><p class="mapa-eyebrow" data-chrono="eyebrow">02 · Political chronology</p><h2 id="chronology-title" data-chrono="title">One place. More than one political story.</h2></div></div>
