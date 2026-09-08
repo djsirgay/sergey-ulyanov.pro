@@ -1,5 +1,32 @@
 (() => {
   const be = new Map([
+    ["I build tools to help people find, preserve, and understand Belarusian culture across borders. Music is the starting point. The research asks how AI could support language learning while keeping sources visible and cultural judgment with people.", "Я ствараю інструменты, якія дапамагаюць знаходзіць, захоўваць і разумець беларускую культуру па-за межамі краіны. Музыка — адпраўны пункт. Даследаванне вывучае, як ШІ можа падтрымліваць вывучэнне мовы, захоўваючы бачныя крыніцы і права людзей на культурную ацэнку."],
+    ["Try the tools ↓", "Паспрабаваць інструменты ↓"],
+    ["Unmute Belarus · working prototypes", "Unmute Belarus · працоўныя прататыпы"],
+    ["Start with something you want to do.", "Пачніце з таго, што хочаце зрабіць."],
+    ["One research program, two workspaces: an audio toolkit and a directory of cultural resources. You can explore both without an account. The methods and evidence behind them are further down this page.", "Адна даследчая праграма, дзве працоўныя прасторы: аўдыяінструменты і каталог культурных рэсурсаў. Абедзве даступныя без рэгістрацыі. Метады і сведчанні, на якіх яны заснаваныя, — ніжэй на старонцы."],
+    ["01 · MUSIC ATLAS", "01 · МУЗЫЧНЫ АТЛАС"],
+    ["Find a Belarusian remix.", "Знайдзіце беларускамоўны рэмікс."],
+    ["Try a real query, see why each record matches, and follow its source. Search covers the pilot collection, not the whole internet.", "Паспрабуйце запыт, паглядзіце, чаму кожны запіс адпавядае яму, і перайдзіце да крыніцы. Пошук ахоплівае пілотную калекцыю, а не ўвесь інтэрнэт."],
+    ["Run the example search ↗", "Паспрабаваць пошук ↗"],
+    ["02 · ARCHIVE PASSPORT", "02 · АРХІЎНЫ ПАШПАРТ"],
+    ["Give a recording its own record.", "Стварыце пашпарт аўдыязапісу."],
+    ["Select a file, add its context, and create a checksum passport. Your audio stays on your device. No upload or account is needed.", "Абярыце файл, дадайце кантэкст і стварыце пашпарт з кантрольнай сумай. Аўдыя застаецца на вашай прыладзе. Загрузка на сервер і рэгістрацыя не патрэбныя."],
+    ["Create a passport ↗", "Стварыць пашпарт ↗"],
+    ["03 · RESTORATION LAB", "03 · ЛАБАРАТОРЫЯ РЭСТАЎРАЦЫІ"],
+    ["Compare before and after.", "Параўнайце да і пасля."],
+    ["Try the synthetic audio demo, adjust a listening copy, and hear A/B. Preserve the original and export the processing log.", "Паспрабуйце дэма са штучным аўдыя, наладзьце копію для праслухоўвання і параўнайце A/B. Захавайце арыгінал і экспартуйце журнал апрацоўкі."],
+    ["Open the audio lab ↗", "Адкрыць аўдыялабараторыю ↗"],
+    ["04 · LIVING BELARUS ATLAS", "04 · ЖЫВЫ АТЛАС БЕЛАРУСІ"],
+    ["Explore voices, places, and history.", "Даследуйце галасы, месцы і гісторыю."],
+    ["Browse podcasts, language resources, archives, and MAPA. This is a source directory, separate from the audio collection.", "Знаходзьце падкасты, моўныя рэсурсы, архівы і MAPA. Гэта каталог крыніц, асобны ад аўдыякалекцыі."],
+    ["Browse cultural resources ↗", "Праглядзець культурныя рэсурсы ↗"],
+    ["New here?", "Вы тут упершыню?"],
+    ["Start with the remix search or the synthetic audio demo. Your own passports and annotations are stored in this browser only: export a backup before clearing browser data or changing devices.", "Пачніце з пошуку рэміксаў або дэма са штучным аўдыя. Вашы пашпарты і анатацыі захоўваюцца толькі ў гэтым браўзеры: экспартуйце рэзервовую копію перад ачысткай даных або зменай прылады."],
+    ["How the modules connect ↗", "Як звязаныя модулі ↗"],
+    ["View data & analytics ↗", "Даныя і аналітыка ↗"],
+    ["Open MAPA ↗", "Адкрыць MAPA ↗"],
+    ["AI systems planned for comparison using identical prompts and frozen response records", "сістэмы ШІ, запланаваныя для параўнання з аднолькавымі запытамі і зафіксаванымі адказамі"],
     ["BELARUS / CULTURE / SYSTEMS", "БЕЛАРУСЬ / КУЛЬТУРА / СІСТЭМЫ"],
     ["INITIALIZING CULTURAL MEMORY", "ІНІЦЫЯЛІЗАЦЫЯ КУЛЬТУРНАЙ ПАМЯЦІ"],
     ["Skip intro", "Прапусціць уступ"],
@@ -226,7 +253,17 @@
       ? "Практыка-арыентаванае даследаванне Сяргея Ульянава пра ШІ пад кіраваннем супольнасці, пераемнасць беларускай мовы, культурную ідэнтычнасць у выгнанні і чалавекацэнтрычныя творчыя сістэмы."
       : "Sergéy Ulyanov's practice-led research on community-governed AI, Belarusian language continuity, cultural identity in exile, and human-centered creative systems.";
     document.querySelector('meta[name="description"]')?.setAttribute("content", description);
-    localStorage.setItem("research-lang", next);
+    try { localStorage.setItem("research-lang", next); } catch { /* Language still works when storage is unavailable. */ }
+    document.querySelectorAll('a[href]').forEach(link => {
+      if (link.hasAttribute('data-research-lang')) return;
+      const raw = link.getAttribute('href');
+      if (!raw || raw.startsWith('#')) return;
+      let url;
+      try { url = new URL(raw, location.href); } catch { return; }
+      if (url.origin !== location.origin || !url.pathname.startsWith('/research/')) return;
+      url.searchParams.set('lang', next);
+      link.href = url.pathname + url.search + url.hash;
+    });
 
     if (updateUrl) {
       const url = new URL(location.href);
@@ -239,7 +276,7 @@
   const selectedLanguage = () => {
     const query = new URLSearchParams(location.search).get("lang");
     if (query === "be" || query === "en") return query;
-    return localStorage.getItem("research-lang") === "be" ? "be" : "en";
+    try { return localStorage.getItem("research-lang") === "be" ? "be" : "en"; } catch { return "en"; }
   };
 
   capture();

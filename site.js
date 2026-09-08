@@ -11,7 +11,7 @@
       boot.classList.add('is-leaving');
       setTimeout(()=>boot.remove(),360);
     };
-    if(seen||reduceMotion)boot.remove();
+    if(seen||reduceMotion||location.pathname.startsWith('/research/'))boot.remove();
     else{
       document.documentElement.classList.add('boot-active');
       const rain=boot.querySelector('[data-boot-rain]');
@@ -97,7 +97,7 @@
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
     if(!items.length)return;
     const update=()=>{let best=0,min=Infinity,left=rail.getBoundingClientRect().left;items.forEach((item,index)=>{const distance=Math.abs(item.getBoundingClientRect().left-left);if(distance<min){min=distance;best=index}});if(current)current.textContent=String(best+1).padStart(2,'0')};
-    const go=direction=>{const gap=parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:direction*(items[0].getBoundingClientRect().width+gap),behavior:'smooth'});track(`rail_${name}_${direction>0?'next':'prev'}`)};
+    const go=direction=>{const gap=parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:direction*(items[0].getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});track(`rail_${name}_${direction>0?'next':'prev'}`)};
     document.querySelectorAll(`[data-prev="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(-1)));
     document.querySelectorAll(`[data-next="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(1)));
     rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
@@ -118,6 +118,8 @@
       try{
         const response=await fetch('https://formsubmit.co/ajax/5fbc3aa60c7f89f0edb8afa14702e228',{method:'POST',headers:{Accept:'application/json'},body:data});
         if(!response.ok)throw new Error('Submission failed');
+        const result=await response.json();
+        if(result.success!==true&&result.success!=='true')throw new Error('Submission was not confirmed');
         form.reset();if(status)status.textContent='Thank you — your inquiry has been sent.';track('inquiry_sent',{inquiry_type:String(data.get('inquiry_type')||'')});
       }catch(error){
         if(status)status.innerHTML='The secure form could not send. Please <a href="mailto:ulyanoow@gmail.com">email Sergéy directly</a>.';

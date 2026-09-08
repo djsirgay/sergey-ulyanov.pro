@@ -79,6 +79,43 @@
     {id:'jewish-museum',name:'Belarusian Jewish Cultural Heritage Center',nameBe:'Цэнтр беларуска-яўрэйскай культурнай спадчыны',type:'museum',topics:['history','heritage','jewish','culture'],languages:['en','ru'],status:'original',url:'https://belarusianjewish.com/',description:'A digital museum and research resource focused on Belarusian Jewish cultural heritage.',descriptionBe:'Лічбавы музей і даследчы рэсурс пра беларуска-яўрэйскую культурную спадчыну.',keywords:'jewish belarus heritage museum archive габрэйская спадчына музей архіў'}
   ];
 
+  Object.assign(copy.en, {
+    'nav-heritage':'History map', 'hero-title':'Explore Belarusian culture. <em>Find your way in.</em>',
+    'hero-deck':'Find music, podcasts, language resources, and cultural archives. Explore history on MAPA, or follow a directory entry to its original publisher.',
+    'metric-records':'curated directory entries','metric-modules':'mapped historical events','metric-boundary':'interface languages',
+    'boundary-label':'Start here','boundary-text':'Search the selected directory below, or open MAPA to explore ten moments in history. This index searches its listed sources; it does not crawl the entire web.','boundary-link':'Explore MAPA ↗',
+    'module-one-title':'MAPA · History & places','module-one-text':'Follow ten independently sourced events across seven places. Use the map, read the evidence, and share a specific event. Inspired by the original MAPA team.',
+    'module-one-a':'Map and table views','module-one-b':'English and Belarusian notes','module-one-c':'Source links and data export','module-one-link':'Explore the history map ↗',
+    'mapa-title':'History you can explore, place by place.','mapa-deck':'Follow ten sourced events across seven places. An independent map inspired by Alexey Cherenkevich and the original MAPA team, with new code, bilingual notes, and links to the evidence.',
+    'status-attributed':'Independent reconstruction','status-pending':'Open to explore','mapa-recovered':'Use it now','mapa-recovered-value':'Choose a date, locate the place, read an English or Belarusian annotation, and open its source.',
+    'mapa-scope':'Current coverage','mapa-scope-value':'10 selected events, 1067–2016, across 7 places. Map and table views, filters, direct event links, and data export.',
+    'mapa-public':'About this edition','mapa-public-value':'New interface and independently written records. Modern geographic context; the original MAPA’s historical border layers are not reproduced.',
+    'person-cherenkevich':'Alexey Cherenkevich','person-shpileuski':'Yauhen Shpileuski','person-shyrayeva':'Hanna Shyrayeva','person-yakunin':'Viktar Yakunin','person-kedzich':'Pavel Kedzich',
+    'method-title':'Follow every entry back to its source.','method-deck':'Use this directory to discover a resource, then read or listen on the original publisher’s page. Our short annotations explain what you can find there; the map adds independently written historical context.',
+    'footer-text':'A public research pilot by Sergéy Ulyanov · updated September 8, 2026','independent':'Independent reconstruction','open-map':'Open interactive map',
+    'skip':'Skip to content','filter-placeholder':'music, history, language…'
+  });
+  Object.assign(copy.be, {
+    'nav-heritage':'Гістарычная мапа','hero-title':'Адкрыйце беларускую культуру. <em>Знайдзіце свой шлях.</em>',
+    'hero-deck':'Знаходзьце музыку, падкасты, моўныя рэсурсы і культурныя архівы. Вывучайце гісторыю праз MAPA або пераходзьце з каталога да арыгінальнага выдаўца.',
+    'metric-records':'адабраных рэсурсаў','metric-modules':'падзей на мапе','metric-boundary':'мовы інтэрфейсу',
+    'boundary-label':'Пачніце тут','boundary-text':'Шукайце ў каталогу ніжэй або адкрыйце MAPA, каб вывучыць дзесяць гістарычных падзей. Пошук ахоплівае пералічаныя рэсурсы, а не ўсё сеціва.','boundary-link':'Адкрыць MAPA ↗',
+    'module-one-title':'MAPA · Гісторыя і месцы','module-one-text':'Вывучайце дзесяць падзей з незалежнымі крыніцамі ў сямі месцах. Карыстайцеся мапай, чытайце сведчанні і дзяліцеся асобнай падзеяй. Натхнёна арыгінальнай камандай MAPA.',
+    'module-one-a':'Мапа і табліца','module-one-b':'Беларускія і англійскія анатацыі','module-one-c':'Крыніцы і экспарт даных','module-one-link':'Адкрыць гістарычную мапу ↗',
+    'mapa-title':'Гісторыя, якую можна вывучаць месца за месцам.','mapa-deck':'Дзесяць падзей з крыніцамі ў сямі месцах. Незалежная мапа, натхнёная праектам Аляксея Чаранкевіча і каманды MAPA: новы код, двухмоўныя анатацыі і спасылкі на сведчанні.',
+    'status-attributed':'Незалежная рэканструкцыя','status-pending':'Адкрыта для вывучэння','mapa-recovered':'Як карыстацца','mapa-recovered-value':'Абярыце дату, знайдзіце месца, прачытайце беларускую або англійскую анатацыю і адкрыйце крыніцу.',
+    'mapa-scope':'Цяперашні абсяг','mapa-scope-value':'10 адабраных падзей за 1067–2016 гады ў 7 месцах. Мапа і табліца, фільтры, прамыя спасылкі на падзеі і экспарт даных.',
+    'mapa-public':'Пра гэтую версію','mapa-public-value':'Новы інтэрфейс і самастойна напісаныя запісы. Сучасны геаграфічны кантэкст; гістарычныя межы арыгінальнай MAPA тут не ўзнаўляюцца.',
+    'method-title':'Кожны запіс вядзе да сваёй крыніцы.','method-deck':'Знайдзіце рэсурс у каталогу, а затым чытайце або слухайце на старонцы выдаўца. Кароткія анатацыі тлумачаць, што там ёсць; мапа дадае самастойна напісаны гістарычны кантэкст.',
+    'footer-text':'Публічны даследчы пілот Сяргея Ульянава · абноўлена 8 верасня 2026','independent':'Незалежная рэканструкцыя','open-map':'Адкрыць інтэрактыўную мапу',
+    'skip':'Перайсці да зместу','filter-placeholder':'музыка, гісторыя, мова…'
+  });
+  Object.assign(records.find(record=>record.id==='mapa'), {
+    name:'MAPA · History & places',nameBe:'MAPA · Гісторыя і месцы',status:'independent',url:'/research/atlas/mapa/',languages:['be','en'],
+    description:'Explore ten sourced historical events across seven places, with a geographic map, bilingual notes, table view, and export. Independently rebuilt; the original MAPA team is credited.',
+    descriptionBe:'Дзесяць гістарычных падзей з крыніцамі ў сямі месцах: геаграфічная мапа, двухмоўныя анатацыі, табліца і экспарт. Створана незалежна, з пазначэннем арыгінальнай каманды MAPA.'
+  });
+  document.querySelector('[data-copy="boundary-link"]').href='/research/atlas/mapa/';
   const state = {lang:'en',query:'',type:'all',topic:'all',language:'all'};
   const els = {
     results:document.querySelector('#atlas-results'),empty:document.querySelector('#atlas-empty'),count:document.querySelector('#result-count'),
@@ -94,7 +131,8 @@
     lost:'lost endangered closed unavailable страчаная знікла heritage archive',heritage:'heritage спадчына archive архіў history',digital:'digital лічбавая website web site archive'
   };
   function searchTokens(query){
-    return normalize(query).split(' ').filter(Boolean).map(token => aliases[token] || token);
+    const stopwords = new Set(['the','a','an','all','find','show','me','about','on','in','for','of','and','please','пра','аб','на','у','ў','і','и','о','об','для','мне','усе','все','найди','знайдзі','пакажы']);
+    return normalize(query).split(' ').filter(token=>token && !stopwords.has(token)).map(token => aliases[token] || token);
   }
   function searchable(record){
     return normalize([record.name,record.nameBe,record.description,record.descriptionBe,record.keywords,typeLabels[record.type].en,typeLabels[record.type].be,...record.topics.map(t=>`${topicLabels[t].en} ${topicLabels[t].be}`),...record.languages.map(l=>`${languageLabels[l].en} ${languageLabels[l].be}`)].join(' '));
@@ -115,9 +153,10 @@
     const filtered=records.filter(record => matchQuery(record,state.query) && (state.type==='all'||record.type===state.type) && (state.topic==='all'||record.topics.includes(state.topic)) && (state.language==='all'||record.languages.includes(state.language)));
     els.count.textContent=filtered.length;
     els.results.replaceChildren(...filtered.map(record => {
-      const article=document.createElement('a');article.className='atlas-card';article.href=record.url;article.target='_blank';article.rel='noopener noreferrer';
-      const status=record.status==='original'?'original':record.status==='archived'?'archived':record.status==='pending'?'pending':'attributed';
-      article.innerHTML=`<div class="atlas-card-top"><span class="atlas-card-type">${typeLabels[record.type][state.lang]}</span><span class="atlas-card-status">${copy[state.lang][status]}</span></div><h3>${state.lang==='be'?record.nameBe:record.name}</h3><p>${state.lang==='be'?record.descriptionBe:record.description}</p><div class="atlas-card-tags">${record.topics.map(t=>`<span>${topicLabels[t][state.lang]}</span>`).join('')}${record.languages.map(l=>`<span>${languageLabels[l][state.lang]}</span>`).join('')}</div><span class="atlas-card-open"><span>${copy[state.lang]['open-source']}</span><span>↗</span></span>`;
+      const article=document.createElement('a');article.className='atlas-card';article.href=record.url;
+      if(record.url.startsWith('/'))article.href=record.url+'?lang='+state.lang;else {article.target='_blank';article.rel='noopener noreferrer'}
+      const status=['original','archived','pending','independent'].includes(record.status)?record.status:'attributed';
+      article.innerHTML=`<div class="atlas-card-top"><span class="atlas-card-type">${typeLabels[record.type][state.lang]}</span><span class="atlas-card-status">${copy[state.lang][status]}</span></div><h3>${state.lang==='be'?record.nameBe:record.name}</h3><p>${state.lang==='be'?record.descriptionBe:record.description}</p><div class="atlas-card-tags">${record.topics.map(t=>`<span>${topicLabels[t][state.lang]}</span>`).join('')}${record.languages.map(l=>`<span>${languageLabels[l][state.lang]}</span>`).join('')}</div><span class="atlas-card-open"><span>${copy[state.lang][record.id==='mapa'?'open-map':'open-source']}</span><span>↗</span></span>`;
       return article;
     }));
     els.empty.hidden=filtered.length!==0;
@@ -127,9 +166,12 @@
     document.querySelectorAll('[data-copy]').forEach(node=>{const value=copy[lang][node.dataset.copy];if(value!==undefined)node.innerHTML=value});
     document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===lang)));
     document.querySelectorAll('[data-placeholder-en]').forEach(node=>node.placeholder=node.dataset[`placeholder${lang==='be'?'Be':'En'}`]);
+    els.query.placeholder=copy[lang]['filter-placeholder'];
+    document.querySelector('.skip-link').textContent=copy[lang].skip;
+    document.querySelectorAll('a[href^="/research/"]').forEach(link=>{const target=new URL(link.href,location.href);target.searchParams.set('lang',lang);link.href=target.pathname+target.search+target.hash});
     populateFilters();render();
     const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState({},'',url);
-    try{localStorage.setItem('living-belarus-atlas-lang',lang)}catch(e){}
+    try{localStorage.setItem('living-belarus-atlas-lang',lang);localStorage.setItem('research-lang',lang)}catch(e){}
   }
   function sync(){state.query=els.query.value;state.type=els.type.value;state.topic=els.topic.value;state.language=els.language.value;render()}
   document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
@@ -139,5 +181,5 @@
   document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>{els.heroQuery.value=button.dataset.query;els.query.value=button.dataset.query;state.query=button.dataset.query;render();document.querySelector('#directory').scrollIntoView({behavior:'smooth'})}));
   document.querySelector('#metric-records').textContent=records.length;
   document.querySelector('#metric-types').textContent=new Set(records.map(record=>record.type)).size;
-  const params=new URLSearchParams(location.search);let initial=params.get('lang');if(!['en','be'].includes(initial)){try{initial=localStorage.getItem('living-belarus-atlas-lang')}catch(e){}}setLanguage(['en','be'].includes(initial)?initial:'en');
+  const params=new URLSearchParams(location.search);let initial=params.get('lang');if(!['en','be'].includes(initial)){try{initial=localStorage.getItem('research-lang')||localStorage.getItem('living-belarus-atlas-lang')}catch(e){}}setLanguage(['en','be'].includes(initial)?initial:'en');
 })();

@@ -16,3 +16,34 @@
 .atlas-map-visual::after{content:"";position:absolute;inset:16% 23% 17% 23%;border:1px solid rgba(184,255,53,.28);border-radius:50%;transform:rotate(-17deg)}
 .atlas-map-visual>span,.atlas-map-visual>b{z-index:2}
 @media(max-width:760px){.atlas-module-grid .atlas-module-card{min-height:0}}
+
+/* September 2026: readable directory UI and locally hosted geographic outline. */
+[hidden]{display:none!important}
+:focus-visible{outline:3px solid var(--acid);outline-offset:4px}
+.atlas-header nav a{font-size:.84rem}
+.atlas-hero{min-height:0}
+.atlas-hero-inner{padding:70px 0 55px}
+.atlas-hero h1{max-width:1200px;font-size:clamp(3.3rem,7vw,7.4rem);line-height:.98}
+.atlas-section{padding:75px 0}
+.atlas-section-head h2{font-size:clamp(2.5rem,4.8vw,5.2rem);line-height:1.03}
+.atlas-filter-field label,.atlas-card-status,.atlas-card-type,.atlas-card-tags span,.atlas-card-open,.atlas-module-link,.atlas-source-links a{font-size:.75rem;line-height:1.5}
+.atlas-filter-field input,.atlas-filter-field select{font-size:1rem}
+.atlas-card p{font-size:.95rem;line-height:1.65}
+.atlas-card h3{margin-top:32px}
+.atlas-card-status{color:#b3c2b5}
+.atlas-card-tags span{color:#aebdb2}
+.atlas-results-head{font-size:.73rem;line-height:1.6}
+.atlas-strip p,.atlas-submit p,.atlas-mapa-facts dd,.atlas-workflow p,.atlas-legend p span{font-size:.9rem;line-height:1.7}
+.atlas-metrics dd,.atlas-kicker,.atlas-label,.atlas-credits span{font-size:.7rem;line-height:1.5}
+.atlas-metrics dd,.atlas-filter-field label,.atlas-results-head,.atlas-credits span{color:#acbcb0}
+.atlas-status span,.atlas-status strong{font-size:.68rem;line-height:1.5}
+.atlas-status strong{color:var(--acid);border-color:#567438}
+.atlas-credits b{font-size:.85rem}
+.atlas-mapa-facts dt{font-size:.74rem}
+.atlas-module-grid .atlas-module-card{font-family:var(--sans);font-size:1rem;line-height:1.65;text-transform:none;font-weight:400}
+.atlas-module-grid li{font-size:.9rem}
+.atlas-belarus-outline{filter:drop-shadow(0 0 26px rgba(184,255,53,.2));opacity:.9}
+a.atlas-map-visual{display:block}
+a.atlas-map-visual:hover{border-color:var(--acid)}
+@media(max-width:760px){.atlas-hero-inner{padding:40px 0}.atlas-section{padding:50px 0}.atlas-hero h1{font-size:3.6rem}.atlas-results-head{flex-direction:column;gap:8px}.atlas-credits>div{grid-template-columns:1fr}.atlas-strip .atlas-wrap{padding:20px 0}.atlas-credits p{padding:14px}.atlas-metrics{gap:16px}.atlas-module-grid .atlas-module-card{padding:24px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{scroll-behavior:auto!important;transition:none!important}}

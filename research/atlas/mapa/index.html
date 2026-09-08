@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#06110f">
+  <meta name="description" content="Explore ten moments of Belarusian history across seven places. A bilingual interactive map with sources, a timeline, and exportable records, inspired by the original MAPA team.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MAPA · Belarus, in time and place">
+  <meta property="og:description" content="A public map of selected Belarusian history: places, documents, and cultural connections. English and Belarusian.">
+  <meta property="og:url" content="https://sergey-ulyanov.pro/research/atlas/mapa/">
+  <link rel="canonical" href="https://sergey-ulyanov.pro/research/atlas/mapa/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>MAPA · History &amp; places — Sergéy Ulyanov</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles-atlas.css?v=20260908">
+  <link rel="stylesheet" href="./mapa.css?v=20260908">
+  <script src="./events.js?v=20260908" defer></script>
+  <script src="./mapa.js?v=20260908" defer></script>
+</head>
+<body class="mapa-page">
+  <a class="skip-link" href="#explore" data-i18n="skip">Skip to the map</a>
+  <header class="atlas-header mapa-header">
+    <a class="atlas-mark" href="/research/atlas/"><img src="./belarus-outline.svg" width="38" height="38" alt=""><b>Living Belarus Atlas <span class="mapa-breadcrumb">/ MAPA</span></b></a>
+    <nav aria-label="Research navigation"><a href="/research/" data-i18n="research">Research</a><a href="/research/atlas/" data-i18n="directory">Culture directory</a><a href="#guide" data-i18n="guide">How to use</a></nav>
+    <div class="atlas-lang" role="group" aria-label="Language"><button type="button" data-lang="en" aria-pressed="true">EN</button><button type="button" data-lang="be" aria-pressed="false">БЕЛ</button></div>
+  </header>
+  <main>
+    <div class="mapa-shell">
+      <section class="mapa-intro" aria-labelledby="mapa-title">
+        <div><p class="mapa-eyebrow">MAPA · <span data-i18n="scope">10 selected events · 7 places · 1067–2016</span></p><h1 id="mapa-title" data-i18n="title">Belarus, in time and place.</h1><p data-i18n="intro">Explore ten moments through the places, documents, and cultural connections behind them.</p></div>
+        <a class="mapa-origin-link" href="#credits" data-i18n="credits">Original creators ↓</a>
+      </section>
+      <section id="explore" class="mapa-explorer" aria-label="History explorer">
+        <form id="mapa-search" class="mapa-filters" role="search">
+          <div class="mapa-search-field"><label for="mapa-query" data-i18n="search">Search events or places</label><input id="mapa-query" type="search" placeholder="Try Skaryna, language, Riga, or 1918" autocomplete="off"></div>
+          <div><label for="mapa-topic" data-i18n="topic">Topic</label><select id="mapa-topic"><option value="all" data-i18n="all">All topics</option><option value="places" data-i18n="places">Places &amp; origins</option><option value="language" data-i18n="language">Language &amp; print</option><option value="politics" data-i18n="politics">Statehood &amp; borders</option><option value="heritage" data-i18n="heritage">Built heritage</option><option value="digital" data-i18n="digital">Digital culture</option></select></div>
+          <div><label for="mapa-period" data-i18n="period">Period</label><select id="mapa-period"><option value="all" data-i18n="anytime">All periods</option><option value="early" data-i18n="early">Before 1900</option><option value="twentieth" data-i18n="twentieth">1900–1999</option><option value="recent" data-i18n="recent">2000 onward</option></select></div>
+          <button type="button" class="mapa-button quiet" data-reset data-i18n="reset">Clear filters</button>
+        </form>
+        <div class="mapa-toolbar"><p id="mapa-count" role="status">10 of 10 events · 7 places</p><div class="mapa-view-toggle" role="group" aria-label="Display"><button type="button" data-view="map" aria-pressed="true" data-i18n="map">Map</button><button type="button" data-view="table" aria-pressed="false" data-i18n="table">Table</button></div><button id="mapa-export" type="button" class="mapa-button quiet" data-i18n="export" aria-describedby="mapa-export-note">Download filtered data</button></div>
+        <div id="mapa-empty" class="mapa-empty" hidden><h2 data-i18n="noResults">No events match these filters.</h2><p data-i18n="noResultsNote">Try a place, name, or year, or clear the filters to see the full selection.</p><button type="button" class="mapa-button primary" data-reset data-i18n="reset">Clear filters</button></div>
+        <div id="mapa-workspace">
+          <div id="mapa-map-view" class="mapa-map-grid">
+            <aside class="mapa-timeline" aria-labelledby="timeline-title"><div class="mapa-timeline-head"><h2 id="timeline-title" data-i18n="timeline">Choose an event</h2><span aria-hidden="true">↓</span></div><div id="mapa-events"></div></aside>
+            <div class="mapa-canvas-column">
+              <figure class="mapa-figure">
+                <div id="mapa-region" class="mapa-region" role="group" aria-label="Regional map" aria-describedby="mapa-map-help">
+                  <img id="mapa-region-image" src="./basemap.svg" width="820" height="580" alt="Outlines of Belarus and neighboring countries">
+                  <div id="mapa-countries" aria-hidden="true"></div><div id="mapa-markers"></div>
+                </div>
+                <figcaption data-i18n="modern">Modern geographic context · event locations, not historical borders</figcaption>
+              </figure>
+              <p id="mapa-map-help" class="mapa-map-help" data-i18n="mapHelp">Select a place marker. A number means several events share that place; select it again to move through them.</p>
+              <p id="mapa-map-error" role="status" class="mapa-map-help" data-i18n="mapUnavailable" hidden>The map image could not load. The timeline and table still contain every event and source.</p>
+              <article id="mapa-detail" class="mapa-detail" aria-labelledby="mapa-event-title">
+                <div class="mapa-detail-copy"><div class="mapa-event-meta"><span id="mapa-date"></span><span id="mapa-place"></span></div><h2 id="mapa-event-title" tabindex="-1"></h2><p id="mapa-event-text"></p><div class="mapa-question"><b data-i18n="context">A question to explore</b><p id="mapa-event-question"></p></div></div>
+                <aside class="mapa-evidence"><p id="mapa-source-label"></p><a id="mapa-source-link" class="mapa-button primary" href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer" data-i18n="source">Read the source ↗</a><dl><div><dt data-i18n="sourceType">Source type</dt><dd id="mapa-source-kind"></dd></div><div><dt data-i18n="sourceLanguage">Source language</dt><dd id="mapa-source-language"></dd></div></dl><p id="mapa-location-note" class="mapa-location-note"></p></aside>
+              </article>
+              <p id="mapa-no-selection" data-i18n="noSelection" hidden>Select an event to read its context and source.</p>
+              <div class="mapa-event-actions"><button id="mapa-previous" type="button" class="mapa-button quiet" data-i18n="previous">Previous event</button><button id="mapa-next" type="button" class="mapa-button quiet" data-i18n="next">Next event</button><button id="mapa-share" type="button" class="mapa-button quiet" data-i18n="share">Copy event link</button></div>
+              <p id="mapa-copy-status" role="status" class="mapa-map-help"></p>
+              <div id="mapa-copy-fallback" hidden><label for="mapa-copy-url" data-i18n="copyFallback">Copy this event link:</label><input type="url" id="mapa-copy-url" readonly></div>
+            </div>
+          </div>
+          <div id="mapa-table-view" class="mapa-table-wrap" hidden><table><caption class="mapa-sr-only" data-i18n="scope">10 selected events · 7 places · 1067–2016</caption><thead><tr><th scope="col" data-i18n="date">Date</th><th scope="col" data-i18n="event">Event</th><th scope="col" data-i18n="place">Place</th><th scope="col" data-i18n="sourceColumn">Source</th></tr></thead><tbody id="mapa-table-body"></tbody></table></div>
+        </div>
+        <p id="mapa-selection-status" class="mapa-sr-only" aria-live="polite"></p>
+        <p id="mapa-export-note" class="mapa-map-help" data-i18n="dataNotice">Export includes the visible records, both languages, approximate coordinates, source URLs, and date of this source review. It contains no original MAPA assets.</p>
+        <noscript><p>This interactive map needs JavaScript. The <a href="https://blog.cherenkevich.com/blog/mapa-process/">original project’s documentation</a> and the <a href="/research/atlas/">culture directory</a> remain available.</p></noscript>
+      </section>
+      <section id="guide" class="mapa-guide">
+        <div><span class="mapa-eyebrow" data-i18n="guide">How to use</span><h2 data-i18n="guideTitle">Start with one connection.</h2></div>
+        <ol><li data-i18n="guide1">Choose a date or search a place, person, or topic. Filters combine, so “Skaryna” plus “Language &amp; print” gives two linked stops.</li><li data-i18n="guide2">Select an event to find its place and read a short note. Use the source button to examine the evidence in its original language.</li><li data-i18n="guide3">Switch to the table for a full list. Copy an event link for a reader, or download the filtered records and source URLs as JSON.</li></ol>
+        <p class="mapa-keyboard-note" data-i18n="keyboard">Keyboard: Tab reaches every control; ↑/↓ move between event buttons; Home/End select the first/last visible event. Enter or Space opens a place marker.</p>
+      </section>
+      <section id="credits" class="mapa-credits">
+        <div><span class="mapa-eyebrow" data-i18n="credits">Original creators</span><h2 data-i18n="editionTitle">A new map, with its origins visible.</h2><p data-i18n="editionText">The original Interactive Map of Belarusian History (MAPA) was created by Alexey Cherenkevich and his collaborators. This edition by Sergéy Ulyanov independently implements a map-and-timeline idea, adding accessible navigation, bilingual annotations, direct event links, and exports.</p><p class="mapa-edition-note" data-i18n="editionLimit">This is a selected set of ten entry points, not a comprehensive history or a recovery of the original MAPA database. Its historical border animations, illustrations, and code are not reproduced. The original creators have not endorsed this edition.</p></div>
+        <div><h3 data-i18n="credited">Original MAPA credits, as documented by its creator</h3><dl class="mapa-original-credits"><div><dt><a href="https://cherenkevich.com/" target="_blank" rel="noopener noreferrer" data-i18n="author">Alexey Cherenkevich</a></dt><dd data-i18n="creditIdea">Idea and design</dd></div><div><dt data-i18n="front">Yauhen Shpileuski</dt><dd data-i18n="creditFront">Front-end</dd></div><div><dt data-i18n="translations">Hanna Shyrayeva</dt><dd data-i18n="creditText">Texts and translations</dd></div><div><dt data-i18n="manager">Viktar Yakunin</dt><dd data-i18n="creditManager">Management</dd></div><div><dt data-i18n="advisor">Pavel Kedzich</dt><dd data-i18n="creditAdvice">Advice</dd></div></dl><div class="mapa-credit-links"><a href="https://blog.cherenkevich.com/blog/mapa-process/" target="_blank" rel="noopener noreferrer" data-i18n="process">Original process article</a><a href="https://blog.cherenkevich.com/blog/mapa-results/" target="_blank" rel="noopener noreferrer" data-i18n="resultsArticle">Original results and credits</a><a href="https://arquivo.pt/wayback/20190923020214/http://map.letapis.by/by/" target="_blank" rel="noopener noreferrer" data-i18n="capture">Archived original</a></div></div>
+      </section>
+      <p class="mapa-geography-credit"><a href="https://www.naturalearthdata.com/about/terms-of-use/" target="_blank" rel="noopener noreferrer" data-i18n="geographicSource">Basemap: Natural Earth 1:50m, public domain. Simplified contemporary boundaries are geographic orientation only.</a></p>
+    </div>
+  </main>
+  <footer class="mapa-footer"><span data-i18n="footer">Independent research edition · Sergéy Ulyanov · September 2026</span><a href="mailto:ulyanoow@gmail.com?subject=MAPA%20source%20or%20correction" data-i18n="correction">Suggest a source or correction</a></footer>
+</body>
+</html>

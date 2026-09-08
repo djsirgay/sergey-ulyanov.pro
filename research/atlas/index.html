@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles-atlas.css?v=20260831">
-  <script src="/research/atlas/atlas.js?v=20260831" defer></script>
+  <link rel="stylesheet" href="/styles-atlas.css?v=20260908">
+  <script src="/research/atlas/atlas.js?v=20260908" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -25,7 +25,7 @@
     <a class="atlas-mark" href="/research/" aria-label="Back to Sergéy's research"><span>L/B</span><b>Living Belarus Atlas</b></a>
     <nav aria-label="Atlas navigation">
       <a href="#directory" data-copy="nav-directory">Directory</a>
-      <a href="#mapa" data-copy="nav-heritage">Lost heritage</a>
+      <a href="/research/atlas/mapa/" data-copy="nav-heritage">History map</a>
       <a href="#method" data-copy="nav-method">Method</a>
       <a href="/research/system/" data-copy="nav-unmute">Unmute Belarus ↗</a>
     </nav>
@@ -62,8 +62,8 @@
         <dl class="atlas-metrics" aria-label="Pilot scope">
           <div><dt id="metric-records">0</dt><dd data-copy="metric-records">verified seed records</dd></div>
           <div><dt id="metric-types">0</dt><dd data-copy="metric-types">media and archive types</dd></div>
-          <div><dt>2</dt><dd data-copy="metric-modules">connected research modules</dd></div>
-          <div><dt>1</dt><dd data-copy="metric-boundary">explicit rights boundary</dd></div>
+          <div><dt>10</dt><dd data-copy="metric-modules">mapped historical events</dd></div>
+          <div><dt>2</dt><dd data-copy="metric-boundary">interface languages</dd></div>
         </dl>
       </div>
     </section>
@@ -87,8 +87,8 @@
           <button class="atlas-reset" type="button" id="filter-reset" data-copy="filter-reset">Reset</button>
         </div>
 
-        <div class="atlas-results-head"><p><strong id="result-count">0</strong> <span data-copy="results-found">records found</span></p><p data-copy="results-note">Descriptions are concise research annotations. Ownership remains with the linked sources.</p></div>
-        <div class="atlas-card-grid" id="atlas-results" aria-live="polite"></div>
+        <div class="atlas-results-head"><p role="status"><strong id="result-count">0</strong> <span data-copy="results-found">records found</span></p><p data-copy="results-note">Descriptions are concise research annotations. Ownership remains with the linked sources.</p></div>
+        <div class="atlas-card-grid" id="atlas-results"></div>
         <div class="atlas-empty" id="atlas-empty" hidden><h3 data-copy="empty-title">No record matches all filters.</h3><p data-copy="empty-text">Try a broader topic or remove one filter. The index will grow through verified community suggestions.</p></div>
         <div class="atlas-submit"><div><b data-copy="submit-title">Know a Belarusian-language creator or endangered project?</b><p data-copy="submit-text">Suggest the original source. Nothing is copied into the index without a visible link, status, and research note.</p></div><a href="mailto:ulyanoow@gmail.com?subject=Living%20Belarus%20Atlas%20source%20suggestion" data-copy="submit-button">Suggest a source ↗</a></div>
       </div>
@@ -101,7 +101,7 @@
           <div><h2 data-copy="modules-title">Two modules. One evidence trail.</h2></div>
         </div>
         <div class="atlas-module-grid">
-          <a class="atlas-module-card" href="#mapa">
+          <a class="atlas-module-card" href="/research/atlas/mapa/">
             <span class="atlas-number">01</span><h3 data-copy="module-one-title">Lost Digital Heritage</h3><p data-copy="module-one-text">Find dead, blocked, or at-risk Belarusian projects; document archived captures, authorship, functionality, sources, and permission status before any reconstruction is published.</p>
             <ul><li data-copy="module-one-a">Archived captures</li><li data-copy="module-one-b">Creator credits</li><li data-copy="module-one-c">Rights and access status</li></ul><span class="atlas-module-link" data-copy="module-one-link">Open the first preservation dossier ↓</span>
           </a>
@@ -118,21 +118,21 @@
       <div class="atlas-wrap">
         <div class="atlas-section-head">
           <div><span class="atlas-number">02</span><span class="atlas-label" data-copy="mapa-label">FIRST PRESERVATION DOSSIER</span></div>
-          <div><h2 data-copy="mapa-title">The Interactive Map of Belarusian History deserves to remain findable.</h2><p data-copy="mapa-deck">The original MAPA interface is currently unavailable at its former address. Archived captures and the project authors’ own documentation make a careful digital reconstruction technically possible. This public page documents that work without republishing the original site before permission.</p></div>
+          <div><h2 data-copy="mapa-title">History you can explore, place by place.</h2><p data-copy="mapa-deck">Follow ten sourced events across seven places. An independent map inspired by Alexey Cherenkevich and the original MAPA team, with new code, bilingual notes, and links to the evidence.</p></div>
         </div>
         <div class="atlas-mapa-grid">
-          <div class="atlas-map-visual" aria-hidden="true">
-            <img class="atlas-belarus-outline" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Map_Of_Belarus_blank.svg" alt="">
+          <a class="atlas-map-visual" href="/research/atlas/mapa/" aria-label="Open MAPA history map">
+            <img class="atlas-belarus-outline" src="/research/atlas/mapa/belarus-outline.svg" alt="">
             <span>1067</span><span>1569</span><span>1918</span><span>1991</span>
-            <b>MAPA</b>
-          </div>
+            <b>MAPA ↗</b>
+          </a>
           <div class="atlas-mapa-facts">
-            <div class="atlas-status"><span data-copy="status-attributed">Attributed preservation record</span><strong data-copy="status-pending">Permissions pending</strong></div>
+            <div class="atlas-status"><span data-copy="status-attributed">Independent reconstruction</span><strong data-copy="status-pending">Open to explore</strong></div>
             <dl>
               <div><dt data-copy="mapa-original">Original</dt><dd>The Interactive Map of Belarusian History · map.letapis.by</dd></div>
-              <div><dt data-copy="mapa-recovered">Recovered evidence</dt><dd data-copy="mapa-recovered-value">Belarusian archived interface and embedded timeline data; navigation also documents English, Russian, and Polish editions.</dd></div>
-              <div><dt data-copy="mapa-scope">Documented scope</dt><dd data-copy="mapa-scope-value">63 historical border states and approximately 170 dated events in the recovered Belarusian build.</dd></div>
-              <div><dt data-copy="mapa-public">Public boundary</dt><dd data-copy="mapa-public-value">No original mirror, interface, illustrations, or dataset is republished here until written permission is received.</dd></div>
+              <div><dt data-copy="mapa-recovered">Use it now</dt><dd data-copy="mapa-recovered-value">Choose a date, locate the place, read an English or Belarusian annotation, and open its source.</dd></div>
+              <div><dt data-copy="mapa-scope">Current coverage</dt><dd data-copy="mapa-scope-value">10 selected events, 1067–2016, across 7 places. Map and table views, filters, direct event links, and data export.</dd></div>
+              <div><dt data-copy="mapa-public">About this edition</dt><dd data-copy="mapa-public-value">New interface and independently written records. Modern geographic context; the original MAPA’s historical border layers are not reproduced.</dd></div>
             </dl>
           </div>
         </div>
@@ -153,7 +153,7 @@
       <div class="atlas-wrap">
         <div class="atlas-section-head">
           <div><span class="atlas-number">03</span><span class="atlas-label" data-copy="method-label">METHOD &amp; PROVENANCE</span></div>
-          <div><h2 data-copy="method-title">Preservation is not permission. Discovery is not ownership.</h2><p data-copy="method-deck">The atlas separates public facts, archived evidence, independent research annotations, and material that requires a creator’s consent. Attribution is mandatory but does not replace permission.</p></div>
+          <div><h2 data-copy="method-title">Follow every entry back to its source.</h2><p data-copy="method-deck">Use this directory to discover a resource, then read or listen on the original publisher’s page. Our short annotations explain what you can find there; the map adds independently written historical context.</p></div>
         </div>
         <ol class="atlas-workflow">
           <li><span>01</span><h3 data-copy="workflow-one-title">Find</h3><p data-copy="workflow-one-text">Locate the original source, live page, archive capture, or creator documentation.</p></li>
