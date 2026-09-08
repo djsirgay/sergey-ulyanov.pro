@@ -1,5 +1,11 @@
 (() => {
   const be = new Map([
+    ['See how political borders changed.','Паглядзіце, як змяняліся палітычныя межы.'],
+    ['Compare seven dated map layers, read the names of states, and check a city. A 28-stage chronology explains transitions without inventing missing boundaries.','Параўноўвайце сем датаваных мапаў, чытайце назвы дзяржаў і правярайце прыналежнасць горада. Храналогія з 28 этапаў тлумачыць пераходы без выдуманых межаў.'],
+    ['Explore the historical map ↗','Вывучыць гістарычную мапу ↗'],
+    ['All five tools ↗','Усе пяць інструментаў ↗'],
+    ['How to use the tools ↗','Як карыстацца інструментамі ↗'],
+    ['MUSIC ATLAS','ПОШУК МУЗЫКІ'],['ARCHIVE PASSPORT','ПАШПАРТ ЗАПІСУ'],['RESTORATION LAB','АПРАЦОЎКА ГУКУ'],['CULTURE DIRECTORY','КАТАЛОГ КУЛЬТУРЫ'],
     ['Find music by description.','Знайдзіце музыку паводле апісання.'],
     ['Describe an artist, style, period, or format. Explore external catalog records with sources, then examine your own local collection separately. Missing language or mood evidence stays visible.','Апішыце выканаўцу, стыль, перыяд або фармат. Знаходзьце запісы ў знешнім каталогу з крыніцамі, а сваю лакальную калекцыю даследуйце асобна. Адсутнасць сведчанняў пра мову або настрой пазначаецца выразна.'],
     ['Describe the music you want ↗','Апішыце музыку, якую шукаеце ↗'],
@@ -220,13 +226,14 @@
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
       acceptNode(node) {
         const parent = node.parentElement;
-        if (!parent || parent.closest("script, style, noscript, .research-language")) return NodeFilter.FILTER_REJECT;
+        if (!parent || parent.closest("script, style, noscript, .research-language, #research-shell, [data-research-owned]")) return NodeFilter.FILTER_REJECT;
         return normalize(node.nodeValue || "") ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
       }
     });
     while (walker.nextNode()) textNodes.push({ node: walker.currentNode, original: walker.currentNode.nodeValue });
 
     document.querySelectorAll("[aria-label], img[alt]").forEach(element => {
+      if (element.closest('#research-shell, [data-research-owned]')) return;
       ["aria-label", "alt"].forEach(name => {
         if (element.hasAttribute(name)) attributes.push({ element, name, original: element.getAttribute(name) });
       });
@@ -247,6 +254,7 @@
     });
 
     document.querySelectorAll("[data-research-lang]").forEach(link => {
+      if (link.closest('#research-shell, [data-research-owned]')) return;
       const active = link.dataset.researchLang === next;
       if (active) link.setAttribute("aria-current", "page");
       else link.removeAttribute("aria-current");
@@ -259,7 +267,7 @@
     document.querySelector('meta[name="description"]')?.setAttribute("content", description);
     try { localStorage.setItem("research-lang", next); } catch { /* Language still works when storage is unavailable. */ }
     document.querySelectorAll('a[href]').forEach(link => {
-      if (link.hasAttribute('data-research-lang')) return;
+      if (link.hasAttribute('data-research-lang') || link.closest('#research-shell, [data-research-owned]')) return;
       const raw = link.getAttribute('href');
       if (!raw || raw.startsWith('#')) return;
       let url;
@@ -273,7 +281,7 @@
       const url = new URL(location.href);
       if (next === "be") url.searchParams.set("lang", "be");
       else url.searchParams.delete("lang");
-      history.pushState({ lang: next }, "", url);
+      history.pushState({ ...history.state, lang: next }, "", url);
     }
   };
 
@@ -287,10 +295,15 @@
   applyLanguage(selectedLanguage());
 
   document.querySelectorAll("[data-research-lang]").forEach(link => {
+    if (link.closest('#research-shell, [data-research-owned]')) return;
     link.addEventListener("click", event => {
       event.preventDefault();
       applyLanguage(link.dataset.researchLang, true);
     });
+  });
+  document.addEventListener('research:language', event => {
+    const next = event.detail?.lang;
+    if (next === 'en' || next === 'be') applyLanguage(next, true);
   });
   window.addEventListener("popstate", () => applyLanguage(selectedLanguage()));
 })();

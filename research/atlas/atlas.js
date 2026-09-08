@@ -161,20 +161,22 @@
     }));
     els.empty.hidden=filtered.length!==0;
   }
-  function setLanguage(lang){
+  function setLanguage(lang,updateUrl=true){
     state.lang=lang;document.documentElement.lang=lang;
-    document.querySelectorAll('[data-copy]').forEach(node=>{const value=copy[lang][node.dataset.copy];if(value!==undefined)node.innerHTML=value});
-    document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===lang)));
-    document.querySelectorAll('[data-placeholder-en]').forEach(node=>node.placeholder=node.dataset[`placeholder${lang==='be'?'Be':'En'}`]);
+    document.querySelectorAll('[data-copy]').forEach(node=>{if(node.closest('#research-shell, [data-research-owned]'))return;const value=copy[lang][node.dataset.copy];if(value!==undefined)node.innerHTML=value});
+    document.querySelectorAll('[data-lang]').forEach(button=>{if(!button.closest('#research-shell, [data-research-owned]'))button.setAttribute('aria-pressed',String(button.dataset.lang===lang))});
+    document.querySelectorAll('[data-placeholder-en]').forEach(node=>{if(!node.closest('#research-shell, [data-research-owned]'))node.placeholder=node.dataset[`placeholder${lang==='be'?'Be':'En'}`]});
     els.query.placeholder=copy[lang]['filter-placeholder'];
     document.querySelector('.skip-link').textContent=copy[lang].skip;
-    document.querySelectorAll('a[href^="/research/"]').forEach(link=>{const target=new URL(link.href,location.href);target.searchParams.set('lang',lang);link.href=target.pathname+target.search+target.hash});
+    document.querySelectorAll('a[href^="/research/"]').forEach(link=>{if(link.closest('#research-shell, [data-research-owned]'))return;const target=new URL(link.href,location.href);target.searchParams.set('lang',lang);link.href=target.pathname+target.search+target.hash});
     populateFilters();render();
-    const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState({},'',url);
+    if(updateUrl){const url=new URL(location.href);url.searchParams.set('lang',lang);history.replaceState(history.state,'',url);}
     try{localStorage.setItem('living-belarus-atlas-lang',lang);localStorage.setItem('research-lang',lang)}catch(e){}
   }
   function sync(){state.query=els.query.value;state.type=els.type.value;state.topic=els.topic.value;state.language=els.language.value;render()}
-  document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>setLanguage(button.dataset.lang)));
+  document.querySelectorAll('[data-lang]').forEach(button=>{if(!button.closest('#research-shell, [data-research-owned]'))button.addEventListener('click',()=>setLanguage(button.dataset.lang))});
+  document.addEventListener('research:language',event=>{const lang=event.detail?.lang;if(lang==='en'||lang==='be')setLanguage(lang)});
+  window.addEventListener('popstate',()=>{const lang=new URLSearchParams(location.search).get('lang');setLanguage(lang==='be'?'be':'en',false)});
   [els.query,els.type,els.topic,els.language].forEach(node=>node.addEventListener(node.tagName==='SELECT'?'change':'input',sync));
   document.querySelector('#filter-reset').addEventListener('click',()=>{els.query.value='';els.type.value='all';els.topic.value='all';els.language.value='all';state.query='';state.type='all';state.topic='all';state.language='all';render()});
   document.querySelector('#atlas-search-form').addEventListener('submit',event=>{event.preventDefault();els.query.value=els.heroQuery.value;state.query=els.query.value;render();document.querySelector('#directory').scrollIntoView({behavior:'smooth'})});

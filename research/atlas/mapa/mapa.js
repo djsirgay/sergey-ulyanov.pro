@@ -187,11 +187,11 @@
   }
   function applyLanguage() {
     document.documentElement.lang=state.lang;document.title=(state.lang==='be'?'MAPA · Гісторыя і месцы':'MAPA · History & places')+' — Sergéy Ulyanov';
-    document.querySelectorAll('[data-i18n]').forEach(el=>{el.textContent=t(el.dataset.i18n)});
-    document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===state.lang)));
+    document.querySelectorAll('[data-i18n]').forEach(el=>{if(!el.closest('#research-shell, [data-research-owned]'))el.textContent=t(el.dataset.i18n)});
+    document.querySelectorAll('[data-lang]').forEach(button=>{if(!button.closest('#research-shell, [data-research-owned]'))button.setAttribute('aria-pressed',String(button.dataset.lang===state.lang))});
     $('#mapa-query').placeholder=t('placeholder');
     $('#mapa-query').value=state.query;$('#mapa-topic').value=state.topic;$('#mapa-period').value=state.period;
-    document.querySelectorAll('a[href^="/research/"]').forEach(link=>{const url=new URL(link.href,location.href);url.searchParams.set('lang',state.lang);link.href=url.pathname+url.search+url.hash});
+    document.querySelectorAll('a[href^="/research/"]').forEach(link=>{if(link.closest('#research-shell, [data-research-owned]'))return;const url=new URL(link.href,location.href);url.searchParams.set('lang',state.lang);link.href=url.pathname+url.search+url.hash});
     $('#mapa-region-image').alt=state.lang==='be'?'Контуры Беларусі і суседніх краін':'Outlines of Belarus and neighboring countries';
     $('#mapa-region').setAttribute('aria-label',t('region'));
     try{localStorage.setItem('research-lang',state.lang);localStorage.setItem('living-belarus-atlas-lang',state.lang)}catch{}
@@ -203,7 +203,12 @@
   $('#mapa-topic').addEventListener('change',updateFilters);$('#mapa-period').addEventListener('change',updateFilters);
   $('#mapa-search').addEventListener('submit',event=>{event.preventDefault();updateFilters()});
   document.querySelectorAll('[data-reset]').forEach(button=>button.addEventListener('click',reset));
-  document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{state.lang=button.dataset.lang;applyLanguage();const url=new URL(location.href);url.searchParams.set('lang',state.lang);history.replaceState({},'',url)}));
+  function setLanguage(lang){
+    if(lang!=='en'&&lang!=='be')return;
+    state.lang=lang;applyLanguage();const url=new URL(location.href);url.searchParams.set('lang',state.lang);history.replaceState(history.state,'',url);
+  }
+  document.querySelectorAll('[data-lang]').forEach(button=>{if(!button.closest('#research-shell, [data-research-owned]'))button.addEventListener('click',()=>setLanguage(button.dataset.lang))});
+  document.addEventListener('research:language',event=>setLanguage(event.detail?.lang));
   document.querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;render();syncURL(true)}));
   $('#mapa-events').addEventListener('click',event=>{const button=event.target.closest('[data-event]');if(button)select(button.dataset.event)});
   $('#mapa-events').addEventListener('keydown',event=>{

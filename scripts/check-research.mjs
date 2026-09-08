@@ -29,7 +29,7 @@ for (const file of pages) {
 }
 assert.deepEqual(failures, [], `Broken local research links:\n${failures.join('\n')}`);
 const home = fs.readFileSync(path.join(root, 'research/index.html'), 'utf8');
-assert.equal([...home.matchAll(/class="research-start-card"/g)].length, 4, 'Keep the four task-first entry points');
+assert.equal([...home.matchAll(/class="research-start-card"/g)].length, 5, 'Keep the five task-first entry points including a direct MAPA entry');
 assert.match(home, /AI systems planned for comparison/);
 assert.match(home, /stored in this browser only/);
 assert.match(home, /research\/atlas\/mapa\//);
@@ -70,4 +70,4 @@ vm.runInNewContext(chronology.slice(dataStart, dataEnd) + '\nglobalThis.stages=r
 const stages = JSON.parse(JSON.stringify(chronologyContext.stages));
 assert.equal(stages.length, 28, 'Chronology must expose all 28 reviewed stages');
 assert.deepEqual(stages.filter(stage => stage.map).map(stage => stage.map), displayedYears);
-console.log(`Research release checks passed: ${pages.length} pages, four task entry points, ${displayedYears.length} Belarus-focused map layers, ${stages.length} chronology stages, ${sourceYears.length} retained source snapshots, no missing local assets.`);
+console.log(`Research release checks passed: ${pages.length} pages, five task entry points, ${displayedYears.length} Belarus-focused map layers, ${stages.length} chronology stages, ${sourceYears.length} retained source snapshots, no missing local assets.`);

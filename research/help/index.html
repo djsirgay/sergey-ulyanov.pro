@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Practical instructions for the Unmute Belarus research tools, their limits, and safe backup or transfer of browser data.">
+  <title>Research help — Unmute Belarus</title>
+  <link rel="canonical" href="https://sergey-ulyanov.pro/research/help/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/research/navigation.css">
+  <script type="module" src="/research/navigation.js"></script>
+  <script type="module" src="/research/wayfinding-pages.js"></script>
+  <script type="module" src="/research/storage-migration.js"></script>
+</head>
+<body class="wayfinding-page" data-wayfinding-page="help">
+  <!-- The approved 12ui Help topic cards now lead to actual instructions, not prototype holding pages. -->
+  <noscript><nav><a href="/research/">Research home</a> · <a href="/research/tools/">Tools</a> · <a href="/research/help/">Help</a></nav></noscript>
+  <main id="main" class="wayfinding-main" data-research-owned>
+    <header class="wayfinding-hero" id="help-top">
+      <p class="wayfinding-kicker" data-wayfinding="helpKicker">Start here · return whenever you need</p>
+      <h1 data-wayfinding="helpTitle">Research help</h1>
+      <p class="wayfinding-intro" data-wayfinding="helpIntro">Choose your task for the exact steps, the result to expect, and what the tool cannot establish. No account is needed for the core research tools.</p>
+    </header>
+    <nav class="help-topic-grid" aria-label="Help topics" data-wayfinding-aria="helpTopics">
+      <a class="help-topic-card" href="#music"><span class="wayfinding-kicker">Music Atlas</span><h2 data-wayfinding="musicTitle">Music search</h2><p data-wayfinding="musicHelpTeaser">Search, inspect the source and save results.</p><span aria-hidden="true">→</span></a>
+      <a class="help-topic-card" href="#passport"><span class="wayfinding-kicker">Archive Passport</span><h2 data-wayfinding="passportTitle">Recording passport</h2><p data-wayfinding="passportHelpTeaser">Document a file or a missing-source lead.</p><span aria-hidden="true">→</span></a>
+      <a class="help-topic-card" href="#audio"><span class="wayfinding-kicker">Restoration Lab</span><h2 data-wayfinding="audioTitle">Audio lab</h2><p data-wayfinding="audioHelpTeaser">Try the demo, then compare your own audio.</p><span aria-hidden="true">→</span></a>
+      <a class="help-topic-card" href="#culture"><span class="wayfinding-kicker">Living Belarus Atlas</span><h2 data-wayfinding="cultureTitle">Culture directory</h2><p data-wayfinding="cultureHelpTeaser">Find resources by format, language and topic.</p><span aria-hidden="true">→</span></a>
+      <a class="help-topic-card" href="#mapa"><span class="wayfinding-kicker">MAPA</span><h2 data-wayfinding="mapaTitle">Historical map · MAPA</h2><p data-wayfinding="mapaHelpTeaser">Choose a period and understand the territories.</p><span aria-hidden="true">→</span></a>
+    </nav>
+    <aside class="help-callout">
+      <h2 data-wayfinding="quickStartTitle">The quickest first visit</h2>
+      <p data-wayfinding="quickStartText">Try “Belarusian folk” in Music search, open a source record, then inspect MAPA at 1938 and 1945. For the audio workflow, choose the safe synthetic demo in Audio lab; no personal file is required.</p>
+      <a class="help-open-tool" href="#browser-data" data-wayfinding="backupLink">Back up or move saved data →</a>
+    </aside>
+    <section class="help-guide" id="music">
+      <p class="wayfinding-kicker" data-wayfinding="musicGuideKicker">Music Atlas · Discovery and evidence</p>
+      <h2 data-wayfinding="musicTitle">Music search</h2>
+      <ol class="help-step-list">
+        <li data-wayfinding="musicStep1">Open the public-catalog search. Type a description such as “Belarusian folk”, an artist’s name, or “electronic music 1990s”.</li>
+        <li data-wayfinding="musicStep2">Check “Edit how the description is interpreted”. Adjust style, format, dates and work language, then choose “Search the public catalog”. A musician’s nationality is not the language of every song.</li>
+        <li data-wayfinding="musicStep3">Inspect the result and follow its source link. Artist leads and individual works are different result types. Mood is a preference to investigate, not a verified filter.</li>
+        <li data-wayfinding="musicStep4">Use “Export these source records” to save the catalog results. For your passports and curated examples, move to “Explore the local corpus”, open a dossier, and inspect or add a local annotation.</li>
+      </ol>
+      <p class="help-callout" data-wayfinding="musicGuideLimit">Two collections, not one giant archive: the live public catalog uses Wikidata metadata; the local corpus contains curated source records and this browser’s passports. A zero-result search does not prove that music does not exist. Broaden a criterion or try another spelling. Search-result exports are not full browser backups.</p>
+      <a class="help-open-tool" href="/research/tools/unmute-the-archive/atlas/#external-discovery" data-wayfinding="musicAction">Find music</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+    <section class="help-guide" id="passport">
+      <p class="wayfinding-kicker" data-wayfinding="passportGuideKicker">Archive Passport · Document before transforming</p>
+      <h2 data-wayfinding="passportTitle">Recording passport</h2>
+      <ol class="help-step-list">
+        <li data-wayfinding="passportStep1">Choose an audio file you are entitled to use, or select the missing-source route if the recording is unavailable. The browser computes an available file’s SHA-256 fingerprint locally; the audio is not uploaded.</li>
+        <li data-wayfinding="passportStep2">Complete the required title, creator, language, place, collection, context and rights information. Use “Other” where needed; document unknown dates honestly rather than guessing.</li>
+        <li data-wayfinding="passportStep3">Choose “Create archival passport”. If a required field is missing, the form lists what to complete. A successful result shows a passport ID, source status and citation.</li>
+        <li data-wayfinding="passportStep4">Download the passport JSON and keep your original audio separately. Open the local corpus to see your saved records, or use the verification section to compare the same file against its passport.</li>
+      </ol>
+      <p class="help-callout" data-wayfinding="passportGuideLimit">An exact fingerprint match proves identical bytes, not ownership, historical authenticity or a match between differently encoded versions. Missing-source records have no source fingerprint. Browser storage alone is not a backup.</p>
+      <a class="help-open-tool" href="/research/tools/unmute-the-archive/#create" data-wayfinding="passportAction">Document a recording</a>
+      <a class="help-open-tool" href="/research/tools/unmute-the-archive/#corpus" data-wayfinding="openCorpus">See saved passports</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+    <section class="help-guide" id="audio">
+      <p class="wayfinding-kicker" data-wayfinding="audioGuideKicker">Restoration Lab · Preserve the source, document the change</p>
+      <h2 data-wayfinding="audioTitle">Audio lab</h2>
+      <ol class="help-step-list">
+        <li data-wayfinding="audioStep1">For a first test, choose “Run a safe synthetic demo”. For your own recording, create or import its passport first, select that passport, and choose the exact source audio file.</li>
+        <li data-wayfinding="audioStep2">Check the source-match message. Set the low-rumble filter, high-frequency limit and level options. State the purpose of the change and add a reviewer note if useful.</li>
+        <li data-wayfinding="audioStep3">Choose “Process documented derivative”. Listen to source A and derivative B. Decide whether the change improves access without hiding information you need.</li>
+        <li data-wayfinding="audioStep4">Download the WAV and JSON log. If the source fingerprint matches its passport, choose “Register in passport” to save the derivative’s fingerprint and method alongside the original history.</li>
+      </ol>
+      <p class="help-callout" data-wayfinding="audioGuideLimit">This is a conservative listening-copy workflow, not automatic historical restoration. It does not separate stems, transcribe lyrics or reconstruct missing audio with AI. Downloads are 16-bit PCM WAV; keep the original master and the processing log.</p>
+      <a class="help-open-tool" href="/research/tools/unmute-the-archive/restoration/#lab" data-wayfinding="audioAction">Compare and process audio</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+    <section class="help-guide" id="culture">
+      <p class="wayfinding-kicker" data-wayfinding="cultureGuideKicker">Living Belarus Atlas · Find the people and sources</p>
+      <h2 data-wayfinding="cultureTitle">Culture directory</h2>
+      <ol class="help-step-list">
+        <li data-wayfinding="cultureStep1">Enter a topic or choose an example, such as podcasts about music or short videos about language.</li>
+        <li data-wayfinding="cultureStep2">Narrow the results with format, topic and language. All active filters apply together; reset a filter if nothing matches.</li>
+        <li data-wayfinding="cultureStep3">Open a result and read the original publisher’s resource. The directory’s description is a research annotation, not a replacement for the source.</li>
+        <li data-wayfinding="cultureStep4">If you know a missing resource, use “Suggest a source” to prepare an email with its original URL and a short explanation. You choose whether to send it.</li>
+      </ol>
+      <p class="help-callout" data-wayfinding="cultureGuideLimit">The directory is a curated seed index. It does not mirror every linked website, automatically collect contributors’ archives, or imply that a listed person endorses the research.</p>
+      <a class="help-open-tool" href="/research/atlas/#directory" data-wayfinding="cultureAction">Explore cultural sources</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+    <section class="help-guide" id="mapa">
+      <p class="wayfinding-kicker" data-wayfinding="mapaGuideKicker">MAPA · The same lands, different states</p>
+      <h2 data-wayfinding="mapaTitle">Historical map · MAPA</h2>
+      <ol class="help-step-list">
+        <li data-wayfinding="mapaStep1">Choose a period in the shared historical selector. A mapped date opens territorial geography; a context-only stage opens its explanation without inventing borders.</li>
+        <li data-wayfinding="mapaStep2">Read the country labels and colored legend. Switch between the modern-Belarus reference area and the wider region to see surrounding states.</li>
+        <li data-wayfinding="mapaStep3">Select a place from the city control, map or affiliation table. Read which source polity contains it at that date. Compare Brest in 1938 and 1945 as a quick test.</li>
+        <li data-wayfinding="mapaStep4">Use the chronology and source notes to distinguish sovereignty, occupation, territorial claims and unresolved detail. Change the language without losing your selected period.</li>
+      </ol>
+      <p class="help-callout" data-wayfinding="mapaGuideLimit">Current coverage: seven dated map snapshots, 28 chronology stages and 25 place checks. Today’s Belarus outline is only a fixed orientation reference. This independent edition credits the original MAPA creators; it is not a restoration of all 63 original maps.</p>
+      <a class="help-open-tool" href="/research/atlas/mapa/?year=1938#borders" data-wayfinding="mapaAction">Explore the map</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+    <section class="help-guide" id="connections">
+      <h2 data-wayfinding="connectionsTitle">Where does my data go?</h2>
+      <p data-wayfinding="connectionsText">Passport → Audio lab → Local music collection is a documented relationship, not an automatic upload pipeline. The tools share passport metadata within one browser and website address. A linked derivative appears with its parent passport; audio stays in your own files. The public catalog, cultural directory and map remain separate source collections.</p>
+      <p data-wayfinding="connectionsBackup">Switching devices, browsers or website addresses does not automatically move saved records. Download a full browser backup below to preserve both passports and music annotations. Do not clear the old site’s data before checking the import.</p>
+    </section>
+    <section class="help-guide" id="browser-data" data-research-storage-migration></section>
+    <section class="help-guide" id="navigation-help">
+      <h2 data-wayfinding="navigationTitle">Getting around</h2>
+      <p data-wayfinding="navigationText">The Unmute Belarus brand returns to research home. Tools opens the five-task directory. The path below the main menu shows where you are; Help opens the relevant instructions. Portfolio is a separate return to Sergey’s main website.</p>
+      <p data-wayfinding="keyboardText">Use Tab to move between links and controls, Enter to open links, and Space or Enter for buttons. Native menus and selectors also work with the keyboard. EN / БЕЛ changes the interface, not the language of the original evidence.</p>
+      <a class="help-open-tool" href="/research/tools/" data-wayfinding="allTools">Browse all five tools →</a>
+      <a class="help-open-tool" href="/research/protocol/" data-wayfinding="methodology">Read the research methodology →</a>
+      <a class="help-back-top" href="#help-top" data-wayfinding="backTopics">Back to help topics ↑</a>
+    </section>
+  </main>
+</body>
+</html>
