@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import {createHash} from 'node:crypto';
 import {buildResearchDomain,transformResearchText} from '../scripts/build-research-domain.mjs';
-import {buildPalettePreview,paletteCSS,PALETTE,PREVIEW_PATH} from '../scripts/build-research-palette-preview.mjs';
+import {buildPalettePreview,paletteCSS,PALETTE,PREVIEW_PATH,PREVIEW_CSS_VERSION} from '../scripts/build-research-palette-preview.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const walk=dir=>fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?walk(path.join(dir,e.name)):[path.join(dir,e.name)]);
 const sha=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -13,6 +13,9 @@ const luminance=hex=>{const values=hex.slice(1).match(/../g).map(x=>parseInt(x,1
 const ratio=(a,b)=>{const l=[luminance(a),luminance(b)].sort((x,y)=>y-x);return(l[0]+.05)/(l[1]+.05)};
 test('white-red palette meets AA contrast for primary text, muted text and red actions',()=>{
  for(const [fg,bg] of [[PALETTE.ink,PALETTE.paper],[PALETTE.muted,PALETTE.paper],[PALETTE.red,PALETTE.paper],[PALETTE.paper,PALETTE.red],[PALETTE.ink,PALETTE.panel],[PALETTE.muted,PALETTE.panel]])assert.ok(ratio(fg,bg)>=4.5,`${fg}/${bg}: ${ratio(fg,bg)}`);
+});
+test('editorial preview surfaces and text meet AA contrast',()=>{
+ for(const [fg,bg] of [['#291d22','#f8f6f1'],['#9b1427','#f8f6f1'],['#ffffff','#790e1c'],['#f2dfe2','#790e1c'],['#ffffff','#292226'],['#eee0e4','#292226'],['#5f4c52','#ffffff']])assert.ok(ratio(fg,bg)>=4.5,`${fg}/${bg}: ${ratio(fg,bg)}`);
 });
 test('palette transform does not alter layout, typography, image URLs or map fills',()=>{
  const css='.x{display:grid;grid-template-columns:1fr 2fr;padding:18px;font-size:16px;background:#06110f;color:#f1efdc;background-image:url("/assets/photo.webp");fill:#456922;stroke:#efcdab;mask-image:linear-gradient(#000,transparent)}';
@@ -37,7 +40,11 @@ test('preview addition preserves every primary byte, all images and every noinde
  for(const [file,hash] of before)assert.equal(sha(path.join(site,file)),hash,`Default changed: ${file}`);
  const pages=walk(preview.outputDirectory).filter(f=>f.endsWith('.html'));
  assert.ok(pages.length>=11);
- for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.match(html,/<meta name="robots" content="noindex,nofollow,noarchive">/);assert.match(html,/palette-only\.css/);}
+ for(const file of pages){const html=fs.readFileSync(file,'utf8');assert.match(html,/<meta name="robots" content="noindex,nofollow,noarchive">/);assert.ok(html.includes(`palette-only.css?v=${PREVIEW_CSS_VERSION}`),`Cache-busted preview CSS: ${file}`);}
+ const css=fs.readFileSync(path.join(preview.outputDirectory,'palette-only.css'),'utf8');
+ assert.equal(createHash('sha256').update(css).digest('hex').slice(0,12),PREVIEW_CSS_VERSION);
+ assert.match(css,/\.history-legend-item\[aria-pressed=true\][^}]*border-color:var\(--polity-stroke/);
+ assert.doesNotMatch(fs.readFileSync(path.join(site,'index.html'),'utf8'),/palette-only\.css/);
  for(const [relative,hash] of before)if(/\.(?:png|jpe?g|webp|svg|avif|mp3|wav|pdf)$/i.test(relative))assert.equal(sha(path.join(preview.outputDirectory,relative)),hash,`Media changed: ${relative}`);
  assert.doesNotMatch(fs.readFileSync(path.join(site,'sitemap.xml'),'utf8'),/palette-preview/);
  assert.doesNotMatch(fs.readFileSync(path.join(preview.outputDirectory,'sitemap.xml'),'utf8'),/<loc>/);

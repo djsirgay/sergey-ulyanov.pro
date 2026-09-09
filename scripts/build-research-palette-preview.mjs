@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {createHash} from 'node:crypto';
 import {buildResearchDomain, validateResearchArtifact} from './build-research-domain.mjs';
 
 export const PREVIEW_PATH = '/palette-preview/white-red/';
@@ -74,6 +75,11 @@ button[aria-pressed=true],.research-lang button[aria-pressed=true],.history-year
 .history-neighbor-list,.history-city-explorer,.history-context,.history-places-table th,.history-places-table td{color:#281c20}
 .history-table-place,.history-context a,.history-city-hint,.history-context>p,.history-country-result{color:#65565b}
 `;
+// The preview's editorial skin is intentionally outside the public source tree.
+// Only the isolated preview builder copies it into a deployed artifact.
+const editorialCSS=fs.readFileSync(new URL('./research-palette-preview.css',import.meta.url),'utf8');
+const previewCSS=finishingCSS+'\n'+editorialCSS;
+export const PREVIEW_CSS_VERSION=createHash('sha256').update(previewCSS).digest('hex').slice(0,12);
 export function buildPalettePreview({sourceRoot,siteDirectory}){
   const outputDirectory=path.join(siteDirectory,PREVIEW_PATH.slice(1));
   const result=buildResearchDomain({sourceRoot,outputDirectory,mountPath:PREVIEW_PATH,noindex:true});
@@ -84,12 +90,12 @@ export function buildPalettePreview({sourceRoot,siteDirectory}){
       let html=fs.readFileSync(file,'utf8');
       html=html.replace(/<style([^>]*)>([\s\S]*?)<\/style>/gi,(_,attributes,css)=>`<style${attributes}>${paletteCSS(css)}</style>`);
       html=html.replace(/<meta name="theme-color"[^>]*>/gi,'<meta name="theme-color" content="#a71935">');
-      html=html.replace('</head>',`<link rel="stylesheet" href="${PREVIEW_PATH}palette-only.css">\n</head>`);
+      html=html.replace('</head>',`<link rel="stylesheet" href="${PREVIEW_PATH}palette-only.css?v=${PREVIEW_CSS_VERSION}">\n</head>`);
       html=html.replace(/<title>([\s\S]*?)<\/title>/i,'<title>$1 · White–red–white preview</title>');
       fs.writeFileSync(file,html);
     }
   }
-  fs.writeFileSync(path.join(outputDirectory,'palette-only.css'),finishingCSS);
+  fs.writeFileSync(path.join(outputDirectory,'palette-only.css'),previewCSS);
   fs.writeFileSync(path.join(outputDirectory,'robots.txt'),'User-agent: *\nDisallow: /\n');
   validateResearchArtifact(outputDirectory,{mountPath:PREVIEW_PATH});
   return {...result,path:PREVIEW_PATH,styles,robots:'noindex,nofollow,noarchive',defaultChanged:false};
