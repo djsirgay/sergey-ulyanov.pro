@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {buildPalettePreview} from './build-research-palette-preview.mjs';
 
 export const PORTFOLIO_ORIGIN = 'https://sergey-ulyanov.pro';
 export const RESEARCH_ORIGIN = 'https://research.sergey-ulyanov.pro';
@@ -22,7 +23,9 @@ export function isPublicResearchFile(relative) {
 
 // Source URLs retain their original meaning before the /research mount is removed.
 // A root portfolio link is not the same thing as a /research/ home link.
-export function transformResearchText(source, sourceRelative = '') {
+export function transformResearchText(source, sourceRelative = '', mountPath = '/') {
+  if (!/^\/(?:[a-z0-9-]+\/)*$/.test(mountPath)) throw new Error('Invalid research mount path.');
+  const researchOrigin = RESEARCH_ORIGIN + (mountPath === '/' ? '' : mountPath.slice(0, -1));
   let output = source;
   // Reproducibility/source links remain usable without shipping build tools or notes.
   output = output.replace(/(\bhref\s*=\s*["'])([^"']+)(["'])/g, (whole, prefix, reference, quote) => {
@@ -40,14 +43,15 @@ export function transformResearchText(source, sourceRelative = '') {
     output = output.replace(/https:\/\/research\.sergey-ulyanov\.pro\/(?:research\/)?system\/#browser-data/g,
       `${RESEARCH_ORIGIN}/help/#browser-data`);
   }
-  output = output.replace(/https:\/\/sergey-ulyanov\.pro\/research(?=\/|[?#"'`\s<]|$)/g, RESEARCH_ORIGIN);
-  output = output.replace(/https:\/\/research\.sergey-ulyanov\.pro\/research(?=\/|[?#"'`\s<]|$)/g, RESEARCH_ORIGIN);
+  output = output.replace(/https:\/\/sergey-ulyanov\.pro\/research(?=\/|[?#"'`\s<]|$)/g, researchOrigin);
+  output = output.replace(/https:\/\/research\.sergey-ulyanov\.pro\/research(?=\/|[?#"'`\s<]|$)/g, researchOrigin);
   // Preserve old portfolio sections, including links embedded in JS templates.
   output = output.replace(/(["'`])\/(hire|work|press|evidence|privacy|case-studies|about|contact|actor-final)(?=\/|[?#"'`])/g,
     (_, quote, section) => `${quote}${PORTFOLIO_ORIGIN}/${section}`);
   output = output.replace(/(\bhref\s*=\s*\\?["'])\/(?=[?#]|\\?["'])/g, `$1${PORTFOLIO_ORIGIN}/`);
   // Do not modify external archive/GitHub URLs that happen to contain /research/.
-  output = output.replace(/(?<![A-Za-z0-9._~:/-])\/research(?=\/|[?#"'`\s<]|$)\/?/g, '/');
+  output = output.replace(/(?<![A-Za-z0-9._~:/-])\/research(?=\/|[?#"'`\s<]|$)\/?/g, mountPath);
+  if (mountPath !== '/') output = output.replace(/(["'`])\/(styles[-\w]*\.css|site\.js)(?=[?#"'`])/g, `$1${mountPath}$2`);
   output = output.replace(/__RESEARCH_LEGACY_ORIGIN_(\d+)__/g, (_, index) => preserved[Number(index)]);
   return output;
 }
@@ -79,12 +83,14 @@ function localTarget(root, sourceFile, reference) {
   return target;
 }
 
-export function validateResearchArtifact(outputDirectory) {
+export function validateResearchArtifact(outputDirectory, {mountPath = '/'} = {}) {
+  outputDirectory = path.resolve(outputDirectory);
   const failures = [], pages = walk(outputDirectory).filter(file => file.endsWith('.html'));
   for (const file of pages) {
     const source = fs.readFileSync(file, 'utf8');
     for (const [, reference] of source.matchAll(/(?:href|src|poster)\s*=\s*["']([^"']+)["']/g)) {
-      let target = localTarget(outputDirectory, file, reference);
+      const localReference = mountPath !== '/' && reference.startsWith(mountPath) ? '/' + reference.slice(mountPath.length) : reference;
+      let target = localTarget(outputDirectory, file, localReference);
       if (!target) continue;
       if (fs.existsSync(target) && fs.statSync(target).isDirectory()) target = path.join(target, 'index.html');
       if (!fs.existsSync(target)) failures.push(`${slash(path.relative(outputDirectory, file))} → ${reference}`);
@@ -94,7 +100,7 @@ export function validateResearchArtifact(outputDirectory) {
   return { pages: pages.length };
 }
 
-export function buildResearchDomain({ sourceRoot = ROOT, outputDirectory = path.join(ROOT, '_research-site') } = {}) {
+export function buildResearchDomain({ sourceRoot = ROOT, outputDirectory = path.join(ROOT, '_research-site'), mountPath = '/', noindex = false } = {}) {
   const root = fs.realpathSync(sourceRoot);
   let existing = path.resolve(outputDirectory), suffix = [];
   while (!fs.existsSync(existing)) { suffix.unshift(path.basename(existing)); existing = path.dirname(existing); }
@@ -136,7 +142,14 @@ export function buildResearchDomain({ sourceRoot = ROOT, outputDirectory = path.
     const target = path.join(destination, relative);
     if (fs.existsSync(target)) throw new Error(`Public path collision: ${relative}`);
     fs.mkdirSync(path.dirname(target), { recursive: true });
-    if (TEXT.test(file)) fs.writeFileSync(target, transformResearchText(fs.readFileSync(file, 'utf8'), slash(path.relative(root, file))));
+    if (TEXT.test(file)) {
+      let content = transformResearchText(fs.readFileSync(file, 'utf8'), slash(path.relative(root, file)), mountPath);
+      if (noindex && file.endsWith('.html')) {
+        content = content.replace(/<meta\s+name=["']robots["'][^>]*>/gi, '');
+        content = content.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,nofollow,noarchive">');
+      }
+      fs.writeFileSync(target, content);
+    }
     else fs.copyFileSync(file, target);
     written.push(relative);
   }
@@ -147,7 +160,7 @@ export function buildResearchDomain({ sourceRoot = ROOT, outputDirectory = path.
   const urls = indexed.map(file => `${RESEARCH_ORIGIN}/${file.replace(/(?:^|\/)index\.html$/, match => match.startsWith('/') ? '/' : '')}`);
   fs.writeFileSync(path.join(destination, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.map(url => `  <url><loc>${url}</loc></url>`).join('\n')}\n</urlset>\n`);
   fs.writeFileSync(path.join(destination, 'robots.txt'), `User-agent: *\nAllow: /\nSitemap: ${RESEARCH_ORIGIN}/sitemap.xml\n`);
-  const validation = validateResearchArtifact(destination);
+  const validation = validateResearchArtifact(destination, {mountPath});
   return { outputDirectory: destination, files: written.length + 4, ...validation };
 }
 
@@ -157,5 +170,9 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     throw new Error('Usage: node scripts/build-research-domain.mjs [--source SOURCE] [--out EMPTY_OUTPUT]');
   }
   const options = Object.fromEntries(Array.from({ length: args.length / 2 }, (_, index) => [args[index * 2], args[index * 2 + 1]]));
-  console.log(JSON.stringify(buildResearchDomain({ sourceRoot: options['--source'] || ROOT, outputDirectory: options['--out'] || path.join(ROOT, '_research-site') }), null, 2));
+  const sourceRoot = options['--source'] || ROOT, outputDirectory = options['--out'] || path.join(ROOT, '_research-site');
+  const primary = buildResearchDomain({ sourceRoot, outputDirectory });
+  // This preview branch adds only an unlinked, noindex subtree. Default files are untouched.
+  const palettePreview = buildPalettePreview({sourceRoot, siteDirectory: outputDirectory});
+  console.log(JSON.stringify({...primary, palettePreview}, null, 2));
 }
