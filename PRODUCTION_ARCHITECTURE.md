@@ -8,25 +8,19 @@ The approved current design is stored as readable HTML sections in `site-fragmen
 
 ## Production files
 
-- `site-fragments/` — semantic HTML in visual order.
-- `styles-1.css` through `styles-4.css` — core, work, proof/contact, and responsive styles.
-- `site.js` — navigation state, reveal behavior, galleries, keyboard interactions, and event instrumentation.
-- `assets/sergey-headshot.webp` — single production portrait asset.
-- `og-image.png` — social sharing preview.
-- `favicon.svg` — browser icon.
+- `site-fragments/` — semantic homepage HTML in visual order.
+- `index.html` — generated homepage artifact.
+- `hire/`, `work/`, `press/`, `evidence/`, `case-studies/`, `research/`, and `privacy/` — public routes.
+- `styles-1.css` through `styles-4.css`, route and research styles — production presentation.
+- `site.js` and `research/` scripts — navigation, interaction, localization, and instrumentation.
+- `assets/` — current production imagery and social previews.
 - `robots.txt` and `sitemap.xml` — crawler controls and discovery.
 
-## Removed runtime dependencies
+## Repository hygiene
 
-The deployed page no longer uses:
+Legacy redesign snapshots, actor-site copies, preview folders, one-off deployment markers, and the obsolete photo-sync workflow were removed on September 9, 2026. Git history remains available for recovery, so duplicate runtime copies are not retained in the current tree.
 
-- an iframe wrapper;
-- `new Function`;
-- runtime extraction of JavaScript from another HTML document;
-- four base64 portrait chunks;
-- remote Wikimedia logo image URLs.
-
-The old `base-site/` and `refinement-preview/` folders remain only as historical material and are excluded from search indexing.
+Generated deployment folders (`_site/` and `_research-site/`) and local operating-system files are ignored.
 
 ## Analytics hooks
 
@@ -40,9 +34,11 @@ Google Search Console verification and sitemap discovery are present in producti
 
 ## Deployment safety
 
-Pull requests run:
+Pull requests and pushes to `main` run:
 
 - deterministic HTML assembly and structural assertions;
-- JavaScript syntax validation.
+- JavaScript syntax validation;
+- research route and asset checks;
+- navigation, storage-safety, and historical-map tests.
 
 GitHub Pages deploys only from `main` after validation succeeds.

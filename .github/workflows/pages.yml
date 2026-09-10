@@ -26,7 +26,6 @@ jobs:
       - name: Validate JavaScript syntax
         run: |
           node --check site.js
-          node --check actor-final/analytics.js
           node --check research/i18n.js
           node --check research/shared-language.js
           node --check research/navigation.js
@@ -64,23 +63,6 @@ jobs:
             --exclude '.github/' \
             --exclude '_site/' \
             --exclude '_research-site/' \
-            --exclude 'actor-final-preview/' \
-            --exclude 'actor-preview/' \
-            --exclude 'actor-preview-v2/' \
-            --exclude 'actor-final/part-*.html' \
-            --exclude 'actor-final/script.js' \
-            --exclude 'actor-final/styles-1.css' \
-            --exclude 'actor-final/styles-2.css' \
-            --exclude 'actor-final/styles-3.css' \
-            --exclude 'actor-final/styles-final-v11.css' \
-            --exclude 'actor-final/styles-personality-base.css' \
-            --exclude 'actor-final/styles-personality.css' \
-            --exclude 'actor-final/styles-typography.css' \
-            --exclude 'actor-final/styles-v9.css' \
-            --exclude 'actor-final/styles-v10.css' \
-            --exclude 'base-site/' \
-            --exclude 'refinement-preview/' \
-            --exclude 'version-review/' \
             --exclude 'site-fragments/' \
             --exclude 'scripts/' \
             --exclude 'tests/' \

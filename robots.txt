@@ -1,37 +1,13 @@
 User-agent: *
 Allow: /
-Disallow: /version-review/
-Disallow: /base-site/
-Disallow: /refinement-preview/
-Disallow: /actor-preview/
-Disallow: /actor-preview-v2/
-Disallow: /actor-final-preview/
-Disallow: /actor-final/
-Disallow: /site-fragments/
 
 User-agent: OAI-SearchBot
 Allow: /
-Disallow: /version-review/
-Disallow: /base-site/
-Disallow: /refinement-preview/
-Disallow: /actor-preview/
-Disallow: /actor-preview-v2/
-Disallow: /actor-final-preview/
-Disallow: /actor-final/
-Disallow: /site-fragments/
 
 User-agent: ChatGPT-User
 Allow: /
 
 User-agent: GPTBot
 Allow: /
-Disallow: /version-review/
-Disallow: /base-site/
-Disallow: /refinement-preview/
-Disallow: /actor-preview/
-Disallow: /actor-preview-v2/
-Disallow: /actor-final-preview/
-Disallow: /actor-final/
-Disallow: /site-fragments/
 
 Sitemap: https://sergey-ulyanov.pro/sitemap.xml
