@@ -49,6 +49,26 @@ test('zero results are explicit; reset restores all cards and both groups', () =
 });
 test('Belarusian audio is discoverable and native details provide working themes', () => {
   const a=app();a.fields[0].value='be';a.fields[2].value='audio';a.handlers.change();assert.equal(a.cards.filter(c=>!c.hidden).length,1);
-  assert.equal((html.match(/<details>/g)||[]).length,4);
+  assert.equal((html.match(/<details>/g)||[]).length,5);
+  assert.match(html,/Marketing &amp; creative strategy/);
   assert.ok(html.includes('aria-label="On this page"'));
+});
+test('brand typography and the specific Ocean Grey cover are preserved', () => {
+  const css = readFileSync(new URL('styles-speaking.css', root), 'utf8');
+  assert.doesNotMatch(html, /family=Inter/);
+  assert.doesNotMatch(css, /font-inter/);
+  assert.match(css, /font-family:var\(--brand-display\)/);
+  assert.match(html, /src="\/assets\/press\/ray-ocean-grey\.jpg" width="2048" height="2048"/);
+  assert.doesNotMatch(html, /folio-02-vinyl\.webp/);
+});
+test('the sourced longer story is collapsed and separate from the short bio', () => {
+  const story = html.match(/<details class="speaking-longer-story">([\s\S]*?)<\/details>/)?.[1];
+  assert.ok(story);
+  assert.match(story, /The longer story: displacement, support, and rebuilding/);
+  assert.match(story, /via Mexico, spent nearly a month in detention, and was granted asylum in 2024/);
+  assert.match(story, /Human Rights First helped connect him with pro bono counsel at Cooley LLP/);
+  assert.match(story, /https:\/\/nashaniva\.com\/ru\/339284/);
+  assert.match(story, /https:\/\/www\.humanrightsfirst\.org\/library\/never-lose-yourself-how-music-helped-sergey-reclaim-his-future/);
+  assert.doesNotMatch(story, /released him|release from detention|legal advice/);
+  assert.doesNotMatch(html, /<details class="speaking-longer-story" open/);
 });
