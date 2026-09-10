@@ -2,11 +2,13 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import { transformResearchText } from '../scripts/build-research-domain.mjs';
 
 const code = readFileSync(new URL('../research/wayfinding-pages.js', import.meta.url), 'utf8');
 const pages = Object.fromEntries(['tools', 'help'].map(name => [name, readFileSync(new URL(`../research/${name}/index.html`, import.meta.url), 'utf8')]));
-function mount({ page = 'help', url = 'https://sergey-ulyanov.pro/research/help/', saved = null, markup = 'en', blocked = false } = {}) {
-  const main = pages[page].split('<main')[1].split('</main>')[0];
+function mount({ page = 'help', url = 'https://sergey-ulyanov.pro/research/help/', saved = null, markup = 'en', blocked = false, preview = false } = {}) {
+  const transform = source => preview ? transformResearchText(source, '', '/palette-preview/white-red/') : source;
+  const main = transform(pages[page]).split('<main')[1].split('</main>')[0];
   const nodes = [...main.matchAll(/data-wayfinding="([^"]+)"[^>]*>([^<]*)/g)].map(match => ({ dataset: { wayfinding: match[1] }, textContent: match[2] }));
   const links = [...main.matchAll(/<a[^>]+href="([^"]+)"/g)].map(match => ({ href: match[1], getAttribute() { return this.href; } }));
   const aria = [...main.matchAll(/aria-label="([^"]+)" data-wayfinding-aria="([^"]+)"/g)].map(match => ({ dataset: { wayfindingAria: match[2] }, value: match[1], getAttribute() { return this.value; }, setAttribute(_key, value) { this.value = value; } }));
@@ -23,7 +25,7 @@ function mount({ page = 'help', url = 'https://sergey-ulyanov.pro/research/help/
     window: { addEventListener(type, callback) { windowListeners.set(type, callback); } },
     MutationObserver: class { constructor(callback) { observers.push(callback); } observe() {} }
   };
-  const translations = vm.runInNewContext(`${code}\n;be`, context);
+  const translations = vm.runInNewContext(`${transform(code)}\n;be`, context);
   return { document, location, nodes, links, aria, observers, documentListeners, windowListeners, translations, get: key => nodes.find(node => node.dataset.wayfinding === key)?.textContent };
 }
 
@@ -44,19 +46,19 @@ for (const page of ['help', 'tools']) {
     assert.equal(ui.get('cultureTitle'), 'Culture directory');
   });
 
-  test(`${page}: saved preference is used when the URL does not choose a supported language`, () => {
+  test(`${page}: unqualified and unsupported language URLs open in English despite saved Belarusian`, () => {
     for (const query of ['', '?lang=ru']) {
       const ui = mount({ page, url: `https://sergey-ulyanov.pro/research/${page}/${query}#music`, saved: 'be' });
-      assert.equal(ui.document.documentElement.lang, 'be');
-      assert.equal(ui.get('audioTitle'), 'Апрацоўка гуку');
+      assert.equal(ui.document.documentElement.lang, 'en');
+      assert.equal(ui.get('audioTitle'), 'Audio lab');
       assert.ok(ui.location.href.endsWith('#music'));
     }
   });
 
-  test(`${page}: unavailable storage falls back to markup without preventing rendering`, () => {
+  test(`${page}: unavailable storage and stale markup do not override the English default`, () => {
     const ui = mount({ page, markup: 'be-BY', blocked: true });
-    assert.equal(ui.document.documentElement.lang, 'be');
-    assert.equal(ui.get('audioTitle'), 'Апрацоўка гуку');
+    assert.equal(ui.document.documentElement.lang, 'en');
+    assert.equal(ui.get('audioTitle'), 'Audio lab');
     assert.equal(mount({ page, markup: 'en', blocked: true }).get('audioTitle'), 'Audio lab');
   });
 
@@ -86,6 +88,16 @@ for (const page of ['help', 'tools']) {
     const ids = new Set([...pages[page].matchAll(/\bid="([^"]+)"/g)].map(match => match[1]));
     for (const match of pages[page].matchAll(/href="#([^"]+)"/g)) assert.ok(ids.has(match[1]), match[1]);
     assert.doesNotMatch(code, /\bІІ\b/);
+  });
+
+  test(`${page}: preview body links retain the selected language and mounted path`, () => {
+    for (const lang of ['en', 'be']) {
+      const ui = mount({ page, url: `https://research.sergey-ulyanov.pro/palette-preview/white-red/${page}/?lang=${lang}`, preview: true });
+      const internal = ui.links.filter(link => link.href.startsWith('/palette-preview/white-red/'));
+      assert.ok(internal.length > 0);
+      for (const link of internal) assert.equal(new URL(link.href, ui.location.origin).searchParams.get('lang'), lang, link.href);
+      assert.ok(internal.some(link => link.href.includes('year=1938') && link.href.endsWith('#borders')));
+    }
   });
 
   test(`${page}: source-page canonical remains on the live old origin until the isolated build rewrites it`, () => {

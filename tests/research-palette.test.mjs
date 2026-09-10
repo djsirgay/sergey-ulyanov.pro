@@ -48,4 +48,16 @@ test('preview addition preserves every primary byte, all images and every noinde
  for(const [relative,hash] of before)if(/\.(?:png|jpe?g|webp|svg|avif|mp3|wav|pdf)$/i.test(relative))assert.equal(sha(path.join(preview.outputDirectory,relative)),hash,`Media changed: ${relative}`);
  assert.doesNotMatch(fs.readFileSync(path.join(site,'sitemap.xml'),'utf8'),/palette-preview/);
  assert.doesNotMatch(fs.readFileSync(path.join(preview.outputDirectory,'sitemap.xml'),'utf8'),/<loc>/);
+ // Shared behavior and button order are generated from one source in both palettes.
+ for(const relative of ['i18n.js','shared-language.js','wayfinding-pages.js','atlas/atlas.js','atlas/mapa/mapa.js']) {
+  const original=fs.readFileSync(path.join(root,'research',relative),'utf8');
+  assert.equal(fs.readFileSync(path.join(site,relative),'utf8'),transformResearchText(original,'research/'+relative));
+  assert.equal(fs.readFileSync(path.join(preview.outputDirectory,relative),'utf8'),transformResearchText(original,'research/'+relative,PREVIEW_PATH));
+ }
+ for(const directory of [site,preview.outputDirectory]) {
+  const map=fs.readFileSync(path.join(directory,'atlas/mapa/index.html'),'utf8');
+  assert.deepEqual([...map.matchAll(/data-history-mode="([^"]+)"/g)].map(match=>match[1]),['region','focus']);
+  assert.match(map,/data-history-mode="region" aria-pressed="false"[^>]*>Neighboring states/);
+  assert.match(map,/data-history-mode="focus" aria-pressed="true"[^>]*>Belarusian lands/);
+ }
 });

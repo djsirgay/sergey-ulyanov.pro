@@ -183,5 +183,5 @@
   document.querySelectorAll('[data-query]').forEach(button=>button.addEventListener('click',()=>{els.heroQuery.value=button.dataset.query;els.query.value=button.dataset.query;state.query=button.dataset.query;render();document.querySelector('#directory').scrollIntoView({behavior:'smooth'})}));
   document.querySelector('#metric-records').textContent=records.length;
   document.querySelector('#metric-types').textContent=new Set(records.map(record=>record.type)).size;
-  const params=new URLSearchParams(location.search);let initial=params.get('lang');if(!['en','be'].includes(initial)){try{initial=localStorage.getItem('research-lang')||localStorage.getItem('living-belarus-atlas-lang')}catch(e){}}setLanguage(['en','be'].includes(initial)?initial:'en');
+  const params=new URLSearchParams(location.search);setLanguage(params.get('lang')==='be'?'be':'en');
 })();

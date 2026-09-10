@@ -287,8 +287,7 @@
 
   const selectedLanguage = () => {
     const query = new URLSearchParams(location.search).get("lang");
-    if (query === "be" || query === "en") return query;
-    try { return localStorage.getItem("research-lang") === "be" ? "be" : "en"; } catch { return "en"; }
+    return query === "be" ? "be" : "en";
   };
 
   capture();

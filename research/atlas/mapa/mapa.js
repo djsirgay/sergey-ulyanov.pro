@@ -99,8 +99,7 @@
   function syncURL(push=false) {const url=eventURL();if(url.href!==location.href)history[push?'pushState':'replaceState']({},'',url)}
   function readURL() {
     const params=new URLSearchParams(location.search);
-    let saved='en';try{saved=localStorage.getItem('research-lang')||localStorage.getItem('living-belarus-atlas-lang')||'en'}catch{}
-    state.lang=['en','be'].includes(params.get('lang'))?params.get('lang'):saved==='be'?'be':'en';
+    state.lang=params.get('lang')==='be'?'be':'en';
     state.query=params.get('q')||'';
     state.topic=categories.includes(params.get('topic'))?params.get('topic'):'all';
     state.period=['early','twentieth','recent'].includes(params.get('period'))?params.get('period'):'all';

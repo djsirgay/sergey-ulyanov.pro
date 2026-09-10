@@ -94,15 +94,11 @@ const enTitle = document.title;
 const language = () => document.documentElement.lang.toLowerCase().startsWith('be') ? 'be' : 'en';
 
 // Navigation can mount before this page module. Set the root language once from the
-// explicit URL, then saved preference, then markup; its observer will update the shell.
+// explicit URL or the English default; its observer will update the shell.
+// Stored preferences must not change the language of a shared, unqualified link.
 function initialLanguage() {
   const query = new URL(location.href).searchParams.get('lang');
-  if (query === 'en' || query === 'be') return query;
-  try {
-    const saved = localStorage.getItem('research-lang');
-    if (saved === 'en' || saved === 'be') return saved;
-  } catch { /* Private or blocked storage must not prevent rendering. */ }
-  return language();
+  return query === 'be' ? 'be' : 'en';
 }
 document.documentElement.lang = initialLanguage();
 
@@ -122,7 +118,7 @@ function translate() {
     const raw = link.getAttribute('href');
     if (!raw || raw.startsWith('#')) return;
     const url = new URL(raw, location.href);
-    if (url.origin !== location.origin || !/^\/(?:research\/|tools\/|help\/|atlas\/|protocol\/|system\/)/.test(url.pathname)) return;
+    if (url.origin !== location.origin || !(url.pathname.startsWith('/research/') || /^\/(?:tools\/|help\/|atlas\/|protocol\/|system\/)/.test(url.pathname))) return;
     if (location.hostname === 'research.sergey-ulyanov.pro') url.pathname = url.pathname.replace(/^\/research(?=\/)/, '');
     url.searchParams.set('lang', language());
     link.href = `${url.pathname}${url.search}${url.hash}`;
