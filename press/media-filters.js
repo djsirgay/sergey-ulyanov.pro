@@ -14,12 +14,12 @@
     for (const card of cards) {
       const matches = (language === 'all' || card.dataset.mediaLanguage === language)
         && (topic === 'all' || card.dataset.mediaTopics.split(' ').includes(topic))
-        && (format === 'all' || card.dataset.mediaFormat === format);
+        && (format === 'all' || card.dataset.mediaFormat.split(' ').includes(format));
       card.hidden = !matches;
       if (matches) visible++;
     }
     for (const group of groups) group.hidden = !cards.some(card => group.contains(card) && !card.hidden);
-    result.textContent = visible + ' of ' + cards.length + ' original-source entries.';
+    result.textContent = visible + ' of ' + cards.length + ' media entries.';
     empty.hidden = visible !== 0;
   }
   form.hidden = false;

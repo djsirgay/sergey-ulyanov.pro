@@ -36,7 +36,7 @@ test('legacy URLs, jump anchors, genuine images and boundaries remain explicit',
   assert.doesNotMatch(html,/winner\.png|cutout-1|crop-20|keynotes|Stanford researcher|professional speaker for 7\.5/);
 });
 test('all entries visible initially; controls enabled only after successful setup', () => {
-  const a=app();assert.equal(a.form.hidden,false);assert.equal(a.cards.filter(c=>!c.hidden).length,13);assert.equal(a.empty.hidden,true);assert.equal(a.result.textContent,'13 of 13 original-source entries.');
+  const a=app();assert.equal(a.form.hidden,false);assert.equal(a.cards.filter(c=>!c.hidden).length,13);assert.equal(a.empty.hidden,true);assert.equal(a.result.textContent,'13 of 13 media entries.');
   assert.match(html, /id="media-filters" hidden/);
 });
 test('language, topic and format combine as AND filters', () => {
@@ -47,6 +47,12 @@ test('zero results are explicit; reset restores all cards and both groups', () =
   const a=app();a.fields[0].value='ru';a.fields[2].value='audio';a.handlers.change();assert.equal(a.cards.filter(c=>!c.hidden).length,0);assert.equal(a.empty.hidden,false);assert.ok(a.groups.every(g=>g.hidden));
   a.handlers.reset();assert.equal(a.cards.filter(c=>!c.hidden).length,13);assert.equal(a.empty.hidden,true);assert.ok(a.groups.every(g=>!g.hidden));assert.deepEqual(a.fields.map(f=>f.value),['all','all','all']);
 });
+test('related Russian video conversations remain discoverable with video filter', () => {
+  const a=app();a.fields[0].value='ru';a.fields[2].value='video';a.handlers.change();
+  const visible=a.cards.filter(c=>!c.hidden);assert.equal(visible.length,1);
+  assert.equal(visible[0].dataset.mediaFormat,'article video');
+  for(const id of ['S8V_GCyhZRQ','LORfxNFFtfE','LGBxk5ojf9I']) assert.ok(html.includes(id));
+});
 test('Belarusian audio is discoverable and native details provide working themes', () => {
   const a=app();a.fields[0].value='be';a.fields[2].value='audio';a.handlers.change();assert.equal(a.cards.filter(c=>!c.hidden).length,1);
   assert.equal((html.match(/<details>/g)||[]).length,5);
@@ -55,11 +61,24 @@ test('Belarusian audio is discoverable and native details provide working themes
 });
 test('brand typography and the specific Ocean Grey cover are preserved', () => {
   const css = readFileSync(new URL('styles-speaking.css', root), 'utf8');
+  const home = readFileSync(new URL('site-fragments/00-head.html', root), 'utf8');
+  const fontStylesheet = text => text.match(/<link href="(https:\/\/fonts\.googleapis\.com\/css2\?family=[^"]+)" rel="stylesheet">/)?.[1];
+  assert.equal(fontStylesheet(html),fontStylesheet(home),'Speaking must load the same chosen brand fonts as the main site');
   assert.doesNotMatch(html, /family=Inter/);
   assert.doesNotMatch(css, /font-inter/);
   assert.match(css, /font-family:var\(--brand-display\)/);
   assert.match(html, /src="\/assets\/press\/ray-ocean-grey\.jpg" width="2048" height="2048"/);
   assert.doesNotMatch(html, /folio-02-vinyl\.webp/);
+});
+test('square sleeve is responsive without stretching its HTML intrinsic height', () => {
+  const css = readFileSync(new URL('styles-speaking.css', root), 'utf8');
+  const imageRules=[...css.matchAll(/\.speaking-music-layout>img\{([^}]+)\}/g)].map(match=>match[1]);
+  assert.ok(imageRules.length);
+  const base=imageRules[0];
+  for(const declaration of ['width:100%','max-width:100%','height:auto','aspect-ratio:1 / 1','object-fit:contain']) assert.ok(base.includes(declaration),declaration);
+  for(const rule of imageRules) assert.doesNotMatch(rule,/(?:^|;)height:(?!auto(?:;|$))[^;]+/,'No breakpoint may restore a fixed intrinsic height');
+  assert.match(css,/grid-template-columns:minmax\(0,\.8fr\) minmax\(0,1\.2fr\)/);
+  assert.match(html,/styles-speaking\.css\?v=20260910-artwork3/);
 });
 test('the sourced longer story is collapsed and separate from the short bio', () => {
   const story = html.match(/<details class="speaking-longer-story">([\s\S]*?)<\/details>/)?.[1];
