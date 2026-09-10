@@ -81,3 +81,5 @@ jobs:
             git commit -m "fix: resolve Search Console structured data warnings"
             git push
           fi
+
+# one-time trigger
