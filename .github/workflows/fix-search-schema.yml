@@ -16,10 +16,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Repair ProfilePage and VideoObject metadata
+      - name: Repair ProfilePage metadata and remove inapplicable VideoObject
         run: |
           python3 - <<'PY'
-          import json
+          import re
           from pathlib import Path
 
           path = Path("site-fragments/00-head.html")
@@ -31,21 +31,22 @@ jobs:
               raise SystemExit("Expected ProfilePage dateModified value not found")
           text = text.replace(old_date, new_date)
 
-          old_video = '{"@type":"VideoObject","url":"https://www.youtube.com/watch?v=bTn2yMBUBG0","name":"Targeted in His Country for Being Gay"}'
-          video = {
-              "@type": "VideoObject",
-              "url": "https://www.youtube.com/watch?v=bTn2yMBUBG0",
-              "name": "Targeted In His Country For Being Gay",
-              "description": "Sergey Ulyanov shares his experience of anti-LGBTQ+ persecution in Belarus, seeking asylum, and rebuilding his life in the United States.",
-              "thumbnailUrl": "https://i.ytimg.com/vi/bTn2yMBUBG0/maxresdefault.jpg",
-              "uploadDate": "2024-08-22T19:00:06Z",
-              "duration": "PT15M25S",
-              "embedUrl": "https://www.youtube.com/embed/bTn2yMBUBG0"
-          }
-          new_video = json.dumps(video, ensure_ascii=False, separators=(",", ":"))
-          if old_video not in text and '"uploadDate":"2024-08-22T19:00:06Z"' not in text:
-              raise SystemExit("Expected VideoObject value not found")
-          text = text.replace(old_video, new_video)
+          # The homepage is a profile page, not a video watch page. Remove the
+          # VideoObject instead of publishing video markup that is not visible
+          # and playable on that page.
+          text = re.sub(
+              r',\s*\{"@type":"VideoObject","url":"https://www\.youtube\.com/watch\?v=bTn2yMBUBG0".*?"embedUrl":"https://www\.youtube\.com/embed/bTn2yMBUBG0"\}',
+              '',
+              text,
+              flags=re.S,
+          )
+          text = text.replace(
+              ',\n        {"@type":"VideoObject","url":"https://www.youtube.com/watch?v=bTn2yMBUBG0","name":"Targeted in His Country for Being Gay"}',
+              '',
+          )
+          if '"@type":"VideoObject"' in text:
+              raise SystemExit("VideoObject still present in homepage source")
+
           path.write_text(text, encoding="utf-8")
           PY
 
@@ -65,10 +66,8 @@ jobs:
           graph = data["@graph"]
           profile = next(item for item in graph if item.get("@type") == "ProfilePage")
           person = next(item for item in graph if item.get("@type") == "Person")
-          video = next(item for item in person["subjectOf"] if item.get("@type") == "VideoObject")
           assert "T" in profile["dateModified"]
-          for field in ("name", "description", "thumbnailUrl", "uploadDate", "embedUrl"):
-              assert video.get(field), field
+          assert not any(item.get("@type") == "VideoObject" for item in person.get("subjectOf", []))
           print("Structured data validated")
           PY
 
@@ -80,6 +79,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No repair commit needed"
           else
-            git commit -m "fix: resolve Search Console structured data warnings"
+            git commit -m "fix: remove inapplicable homepage video schema"
             git push
           fi
