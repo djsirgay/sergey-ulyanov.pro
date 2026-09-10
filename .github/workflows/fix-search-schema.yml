@@ -19,6 +19,7 @@ jobs:
       - name: Repair ProfilePage and VideoObject metadata
         run: |
           python3 - <<'PY'
+          import json
           from pathlib import Path
 
           path = Path("site-fragments/00-head.html")
@@ -31,16 +32,17 @@ jobs:
           text = text.replace(old_date, new_date)
 
           old_video = '{"@type":"VideoObject","url":"https://www.youtube.com/watch?v=bTn2yMBUBG0","name":"Targeted in His Country for Being Gay"}'
-          new_video = '''{
-          "@type":"VideoObject",
-          "url":"https://www.youtube.com/watch?v=bTn2yMBUBG0",
-          "name":"Targeted In His Country For Being Gay",
-          "description":"Sergey Ulyanov shares his experience of anti-LGBTQ+ persecution in Belarus, seeking asylum, and rebuilding his life in the United States.",
-          "thumbnailUrl":"https://i.ytimg.com/vi/bTn2yMBUBG0/maxresdefault.jpg",
-          "uploadDate":"2024-08-22T19:00:06Z",
-          "duration":"PT15M25S",
-          "embedUrl":"https://www.youtube.com/embed/bTn2yMBUBG0"
-        }'''
+          video = {
+              "@type": "VideoObject",
+              "url": "https://www.youtube.com/watch?v=bTn2yMBUBG0",
+              "name": "Targeted In His Country For Being Gay",
+              "description": "Sergey Ulyanov shares his experience of anti-LGBTQ+ persecution in Belarus, seeking asylum, and rebuilding his life in the United States.",
+              "thumbnailUrl": "https://i.ytimg.com/vi/bTn2yMBUBG0/maxresdefault.jpg",
+              "uploadDate": "2024-08-22T19:00:06Z",
+              "duration": "PT15M25S",
+              "embedUrl": "https://www.youtube.com/embed/bTn2yMBUBG0"
+          }
+          new_video = json.dumps(video, ensure_ascii=False, separators=(",", ":"))
           if old_video not in text and '"uploadDate":"2024-08-22T19:00:06Z"' not in text:
               raise SystemExit("Expected VideoObject value not found")
           text = text.replace(old_video, new_video)
@@ -81,5 +83,3 @@ jobs:
             git commit -m "fix: resolve Search Console structured data warnings"
             git push
           fi
-
-# one-time trigger
