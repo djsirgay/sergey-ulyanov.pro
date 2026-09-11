@@ -7,6 +7,7 @@
       name="description"
       content="Create verifiable archival passports for cultural recordings, build a local research corpus, and preserve provenance through creative reuse."
     />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
     <link rel="canonical" href="https://sergey-ulyanov.pro/research/tools/unmute-the-archive/" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://sergey-ulyanov.pro/research/tools/unmute-the-archive/" />
@@ -17,6 +18,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,400;6..72,500&amp;family=Space+Mono:wght@400;700&amp;display=swap" rel="stylesheet" />
     <title>Archive Passport — Unmute Belarus</title>
+    <script type="application/ld+json">{
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Archive Passport — Unmute Belarus",
+      "url": "https://sergey-ulyanov.pro/research/tools/unmute-the-archive/",
+      "description": "A browser-based research pilot for documenting the provenance, rights context, exact file identity and derivative history of cultural audio recordings.",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web browser",
+      "browserRequirements": "JavaScript and a browser supporting the Web Crypto API are required for the interactive tools.",
+      "featureList": ["Archival metadata and rights-context records", "Local SHA-256 file fingerprinting", "Source and derivative documentation", "JSON and CSV export"]
+    }</script>
     <script type="module" crossorigin src="./assets/passport-CzG_QC-V.js"></script>
     <link rel="modulepreload" crossorigin href="./assets/storage-warning-CVLXd_Jq.js">
     <link rel="modulepreload" crossorigin href="./assets/demo-audio-wTWr1Ape.js">
@@ -24,18 +36,22 @@
     <link rel="stylesheet" crossorigin href="./assets/passport-Uei6a7RH.css">
   <link rel="stylesheet" href="/research/navigation.css?v=20260908-nav1">
   <script type="module" src="/research/navigation.js?v=20260908-nav1"></script>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","@id":"https://sergey-ulyanov.pro/research/tools/unmute-the-archive/#application","name":"Archive Passport — Unmute Belarus","url":"https://sergey-ulyanov.pro/research/tools/unmute-the-archive/","description":"Create verifiable archival passports for cultural recordings, build a local research corpus, and preserve provenance through creative reuse.","applicationCategory":"MultimediaApplication","operatingSystem":"Any","browserRequirements":"Requires JavaScript for interactive features.","inLanguage":["en","be"],"author":{"@type":"Person","@id":"https://sergey-ulyanov.pro/#person","name":"Sergéy Ulyanov"}}</script>
 </head>
   <body>
     <div id="app">
-      <main class="shell" id="main">
-        <p>Unmute Belarus · Archive Passport</p>
-        <h1>Document a recording’s story. Preserve its future.</h1>
-        <p>Create an archival passport for a cultural recording: its origin, contributors, language, context, rights and exact-file fingerprint. A missing master can be documented as a recovery lead instead of being treated as a verified recording.</p>
-        <h2>Preserve the master. Document every intervention.</h2>
-        <p>Register an edited copy separately, verify the original file with SHA-256, and export passport metadata as JSON or a research corpus as CSV. A fingerprint proves file identity, not authorship, ownership or historical truth.</p>
-        <p>The core workflow runs on this device. Audio is not stored by the passport tool; exporting metadata creates a portable backup. Enable JavaScript to use the interactive tools and safe synthetic demo.</p>
-        <nav aria-label="Research tools"><a href="/research/">Research home</a> · <a href="/research/system/">System and methods</a> · <a href="./atlas/">Music Atlas</a> · <a href="./restoration/">Restoration Lab</a></nav>
+      <!-- Visible fallback, replaced by the interactive application when it starts. -->
+      <main class="shell" aria-labelledby="archive-fallback-title">
+        <h1 id="archive-fallback-title">Archive Passport — Unmute Belarus</h1>
+        <p>Document a recording’s origin, cultural context, rights and reuse history. This browser-based research pilot creates archival passports, checks exact file identity and exports records for preservation or analysis.</p>
+        <p>The interactive tools calculate SHA-256 fingerprints locally, keep source and derivative records distinct, and export JSON or CSV. A fingerprint identifies file bytes; it does not establish authorship, ownership or historical truth. Audio is not uploaded by the core passport workflow.</p>
+        <p>JavaScript is required to create and verify passports. While the application loads, or if it cannot start, the research context and related tools remain available below.</p>
+        <nav aria-label="Archive research and related tools">
+          <a href="/research/">Research overview</a> ·
+          <a href="/research/system/">Unmute Belarus system</a> ·
+          <a href="/research/tools/unmute-the-archive/atlas/">Music Atlas</a> ·
+          <a href="/research/tools/unmute-the-archive/restoration/">Restoration Lab</a> ·
+          <a href="/research/protocol/">Public research protocol</a>
+        </nav>
       </main>
     </div>
     <script src="/research/shared-language.js?v=20260909-en-default" defer ></script>

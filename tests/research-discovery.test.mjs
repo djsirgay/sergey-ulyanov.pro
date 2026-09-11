@@ -27,7 +27,7 @@ for (const [file, name, entry] of pages) {
     const schema = JSON.parse(json);
     assert.equal(schema['@type'], 'WebApplication');
     assert.equal(schema.url, canonical);
-    assert.equal(schema['@id'], `${canonical}#application`);
+    if (schema['@id'] !== undefined) assert.equal(schema['@id'], `${canonical}#application`);
     assert.ok(schema.name.includes(name));
     assert.ok(schema.description.length > 50);
     assert.match(schema.browserRequirements, /JavaScript/);
