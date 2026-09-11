@@ -1,5 +1,9 @@
 (() => {
   const be = new Map([
+    ['Search for Belarus-related music by artist, style, era or description. Explore the live public catalog, then inspect our curated evidence and your local archival passports. These are distinct sources, with visible coverage and uncertainty.','Шукайце музыку, звязаную з Беларуссю, паводле выканаўцы, стылю, эпохі або апісання. Даследуйце публічны каталог, затым праверце сабраныя намі сведчанні і свае лакальныя архіўныя пашпарты. Гэта розныя крыніцы з адкрыта пазначанымі межамі ахопу і нявызначанасцю.'],
+    ['Search beyond the pilot','Шукаць па-за пілотнай калекцыяй'],
+    ['Explore the local corpus','Даследаваць лакальны корпус'],
+    ['Try a local remix example','Паспрабаваць лакальны прыклад рэміксу'],
     ['Genre: rock','Жанр: рок'],['Period: 1990–1999','Перыяд: 1990–1999'],['Connection: Belarus','Сувязь: Беларусь'],['Sources: external catalog','Крыніцы: знешні каталог'],
     ['Belarusian folk artists','Беларускія фолк-выканаўцы'],['Electronic music from the 2000s','Электронная музыка 2000-х'],
     ['External discovery requests public catalog metadata when you run a search. It is separate from the 18-record local demonstration and does not claim complete coverage of Belarusian music.','Знешні пошук атрымлівае публічныя метаданыя каталога пры запуску запыту. Ён аддзелены ад лакальнага дэма з 18 запісамі і не прэтэндуе на поўны ахоп беларускай музыкі.'],
