@@ -101,10 +101,188 @@
     ['What was removed, repaired, separated, equalized, or otherwise changed?','Што было выдалена, выпраўлена, раздзелена, скарэктавана эквалайзарам або зменена іншым чынам?'],
     ['What was preserved, and what artifacts or uncertainty remain?','Што было захавана і якія артэфакты апрацоўкі або нявызначанасць засталіся?']
   ].forEach(([source,translation])=>attrBe.set(source,translation));
+  // Intervention UI: these translations never change stored form values or journal JSON.
+  [
+    ['Source master & derived file','Зыходны майстар і вытворны файл'],
+    ['Create or import a fingerprinted passport first. Selecting it declares which source this copy came from.','Спачатку стварыце або імпартуйце пашпарт з лічбавым адбіткам. Выбіраючы яго, вы пазначаеце крыніцу, з якой атрымана гэтая копія.'],
+    ['A separate version; the master is never replaced.','Асобная версія; майстар не замяняецца.'],
+    ['Purpose / context','Мэта / кантэкст'],
+    ['Processing type & details','Тып і падрабязнасці апрацоўкі'],
+    ['Processing type','Тып апрацоўкі'],
+    ['Unknown / not established','Невядома / не ўстаноўлена'],
+    ['AI-assisted processing','Апрацоўка з дапамогай ШІ'],
+    ['Non-AI processing','Апрацоўка без ШІ'],
+    ['Tool name','Назва інструмента'],
+    ['Provide details','Указаць падрабязнасці'],
+    ['Not disclosed','Інфармацыя не раскрыта'],
+    ['Not applicable','Не ўжываецца'],
+    ['Model, version & settings — add known details','Мадэль, версія і налады — дадайце вядомыя звесткі'],
+    ['These start as Unknown. Not disclosed means information is withheld. Model is Not applicable only for explicitly non-AI processing.','Пачаткова тут пазначана «Невядома». «Інфармацыя не раскрыта» азначае, што яе не паведамляюць. Для мадэлі «Не ўжываецца» можна выбраць толькі пры відавочна пазначанай апрацоўцы без ШІ.'],
+    ['Model','Мадэль'],['Tool version','Версія інструмента'],['Settings','Налады'],
+    ['Processing instruction / method','Інструкцыя / метад апрацоўкі'],
+    ['Change log','Журнал змен'],['Permission scope','Абсяг дазволу'],
+    ['Declared permission basis','Пазначаная падстава дазволу'],
+    ['Creator-owned — declared','Належыць стваральніку — са слоў аўтара запісу'],
+    ['Permission obtained — declared','Дазвол атрыманы — са слоў аўтара запісу'],
+    ['Public domain — declared','Грамадскі набытак — са слоў аўтара запісу'],
+    ['No permission','Дазволу няма'],['Evidence / reference','Сведчанне / спасылка'],
+    ['Scope and limits','Абсяг і абмежаванні'],
+    ["Unknown or No permission can be documented. Registration does not authorize processing, redistribution, or reuse, and the master's rights do not automatically cover this derivative.",'Можна задакументаваць і «Невядома», і «Дазволу няма». Рэгістрацыя не дае дазволу на апрацоўку, распаўсюджванне або паўторнае выкарыстанне. Правы на майстар не распаўсюджваюцца на гэтую вытворную версію аўтаматычна.'],
+    ['Review status','Статус праверкі'],['Declared human review','Пазначаная праверка чалавекам'],
+    ['Pending — not reviewed','Чакае праверкі — яшчэ не праверана'],
+    ['Reviewed — not automatically approved','Праверана — не азначае аўтаматычнага ўхвалення'],
+    ['Rejected by reviewer','Адхілена пасля праверкі'],['Reviewer / pseudonym','Асоба, якая правярае / псеўданім'],
+    ['Pending is the default. A name or note alone does not mark review complete.','Пачатковы статус — «Чакае праверкі». Самі па сабе імя або нататка не азначаюць, што праверка завершана.'],
+    ['Enter the reviewer (a pseudonym is fine) and a substantive note. Reviewed does not mean approved or rights-cleared.','Укажыце асобу, якая правярала запіс (можна псеўданім), і змястоўную нататку. «Праверана» не азначае ўхвалення або пацвярджэння правоў.'],
+    ['Preserved features','Захаваныя рысы'],['Uncertainty / limitations','Нявызначанасць / абмежаванні'],
+    ['Blank preserved-features and uncertainty fields are saved explicitly as “Not assessed.” They never mean “no changes” or “no uncertainty.”','Пустыя палі захаваных рыс і нявызначанасці захоўваюцца з відавочнай пазнакай «Не ацэньвалася». Яны ніколі не азначаюць «без змен» або «без нявызначанасці».'],
+    ['I confirm that this is a separate derivative and the original master remains preserved. This statement is not a certificate of authenticity or a rights grant.','Я пацвярджаю, што гэта асобная вытворная версія і арыгінальны майстар захаваны. Гэтае сцвярджэнне не з’яўляецца сертыфікатам аўтэнтычнасці або дазволам на выкарыстанне.'],
+    ['Fingerprinting derivative…','Вылічваецца адбітак вытворнай версіі…'],
+    ['Linking the derivative to its preserved master locally…','Вытворная версія лакальна звязваецца з захаваным майстрам…'],
+    ['Derivative registered. Export the updated passport JSON to preserve the intervention record.','Вытворная версія зарэгістравана. Экспартуйце абноўлены JSON-пашпарт, каб захаваць журнал апрацоўкі.'],
+    ['Derivative registered','Вытворная версія зарэгістравана'],
+    ['The derivative could not be registered.','Не ўдалося зарэгістраваць вытворную версію.'],
+    ['Choose a fingerprinted source master.','Выберыце зыходны майстар з лічбавым адбіткам.'],
+    ['Choose the derived audio file.','Выберыце аўдыяфайл вытворнай версіі.'],
+    ['Choose the processing type, or explicitly choose Unknown.','Выберыце тып апрацоўкі або відавочна пазначце «Невядома».'],
+    ['Model is not applicable only when processing is explicitly non-AI. Choose Unknown if you do not know.','Для мадэлі «Не ўжываецца» можна выбраць толькі пры відавочнай апрацоўцы без ШІ. Калі вы не ведаеце, выберыце «Невядома».'],
+    ['An AI tool cannot be marked not applicable. Choose Unknown or Not disclosed if needed.','Для інструмента ШІ нельга пазначаць «Не ўжываецца». Пры неабходнасці выберыце «Невядома» або «Інфармацыя не раскрыта».'],
+    ['Choose the permission basis, including Unknown or No permission when appropriate.','Выберыце падставу дазволу, у тым ліку «Невядома» або «Дазволу няма», калі гэта адпавядае сітуацыі.'],
+    ['Choose the review status.','Выберыце статус праверкі.'],
+    ['Confirm that the original master is preserved and this is a separate derivative.','Пацвердзіце, што арыгінальны майстар захаваны, а гэта асобная вытворная версія.'],
+    ['The intervention record is incomplete or its source fingerprint is invalid.','Запіс пра апрацоўку няпоўны або адбітак крыніцы некарэктны.'],
+    ['Choose a complete fingerprinted source passport.','Выберыце поўны пашпарт крыніцы з лічбавым адбіткам.'],
+    ['Choose a nonempty derivative file within the browser size limit.','Выберыце непусты файл вытворнай версіі ў межах ліміту памеру для браўзера.'],
+    ['The source passport changed while fingerprinting. Your form is still here; reopen the current passport and register again.','Падчас вылічэння адбітка пашпарт крыніцы змяніўся. Форма засталася запоўненай: адкрыйце актуальны пашпарт і паўтарыце рэгістрацыю.'],
+    ['Cultural context','Культурны кантэкст'],['Source rights / consent declaration','Заяўленыя правы / згода на крыніцу'],
+    ['Evidence / recovery lead','Сведчанне / след для аднаўлення'],['Not recorded','Не зафіксавана'],
+    ['Documented derivatives','Задакументаваныя вытворныя версіі'],
+    ['Structured review not recorded.','Структураваная праверка не зафіксавана.'],
+    ['This legacy derivative has no structured intervention journal. Its processing disclosures, permission scope, and review decision are not established by a fingerprint.','Для гэтай ранейшай вытворнай версіі няма структураванага журнала апрацоўкі. Лічбавы адбітак не пацвярджае звесткі пра апрацоўку, абсяг дазволу або рашэнне паводле праверкі.'],
+    ['Method (legacy)','Метад — ранейшы запіс'],['Change log (legacy)','Журнал змен — ранейшы запіс'],
+    ['Legacy free-text note — not a review decision','Ранейшая нататка ў вольнай форме — не рашэнне паводле праверкі'],
+    ['This journal records declarations, not an authenticity certificate or a permission grant. A review is not automatically an approval.','Гэты журнал фіксуе паведамленыя звесткі, а не выдае сертыфікат аўтэнтычнасці або дазвол на выкарыстанне. Праверка не азначае аўтаматычнага ўхвалення.'],
+    ['Journal schema','Схема журнала'],['Declared source master SHA-256','Пазначаная SHA-256 зыходнага майстра'],
+    ['Derivative SHA-256','SHA-256 вытворнай версіі'],['Tool','Інструмент'],
+    ['Instruction / method','Інструкцыя / метад'],['Declared authority basis','Пазначаная падстава правоў'],
+    ['Permission evidence / reference','Сведчанне дазволу / спасылка'],['Changes','Змены'],
+    ['Declared human review status','Пазначаны статус праверкі чалавекам'],['Review note','Нататка праверкі'],
+    ['Original master preserved','Арыгінальны майстар захаваны'],
+    ['Confirmed by the declarant; not independently verified','Пацверджана асобай, якая ўнесла запіс; незалежнай праверкі не было'],
+    ['Not assessed.','Не ацэньвалася.'],
+    ['A derivative must be linked to a fingerprinted source master.','Вытворная версія павінна быць звязана з зыходным майстрам, які мае лічбавы адбітак.'],
+    ['The source passport is incomplete or internally inconsistent.','Пашпарт крыніцы няпоўны або змяшчае супярэчнасці.'],
+    ['The derivative needs valid file metadata and a SHA-256 digest.','Для вытворнай версіі патрэбныя карэктныя метаданыя файла і адбітак SHA-256.'],
+    ['This file is byte-for-byte identical to the master. Verify it instead of registering a derivative.','Гэты файл пабайтава ідэнтычны майстру. Праверце яго замест рэгістрацыі вытворнай версіі.'],
+    ['This exact derivative is already registered in the passport.','Гэтая самая вытворная версія ўжо зарэгістравана ў пашпарце.'],
+    ['The intervention journal is incomplete or internally inconsistent.','Журнал апрацоўкі няпоўны або змяшчае супярэчнасці.'],
+    ['The intervention journal names a different source master.','У журнале апрацоўкі пазначаны іншы зыходны майстар.'],
+    ['The derivative needs a label, purpose, method, and change log.','Для вытворнай версіі патрэбныя назва, мэта, метад і журнал змен.'],
+    ['03 · Master-preserving listening workflow','03 · Праслухоўванне са захаваннем майстра'],
+    ['Metrics describe decoded audio. The browser may resample it; this is not a measurement of the original file’s encoded sample rate. Source file bytes remain untouched.','Метрыкі апісваюць дэкадаванае аўдыя. Браўзер можа змяніць частату дыскрэтызацыі; гэта не вымярэнне частаты, з якой закадаваны арыгінальны файл. Байты файла-крыніцы застаюцца нязменнымі.'],
+    ['Output peak and RMS are measured before 16-bit WAV quantization. These measurements do not establish perceptual quality or authenticity.','Пік і RMS выніку вымяраюцца да квантавання ў 16-бітны WAV. Гэтыя вымярэнні не пацвярджаюць якасць успрымання або аўтэнтычнасць.'],
+    ['Listening note — review remains pending','Нататка праслухоўвання — праверка яшчэ не завершана'],
+    ['You can update this note after listening without processing the audio again. A note alone is not a completed review, approval, or rights clearance.','Гэтую нататку можна абнавіць пасля праслухоўвання без паўторнай апрацоўкі аўдыя. Сама па сабе нататка не азначае завершанай праверкі, ухвалення або пацвярджэння правоў.'],
+    ['I confirm the source master is preserved and this is a separate access copy.','Я пацвярджаю, што зыходны майстар захаваны, а гэта асобная копія для праслухоўвання.'],
+    ['Confirm preservation to export the journal or register it. Processing authority is not assessed here; this record documents the workflow and does not grant permission for reuse.','Пацвердзіце захаванне майстра, каб экспартаваць або зарэгістраваць журнал. Права на апрацоўку тут не правяраецца; гэты запіс дакументуе працэс і не дае дазволу на паўторнае выкарыстанне.'],
+    ['processing rate','частата апрацоўкі'],['Save note to passport','Захаваць нататку ў пашпарце'],
+    ['Parent source SHA-256','SHA-256 бацькоўскай крыніцы'],['Processing','Апрацоўка'],
+    ['Non-AI · Browser Web Audio API','Без ШІ · Web Audio API браўзера'],['Applied method','Ужыты метад'],
+    ['Listening review','Праверка праслухоўваннем'],
+    ['Pending — audible preservation and uncertainty have not been assessed.','Чакае праверкі — захаванне гучання і нявызначанасць яшчэ не ацэньваліся.'],
+    ['Authority','Правы на апрацоўку'],
+    ['Unknown — documentation only; no reuse permission is established.','Невядома — толькі дакументаванне; дазвол на паўторнае выкарыстанне не ўстаноўлены.'],
+    ['Master preservation confirmed. The same structured journal is included in the JSON log and the passport when saved.','Захаванне майстра пацверджана. Пры захаванні адзін і той жа структураваны журнал трапляе ў JSON-журнал і пашпарт.'],
+    ['The source file has not been overwritten by this tool. Confirm that you have preserved it before exporting or registering the journal.','Гэты інструмент не перазапісваў файл-крыніцу. Перад экспартам або рэгістрацыяй журнала пацвердзіце, што вы яго захавалі.'],
+    ['Pending note changed. Save it to the passport to update the saved copy; audio and processing settings are unchanged.','Нататка незавершанай праверкі зменена. Захавайце яе ў пашпарце, каб абнавіць захаваную копію; аўдыя і налады апрацоўкі не змяніліся.'],
+    ['Listening note updated in the current journal. Review remains pending; audio was not reprocessed.','Нататка праслухоўвання абноўлена ў бягучым журнале. Праверка яшчэ не завершана; аўдыя не апрацоўвалася паўторна.'],
+    ['Pending note saved; audio and processing settings unchanged.','Нататка незавершанай праверкі захавана; аўдыя і налады апрацоўкі не змяніліся.'],
+    ['Registered as a separate derivative with a pending review.','Зарэгістравана як асобная вытворная версія, якая чакае праверкі.'],
+    ['Open the parent passport','Адкрыць бацькоўскі пашпарт'],['see the relationship in Music Atlas','паглядзець сувязь у Музычным атласе'],
+    ['Registration failed.','Рэгістрацыя не ўдалася.'],
+    ['File not loaded','Файл не загружаны'],['Processing locally…','Лакальная апрацоўка…'],
+    ['Creating a separate access copy. The source file remains untouched.','Ствараецца асобная копія для праслухоўвання. Файл-крыніца застаецца нязменным.'],
+    ['The browser could not prepare the demo.','Браўзеру не ўдалося падрыхтаваць дэманстрацыю.'],
+    ['Processing could not finish. Try a smaller WAV/MP3 file or reset the processing settings.','Не ўдалося завяршыць апрацоўку. Паспрабуйце меншы файл WAV/MP3 або скіньце налады апрацоўкі.'],
+    ['The completed run needs its original processing snapshot before it can be documented.','Для дакументавання завершанай апрацоўкі патрэбны захаваны здымак яе зыходных параметраў.'],
+    ['Confirm that the source master is preserved before exporting its intervention journal.','Перад экспартам журнала апрацоўкі пацвердзіце захаванне зыходнага майстра.'],
+    ['This derivative was made from a different source file. Select the matching passport.','Гэтая вытворная версія атрымана з іншага файла-крыніцы. Выберыце адпаведны пашпарт.'],
+    ['Confirm that the source master is preserved before registering the intervention journal.','Перад рэгістрацыяй журнала апрацоўкі пацвердзіце захаванне зыходнага майстра.'],
+    ['The saved passport no longer matches this source master.','Захаваны пашпарт больш не адпавядае гэтаму зыходнаму майстру.'],
+    ['The saved derivative no longer matches this completed run.','Захаваная вытворная версія больш не адпавядае гэтай завершанай апрацоўцы.'],
+    ['An existing human review cannot be replaced by a pending note.','Нельга замяніць наяўную праверку чалавекам нататкай незавершанай праверкі.'],
+    ['The saved processing record changed. Reopen the passport before editing its note.','Захаваны запіс пра апрацоўку змяніўся. Перад рэдагаваннем нататкі зноў адкрыйце пашпарт.'],
+    ['The updated note is incomplete or invalid.','Абноўленая нататка няпоўная або некарэктная.']
+  ].forEach(([source,translation])=>be.set(source,translation));
+  [
+    ['derivative label','назву вытворнай версіі'],['derivative purpose','мэту вытворнай версіі'],
+    ['tool name','назву інструмента'],['tool version','версію інструмента'],['model name','назву мадэлі'],
+    ['processing instruction or method','інструкцыю або метад апрацоўкі'],['processing settings','налады апрацоўкі'],
+    ['change log','журнал змен'],['permission scope (or what is unknown)','абсяг дазволу (або тое, што застаецца невядомым)'],
+    ['reviewer name or pseudonym','імя або псеўданім асобы, якая правярала запіс'],['review note','нататку праверкі']
+  ].forEach(([source,translation])=>be.set(`Please complete ${source}.`,`Запоўніце ${translation}.`));
+  [
+    ['tool name','назвы інструмента'],['tool version','версіі інструмента'],['model name','назвы мадэлі'],
+    ['processing instruction or method','інструкцыі або метаду апрацоўкі'],['processing settings','налад апрацоўкі']
+  ].forEach(([source,translation])=>be.set(`Choose a disclosure status for ${source}.`,`Выберыце статус раскрыцця звестак для ${translation}.`));
+  [
+    ['Performance remix, classroom edit, or listening copy','Рэмікс для выступу, навучальны мантаж або копія для праслухоўвання'],
+    ['What is this version for? Research, education, listening access…','Для чаго патрэбна гэтая версія? Даследаванне, навучанне, праслухоўванне…'],
+    ['Software or service used','Праграма або сэрвіс, якія выкарыстоўваліся'],
+    ['Model name, if established','Назва мадэлі, калі вядомая'],['Exact version, if established','Дакладная версія, калі вядомая'],
+    ['Parameters, configuration, or a processing preset','Параметры, канфігурацыя або набор налад апрацоўкі'],
+    ['What was requested or done? Include the exact prompt when available.','Што было запытана або зроблена? Калі маеце дакладны промпт, укажыце яго.'],
+    ['What changed? Describe removal, repair, separation, generated material, or what has not yet been assessed.','Што змянілася? Апішыце выдаленне, выпраўленне, раздзяленне, згенераваны матэрыял або тое, што яшчэ не ацэньвалася.'],
+    ['License, agreement, date, or a private reference. Do not include sensitive documents.','Ліцэнзія, дамова, дата або спасылка на прыватнае сведчанне. Не дадавайце дакументы з адчувальнымі звесткамі.'],
+    ['What use is covered? If unknown, say what still needs permission or review.','Якое выкарыстанне ахоплена дазволам? Калі невядома, укажыце, што яшчэ патрабуе дазволу або праверкі.'],
+    ['Required for Reviewed or Rejected','Абавязкова для «Праверана» або «Адхілена»'],
+    ['What stayed recognizable or unchanged? Leave blank if not assessed.','Што засталося пазнавальным або нязменным? Пакіньце пустым, калі не ацэньвалася.'],
+    ['Artifacts, missing context, or unresolved questions. Leave blank if not assessed.','Артэфакты апрацоўкі, адсутны кантэкст або нявырашаныя пытанні. Пакіньце пустым, калі не ацэньвалася.'],
+    ['What did the reviewer compare and conclude? Required for Reviewed or Rejected.','Што параўноўвала асоба, якая правярала запіс, і да якіх высноў прыйшла? Абавязкова для «Праверана» або «Адхілена».'],
+    ['After comparing A and B, note artifacts, uncertainty, or what still needs review.','Пасля параўнання A і B адзначце артэфакты апрацоўкі, нявызначанасць або тое, што яшчэ трэба праверыць.'],
+    ['Source waveform','Хвалевая форма крыніцы'],['Processed waveform','Хвалевая форма пасля апрацоўкі']
+  ].forEach(([source,translation])=>attrBe.set(source,translation));
+  [
+    ['Tool name','Назва інструмента'],['Tool version','Версія інструмента'],['Model','Мадэль'],
+    ['Settings','Налады'],['Processing instruction / method','Інструкцыя / метад апрацоўкі']
+  ].forEach(([source,translation])=>{
+    attrBe.set(`${source} disclosure`,`${translation}: статус раскрыцця звестак`);
+    attrBe.set(`${source} details`,`${translation}: падрабязнасці`);
+  });
   const originals = new WeakMap(); let lang = 'en';
   const normalize = value => value.replace(/\s+/g,' ').trim();
   const owned = element => !!element?.closest?.('#research-shell, [data-research-owned]');
-  const translateTextNode = node => {if(!node.parentElement||owned(node.parentElement)||node.parentElement.closest('script,style,noscript,.research-global-lang'))return;if(!originals.has(node))originals.set(node,node.nodeValue);const source=originals.get(node)||'';const key=normalize(source);const replacement=lang==='be'?(be.get(key)||(key.startsWith('Results for “')?key.replace('Results for “','Вынікі для «').replace(/”$/,'»'):undefined)):undefined;const leading=source.match(/^\s*/)?.[0]||'';const trailing=source.match(/\s*$/)?.[0]||'';node.nodeValue=replacement?leading+replacement+trailing:source};
+  const receiptLabel = element => {
+    const cell=element?.closest?.('.intervention-receipt dd, #intervention-log dd');
+    const label=cell?.parentElement?.querySelector?.('dt');
+    return label?normalize(originals.get(label.firstChild)||label.textContent||''):'';
+  };
+  const receiptEnums = new Map([
+    ['Processing type',new Map([['ai','З дапамогай ШІ'],['non-ai','Без ШІ'],['unknown','Невядома']])],
+    ['Declared authority basis',new Map([['creator-owned','Належыць стваральніку'],['permission','Дазвол атрыманы'],['public-domain','Грамадскі набытак'],['unknown','Невядома'],['no-permission','Дазволу няма']])],
+    ['Declared human review status',new Map([['pending','Чакае праверкі'],['reviewed','Праверана'],['rejected','Адхілена пасля праверкі']])]
+  ]);
+  const userReceiptValue = element => {
+    if(element?.closest?.('#live-receipt > h3, #live-receipt .receipt-id, #live-receipt .receipt-data dd, #live-receipt .citation-box p, #live-receipt .intervention-saved-detail summary'))return true;
+    if(!element?.closest?.('.intervention-receipt dd'))return false;
+    const label=receiptLabel(element);
+    return !receiptEnums.has(label)&&label!=='Original master preserved';
+  };
+  const dynamicInterventionText = (source,element) => {
+    const key=normalize(source), enumText=receiptEnums.get(receiptLabel(element))?.get(key);
+    if(enumText)return enumText;
+    if(element?.closest?.('#intervention-source-note')){
+      const match=source.trim().match(/^Declared source: (.*) · SHA-256 (.*)\. This link does not prove how an external tool processed the file\.$/s);
+      if(match)return `Пазначаная крыніца: ${match[1]} · SHA-256 ${match[2]}. Гэтая сувязь не даказвае, як знешні інструмент апрацаваў файл.`;
+    }
+    if(element?.closest?.('#source-check')){
+      const match=source.trim().match(/^SHA-256 agrees with “(.*)”\. Registration will be permitted\.$/s);
+      if(match)return `SHA-256 супадае з «${match[1]}». Можна зарэгістраваць сувязь у пашпарце.`;
+    }
+    if(receiptLabel(element)==='Applied method')return key.replace(/^High-pass off/,'Адсячэнне нізкіх частот выключана').replace(/^High-pass /,'Адсячэнне нізкіх частот: ').replace(/; low-pass off/,'; абмежаванне высокіх частот выключана').replace(/; low-pass /,'; абмежаванне высокіх частот: ').replace(/; gain /,'; узмацненне ').replace(/; peak normalization to 95%/,'; нармалізацыя пікаў да 95%').replace(/; no normalization/,'; без нармалізацыі').replace(/; output 16-bit PCM WAV\./,'; вынік: 16-бітны PCM WAV.');
+    return undefined;
+  };
+  const translateTextNode = node => {if(!node.parentElement||owned(node.parentElement)||node.parentElement.closest('script,style,noscript,.research-global-lang'))return;if(!originals.has(node))originals.set(node,node.nodeValue);const source=originals.get(node)||'';if(userReceiptValue(node.parentElement)){node.nodeValue=source;return}const key=normalize(source);const replacement=lang==='be'?(dynamicInterventionText(source,node.parentElement)||be.get(key)||(key.startsWith('Results for “')?key.replace('Results for “','Вынікі для «').replace(/”$/,'»'):undefined)):undefined;const leading=source.match(/^\s*/)?.[0]||'';const trailing=source.match(/\s*$/)?.[0]||'';node.nodeValue=replacement?leading+replacement+trailing:source};
   const translateTree = root => {if(owned(root))return;root.querySelectorAll?.('option:not([value])').forEach(option=>{if(!owned(option))option.setAttribute('value',option.textContent||'')});const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode(node){const parent=node.parentElement;if(!parent||parent.closest('script,style,noscript,.research-global-lang')||owned(parent))return NodeFilter.FILTER_REJECT;return normalize(node.nodeValue||'')?NodeFilter.FILTER_ACCEPT:NodeFilter.FILTER_REJECT}});while(walker.nextNode())translateTextNode(walker.currentNode);root.querySelectorAll?.('[placeholder],[aria-label]').forEach(el=>{if(owned(el))return;for(const name of ['placeholder','aria-label'])if(el.hasAttribute(name)){const key=`i18n${name.replace('-','')}`;if(!el.dataset[key])el.dataset[key]=el.getAttribute(name)||'';const source=el.dataset[key];el.setAttribute(name,lang==='be'&&attrBe.has(source)?attrBe.get(source):source)}})};
   const updateLinks=()=>document.querySelectorAll('a[href]').forEach(link=>{if(owned(link))return;const raw=link.getAttribute('href');if(!raw||raw.startsWith('#'))return;let url;try{url=new URL(raw,location.href)}catch{return}if(url.origin!==location.origin||!url.pathname.startsWith('/research/'))return;if(lang==='be')url.searchParams.set('lang','be');else url.searchParams.set('lang','en');link.href=url.pathname+url.search+url.hash});
   const apply=(next,updateUrl=false)=>{lang=next==='be'?'be':'en';document.documentElement.lang=lang;translateTree(document.body);updateLinks();document.querySelectorAll('.research-global-lang button').forEach(button=>{if(!owned(button))button.setAttribute('aria-pressed',String(button.dataset.lang===lang))});try{localStorage.setItem('research-lang',lang);localStorage.setItem('living-belarus-atlas-lang',lang)}catch{};if(updateUrl){const url=new URL(location.href);if(lang==='be')url.searchParams.set('lang','be');else url.searchParams.delete('lang');history.pushState({...history.state,lang},'',url)}};

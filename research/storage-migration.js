@@ -16,11 +16,26 @@ const hash = value => typeof value === 'string' && /^[a-f0-9]{64}$/i.test(value)
 const webURL = value => { try { return ['http:', 'https:'].includes(new URL(value).protocol); } catch { return false; } };
 const source = value => object(value) && text(value, 'filename') && text(value, 'mediaType') && Number.isSafeInteger(value.bytes) && value.bytes > 0 && hash(value.sha256);
 const event = value => object(value) && ['documented', 'fingerprinted', 'verified', 'transferred', 'derived'].includes(value.type) && text(value, 'at') && text(value, 'note');
-const derivative = value => object(value) && safeId(value.derivativeId) && ['createdAt', 'label', 'purpose', 'method', 'changeLog'].every(key => text(value, key)) && source(value.source) && (value.reviewerNote === undefined || typeof value.reviewerNote === 'string');
+const disclosure = value => object(value) && (value.status === 'provided' ? text(value, 'value') : ['unknown', 'not-disclosed', 'not-applicable'].includes(value.status) && value.value === undefined);
+const optionalText = (value, key) => value[key] === undefined || text(value, key);
+const intervention = value => object(value) && value.schema === 'unmute-intervention/1.0'
+  && hash(value.sourceMasterSha256) && value.originalUnchanged === true
+  && ['ai', 'non-ai', 'unknown'].includes(value.processingType)
+  && object(value.tool) && ['name', 'version', 'model'].every(key => disclosure(value.tool[key]))
+  && (value.tool.model.status !== 'not-applicable' || value.processingType === 'non-ai')
+  && (value.processingType !== 'ai' || value.tool.name.status !== 'not-applicable')
+  && disclosure(value.instruction) && disclosure(value.settings)
+  && object(value.authority) && ['creator-owned', 'permission', 'public-domain', 'unknown', 'no-permission'].includes(value.authority.basis)
+  && text(value.authority, 'scope') && optionalText(value.authority, 'evidence')
+  && ['changes', 'preservedFeatures', 'uncertainty'].every(key => text(value, key))
+  && object(value.review) && ['pending', 'reviewed', 'rejected'].includes(value.review.status)
+  && ['reviewer', 'note'].every(key => optionalText(value.review, key))
+  && (value.review.status === 'pending' || ['reviewer', 'note'].every(key => text(value.review, key)));
+const derivative = value => object(value) && safeId(value.derivativeId) && ['createdAt', 'label', 'purpose', 'method', 'changeLog'].every(key => text(value, key)) && source(value.source) && (value.reviewerNote === undefined || typeof value.reviewerNote === 'string') && (value.intervention === undefined || intervention(value.intervention));
 
-// Matches the deployed Archive Passport 2.0/2.1 format; all extra metadata is preserved.
+// Matches Archive Passport 2.0–2.2; migration preserves journals without inventing one for legacy data.
 export function validPassport(value) {
-  return object(value) && ['unmute-archive/2.0', 'unmute-archive/2.1'].includes(value.schema)
+  const valid = object(value) && ['unmute-archive/2.0', 'unmute-archive/2.1', 'unmute-archive/2.2'].includes(value.schema)
     && ['fingerprinted', 'source-missing'].includes(value.status) && safeId(value.archiveId)
     && ['createdAt', 'updatedAt', 'collection', 'title', 'creator', 'language', 'place', 'context', 'rightsBasis'].every(key => text(value, key))
     && (value.recordedOn === undefined || typeof value.recordedOn === 'string')
@@ -28,6 +43,16 @@ export function validPassport(value) {
     && Array.isArray(value.events) && value.events.every(event)
     && (value.derivatives === undefined || (Array.isArray(value.derivatives) && value.derivatives.every(derivative)))
     && (value.status === 'fingerprinted' ? source(value.source) : value.source === undefined);
+  if (!valid) return false;
+  if (value.status === 'source-missing') return !value.derivatives?.length;
+  const ids = new Set(), hashes = new Set(), master = value.source.sha256.toLowerCase();
+  for (const child of value.derivatives || []) {
+    const digest = child.source.sha256.toLowerCase();
+    if (digest === master || ids.has(child.derivativeId) || hashes.has(digest)) return false;
+    if (child.intervention && (value.schema !== 'unmute-archive/2.2' || child.intervention.sourceMasterSha256.toLowerCase() !== master)) return false;
+    ids.add(child.derivativeId); hashes.add(digest);
+  }
+  return true;
 }
 
 export function validAnnotation(value) {

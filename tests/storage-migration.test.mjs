@@ -17,6 +17,17 @@ const record = (id = 'one', changes = {}) => ({
   ...changes
 });
 const backup = stores => ({ schema: BACKUP_SCHEMA, sourceOrigin: 'https://sergey-ulyanov.pro', exportedAt: fixed, stores });
+const journalRecord = () => {
+  const entry = record('journal', { schema: 'unmute-archive/2.2' });
+  entry.derivatives[0].intervention = {
+    schema: 'unmute-intervention/1.0', sourceMasterSha256: audio.sha256,
+    processingType: 'ai', tool: { name: { status: 'provided', value: 'Test tool' }, model: { status: 'not-disclosed' }, version: { status: 'unknown' } },
+    instruction: { status: 'provided', value: 'Fixture only: separate listening copy' }, settings: { status: 'unknown' },
+    authority: { basis: 'unknown', scope: 'Documentation only; no public use permission established' },
+    changes: 'Test derivative', preservedFeatures: 'Not assessed', uncertainty: 'Not assessed', review: { status: 'pending' }, originalUnchanged: true
+  };
+  return entry;
+};
 function store(values = {}, fail = () => false) {
   const map = new Map(Object.entries(values).map(([key, value]) => [key, typeof value === 'string' ? value : JSON.stringify(value)]));
   const writes = [];
@@ -41,6 +52,38 @@ test('backup captures complete passport, derivative logs, annotations and prefer
 
 test('empty browser export stays explicit, not an invented library', () => {
   assert.deepEqual(createBackup(store(), 'https://sergey-ulyanov.pro').stores, {});
+});
+
+test('browser backup preserves the complete 2.2 intervention without upgrading authority or review', () => {
+  const entry = journalRecord(), original = store({ [K.corpus]: [entry] });
+  const parsed = parseBackup(JSON.stringify(createBackup(original, 'https://sergey-ulyanov.pro')));
+  const target = store();
+  applyImport(target, parsed, {});
+  assert.deepEqual(readResearchStorage(target)[K.corpus][0], entry);
+  assert.equal(entry.derivatives[0].intervention.review.status, 'pending');
+  assert.equal(entry.derivatives[0].intervention.authority.basis, 'unknown');
+  assert.deepEqual(original.writes, []);
+});
+
+test('migration rejects misleading or inconsistent intervention metadata without modifying source storage', () => {
+  const mutations = [
+    entry => { entry.schema = 'unmute-archive/2.1'; },
+    entry => { entry.derivatives[0].intervention.sourceMasterSha256 = 'c'.repeat(64); },
+    entry => { entry.derivatives[0].source.sha256 = audio.sha256.toUpperCase(); },
+    entry => { entry.derivatives.push(structuredClone(entry.derivatives[0])); },
+    entry => { entry.status = 'source-missing'; delete entry.source; },
+    entry => { entry.derivatives[0].intervention.review.status = 'reviewed'; },
+    entry => { entry.derivatives[0].intervention.originalUnchanged = 'true'; },
+    entry => { entry.derivatives[0].intervention.tool.model = { status: 'not-applicable' }; },
+    entry => { entry.derivatives[0].intervention.uncertainty = 0.9; }
+  ];
+  for (const mutate of mutations) {
+    const entry = journalRecord(); mutate(entry);
+    const storage = store({ [K.corpus]: [entry] });
+    assert.throws(() => createBackup(storage, 'https://sergey-ulyanov.pro'), error('damaged'));
+    assert.throws(() => parseBackup(JSON.stringify(backup({ [K.corpus]: [entry] }))), error('invalid'));
+    assert.deepEqual(storage.writes, []);
+  }
 });
 
 test('recovery export preserves malformed raw data and never includes unrelated keys', () => {
