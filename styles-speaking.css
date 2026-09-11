@@ -92,3 +92,14 @@
 .speaking-source-links a{display:inline-flex;align-items:center;min-height:44px;padding:8px 0;font:500 13px/1.5 var(--brand-display);letter-spacing:0;text-transform:none;text-decoration:underline;text-underline-offset:4px;color:#d8e7cf}
 .speaking-back-to-filters{display:inline-flex;align-items:center;min-height:48px;margin-top:24px;text-decoration:underline;text-underline-offset:4px;color:var(--speaking-green)}
 @media(max-width:760px){.speaking-archive-list{grid-template-columns:1fr}.press-page .speaking-archive-list .press-card{padding:24px}.press-page .speaking-archive-list .press-card h3{font-size:23px}}
+
+/* Keep people inside the frame: source thumbnails have different compositions.
+   Compact previews show the whole source; single-column phone cards keep its
+   natural ratio, including the 641–760px range missed by the shared stylesheet. */
+.speaking-story>img{object-fit:contain;object-position:center;background:#070907}
+@media(max-width:760px),(hover:none) and (pointer:coarse){
+  .press-page .press-card-media{height:auto;flex:0 0 auto}
+  .press-page .press-card-media img{height:auto;object-fit:contain;object-position:center;transform:none}
+  .press-page .press-card:hover .press-card-media img{transform:none}
+}
+@media(hover:none){.press-page .press-card:hover .press-card-media img{transform:none}}

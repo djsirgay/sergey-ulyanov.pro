@@ -167,3 +167,12 @@ test('the sourced longer story is collapsed and separate from the short bio', ()
   assert.doesNotMatch(story, /released him|release from detention|legal advice/);
   assert.doesNotMatch(html, /<details class="speaking-longer-story" open/);
 });
+
+test('phone photos retain complete frames, including wide phones below 761px', () => {
+  assert.equal(declarations('.speaking-story>img')['object-fit'],'contain','Small story previews must not crop faces at either edge');
+  assert.match(css,/@media\(max-width:760px\),\(hover:none\) and \(pointer:coarse\)\{\s*\.press-page \.press-card-media\{height:auto;flex:0 0 auto\}/,'Natural photo heights must cover wide phones and touch-device landscape orientation');
+  assert.equal(declarations('.press-page .press-card-media img').height,'auto');
+  assert.equal(declarations('.press-page .press-card-media img')['object-fit'],'contain');
+  assert.equal(declarations('.press-page .press-card:hover .press-card-media img').transform,'none','Touch and mobile hover must not reintroduce edge cropping');
+  assert.equal(declarations('.speaking-portrait img')['object-fit'],'contain','Mobile hero portrait keeps its full frame');
+});
