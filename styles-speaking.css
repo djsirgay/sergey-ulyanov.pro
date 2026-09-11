@@ -103,3 +103,10 @@
   .press-page .press-card:hover .press-card-media img{transform:none}
 }
 @media(hover:none){.press-page .press-card:hover .press-card-media img{transform:none}}
+
+/* Only Sergey's half uses the requested retouch. Vasil remains the original
+   photograph, avoiding unrelated identity changes from image generation. */
+.press-page .press-radio-preview{height:auto;flex:0 0 auto}
+.press-page .press-card .press-radio-preview img{height:auto;object-fit:contain;transform:none}
+.press-page .press-card .press-radio-preview .press-radio-retouch{position:absolute;inset:0;width:100%;height:100%;clip-path:inset(0 50% 0 0);pointer-events:none}
+.press-radio-preview .press-source-mark{z-index:1}

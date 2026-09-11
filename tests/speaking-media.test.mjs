@@ -81,6 +81,19 @@ test('Belarusian audio is discoverable and native details provide working themes
   assert.match(html,/Marketing &amp; creative strategy/);
   assert.ok(html.includes('aria-label="On this page"'));
 });
+test('RAY profile is featured and the radio card points honestly to the station website', () => {
+  const profile=entries.filter(e=>e.body.includes('https://www.slavicsac.com/2026/08/17/ulyanov-ray/'));
+  assert.equal(profile.length,1,'The RAY interview has one library card, not a duplicate');
+  const radio=entries.find(e=>e.body.includes('375radio.com/en'));
+  assert.ok(radio,'The radio card links to the station requested by Sergey');
+  assert.match(radio.body,/>Visit 375 Radio ↗<\/a>/);
+  assert.doesNotMatch(radio.body,/Listen from 36:00|open\.spotify\.com\/episode\/72cz31/,'Station homepage is not presented as a direct timestamped episode link');
+  assert.match(radio.body,/src="\/assets\/press\/belarus-podcast-2026.webp"/,'The original photo supplies Vasil’s unchanged half');
+  assert.match(radio.body,/src="\/assets\/press\/belarus-podcast-retouched-20260910.jpg"/);
+  assert.match(radio.body,/Retouched preview/);
+  assert.equal(declarations('.press-page .press-card .press-radio-preview .press-radio-retouch')['clip-path'],'inset(0 50% 0 0)','Retouch must affect only Sergey’s left half');
+  assert.equal(declarations('.press-page .press-card .press-radio-preview img').transform,'none','Hover must not move the seam between original and retouched halves');
+});
 test('multilingual articles appear under each supplied language without duplicate cards',()=>{
   const a=app(), bilingual=a.cards.find(c=>tokens(c.dataset.mediaLanguage).includes('en')&&tokens(c.dataset.mediaLanguage).includes('ru'));
   assert.ok(bilingual,'The bilingual SlavicSac profile has both language labels');
