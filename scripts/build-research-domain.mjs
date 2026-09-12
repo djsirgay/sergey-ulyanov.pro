@@ -16,6 +16,9 @@ export function isPublicResearchFile(relative) {
   const parts = slash(relative).split('/');
   if (parts.some(part => EXCLUDED_PART.test(part))) return false;
   const name = parts.at(-1);
+  // The separately approved listener pilot runs a pinned model in the browser.
+  // Allow its public runtime/model bytes only here, not arbitrary research binaries.
+  if (slash(relative).startsWith('unmute-pilot/semantic/') && /\.(?:bin|wasm|mjs)$/.test(name)) return true;
   if (/^(?:LICENSE|COPYING)(?:[-_.].*)?$/i.test(name)) return true;
   return PUBLIC.test(name) && !/\.(?:test|spec)\./i.test(name)
     && !/(?:^|[-_.])(?:private|draft|notes)(?:[-_.]|$)/i.test(name);

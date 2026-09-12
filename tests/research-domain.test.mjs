@@ -97,6 +97,20 @@ test('isolated fixture copies only referenced public dependencies and creates cl
   assert.match(fs.readFileSync(path.join(output, 'atlas/index.html'), 'utf8'), /href="\/\?lang=be#overview"/);
 });
 
+test('pilot ships only scoped inference binaries and remains outside the sitemap', t => {
+  const temp=temporary(t),root=path.join(temp,'source'),output=path.join(temp,'output');
+  for(const extension of ['bin','wasm','mjs']){
+    assert.equal(isPublicResearchFile('unmute-pilot/semantic/model.'+extension),true);
+    assert.equal(isPublicResearchFile('private/model.'+extension),false);
+    fixture(root,'research/unmute-pilot/semantic/model.'+extension,'public model fixture');
+  }
+  fixture(root,'research/index.html','<h1>Research</h1>');
+  fixture(root,'research/unmute-pilot/index.html','<meta name="robots" content="noindex,nofollow"><h1>Pilot</h1>');
+  buildResearchDomain({sourceRoot:root,outputDirectory:output});
+  for(const extension of ['bin','wasm','mjs'])assert.ok(fs.existsSync(path.join(output,'unmute-pilot/semantic/model.'+extension)));
+  assert.doesNotMatch(fs.readFileSync(path.join(output,'sitemap.xml'),'utf8'),/unmute-pilot/);
+});
+
 test('refuses occupied output and source overwrite without deleting anything', t => {
   const temp = temporary(t), root = path.join(temp, 'source'), output = path.join(temp, 'output');
   fixture(root, 'research/index.html', '<p>Research</p>');

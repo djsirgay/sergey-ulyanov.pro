@@ -1,0 +1,36 @@
+/* New workflow controls retain the selected Inter / Cormorant green system. */
+.hero h1{line-height:var(--hero-line-height,.98)}.section-label{font-size:var(--caption-type,13px)}
+.semantic-launch.unified-search:has(>button:only-child){margin:0;display:none}
+.search-how p{margin-top:10px}.search-how summary{min-height:40px}
+.active-filters{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.active-filters .button{min-height:40px;padding:8px 12px;font-size:12px;border-radius:24px}
+.search-mode-label{display:flex!important;gap:12px!important;align-items:center;margin-bottom:16px!important;font-size:12px!important;color:var(--muted)}.search-mode-label select{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:10px 12px;min-height:44px;font:inherit;max-width:100%}.semantic-launch.unified-search>button{display:none}.mode-note{font-size:12px}.unified-search{margin-top:0}.unified-search details{flex:none}.search-mode-label select:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.compare-work,.topic-continuation,.coverage-notes{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.compare-work h2,.topic-continuation h2,.coverage-notes h2{font:32px/1.2 var(--serif);margin-bottom:12px}.compare-work>.scope-note{margin-bottom:20px}
+.compare-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.compare-grid>div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;min-width:0}
+.compare-grid label{display:grid;gap:10px;font-size:12px}.compare-grid select{width:100%;min-width:0;min-height:44px;background:var(--dark);color:var(--ink);border:1px solid var(--line);padding:8px;border-radius:7px;font:inherit}
+.compare-grid h3{font:24px/1.2 var(--serif);margin:18px 0 10px}.compare-grid p{font-size:13px;line-height:1.6;margin-bottom:15px;overflow-wrap:anywhere}.compare-grid .button{width:100%;white-space:normal}.compare-grid .text-link{display:block;margin-top:14px}
+.playback-queue{border-top:1px solid var(--line);margin-top:18px;padding-top:16px}.playback-queue>div:first-child{display:flex;gap:10px;justify-content:space-between;font-size:12px;color:var(--ink)}.queue-controls{display:flex;gap:10px;margin:14px 0}.queue-controls .button{flex:1;font-size:12px;white-space:normal;padding:10px}.playback-queue .scope-note{font-size:11px}
+.workflow-dialog{width:min(720px,calc(100% - 24px));max-height:90dvh;overflow:auto}.workflow-dialog>p{line-height:1.65;margin:15px 0}.workflow-dialog form{display:grid;gap:16px}.workflow-dialog label{display:grid;gap:8px;line-height:1.5}.workflow-dialog textarea{resize:vertical}.workflow-dialog input,.workflow-dialog select,.workflow-dialog textarea{width:100%;min-width:0;font:inherit;padding:12px;border:1px solid #9fae91;border-radius:7px;background:#f5f5ee;color:#193321}.workflow-dialog [role=status]{font-size:14px;line-height:1.5}.workflow-dialog h3{font:24px/1.2 var(--serif)}.workflow-dialog .review-notes article{padding:20px 0;border-top:1px solid #a4b298}.workflow-dialog .review-notes p,.workflow-dialog blockquote{margin:12px 0;white-space:pre-wrap;overflow-wrap:anywhere}.workflow-dialog .review-notes .eyebrow{color:#3d5632}.workflow-dialog blockquote{padding-left:16px;border-left:3px solid #719650}.workflow-dialog .button.secondary{color:#21361b;border-color:#91a17d;background:#eef1e5}
+.coverage-notes p{line-height:1.65;font-size:14px;color:var(--muted);max-width:850px;margin-bottom:16px}.catalog-local-filter{display:grid;gap:10px;max-width:620px;margin:26px 0 12px;font-size:13px}.catalog-local-filter input{background:var(--panel);color:var(--ink);padding:13px;border:1px solid var(--line);border-radius:8px;font:inherit;min-width:0}#catalog-filter-count{font-size:12px;color:var(--muted)}
+.empty>[data-workflow]{margin:14px 8px}.evidence>[data-workflow]{margin-top:14px}.topic-continuation .detail-actions{flex-wrap:wrap}.compare-grid select:focus-visible,.catalog-local-filter input:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+@media(max-width:800px){.compare-grid{grid-template-columns:1fr}.workflow-dialog{padding:22px}.workflow-dialog h2{padding-right:24px}.library-toolbar>[data-workflow]{width:100%}.compare-work h2{font-size:29px}}
+@media(max-width:480px){.search-mode-label{display:grid!important;gap:8px!important}.search-mode-label select{width:100%;min-width:0}.mode-note{line-height:1.5}}
+/* Keep native inputs at 16px on phones: readable and no iOS input auto-zoom. */
+@media(max-width:620px){.search-bar input,.search-mode-label select,.workflow-dialog input,.workflow-dialog select,.workflow-dialog textarea,.catalog-local-filter input,.compare-grid select{font-size:16px}.workflow-dialog .scope-note{color:#40543c}}
+@media(max-width:620px){.library-toolbar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.library-toolbar>label{grid-column:1/-1;min-width:0;width:100%}.library-toolbar select{min-width:0;width:100%;font-size:16px}.library-toolbar>[data-workflow]{grid-column:1/-1}.library-toolbar>button{min-width:0;max-width:100%;white-space:normal}}
+.semantic-interpretation{padding:16px 20px;margin:16px 0;border-left:3px solid var(--acid,#d8fa55);background:rgba(216,250,85,.05)}
+.semantic-interpretation p{margin:0 0 8px}.semantic-interpretation p:last-child{margin-bottom:0}
+/* Participant pilot: restrained, opt-in help using the approved layout. */
+.optional-examples{margin-top:14px;color:var(--muted,#b9c7c0);font-size:14px}
+.optional-examples>summary{cursor:pointer;padding:10px 0;min-height:44px}
+.optional-examples .examples{padding:8px 0}
+.optional-examples .examples>span{display:none}
+.pilot-boundary{display:flex;gap:24px;align-items:center;padding-block:20px;border-top:1px solid #355044;border-bottom:1px solid #355044;font-size:14px;line-height:1.65}
+.pilot-boundary p{flex:1;margin:0;max-width:830px}
+.pilot-boundary a{flex-shrink:0;color:#d9ff72;min-height:44px;display:inline-flex;align-items:center}
+.participant-entry{max-width:920px;min-height:65vh}
+.participant-entry>p{font-size:18px;line-height:1.75}
+.participant-entry .pilot-coverage{font-size:14px;color:#d9ff72;letter-spacing:.01em}
+.participant-entry hr{margin-block:40px;border:0;border-top:1px solid #355044}
+.participant-entry h2{font-size:30px}
+@media(max-width:650px){.pilot-boundary{flex-direction:column;align-items:flex-start;gap:8px}.participant-entry>p{font-size:17px}.optional-examples .examples{flex-wrap:wrap}.participant-entry .detail-actions{align-items:flex-start}}

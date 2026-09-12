@@ -1,0 +1,70 @@
+{
+  "schema": "unmute.browser-semantic-assets/1",
+  "model": "Xenova/multilingual-e5-small",
+  "revision": "761b726dd34fb83930e26aab4e9ac3899aa1fa78",
+  "encodingVersion": "mean-mask-l2-unique-single-v2",
+  "catalogueHash": "d7fdb931ba1d5e6b486eb0b7b43c5e45e966785da362389f13cf2d3d694d0407",
+  "ontologyHash": "4804db66e69668f78c4e8028cf61fef3a0e650e5f16405b95823dbb568353ecf",
+  "dimensions": 384,
+  "documents": 2294,
+  "indexedRecordings": 288,
+  "intentRows": 111,
+  "modelBytes": 118308185,
+  "modelSha256": "f80102d3f2a1229f387d3c81909990d8945513e347b0eab049f7de3c6f98c193",
+  "modelParts": [
+    {
+      "path": "assets/model.part1.bin",
+      "bytes": 60000000,
+      "sha256": "8be46193f2c66e70bb80937791a2dc6d93b41bb6e025229965b825e55fb3120f"
+    },
+    {
+      "path": "assets/model.part2.bin",
+      "bytes": 58308185,
+      "sha256": "286ac0b5c060ee27a524dec135c0bf21f5eba854b479004c163f55ee90de5fd2"
+    }
+  ],
+  "tokenizer": {
+    "path": "assets/tokenizer.json",
+    "bytes": 17082730,
+    "sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39"
+  },
+  "tokenizerConfig": {
+    "path": "assets/tokenizer-config.json",
+    "bytes": 382,
+    "sha256": "5d3765869cbd99e635f848edde317de3d1ceca130fc880cc9bbac3627441ff14"
+  },
+  "catalogue": {
+    "path": "assets/catalogue.json",
+    "bytes": 1028730,
+    "sha256": "71f09d31b210acf7f3a924ec3c8a12fd49631a3c6cc98b87c3ef60e99ab28602"
+  },
+  "catalogueVectors": {
+    "path": "assets/catalogue-vectors.bin",
+    "bytes": 3523584,
+    "sha256": "d56fb18b89ad829e0f40be45dbd68399c3154f4e01277e3c99315f129963f9e0"
+  },
+  "intentVectors": {
+    "path": "assets/intent-vectors.bin",
+    "bytes": 170496,
+    "sha256": "36a28748c63a9accdd0fbb199792a402e14a5a27d2ff1111ca59d715215237d8"
+  },
+  "execution": "single-thread WASM in dedicated Web Worker",
+  "provenance": "Frozen R2 model and intent strategy, browser-runtime port. Runtime parity is tested separately; scores are not confidence.",
+  "wasm": {
+    "path": "assets/ort-wasm-simd-threaded.wasm",
+    "bytes": 11133407,
+    "sha256": "f061472c6e77d6d50d079aacdc0ff9b63fee287ddd2cbf46cf62438d3891de2b"
+  },
+  "wasmHelper": {
+    "path": "assets/ort-wasm-simd-threaded.mjs",
+    "bytes": 20856,
+    "sha256": "43c25054b6b9ac000f786c65545ff83a45f871e0e310e8c2f4d48a363bb66db4"
+  },
+  "runtimeVersions": {
+    "transformersJS": "3.8.1",
+    "onnxRuntimeWeb": "1.22.0-dev.20250409-89f8206ba4"
+  },
+  "browserBuildId": "af2d2a6e35f6b793d80982b3df13d4eac656eb792ac38379401088199fdb297f",
+  "assetBytes": 151268370,
+  "totalDownloadBytes": 152829921
+}

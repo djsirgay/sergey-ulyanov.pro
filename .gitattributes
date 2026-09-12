@@ -1,0 +1,5 @@
+research/unmute-pilot/semantic/assets/*.bin binary linguist-generated
+research/unmute-pilot/semantic/assets/*.wasm binary linguist-generated
+research/unmute-pilot/semantic/assets/tokenizer*.json -diff linguist-generated
+research/unmute-pilot/semantic/provider.js -diff linguist-generated
+research/unmute-pilot/semantic/worker.js -diff linguist-generated
