@@ -2,6 +2,11 @@
 // Merge after i18n, missionCopy and experienceCopy. No claim of completed user research.
 export const productCopy = {
   en: {
+    researchReturn:"Back to Research",
+    artNote:"Source covers are optional. Where no reviewed cover is available, or an image cannot load, the graphic is Unmute interface artwork — not an official release cover.",
+    artworkSessionOnly:"Cover preference applies for this session; this browser could not save it.",
+    artworkHeading:"Cover art, with a choice.",
+    artworkGuide:"Use “Show source covers” above the recordings to enable reviewed cover images from Bandcamp and Apple. This preference is separate from loading a player and is saved only in this browser. Images stay on their source services, which receive your IP address and may use cookies; Unmute does not send your search or collection. Album and compilation covers are labelled as such. Unavailable covers keep the Unmute graphic. Public artwork metadata is not a grant of reuse rights.",
     navCollection:'My collections',
     private:'Private working prototype · on this computer',
     examples:['lullaby','protest 2010-2020','folk OR electronic'],
@@ -20,7 +25,7 @@ export const productCopy = {
     countNote:'catalogue records, including separate versions and source-only leads — not a complete archive or a count of unique songs.',
     libraryIntro:'Make separate named collections, arrange their songs and keep the source links. Export a collection as JSON to restore it in another copy of Unmute; HTML and text are reading copies. No account or upload is required.',
     storageNote:'Saved only in this browser. Export each collection as JSON before clearing browser data or moving to another browser. Import creates a new collection; HTML and text cannot restore it. No audio files are stored.',
-    playerPrivacy:'“Load official player” connects to the music platform: it receives your IP address and may use cookies. Unmute does not send your query or collection. Nothing loads before you choose.',
+    playerPrivacy:'“Load official player” connects to the music platform: it receives your IP address and may use cookies. Unmute does not send your query or collection. No player loads before this choice. Source covers use a separate saved preference.',
     guideTitle:'Find a song.\nKeep the connection.',
     guideIntro:'A working, private listening prototype within Unmute: 139 catalogue records, including 129 direct recording links and 10 source-only leads. It includes 19 short traditional lullaby recordings from Tradycyja, with individual performer credits. The public research site has not been replaced.',
     steps:[
@@ -65,6 +70,11 @@ export const productCopy = {
     catalogHelp:'Exports editorial metadata and source links, not audio or lyrics. Linked work groups reflect documented relationships, not computed acoustic identity. Unknowns stay unknown.',
   },
   be: {
+    researchReturn:"Вярнуцца да Research",
+    artNote:"Вокладкі з крыніц уключаюцца па жаданні. Калі праверанай вокладкі няма або яна не загрузілася, паказана афармленне Unmute, а не афіцыйная вокладка рэлізу.",
+    artworkSessionOnly:"Выбар вокладак дзейнічае ў гэтай сесіі; браўзер не змог яго захаваць.",
+    artworkHeading:"Вокладкі — на твой выбар.",
+    artworkGuide:"Кнопка «Паказаць вокладкі з крыніц» над запісамі ўключае правераныя выявы з Bandcamp і Apple. Гэтая настройка асобная ад загрузкі плэера і захоўваецца толькі ў гэтым браўзеры. Выявы застаюцца на сэрвісах-крыніцах: яны атрымліваюць IP-адрас і могуць выкарыстоўваць cookies; Unmute не перадае запыт або падборку. Вокладкі альбомаў і зборнікаў адпаведна пазначаныя. Калі вокладка недаступная, застаецца графіка Unmute. Публічныя метаданыя выявы не даюць права на яе паўторнае выкарыстанне.",
     navCollection:'Мае падборкі',
     private:'Прыватны працоўны прататып · на гэтым камп’ютары',
     examples:['калыханка','пратэст 2010-2020','фолк АБО электроніка'],
@@ -83,7 +93,7 @@ export const productCopy = {
     countNote:'запісаў каталога, у тым ліку асобныя версіі і крыніцы без прамога аўдыя, — не поўны архіў і не колькасць унікальных песень.',
     libraryIntro:'Стварай асобныя падборкі з назвамі, змяняй парадак песень і захоўвай крыніцы. Экспартуй падборку ў JSON, каб аднавіць яе ў іншай копіі Unmute; HTML і тэкст — копіі для чытання. Рэгістрацыя і загрузка на сервер не патрэбныя.',
     storageNote:'Захавана толькі ў гэтым браўзеры. Экспартуй кожную падборку ў JSON перад ачысткай даных ці пераходам у іншы браўзер. Імпарт стварае новую падборку; HTML і тэкст яе не аднаўляюць. Аўдыяфайлы не захоўваюцца.',
-    playerPrivacy:'Кнопка загрузкі падключыць музычную платформу: яна атрымае твой IP-адрас і можа выкарыстоўваць cookies. Unmute не перадае ёй запыт ці падборку. Да націскання нічога не загружаецца.',
+    playerPrivacy:'Кнопка загрузкі падключыць музычную платформу: яна атрымае твой IP-адрас і можа выкарыстоўваць cookies. Unmute не перадае ёй запыт ці падборку. Да націскання плэер не загружаецца. Вокладкі выкарыстоўваюць асобную захаваную настройку.',
     guideTitle:'Знайдзі песню.\nЗахавай сувязь.',
     guideIntro:'Прыватны працоўны прататып Unmute для слухачоў: 139 запісаў каталога, сярод іх 129 прамых спасылак на запісы і 10 крыніц без пацверджанай спасылкі на аўдыя. Тут ёсць 19 кароткіх запісаў традыцыйных калыханак Tradycyja з імёнамі выканаўцаў. Публічны даследчы сайт не заменены.',
     steps:[
@@ -128,6 +138,11 @@ export const productCopy = {
     catalogHelp:'Экспартуе рэдактарскія метаданыя і спасылкі, а не аўдыя ці тэксты песень. Групы твораў паказваюць дакументаваныя сувязі, не вылічанае падабенства аўдыя. Невядомае застаецца невядомым.',
   },
   ru: {
+    researchReturn:"Вернуться к Research",
+    artNote:"Обложки из источников включаются по желанию. Если проверенной обложки нет или она не загрузилась, показано оформление Unmute, а не официальная обложка релиза.",
+    artworkSessionOnly:"Выбор обложек действует в этой сессии; браузер не смог его сохранить.",
+    artworkHeading:"Обложки — по твоему выбору.",
+    artworkGuide:"Кнопка «Показать обложки из источников» над записями включает проверенные изображения с Bandcamp и Apple. Эта настройка отдельна от загрузки плеера и сохраняется только в этом браузере. Изображения остаются на сервисах-источниках: они получают IP-адрес и могут использовать cookies; Unmute не передаёт запрос или подборку. Обложки альбомов и сборников так и обозначены. Если обложка недоступна, остаётся графика Unmute. Публичные метаданные изображения не дают права на его повторное использование.",
     navCollection:'Мои подборки',
     private:'Частный рабочий прототип · на этом компьютере',
     examples:['колыбельная','протест 2010-2020','фолк ИЛИ электроника'],
@@ -146,7 +161,7 @@ export const productCopy = {
     countNote:'записей каталога, включая отдельные версии и источники без прямого аудио, — не полный архив и не количество уникальных песен.',
     libraryIntro:'Создавай отдельные подборки с названиями, меняй порядок песен и сохраняй источники. Экспортируй подборку в JSON для восстановления в другой копии Unmute; HTML и текст — копии для чтения. Регистрация и загрузка на сервер не нужны.',
     storageNote:'Сохранено только в этом браузере. Экспортируй каждую подборку в JSON до очистки данных или перехода в другой браузер. Импорт создаёт новую подборку; HTML и текст её не восстанавливают. Аудиофайлы не сохраняются.',
-    playerPrivacy:'Кнопка загрузки подключит музыкальную платформу: она получит твой IP-адрес и может использовать cookies. Unmute не передаёт ей запрос и подборку. До нажатия ничего не загружается.',
+    playerPrivacy:'Кнопка загрузки подключит музыкальную платформу: она получит твой IP-адрес и может использовать cookies. Unmute не передаёт ей запрос и подборку. До нажатия плеер не загружается. Обложки используют отдельную сохранённую настройку.',
     guideTitle:'Найди песню.\nСохрани связь.',
     guideIntro:'Частный рабочий прототип Unmute для слушателей: 139 записей каталога, среди них 129 прямых ссылок на записи и 10 источников без подтверждённой ссылки на аудио. Здесь есть 19 коротких записей традиционных колыбельных Tradycyja с именами исполнителей. Публичный исследовательский сайт не заменён.',
     steps:[

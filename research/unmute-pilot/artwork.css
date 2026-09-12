@@ -1,0 +1,21 @@
+/* Source artwork keeps the approved Unmute card geometry and brand fallback. */
+.artwork-frame{position:relative;display:block;overflow:hidden;background:var(--bg,#071b15);isolation:isolate}
+.artwork-fallback{display:block}
+.artwork-frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:center;display:block;opacity:0;background:var(--bg,#071b15)}
+.artwork-frame.is-artwork-loaded>img{opacity:1}
+.artwork-frame.is-artwork-loaded>.artwork-fallback{visibility:hidden}
+.artwork-frame>img[hidden]{display:none}
+.artwork-frame--small{width:80px;flex:none}
+.artwork-credit{font-size:11px;line-height:1.55;color:var(--muted,#a5b6a0);margin-top:10px;overflow-wrap:anywhere}
+.artwork-credit a{text-decoration:underline;text-underline-offset:3px}
+.artwork-preference{margin-block:16px;max-width:750px}
+.artwork-toggle{min-height:44px;text-align:left;text-decoration:underline;text-underline-offset:4px}
+.artwork-toggle[aria-pressed="true"]{color:var(--lime,#c0f45b)}
+.artwork-privacy{font-size:11px;line-height:1.55;color:var(--muted,#a5b6a0);margin-top:4px}
+.research-return-row{display:flex;align-items:center;min-height:34px;padding-top:5px}
+.research-return{display:inline-flex;align-items:center;min-height:34px;font-size:12px;line-height:1.4;color:var(--muted,#a5b6a0);text-decoration:underline;text-underline-offset:4px}
+.research-return:hover{color:var(--ink,#edf1dd)}
+.artwork-guide{margin-top:32px;padding-top:24px;border-top:1px solid var(--line,#304332);max-width:760px}
+.artwork-guide h2{font-size:30px}
+.artwork-guide p{font-size:14px;line-height:1.7;color:var(--muted,#a5b6a0);margin-top:16px}
+@media(max-width:620px){.artwork-frame--small{width:66px}.artwork-privacy,.artwork-credit{font-size:11px}}

@@ -1,5 +1,12 @@
 (() => {
   const be = new Map([
+    ['One research program: music discovery for listeners, provenance tools for archives, and a directory of cultural resources. Explore without an account. These are working prototypes with bounded coverage; their methods and evidence are further down this page.','Адна даследчая праграма: пошук музыкі для слухачоў, інструменты дакументавання паходжання запісаў і каталог культурных рэсурсаў. Даследуйце без рэгістрацыі. Гэта працоўныя прататыпы з абмежаваным ахопам; іх метады і сведчанні — ніжэй на старонцы.'],
+    ['NEW · LISTENING PILOT','НОВАЕ · ПІЛОТ ДЛЯ СЛУХАЧОЎ'],
+    ['Find Belarusian-language music for your moment.','Знайдзіце беларускамоўную музыку для свайго настрою.'],
+    ['Describe what you want to hear, inspect source-linked candidates, and build a listening collection. Search covers a growing, bounded catalogue—not the whole internet. EN / BE / RU interface; participant testing is next.','Апішыце, што хочаце паслухаць, праверце знойдзеныя запісы і іх крыніцы, збярыце сваю падборку. Пошук ахоплівае каталог, які расце, а не ўвесь інтэрнэт. Інтэрфейс EN / BE / RU; наступны этап — тэставанне з удзельнікамі.'],
+    ['Try Unmute music discovery ↗','Паспрабаваць пошук Unmute ↗'],
+    ['Join the listening pilot ↗','Далучыцца да тэставання ↗'],
+    ['Archive & culture tools ↗','Архіўныя і культурныя інструменты ↗'],
     ['See how political borders changed.','Паглядзіце, як змяняліся палітычныя межы.'],
     ['Compare seven dated map layers, read the names of states, and check a city. A 28-stage chronology explains transitions without inventing missing boundaries.','Параўноўвайце сем датаваных мапаў, чытайце назвы дзяржаў і правярайце прыналежнасць горада. Храналогія з 28 этапаў тлумачыць пераходы без выдуманых межаў.'],
     ['Explore the historical map ↗','Вывучыць гістарычную мапу ↗'],
