@@ -10,13 +10,19 @@ const content={
  protocol:{path:'protocol/',guide:'protocol/#design',en:['Read the research boundaries',['Start with the current status: distinguish a planned protocol from completed observations.','Inspect the questions, source requirements and review procedure before interpreting any result.','The AI-system audit and the listening-product usability study are different activities. A working interface is not evidence that human testing has been completed.']],be:['Як чытаць межы даследавання',['Пачніце з актуальнага статусу: адрознівайце запланаваны пратакол ад праведзеных назіранняў.','Перад высновамі паглядзіце пытанні, патрабаванні да крыніц і працэдуру праверкі.','Аўдыт сістэм ШІ і карыстальніцкае тэставанне музычнага прадукту — розныя працы. Гатовы інтэрфейс не сведчыць пра завершанае тэставанне з людзьмі.']]},
  dranik:{path:'playground/dranik-meter/',guide:'playground/dranik-meter/#main',en:['A little potato arithmetic',['Enter a number and choose kilograms or pounds; nothing is guessed about you.','Keep the playful 50 g assumption for one dranik, or choose your own assumption, then press Count.','The result is just arithmetic, not health advice. Clear the fields when finished; this help does not read your inputs.']],be:['Крыху бульбяной арыфметыкі',['Увядзіце лік і выберыце кілаграмы або фунты; пра вас нічога не адгадваецца.','Пакіньце жартоўнае дапушчэнне 50 г на адзін дранік або выберыце сваё і націсніце «Палічыць».','Вынік — толькі арыфметыка, не парада наконт здароўя. Калі скончыце, ачысціце палі; гэтая даведка не чытае ўведзеныя даныя.']]}
 };
-const words={en:{button:'? Help',close:'Close',guide:'Open the guide ↗',local:'Short, hand-written guidance for this page. Not an AI chat.'},be:{button:'? Дапамога',close:'Закрыць',guide:'Адкрыць інструкцыю ↗',local:'Кароткая даведка для гэтай старонкі, напісаная загадзя. Гэта не чат з ШІ.'}};
+// The standalone Dranik calculator additionally offers Russian; the Research site remains EN/BE.
+content.dranik.ru=['Немного картофельной арифметики',[
+ 'Введите число и выберите килограммы или фунты; никаких догадок о вас.',
+ 'Оставьте шуточное допущение 50 г на один драник или выберите своё, затем нажмите «Посчитать».',
+ 'Результат — только арифметика, не совет о здоровье. Закончив, очистите поля; эта справка не читает введённые данные.'
+]];
+const words={en:{button:'? Help',close:'Close',guide:'Open the guide ↗',local:'Short, hand-written guidance for this page. Not an AI chat.'},be:{button:'? Дапамога',close:'Закрыць',guide:'Адкрыць інструкцыю ↗',local:'Кароткая даведка для гэтай старонкі, напісаная загадзя. Гэта не чат з ШІ.'},ru:{button:'? Помощь',close:'Закрыть',guide:'Открыть инструкцию ↗',local:'Краткая справка для этой страницы, написанная заранее. Это не чат с ИИ.'}};
 
 export function helpFor(pathname,language='en'){
- const lang=language==='be'?'be':'en';
  const normalized=String(pathname).replace(/index\.html$/,'').replace(/\/?$/,'/');
  const found=Object.entries(content).find(([,entry])=>ROOT+entry.path===normalized)||['home',content.home];
- const [id,entry]=found,[title,steps]=entry[lang];
+ const [id,entry]=found,lang=language==='be'?'be':language==='ru'&&id==='dranik'?'ru':'en';
+ const [title,steps]=entry[lang];
  const [route,hash]=entry.guide.split('#');
  return {id,lang,title,steps:[...steps],href:ROOT+route+'?lang='+lang+(hash?'#'+hash:''),...words[lang]};
 }

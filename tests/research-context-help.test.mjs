@@ -28,6 +28,17 @@ test('helper defaults to English and uses only route plus explicitly selected UI
  assert.doesNotMatch(source,/weight\b|pancake-grams|getElementById\('(?:weight|query)'\)/);
 });
 
+test('Dranik Russian help has translated controls, three steps and a Russian return link without changing other pages',()=>{
+ const help=api.helpFor('/research/playground/dranik-meter/','ru');
+ assert.equal(help.lang,'ru');assert.equal(help.button,'? Помощь');assert.equal(help.close,'Закрыть');
+ assert.equal(help.title,'Немного картофельной арифметики');assert.equal(help.steps.length,3);
+ assert.ok(help.steps.every(step=>/[А-Яа-я]/.test(step)));
+ assert.match(help.steps[2],/не совет о здоровье/);
+ assert.match(help.local,/не чат с ИИ/i);assert.match(help.guide,/Открыть/);
+ assert.equal(help.href,'/research/playground/dranik-meter/?lang=ru#main');
+ for(const route of ['','atlas/mapa/','atlas/','tools/unmute-the-archive/','protocol/'])assert.deepEqual(api.helpFor('/research/'+route,'ru'),api.helpFor('/research/'+route,'en'));
+});
+
 test('every context guide targets an existing local page and actual anchor',()=>{
  requireAPI();
  for(const route of ['','atlas/mapa/','tools/unmute-the-archive/','tools/unmute-the-archive/restoration/','tools/unmute-the-archive/atlas/','atlas/','protocol/','playground/dranik-meter/']){
@@ -45,6 +56,7 @@ test('domain and palette transforms preserve the same help routes and local styl
   const transformed=await import('data:text/javascript;base64,'+Buffer.from(code).toString('base64'));
   assert.equal(transformed.helpFor(mount+'atlas/mapa/','be').id,'mapa');
   assert.equal(transformed.helpFor(mount+'atlas/mapa/','be').href,mount+'help/?lang=be#mapa');
+  assert.equal(transformed.helpFor(mount+'playground/dranik-meter/','ru').href,mount+'playground/dranik-meter/?lang=ru#main');
   assert.match(code,/context-help\.css/);
  }
 });
@@ -87,6 +99,19 @@ test('repeated mount is idempotent and language updates use no form inputs or st
  assert.match(one.button.textContent,/Дапамога/);
  assert.match(ui.document.getElementById('research-context-help-title').textContent,/мап[ау]/i);
  assert.equal(one.dialog.open,false);
+});
+
+test('Dranik language switches update the already mounted helper to Russian and back to Belarusian',()=>{
+ const ui=dom();ui.win.location.pathname='/research/playground/dranik-meter/';
+ const control=api.mountResearchHelp({document:ui.document,window:ui.win});
+ ui.document.documentElement.lang='ru';ui.observers.forEach(o=>o.fn());
+ assert.equal(control.button.textContent,'? Помощь');assert.equal(control.dialog.open,false);
+ control.button.emit('click');
+ assert.equal(control.closeButton.textContent,'Закрыть ×');
+ assert.equal(ui.document.getElementById('research-context-help-title').textContent,'Немного картофельной арифметики');
+ ui.document.documentElement.lang='be';ui.observers.forEach(o=>o.fn());
+ assert.equal(control.button.textContent,'? Дапамога');assert.equal(control.closeButton.textContent,'Закрыць ×');
+ assert.equal(control.dialog.open,true);
 });
 
 test('minimal shared loader and Dranik opt-in do not import the entire navigation into the miniapp',()=>{
