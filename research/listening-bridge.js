@@ -13,7 +13,7 @@ export function publicResearchLocation(input,origin='https://research.sergey-uly
   if(/\/atlas\/mapa\/(?:index\.html)?$/.test(u.pathname)){
    const year=original.get('year'),scope=original.get('mapScope'),stage=original.get('stage');
    if(/^\d{3,4}$/.test(year)&&+year>=800&&+year<=2100)u.searchParams.set('year',year);
-   if(['focus','region'].includes(scope))u.searchParams.set('mapScope',scope);
+   if(['focus','region','belarus'].includes(scope))u.searchParams.set('mapScope',scope);
    if(MAP_STAGES.has(stage))u.searchParams.set('stage',stage);
   }
   if(!/^#[A-Za-z][A-Za-z0-9_-]{0,99}$/.test(u.hash))u.hash='';
