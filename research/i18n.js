@@ -1,11 +1,29 @@
 (() => {
   const be = new Map([
-    ['One research program: music discovery for listeners, provenance tools for archives, and a directory of cultural resources. Explore without an account. These are working prototypes with bounded coverage; their methods and evidence are further down this page.','Адна даследчая праграма: пошук музыкі для слухачоў, інструменты дакументавання паходжання запісаў і каталог культурных рэсурсаў. Даследуйце без рэгістрацыі. Гэта працоўныя прататыпы з абмежаваным ахопам; іх метады і сведчанні — ніжэй на старонцы.'],
-    ['NEW · LISTENING PILOT','НОВАЕ · ПІЛОТ ДЛЯ СЛУХАЧОЎ'],
-    ['Find Belarusian-language music for your moment.','Знайдзіце беларускамоўную музыку для свайго настрою.'],
-    ['Describe what you want to hear, inspect source-linked candidates, and build a listening collection. Search covers a growing, bounded catalogue—not the whole internet. EN / BE / RU interface; participant testing is next.','Апішыце, што хочаце паслухаць, праверце знойдзеныя запісы і іх крыніцы, збярыце сваю падборку. Пошук ахоплівае каталог, які расце, а не ўвесь інтэрнэт. Інтэрфейс EN / BE / RU; наступны этап — тэставанне з удзельнікамі.'],
-    ['Try Unmute music discovery ↗','Паспрабаваць пошук Unmute ↗'],
-    ['Join the listening pilot ↗','Далучыцца да тэставання ↗'],
+    ['Unmute Belarus · two starting points','Unmute Belarus · два пачатковыя кірункі'],
+    ['Listen to the music. Explore the history.','Слухайце музыку. Даследуйце гісторыю.'],
+    ['Two different experiences within one research program: an invitation-only music-search pilot and a public historical map. Choose either. Supporting tools and research methods are separate sections below.','Два розныя праекты ў адной даследчай праграме: пілот пошуку музыкі па запрашэннях і публічная гістарычная мапа. Выберыце любы. Дапаможныя інструменты і метады даследавання — у асобных раздзелах ніжэй.'],
+    ['01 · TEST PILOT','01 · ТЭСТАВЫ ПІЛОТ'],
+    ['GUCHNA · Belarusian Music Search','Гучна · Пошук беларускай музыкі'],
+    ['Playground · Dranik meter ↗','Майстэрня · Дранікаметр ↗'],
+    ['Describe what you want to hear, inspect source-linked candidates, and build a listening collection. Search covers a bounded catalogue—not the whole internet. EN / BE / RU interface.','Апішыце, што хочаце паслухаць, праверце знойдзеныя запісы і іх крыніцы, збярыце сваю падборку. Пошук ахоплівае абмежаваны каталог, а не ўвесь інтэрнэт. Інтэрфейс EN / BE / RU.'],
+    ['For invited participants. Sign in with the access details Sergey sent you; there is no public registration.','Для запрошаных удзельнікаў. Увайдзіце з данымі доступу, якія даслаў Сяргей; адкрытай рэгістрацыі няма.'],
+    ['Enter the test pilot ↗','Увайсці ў тэставы пілот ↗'],
+    ['02 · MAPA','02 · МАПА'],
+    ['Public historical map. No participant login is needed.','Публічная гістарычная мапа. Уваход удзельніка не патрэбны.'],
+    ['Supporting tools','Дапаможныя інструменты'],
+    ['Document, compare, and check the context.','Дакументуйце, параўноўвайце і правярайце кантэкст.'],
+    ['Optional workspaces for recording owners and cultural researchers—not a required sequence for listeners. These archive tools are separate from the listening pilot and can be explored without a participant account.','Дадатковыя працоўныя прасторы для ўладальнікаў запісаў і даследчыкаў культуры, а не абавязковая паслядоўнасць для слухачоў. Гэтыя архіўныя інструменты аддзеленыя ад пілота для слухачоў і даступныя без уліковага запісу ўдзельніка.'],
+    ['MUSIC ATLAS · METADATA','МУЗЫЧНЫ АТЛАС · МЕТАДАНЫЯ'],
+    ['Inspect records and local passports.','Правярайце запісы і лакальныя пашпарты.'],
+    ['Explore source metadata and your browser-stored recording passports in this earlier archive workspace. It is separate from the listening pilot; missing language or mood evidence stays visible.','Даследуйце метаданыя крыніц і пашпарты запісаў, захаваныя ў вашым браўзеры, у гэтай ранейшай архіўнай прасторы. Яна асобная ад пілота для слухачоў; адсутнасць сведчанняў пра мову або настрой пазначаецца выразна.'],
+    ['Open the archive workspace ↗','Адкрыць архіўную прастору ↗'],
+    ['Browse podcasts, language resources, and archives. This source directory points to their original publishers; it is not an audio collection.','Знаходзьце падкасты, моўныя рэсурсы і архівы. Каталог вядзе да іх арыгінальных выдаўцоў; гэта не аўдыякалекцыя.'],
+    ['Keep a backup.','Захоўвайце рэзервовую копію.'],
+    ['Passports and annotations stay in the browser and site where you created them. They do not automatically sync with the music-search pilot or another device. Export a backup before clearing browser data.','Пашпарты і анатацыі застаюцца ў браўзеры і на сайце, дзе вы іх стварылі. Яны не сінхранізуюцца аўтаматычна з пілотам пошуку музыкі або іншай прыладай. Экспартуйце рэзервовую копію перад ачысткай даных браўзера.'],
+    ['Archive data & analytics ↗','Архіўныя даныя і аналітыка ↗'],
+    ['Research methods · separate protocol','Метады даследавання · асобны пратакол'],
+    ['The AI-system audit is a separate study from testing the music-search interface. Its bounded protocol evaluates existing AI systems and the scoring instrument; no scored findings are claimed.','Аўдыт сістэм ШІ — асобнае даследаванне, не тэставанне інтэрфейсу пошуку музыкі. Яго абмежаваны пратакол прызначаны для ацэнкі існуючых сістэм ШІ і інструмента ацэньвання; вынікі ацэньвання пакуль не заяўленыя.'],
     ['Archive & culture tools ↗','Архіўныя і культурныя інструменты ↗'],
     ['See how political borders changed.','Паглядзіце, як змяняліся палітычныя межы.'],
     ['Compare seven dated map layers, read the names of states, and check a city. A 28-stage chronology explains transitions without inventing missing boundaries.','Параўноўвайце сем датаваных мапаў, чытайце назвы дзяржаў і правярайце прыналежнасць горада. Храналогія з 28 этапаў тлумачыць пераходы без выдуманых межаў.'],
@@ -65,12 +83,13 @@
     ["Belarusian adults, artists, and cultural workers living across borders", "Беларускія дарослыя, артысты і дзеячы культуры, якія жывуць па-за межамі краіны"],
     ["Status", "Статус"],
     ["Public protocol v0.1 · 36-prompt bank v0.2 · no findings claimed", "Публічны пратакол v0.1 · банк з 36 запытаў v0.2 · вынікі пакуль не заяўлены"],
-    ["01 · System", "01 · Сістэма"],
-    ["02 · Protocol", "02 · Пратакол"],
-    ["03 · Program", "03 · Праграма"],
-    ["04 · Method", "04 · Метад"],
-    ["05 · Evidence", "05 · Доказы"],
-    ["06 · Sources", "06 · Крыніцы"],
+    ["01 · Projects", "01 · Праекты"],
+    ["02 · Supporting tools", "02 · Дапаможныя інструменты"],
+    ["03 · Protocol", "03 · Пратакол"],
+    ["04 · Program", "04 · Праграма"],
+    ["05 · Method", "05 · Метад"],
+    ["06 · Evidence", "06 · Сведчанні"],
+    ["07 · Sources", "07 · Крыніцы"],
     ["Implemented research infrastructure", "Рэалізаваная даследчая інфраструктура"],
     ["Unmute Belarus turns the agenda into a working research system.", "Unmute Belarus ператварае праграму ў працоўную даследчую сістэму."],
     ["Three connected browser tools now demonstrate provenance, source-visible discovery, local annotation and analytics, and non-destructive audio derivatives. The bounded reviewer corpus shows the workflow without pretending that a comprehensive Belarusian archive already exists.", "Тры звязаныя браўзерныя інструменты ўжо дэманструюць паходжанне матэрыялаў, пошук з бачнымі крыніцамі, лакальнае анатаванне і аналітыку, а таксама неразбуральныя вытворныя аўдыяфайлы. Абмежаваны корпус для рэцэнзавання паказвае працэс, не ствараючы ілюзіі, што поўны беларускі архіў ужо сабраны."],
@@ -279,6 +298,13 @@
       if (!raw || raw.startsWith('#')) return;
       let url;
       try { url = new URL(raw, location.href); } catch { return; }
+      // This separately hosted, invitation-only pilot is the sole external
+      // research destination whose UI language follows this page's switch.
+      if (link.hasAttribute('data-listening-pilot') && url.origin === 'https://unmute.sergey-ulyanov.pro' && url.pathname === '/login/') {
+        url.searchParams.set('lang', next);
+        link.href = url.href;
+        return;
+      }
       if (url.origin !== location.origin || !url.pathname.startsWith('/research/')) return;
       url.searchParams.set('lang', next);
       link.href = url.pathname + url.search + url.hash;

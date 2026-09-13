@@ -34,7 +34,7 @@ const byId=id=>records().find(r=>r.id===id);
 const selected=()=>state.ids.map(byId).filter(Boolean);
 const icon=(name)=>({arrow:'↗',save:'＋',saved:'✓',search:'⌕',close:'×',back:'←',next:'→',up:'↑',down:'↓'}[name]||'');
 for(const key of Object.keys(copy)){copy[key].tasks=studyTaskLabels(key,copy[key].tasks);for(const [tag,labels] of Object.entries(taxonomyLabels))copy[key][tag]=labels[{en:0,be:1,ru:2}[key]];}
-const APP_BASE=new URL('./',import.meta.url).pathname;
+const APP_BASE=location.pathname.endsWith('/legacy.html')?location.pathname:new URL('./',import.meta.url).pathname;
 function readURL(){const {params:p,route}=routeState(location);lang=languages.includes(p.get('lang'))?p.get('lang'):'en';t=copy[lang];view={route,q:(p.get('q')||'').slice(0,180),scope:['listen','leads','personal'].includes(p.get('scope'))?p.get('scope'):'listen',path:p.get('path'),language:p.get('language')||(p.get('scope')==='personal'?'all':'be'),topic:p.get('topic')||'',genre:p.get('genre')||'',type:p.get('type')||'',decade:p.get('decade')||'',sort:p.get('sort')||''};}
 function url(route,changes={}){return routeURL(location,route,changes,APP_BASE);}
 history.replaceState({},'',url(routeState(location).route));

@@ -29,9 +29,14 @@ for (const file of pages) {
 }
 assert.deepEqual(failures, [], `Broken local research links:\n${failures.join('\n')}`);
 const home = fs.readFileSync(path.join(root, 'research/index.html'), 'utf8');
-assert.equal([...home.matchAll(/class="research-start-card"/g)].length, 5, 'Keep the five task-first entry points including a direct MAPA entry');
+const entryPoints = [...home.matchAll(/<a class="research-start-card"(?=\s|>)[^>]*>[\s\S]*?<\/a>/g)].map(match => match[0]);
+assert.equal(entryPoints.length, 6, 'Keep two primary experiences and four distinct supporting tools');
+assert.match(entryPoints[0], /href="https:\/\/unmute\.sergey-ulyanov\.pro\/login\/\?lang=en" data-listening-pilot/, 'First entry is the current invitation-only listening pilot');
+assert.match(entryPoints[0], /<h3>GUCHNA · Belarusian Music Search<\/h3>/);
+assert.match(entryPoints[1], /href="\/research\/atlas\/mapa\/"/, 'Second entry is the public historical MAPA');
+assert.ok(home.indexOf('id="research-system"') < home.indexOf('id="research-supporting-tools"'), 'Primary experiences precede optional archive tools');
 assert.match(home, /AI systems planned for comparison/);
-assert.match(home, /stored in this browser only/);
+assert.match(home, /Passports and annotations stay in the browser and site where you created them/, 'Archive browser-storage limits remain explicit without misdescribing the separate hosted music pilot');
 assert.match(home, /research\/atlas\/mapa\//);
 assert.match(home, /atlas\/#external-discovery/);
 const historicalRoot = path.join(root, 'research/atlas/mapa/history');
@@ -70,4 +75,4 @@ vm.runInNewContext(chronology.slice(dataStart, dataEnd) + '\nglobalThis.stages=r
 const stages = JSON.parse(JSON.stringify(chronologyContext.stages));
 assert.equal(stages.length, 28, 'Chronology must expose all 28 reviewed stages');
 assert.deepEqual(stages.filter(stage => stage.map).map(stage => stage.map), displayedYears);
-console.log(`Research release checks passed: ${pages.length} pages, five task entry points, ${displayedYears.length} Belarus-focused map layers, ${stages.length} chronology stages, ${sourceYears.length} retained source snapshots, no missing local assets.`);
+console.log(`Research release checks passed: ${pages.length} pages, six entry points (GUCHNA and MAPA first; four supporting tools), ${displayedYears.length} Belarus-focused map layers, ${stages.length} chronology stages, ${sourceYears.length} retained source snapshots, no missing local assets.`);

@@ -1,0 +1,9 @@
+/* Uses the existing pilot's type, surfaces and buttons; shared palette build recolors it. */
+.bridge-header{display:flex;align-items:center;justify-content:space-between;gap:18px;padding-block:20px;border-bottom:1px solid var(--line)}
+.bridge-header nav{gap:8px;margin:0}.bridge-header .button[aria-current=true]{border-color:var(--lime);color:var(--lime)}
+.bridge-main{max-width:900px;padding-block:60px 80px}.bridge-main h1{max-width:850px}.bridge-main .intro{max-width:760px}
+.bridge-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}.bridge-actions .button{min-height:48px;font-size:14px}
+.bridge-recovery{border-top:1px solid var(--line);margin-top:45px;padding-top:34px}.bridge-recovery h2{font-size:clamp(29px,4vw,42px)}
+.bridge-legacy-banner{border-bottom:2px solid var(--lime);background:var(--panel);color:var(--ink);padding:18px max(18px,calc((100% - 1200px)/2));font-size:13px;line-height:1.65}
+.bridge-legacy-banner p+p{margin-top:6px}.bridge-legacy-banner a{margin-top:8px}
+@media(max-width:620px){.bridge-main{padding-block:36px 50px}.bridge-main h1{font-size:clamp(38px,10vw,54px)}.bridge-header{align-items:flex-start;gap:10px}.bridge-header>a{font-size:12px}.bridge-header nav a{font-size:12px}.bridge-actions{flex-direction:column;align-items:stretch}.bridge-main .intro{font-size:15px}.bridge-recovery{margin-top:32px;padding-top:28px}}

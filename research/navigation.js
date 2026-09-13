@@ -71,6 +71,7 @@ if (typeof document !== 'undefined') {
       shell.querySelectorAll('a').forEach(anchor => anchor.addEventListener('click', close));
     }
     render(); document.documentElement.classList.add('research-shell-ready');
+    import('./context-help.js').then(({mountResearchHelp})=>mountResearchHelp()).catch(()=>{ /* Existing Help links remain available if this optional module fails. */ });
     const returnBar = document.createElement('nav'); returnBar.className = 'research-return-bar'; returnBar.dataset.researchOwned = ''; returnBar.hidden = true;
     function updateReturnBar() { const lang = document.documentElement.lang === 'be' ? 'be' : 'en'; returnBar.setAttribute('aria-label', words[lang].navigation); returnBar.innerHTML = `<a href="${languageURL(ROOT, lang)}">← ${words[lang].home}</a><a href="${languageURL(routes.tools.path, lang)}">${words[lang].all} ↗</a>`; }
     updateReturnBar(); document.body.append(returnBar);

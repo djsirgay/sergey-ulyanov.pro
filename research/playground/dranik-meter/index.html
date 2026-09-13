@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#06110f">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="A playful, private calculator: express a weight in hypothetical Belarusian potato pancakes. No account, saving or upload.">
+  <title>Dranik meter · Research playground</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/research/navigation.css">
+  <link rel="stylesheet" href="./meter.css">
+  <script type="module" src="./meter.js"></script>
+</head>
+<body class="dranik-page">
+  <a class="research-skip" href="#main" data-copy="skip">Skip to calculator</a>
+  <header id="research-shell">
+    <div class="research-header dranik-header">
+      <a class="research-brand" href="/research/" data-home>
+        <img src="/research/atlas/mapa/belarus-outline.svg" width="38" height="38" alt="">
+        <span><strong>Unmute Belarus</strong><small data-copy="playground">Playground · a small cultural detour</small></span>
+      </a>
+      <div class="research-lang" role="group" aria-label="Language">
+        <button type="button" data-language="en" lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-language="be" lang="be" aria-pressed="false">БЕЛ</button>
+        <button type="button" data-language="ru" lang="ru" aria-pressed="false">РУ</button>
+      </div>
+    </div>
+    <nav class="research-wayfinding" aria-label="Breadcrumb">
+      <a href="/research/" data-home data-copy="home">← Back to research</a>
+      <span aria-current="page" data-copy="name">Dranik meter</span>
+    </nav>
+  </header>
+  <main id="main" class="dranik-main">
+    <div class="dranik-intro">
+      <p class="eyebrow" data-copy="eyebrow">A very unserious unit of measure</p>
+      <h1 data-copy="headline">You, in draniki.</h1>
+      <p class="dranik-deck" data-copy="intro">Draniki are Belarusian potato pancakes. For a moment, let’s make them a unit of weight.</p>
+    </div>
+    <div class="dranik-grid">
+      <section class="research-tool-card dranik-controls" aria-labelledby="calculator-title">
+        <h2 id="calculator-title" data-copy="calculator">A little potato arithmetic</h2>
+        <div class="dranik-weight-row">
+          <div><label for="weight" data-copy="weight">Your weight</label><input id="weight" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="24" aria-describedby="weight-help error" placeholder="—"></div>
+          <div><label for="unit" data-copy="unit">Unit</label><select id="unit" aria-describedby="weight-help"><option value="kg">kg</option><option value="lb">lb</option></select></div>
+        </div>
+        <p id="weight-help" class="field-help" data-copy="weightHelp">Use a decimal point or comma. The number is used only in this tab.</p>
+        <div class="dranik-assumption">
+          <label for="pancake-grams" data-copy="pancake">Assumed weight of one dranik · g</label>
+          <input id="pancake-grams" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="16" value="50" aria-describedby="assumption-help error">
+          <p id="assumption-help" class="field-help" data-copy="assumption">50 g is our playful assumption, not a measured average. Change it to any value from 1 to 500 g.</p>
+        </div>
+        <p id="error" class="dranik-error" role="alert" hidden></p>
+        <div class="dranik-actions"><button id="calculate" class="dranik-primary" type="button" data-copy="calculate">Count the draniki →</button><button id="clear" type="button" data-copy="clear">Clear</button></div>
+        <p class="field-help" data-copy="privacy">Calculated here. Your weight is not saved or sent. Clear it or leave this page to forget it.</p>
+      </section>
+      <section class="research-tool-card dranik-result" aria-labelledby="result-heading">
+        <div class="dranik-result-top"><p class="eyebrow" id="result-heading" data-copy="result">Your potato equivalent</p><span aria-hidden="true" class="potato">🥔</span></div>
+        <div class="dranik-live" role="status" aria-live="polite" aria-atomic="true">
+          <output id="result-count" for="weight unit pancake-grams">—</output>
+          <p class="dranik-result-label" data-copy="draniki">hypothetical draniki</p>
+          <p id="result-detail" data-copy="waiting">Enter a number, then count. No guesses about you.</p>
+        </div>
+        <p id="result-note" class="dranik-result-note" data-copy="joke">Same you. Different unit.</p>
+      </section>
+    </div>
+    <footer class="dranik-footer">
+      <p data-copy="boundary">A playful calculator, not research or health advice. No scores, comparisons or judgments.</p>
+      <p data-copy="method">The whole method: weight in grams ÷ assumed grams per dranik. The result is approximate; actual draniki vary.</p>
+      <a href="/research/" data-home data-copy="home">← Back to research</a>
+    </footer>
+    <noscript>This calculator needs JavaScript. Nothing is uploaded: the calculation runs in your browser.</noscript>
+  </main>
+</body>
+</html>
