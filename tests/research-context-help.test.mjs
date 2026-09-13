@@ -86,6 +86,7 @@ test('help is closed on mount, opens explicitly, Escape closes it and restores b
  assert.equal(control.dialog.open,false);assert.equal(control.button.attrs['aria-expanded'],'false');
  assert.equal(control.button.attrs['aria-controls'],control.dialog.id);
  assert.equal(control.dialog.attrs['aria-labelledby'],'research-context-help-title');
+ assert.ok(ui.all.some(node=>node.tagName==='img'&&node.attrs.src?.endsWith('paca-vaca-helper.webp')),'The actual Paca-Vaca illustration is visible in the helper');
  control.button.emit('click');assert.equal(control.dialog.open,true);assert.equal(control.button.attrs['aria-expanded'],'true');
  const cancel=control.dialog.emit('cancel');assert.equal(cancel.prevented,true);assert.equal(control.dialog.open,false);assert.equal(ui.focus,control.button);
  control.button.emit('click');control.closeButton.emit('click');assert.equal(control.dialog.open,false);assert.equal(ui.focus,control.button);

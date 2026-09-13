@@ -2,6 +2,7 @@
 .research-page .detail-label{color:var(--research-lime)}
 .research-start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .research-start-card{display:flex;flex-direction:column;gap:16px;padding:30px;border:1px solid #36473b;border-radius:18px;background:#10221a;color:#f3f4e9;text-decoration:none;transition:background .18s,border-color .18s,transform .18s;min-width:0}
+.research-card-art{display:block;width:100%;height:clamp(140px,16vw,208px);object-fit:contain;object-position:center;background:#07110c;border-radius:10px}
 .research-start-card:hover{background:#183022;border-color:var(--research-lime);transform:translateY(-3px)}
 .research-start-card:focus-visible,.research-start-footer a:focus-visible{outline:3px solid var(--research-lime);outline-offset:5px}
 .research-start-number{color:var(--research-lime);font:700 12px/1.6 'Space Mono',monospace;letter-spacing:.025em}

@@ -33,7 +33,7 @@ select{font-size:18px;cursor:pointer}
 .dranik-weight-row{display:grid;grid-template-columns:minmax(0,1fr) 92px;gap:14px}
 .field-help{margin:0;font-size:12px;line-height:1.65;color:var(--research-muted)}
 .dranik-assumption{border-top:1px solid var(--research-line);padding-top:22px;margin-top:8px}
-.dranik-assumption input{max-width:160px;margin-bottom:10px}
+.dranik-fixed{margin:0 0 8px;color:var(--research-lime);font-size:21px}
 .dranik-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
 button{cursor:pointer;border:1px solid var(--research-line);border-radius:8px;padding:11px 18px;color:var(--research-ink);background:transparent;font-weight:700}
 .dranik-primary{background:var(--research-lime);border-color:var(--research-lime);color:#102010;flex:1}
@@ -52,6 +52,26 @@ button:hover{filter:brightness(1.1)}
 .dranik-footer{margin-top:28px;padding-top:24px;border-top:1px solid var(--research-line);font-size:12px;color:var(--research-muted)}
 .dranik-footer p{margin:0 0 7px;max-width:860px}
 .dranik-footer a{display:inline-flex;align-items:center;min-height:44px;margin-top:8px}
+/* Share-state hierarchy follows 12ui candidate C: editorial number, original
+   potato raster, quiet method note and grouped actions. Export pixels retain
+   the dark card identity in both site palettes, like other media canvases. */
+.dranik-share{margin-top:52px;padding-top:32px;border-top:1px solid var(--research-line)}
+.dranik-share-intro{max-width:700px;margin-bottom:26px}
+.dranik-share-intro h2{font:400 clamp(2.2rem,4vw,3.4rem)/1.12 Newsreader,Georgia,serif;letter-spacing:-.02em;margin:0}
+.dranik-share-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:32px;align-items:start}
+.dranik-share-figure{min-width:0;margin:0}
+#share-preview{display:block;width:100%;height:auto;max-height:780px;object-fit:contain;border:1px solid var(--research-line);border-radius:12px;background:#05130e}
+#share-status{font-size:12px;color:var(--research-muted);margin-top:12px;min-height:42px}
+.dranik-share-panel{display:grid;gap:22px;padding:24px;border:1px solid var(--research-line);border-radius:12px;background:var(--research-panel)}
+.dranik-formats,.dranik-share-actions{display:flex;flex-wrap:wrap;gap:10px}
+.dranik-formats button{flex:1;min-width:150px;font-size:12px;padding:12px 10px}
+.dranik-formats button[aria-pressed=true]{background:var(--research-lime);color:#102010;border-color:var(--research-lime)}
+.dranik-share-actions button{flex:1;min-width:140px}
+.dranik-share-actions .dranik-primary{flex-basis:100%}
+button:disabled{opacity:.45;cursor:not-allowed;filter:none}
+.dranik-share-privacy{font-size:13px;line-height:1.6;margin:0;padding-left:14px;border-left:2px solid var(--research-lime)}
+.dranik-share-link{font-size:12px;overflow-wrap:anywhere;min-height:44px;display:flex;align-items:center;color:var(--research-lime)}
+@media(max-width:680px){.dranik-share{margin-top:32px}.dranik-share-grid{grid-template-columns:1fr;gap:15px}.dranik-share-panel{padding:20px}.dranik-formats button{min-width:120px}.dranik-share-actions button{min-width:110px}.dranik-share-intro .eyebrow{font-size:10px;line-height:1.7}#share-preview{max-height:none}}
 @media(max-width:680px){.dranik-main{width:calc(100% - 32px);padding-top:30px}.dranik-intro{margin-bottom:24px}.dranik-grid{grid-template-columns:1fr;gap:18px}.dranik-controls,.dranik-result{padding:23px}.dranik-result{min-height:310px}.dranik-header .research-brand strong{font-size:22px}.dranik-header .research-brand small{font-size:10px;max-width:185px}.dranik-header .research-lang{border:0;padding:0}.dranik-header{gap:12px}.research-wayfinding{flex-direction:row;align-items:center}.dranik-deck{font-size:16px}#result-count{font-size:clamp(3.2rem,12vw,5rem)}.dranik-live{padding:18px 0 28px}}
 @media(max-width:370px){.dranik-header .research-brand strong{font-size:20px}.dranik-header .research-brand img{width:27px}.dranik-header .research-lang{margin-left:0}.dranik-actions{gap:8px}.dranik-actions button{padding-inline:12px}}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important;animation:none!important}}

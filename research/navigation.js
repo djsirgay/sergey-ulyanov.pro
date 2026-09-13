@@ -1,5 +1,6 @@
 // Shared wayfinding, integrated from the approved 12ui compact research shell.
 // Real route mapping replaces prototype holding pages. No redirect or storage migration here.
+import './listening-bridge.js';
 export const ROOT = '/research/';
 export const routes = Object.freeze({
   home: {path: ROOT, en: 'Home', be: 'Галоўная', group: 'home'},

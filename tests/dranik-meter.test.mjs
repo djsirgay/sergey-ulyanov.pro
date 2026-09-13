@@ -18,11 +18,12 @@ test('the playful equivalence uses an explicit 50 g assumption, not a real avera
   assert.equal(r.pancakeGrams, 50);
 });
 
-test('pounds use the exact international conversion and custom pancake mass', () => {
+test('pounds use the exact international conversion and the fixed 50 g assumption', () => {
   const r = calculate({weight: '100', unit: 'lb', pancakeGrams: '25'});
   assert.equal(r.ok, true);
   assert.equal(r.kilograms, 45.359237);
-  assert.ok(Math.abs(r.pancakes - 1814.36948) < 1e-9);
+  assert.ok(Math.abs(r.pancakes - 907.18474) < 1e-9);
+  assert.equal(r.pancakeGrams, 50, 'Caller-supplied pancake mass cannot change the game');
 });
 
 test('a decimal comma is accepted without treating grouping or expressions as numbers', () => {
@@ -39,16 +40,13 @@ test('empty, nonpositive, nonfinite and excessive values produce safe field erro
     assert.equal(r.field, 'weight');
     assert.equal('pancakes' in r, false);
   }
-  for (const pancakeGrams of ['', '0', '-1', '0.9', '501', Infinity]) {
-    assert.equal(calculate({weight: '70', unit: 'kg', pancakeGrams}).field, 'pancakeGrams');
-  }
   assert.equal(calculate({weight: '70', unit: 'stone', pancakeGrams: '50'}).field, 'unit');
 });
 
 test('weight bounds apply after unit conversion, and small positive weights remain valid', () => {
-  assert.equal(calculate({weight: '1000', unit: 'kg', pancakeGrams: '1'}).pancakes, 1000000);
+  assert.equal(calculate({weight: '1000', unit: 'kg', pancakeGrams: '1'}).pancakes, 20000);
   assert.equal(calculate({weight: '2205', unit: 'lb', pancakeGrams: '50'}).ok, false);
-  assert.equal(calculate({weight: '0.1', unit: 'kg', pancakeGrams: '500'}).pancakes, 0.2);
+  assert.equal(calculate({weight: '0.1', unit: 'kg', pancakeGrams: '500'}).pancakes, 2);
 });
 
 test('the calculator is a pure operation and does not mutate its input', () => {
@@ -64,7 +62,8 @@ test('the page starts empty and contains accessible controls rather than a submi
   assert.match(html, /<html lang="en">/);
   assert.match(html, /id="weight"[^>]*inputmode="decimal"/);
   assert.doesNotMatch(html.match(/<input[^>]+id="weight"[^>]*>/)?.[0] || '', /value="[^\"]+"/);
-  for (const id of ['weight', 'pancake-grams', 'unit']) assert.ok(html.includes(`for="${id}"`));
+  for (const id of ['weight', 'unit']) assert.ok(html.includes(`for="${id}"`));
+  assert.doesNotMatch(html, /<input[^>]+id="pancake-grams"/, 'A pancake has one fixed assumed weight');
   assert.match(html, /aria-live="polite"/);
   assert.match(html, /autocomplete="off"/);
   assert.doesNotMatch(html, /<form\b|type="submit"|https:\/\/fonts|analytics/i);
@@ -141,4 +140,7 @@ test('no calculator source invokes storage, telemetry or an outbound data API', 
   assert.doesNotMatch(source, /localStorage|sessionStorage|indexedDB|document\.cookie|sendBeacon|\bfetch\s*\(|XMLHttpRequest|WebSocket|<form\b/);
   assert.match(read('meter.css'), /min-height:\s*44px/);
   assert.match(read('meter.css'), /prefers-reduced-motion/);
+});
+test('the meter includes the shared navigation-only Research bridge when embedded in GUCHNA',()=>{
+  assert.match(read('meter.js'),/import ['"]\.\.\/\.\.\/listening-bridge\.js['"]/);
 });

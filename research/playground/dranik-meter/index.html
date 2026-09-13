@@ -48,9 +48,8 @@
         </div>
         <p id="weight-help" class="field-help" data-copy="weightHelp">Use a decimal point or comma. The number is used only in this tab.</p>
         <div class="dranik-assumption">
-          <label for="pancake-grams" data-copy="pancake">Assumed weight of one dranik · g</label>
-          <input id="pancake-grams" type="text" inputmode="decimal" autocomplete="off" spellcheck="false" maxlength="16" value="50" aria-describedby="assumption-help error">
-          <p id="assumption-help" class="field-help" data-copy="assumption">50 g is our playful assumption, not a measured average. Change it to any value from 1 to 500 g.</p>
+          <p class="dranik-fixed"><strong>1 🥔 = 50 g</strong></p>
+          <p id="assumption-help" class="field-help" data-copy="assumption">One dranik is always an assumed 50 g in this game, not a measured average.</p>
         </div>
         <p id="error" class="dranik-error" role="alert" hidden></p>
         <div class="dranik-actions"><button id="calculate" class="dranik-primary" type="button" data-copy="calculate">Count the draniki →</button><button id="clear" type="button" data-copy="clear">Clear</button></div>
@@ -59,13 +58,26 @@
       <section class="research-tool-card dranik-result" aria-labelledby="result-heading">
         <div class="dranik-result-top"><p class="eyebrow" id="result-heading" data-copy="result">Your potato equivalent</p><span aria-hidden="true" class="potato">🥔</span></div>
         <div class="dranik-live" role="status" aria-live="polite" aria-atomic="true">
-          <output id="result-count" for="weight unit pancake-grams">—</output>
+          <output id="result-count" for="weight unit">—</output>
           <p class="dranik-result-label" data-copy="draniki">hypothetical draniki</p>
           <p id="result-detail" data-copy="waiting">Enter a number, then count. No guesses about you.</p>
         </div>
         <p id="result-note" class="dranik-result-note" data-copy="joke">Same you. Different unit.</p>
       </section>
     </div>
+    <section id="share-tools" class="dranik-share" aria-labelledby="share-title" hidden>
+      <div class="dranik-share-intro"><p class="eyebrow" data-share-copy="intro">A little Belarusian absurdity for your feed. Pick a format, then save or share.</p><h2 id="share-title" data-share-copy="title">Take your potato portrait.</h2></div>
+      <div class="dranik-share-grid">
+        <figure class="dranik-share-figure"><canvas id="share-preview" width="1" height="1" role="img" aria-label="Preview of the image to download"></canvas><figcaption id="share-status" role="status" aria-live="polite"></figcaption></figure>
+        <div class="dranik-share-panel">
+          <div class="dranik-formats" role="group" aria-label="Image format"><button id="share-post" type="button" aria-pressed="true" data-share-copy="post">Post · 1080 × 1350</button><button id="share-story" type="button" aria-pressed="false" data-share-copy="story">Story · 1080 × 1920</button></div>
+          <div class="dranik-share-actions"><button id="share-card" class="dranik-primary" type="button" data-share-copy="share" disabled>Share / save</button><button id="download-card" type="button" data-share-copy="download" disabled>Download PNG</button><button id="copy-link" type="button" data-share-copy="copy">Copy calculator link</button></div>
+          <p class="dranik-share-privacy" data-share-copy="privacy">The image contains your result, not the kg/lb you entered. The count still reveals your approximate weight. Share only if you are comfortable with that.</p>
+          <p class="field-help" data-share-copy="instructions">Nothing is posted automatically. Choose Instagram if it appears in your share menu, or save the PNG and upload it yourself. Text in an image is not clickable: add a Link sticker to your Instagram Story using the calculator link.</p>
+          <a id="make-link" class="dranik-share-link" href="https://research.sergey-ulyanov.pro/playground/dranik-meter/">research.sergey-ulyanov.pro/playground/dranik-meter/</a>
+        </div>
+      </div>
+    </section>
     <footer class="dranik-footer">
       <p data-copy="boundary">A playful calculator, not research or health advice. No scores, comparisons or judgments.</p>
       <p data-copy="method">The whole method: weight in grams ÷ assumed grams per dranik. The result is approximate; actual draniki vary.</p>

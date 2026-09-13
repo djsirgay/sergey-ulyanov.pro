@@ -4,7 +4,9 @@ import assert from 'node:assert/strict';
 import { transformResearchText } from '../scripts/build-research-domain.mjs';
 
 const source = readFileSync(new URL('../research/navigation.js', import.meta.url), 'utf8');
-const importSource = code => import(`data:text/javascript;base64,${Buffer.from(code).toString('base64')}`);
+// data: modules have no relative base; execute the real bridge from its source file.
+const bridgeURL = new URL('../research/listening-bridge.js', import.meta.url).href;
+const importSource = code => import(`data:text/javascript;base64,${Buffer.from(code.replace("import './listening-bridge.js';", `import ${JSON.stringify(bridgeURL)};`)).toString('base64')}`);
 const legacy = await importSource(source);
 const migrated = await importSource(transformResearchText(source, 'research/navigation.js'));
 const expected = {
