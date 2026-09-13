@@ -4,9 +4,11 @@ Reviewed 2026-09-08. Seven approximate mapped snapshots, a separately sourced po
 
 ## What the map answers
 
-“Which states governed lands inside the borders of contemporary Belarus?” The same white modern Belarus outline remains visible. It is a **comparison window**, not a historic border, an ethnic homeland, or a claim that Belarus existed as a state in every era. Historical country polygons are intersected with this window; the Polish–Soviet division in 1938 is an actual geometric division. Wider-state geometry is optional context.
+"Which states governed lands inside the borders of contemporary Belarus?" The same white modern Belarus outline remains visible. It is a **comparison window**, not a historic border, an ethnic homeland, or a claim that Belarus existed as a state in every era. Historical country polygons are intersected with this window; the Polish–Soviet division in 1938 is an actual geometric division. The neighboring-state view supplies wider context by default; the Belarusian-lands control narrows the view to the comparison window.
 
-The default is 1938. Location controls test a present-day point against the displayed polygons and show a dated result. Modern place names are orientation labels, not a claim that each city existed under that name in that year. The source does not separately resolve the Grand Duchy within a Polish–Lithuanian grouping or the Belarusian SSR within the USSR. GDL/BSSR labels explain local political identity; they are not newly digitized internal boundaries.
+The default is 1938 in **Neighboring states** mode (updated 2026-09-13). An absent, empty or unsupported `mapScope` opens this regional view. Explicit `mapScope=region` and `mapScope=belarus` retain the selected mode; the previous `mapScope=focus` alias also opens Belarusian lands. Shared links encode the selected mode so reload, year changes, language changes and browser Back do not lose the narrower view. Both palettes use this same controller and keep Neighboring states first.
+
+Location controls test a present-day point against the displayed polygons and show a dated result. Modern place names are orientation labels, not a claim that each city existed under that name in that year. The source does not separately resolve the Grand Duchy within a Polish–Lithuanian grouping or the Belarusian SSR within the USSR. GDL/BSSR labels explain local political identity; they are not newly digitized internal boundaries.
 
 ## Data, methods and licenses
 

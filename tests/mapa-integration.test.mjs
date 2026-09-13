@@ -91,13 +91,54 @@ async function app(query='',language='en',failures=new Set(),blocked=new Set()) 
   return {get,stageSelect,routeNotice,panelButtons,modeButtons,location,document,mutations,requests,timers,failures,blocked,emit,navigate,languageChange,click,chooseStage,tick,release,resize};
 }
 
-test('default route renders 1938 and exposes matching labels, legend, chronology stage',async()=>{
+test('default route opens neighboring states with 1938 labels, legend and chronology stage',async()=>{
   const ui=await app();
   assert.equal(ui.get('history-map-year').textContent,1938);
   assert.equal(ui.stageSelect.value,'division-1938');
   assert.equal(ui.get('history-load-status').hidden,true);
-  assert.equal(ui.get('history-polity-labels').children.length,2);
+  assert.equal(ui.modeButtons.find(button=>button.dataset.historyMode==='region').getAttribute('aria-pressed'),'true');
+  assert.equal(ui.get('history-map').classes.has('is-region'),true);
+  assert.ok(ui.requests.includes('world_1938.geojson'));
+  assert.ok(ui.get('history-polity-labels').children.length>2);
   assert.ok(ui.get('history-legend').children.length);
+});
+
+test('empty and invalid map scope use neighboring states in either language',async()=>{
+  for(const [scope,language] of [['','en'],['unknown','be']]){
+    const ui=await app(`?mapScope=${scope}&lang=${language}#borders`,language);
+    assert.equal(ui.get('history-map').classes.has('is-region'),true);
+    assert.equal(ui.modeButtons.find(button=>button.dataset.historyMode==='region').getAttribute('aria-pressed'),'true');
+  }
+});
+
+test('explicit region and Belarus scope links retain the chosen map through year and language changes',async()=>{
+  for(const scope of ['region','belarus','focus']){
+    const ui=await app(`?mapScope=${scope}&year=1938&city=brest&lang=en#borders`);
+    const regional=scope==='region';
+    assert.equal(ui.get('history-map').classes.has('is-region'),regional);
+    await ui.click('history-next');
+    await ui.languageChange('be');
+    assert.equal(ui.get('history-map').classes.has('is-region'),regional);
+    assert.equal(new URL(ui.location.href).searchParams.get('mapScope'),regional?'region':'belarus');
+    assert.equal(ui.get('history-map-year').textContent,1945);
+    assert.equal(ui.get('history-place-select').value,'brest');
+  }
+});
+
+test('choosing Belarus writes a reloadable map link, and Back restores each explicit mode',async()=>{
+  const ui=await app('?year=1938&city=brest#borders');
+  await ui.modeButtons.find(button=>button.dataset.historyMode==='focus').handlers.click();await flush();
+  const focusURL=ui.location.href;
+  assert.equal(new URL(focusURL).searchParams.get('mapScope'),'belarus');
+  const reload=await app(new URL(focusURL).search+'#borders');
+  assert.equal(reload.get('history-map').classes.has('is-region'),false);
+  await ui.modeButtons.find(button=>button.dataset.historyMode==='region').handlers.click();await flush();
+  const regionURL=ui.location.href;
+  assert.equal(new URL(regionURL).searchParams.get('mapScope'),'region');
+  await ui.navigate(focusURL);
+  assert.equal(ui.get('history-map').classes.has('is-region'),false);
+  await ui.navigate(regionURL);
+  assert.equal(ui.get('history-map').classes.has('is-region'),true);
 });
 
 test('context-only route stays context after the background map finishes loading',async()=>{
@@ -173,7 +214,7 @@ test('playing advances the map and shared selector, and opening context cancels 
 });
 
 test('city controls stay stable while the affiliation text updates',async()=>{
-  const ui=await app('?year=1938#borders');
+  const ui=await app('?year=1938&mapScope=belarus#borders');
   const cityButtons=ui.get('history-cities').children;
   const brest=cityButtons.find(button=>button.dataset.city==='brest');
   brest.focus();await brest.handlers.click();await flush();
@@ -281,7 +322,7 @@ test('a second click cancels a pending replay start and cannot resurrect its tim
 });
 
 test('responsive redraw preserves dated state, country labels, all place markers and table focus',async()=>{
-  const ui=await app('?year=1938&city=brest&lang=be#borders','be');
+  const ui=await app('?year=1938&city=brest&lang=be&mapScope=belarus#borders','be');
   const url=ui.location.href,rows=ui.get('history-places-body').children;
   const brest=rows.flatMap(row=>row.children[0].children).find(button=>button.dataset.tableCity==='brest');
   brest.focus();

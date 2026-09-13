@@ -57,7 +57,7 @@ test('preview addition preserves every primary byte, all images and every noinde
  for(const directory of [site,preview.outputDirectory]) {
   const map=fs.readFileSync(path.join(directory,'atlas/mapa/index.html'),'utf8');
   assert.deepEqual([...map.matchAll(/data-history-mode="([^"]+)"/g)].map(match=>match[1]),['region','focus']);
-  assert.match(map,/data-history-mode="region" aria-pressed="false"[^>]*>Neighboring states/);
-  assert.match(map,/data-history-mode="focus" aria-pressed="true"[^>]*>Belarusian lands/);
+  assert.match(map,/data-history-mode="region" aria-pressed="true"[^>]*>Neighboring states/);
+  assert.match(map,/data-history-mode="focus" aria-pressed="false"[^>]*>Belarusian lands/);
  }
 });

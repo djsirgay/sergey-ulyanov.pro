@@ -37,7 +37,7 @@
     Estonia:['Estonia','Эстонія'],Latvia:['Latvia','Латвія'],Lithuania:['Lithuania','Літва'],Norway:['Norway','Нарвегія'],Romania:['Romania','Румынія'],Czechoslovakia:['Czechoslovakia','Чэхаславакія'],Hungary:['Hungary','Венгрыя'],Germany:['Germany','Германія'],Sweden:['Sweden','Швецыя'],Finland:['Finland','Фінляндыя'],Denmark:['Denmark','Данія'],Yugoslavia:['Yugoslavia','Югаславія'],Italy:['Italy','Італія'],Austria:['Austria','Аўстрыя'],Ukraine:['Ukraine','Украіна'],Slovakia:['Slovakia','Славакія'],Moldova:['Moldova','Малдова'],Slovenia:['Slovenia','Славенія'],Croatia:['Croatia','Харватыя'],Serbia:['Serbia','Сербія'],'Czech Republic':['Czech Republic','Чэшская Рэспубліка'],Russia:['Russia','Расія'],Venice:['Republic of Venice','Венецыянская Рэспубліка']
   };
   const cities=window.MAPA_CITIES || [{id:'minsk',name:['Minsk','Мінск'],point:[27.5615,53.9023],major:true}];
-  let index=4, lang='en', mode='focus', cityId='minsk', selectedPolity='', timer=null, renderToken=0, overlayToken=0, loading=false, currentFeatures=[], regionFeatures=[], zoom=1, baseView=[0,0,960,700];
+  let index=4, lang='en', mode='region', cityId='minsk', selectedPolity='', timer=null, renderToken=0, overlayToken=0, loading=false, currentFeatures=[], regionFeatures=[], zoom=1, baseView=[0,0,960,700];
   const cache=new Map();
   let playbackGeneration=0,startingPlayback=false;
   const local=value=>value[lang==='be'?1:0];
@@ -63,7 +63,7 @@
     return cache.get(key);
   }
   async function reference(){if(!cache.has('reference'))cache.set('reference',fetch('./history/belarus-reference.geojson').then(response=>{if(!response.ok)throw Error(response.status);return response.json();}).catch(error=>{cache.delete('reference');throw error;}));return cache.get('reference');}
-  function mapURL(){const url=new URL(location.href);url.searchParams.set('lang',lang);url.searchParams.set('year',eras[index].year);url.searchParams.delete('stage');if(mode==='region')url.searchParams.set('mapScope','region');else url.searchParams.delete('mapScope');if(cityId!=='minsk')url.searchParams.set('city',cityId);else url.searchParams.delete('city');if(selectedPolity)url.searchParams.set('polity',selectedPolity);else url.searchParams.delete('polity');url.hash='borders';return url;}
+  function mapURL(){const url=new URL(location.href);url.searchParams.set('lang',lang);url.searchParams.set('year',eras[index].year);url.searchParams.delete('stage');url.searchParams.set('mapScope',mode==='region'?'region':'belarus');if(cityId!=='minsk')url.searchParams.set('city',cityId);else url.searchParams.delete('city');if(selectedPolity)url.searchParams.set('polity',selectedPolity);else url.searchParams.delete('polity');url.hash='borders';return url;}
   function sync(push=false){const url=mapURL();if(url.href!==location.href)history[push?'pushState':'replaceState']({},'',url);}
   function stop(){playbackGeneration++;startingPlayback=false;if(timer)clearTimeout(timer);timer=null;$('history-play').setAttribute('aria-pressed','false');$('history-play').textContent=t(index===eras.length-1?'replay':'play');}
   function announceYear(){window.dispatchEvent(new CustomEvent('mapa-year-changed',{detail:eras[index].year}));}
@@ -214,7 +214,7 @@
       drawCountryLabels();drawLegend();drawCities();$('history-place-select').disabled=false;$('history-cities').querySelectorAll('button').forEach(button=>button.disabled=false);$('history-load-status').hidden=true;loading=false;await overlays();return token===renderToken;
     }catch{if(token!==renderToken)return false;loading=false;stop();$('history-load-status').textContent=t('failed');$('history-map-desc').textContent=t('failed');$('history-city-result').textContent=t('failed');$('history-retry').hidden=false;return false;}
   }
-  function readURL(){const params=new URLSearchParams(location.search),found=eras.findIndex(era=>era.year===+params.get('year'));index=found>=0?found:eras.findIndex(e=>e.year===1938);mode=params.get('mapScope')==='region'?'region':'focus';cityId=cities.some(c=>c.id===params.get('city'))?params.get('city'):'minsk';selectedPolity=params.get('polity')||'';zoom=1;}
+  function readURL(){const params=new URLSearchParams(location.search),found=eras.findIndex(era=>era.year===+params.get('year'));index=found>=0?found:eras.findIndex(e=>e.year===1938);mode=['belarus','focus'].includes(params.get('mapScope'))?'focus':'region';cityId=cities.some(c=>c.id===params.get('city'))?params.get('city'):'minsk';selectedPolity=params.get('polity')||'';zoom=1;}
   eras.forEach((era,i)=>{const button=create('button','',era.year);button.type='button';button.dataset.era=i;button.addEventListener('click',()=>select(i));$('history-years').append(button);});
   $('history-range').addEventListener('input',event=>select(+event.target.value));$('history-prev').addEventListener('click',()=>select(index-1));$('history-next').addEventListener('click',()=>select(index+1));
   async function tick(){if(document.hidden||$('borders').hidden){stop();return;}if(loading){timer=setTimeout(tick,500);return;}if(index===eras.length-1){stop();return;}const generation=playbackGeneration;await select(index+1,false);if(!timer||generation!==playbackGeneration)return;if(index===eras.length-1){stop();return;}timer=setTimeout(tick,4500);}
