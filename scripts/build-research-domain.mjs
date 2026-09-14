@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import {buildPalettePreview} from './build-research-palette-preview.mjs';
+import {legacyRedirectHTML,CURRENT_LISTENING_LOGIN} from './build-legacy-research-redirects.mjs';
 
 export const PORTFOLIO_ORIGIN = 'https://sergey-ulyanov.pro';
 export const RESEARCH_ORIGIN = 'https://research.sergey-ulyanov.pro';
@@ -144,6 +145,8 @@ export function buildResearchDomain({ sourceRoot = ROOT, outputDirectory = path.
     fs.mkdirSync(path.dirname(target), { recursive: true });
     if (TEXT.test(file)) {
       let content = transformResearchText(fs.readFileSync(file, 'utf8'), slash(path.relative(root, file)), mountPath);
+      // Retire the old listening entry without altering saved-data recovery assets.
+      if(relative==='unmute-pilot/index.html')content=legacyRedirectHTML(CURRENT_LISTENING_LOGIN,{pilot:true});
       if (noindex && file.endsWith('.html')) {
         content = content.replace(/<meta\s+name=["']robots["'][^>]*>/gi, '');
         content = content.replace(/<head([^>]*)>/i, '<head$1>\n<meta name="robots" content="noindex,nofollow,noarchive">');

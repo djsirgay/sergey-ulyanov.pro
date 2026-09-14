@@ -68,6 +68,7 @@ jobs:
             --exclude 'tests/' \
             --include 'LICENSE*.md' \
             --exclude '*.md'
+          node scripts/build-legacy-research-redirects.mjs --artifact _site
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
