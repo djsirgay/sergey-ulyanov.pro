@@ -12,7 +12,7 @@ const migrated = await importSource(transformResearchText(source, 'research/navi
 const expected = {
   home: ['', 'Home', 'Галоўная', 'home'],
   tools: ['tools/', 'All tools', 'Усе інструменты', 'tools'],
-  music: ['tools/unmute-the-archive/atlas/', 'Music search', 'Пошук музыкі', 'tools'],
+  music: ['tools/unmute-the-archive/atlas/', 'Archive workspace', 'Архіўныя запісы', 'tools'],
   passport: ['tools/unmute-the-archive/', 'Recording passport', 'Пашпарт запісу', 'tools'],
   audio: ['tools/unmute-the-archive/restoration/', 'Audio lab', 'Апрацоўка гуку', 'tools'],
   culture: ['atlas/', 'Culture directory', 'Каталог культуры', 'tools'],
@@ -87,7 +87,7 @@ for (const [label, api, root] of [['portfolio mount', legacy, '/research/'], ['r
         for (const anchor of anchors(html)) {
           assert.ok(anchor.href && anchor.label.trim(), `${id}: every link is named and has a destination`);
           if (anchor.href.startsWith('https://')) {
-            assert.equal(anchor.href, 'https://sergey-ulyanov.pro/', `${id}: only explicit portfolio exit`);
+            assert.ok(['https://sergey-ulyanov.pro/','https://unmute.sergey-ulyanov.pro/login/?lang='+lang].includes(anchor.href),`${id}: only portfolio or public pilot entry exits`);
           } else {
             const url = new URL(anchor.href, 'https://research.sergey-ulyanov.pro');
             assert.ok(permittedPaths.has(url.pathname), `${id}: unexpected path ${url.pathname}`);
@@ -109,8 +109,9 @@ for (const [label, api, root] of [['portfolio mount', legacy, '/research/'], ['r
       for (const id of toolIds) {
         const html = api.shellHTML(api.routeFor(api.routes[id].path), lang);
         const links = anchors(nav(html, 'research-tool-tabs'));
-        assert.equal(links.length, 5);
-        assert.deepEqual(links.map(anchor => new URL(anchor.href, 'https://example.test').pathname), toolIds.map(tool => api.routes[tool].path));
+        assert.equal(links.length, 6);
+        assert.equal(links[0].href,'https://unmute.sergey-ulyanov.pro/login/?lang='+lang);
+        assert.deepEqual(links.slice(1).map(anchor => new URL(anchor.href, 'https://example.test').pathname), toolIds.map(tool => api.routes[tool].path));
         assert.deepEqual(links.filter(anchor => anchor.active).map(anchor => anchor.label), [api.routes[id][lang]]);
         if (['music', 'passport', 'audio'].includes(id)) {
           const utilities = anchors(nav(html, 'research-collection-links'));

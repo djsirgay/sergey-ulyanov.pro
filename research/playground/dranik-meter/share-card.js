@@ -1,5 +1,5 @@
 // All dynamic data stays in memory. The only URL in a card is this constant.
-export const CANONICAL_METER_URL='https://research.sergey-ulyanov.pro/playground/dranik-meter/';
+export const CANONICAL_METER_URL='https://research.sergey-ulyanov.pro/dranik/';
 const copy={
  en:{brand:'Dranik meter',headline:'Same me.',noun:'hypothetical draniki',joke:'Different unit. Still priceless.',makeYours:'How many draniki are you?',assumption:'A little potato arithmetic · 1 dranik = 50 g (assumed)'},
  be:{brand:'Дранікаметр',headline:'Гэта ўсё я.',noun:'умоўных дранікаў',joke:'Іншая адзінка. Каштоўнасць тая ж.',makeYours:'А колькі ў табе дранікаў?',assumption:'Крыху бульбяной арыфметыкі · 1 дранік = умоўныя 50 г'},
@@ -51,7 +51,7 @@ export function drawShareCard(canvas,model,{image,weightIcon}={}){
  textFit(ctx,model.joke,x,story?1480:1120,31,w,{color:'#b6c4bd'});
  textFit(ctx,model.makeYours,x,story?1570:1220,28,w,{color:'#d7f34c',weight:700});
  textFit(ctx,'research.sergey-ulyanov.pro',x,story?1620:1270,24,w,{color:'#b6c4bd'});
- textFit(ctx,'/playground/dranik-meter/',x,story?1655:1306,24,w,{color:'#b6c4bd'});
+ textFit(ctx,'/dranik/',x,story?1655:1306,24,w,{color:'#b6c4bd'});
  return canvas;
 }
 // Must be called by a user's click with a prepared file: no asynchronous image

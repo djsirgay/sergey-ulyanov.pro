@@ -42,9 +42,10 @@ export function mountResearchHelp({document:doc=globalThis.document,window:win=g
  if(!doc.getElementById('research-context-help-css'))doc.head.append(el('link',{id:'research-context-help-css',rel:'stylesheet',href:ROOT+'context-help.css'}));
  function render(){const current=helpFor(win.location.pathname,doc.documentElement.lang);button.textContent=current.button;button.append(el('img',{src:ROOT+'assets/paca-vaca-helper.webp',width:'72',height:'72',alt:'','aria-hidden':'true',class:'research-help-mascot'}));button.setAttribute('title',current.lang==='en'?'Paca-Vaca · page help':'Паца-Ваца · '+current.button.replace('? ',''));closeButton.textContent=current.close+' ×';title.textContent=current.title;list.replaceChildren(...current.steps.map(text=>el('li',{},text)));guide.href=current.href;guide.textContent=current.guide;notice.textContent=current.local;const credit=el('a',{href:'https://nashaniva.com/ru/291797',target:'_blank',rel:'noopener noreferrer'},current.lang==='en'?' Character: Paca-Vaca, an illustrated homage—not official affiliation or a claim of ownership.':current.lang==='be'?' Персанаж: Паца-Ваца, ілюстраваная прысвята. Не афіцыйнае партнёрства і не заява пра ўласныя правы.':' Персонаж: Паца-Ваца, иллюстрированное посвящение. Не официальное партнёрство и не заявление о владении правами.');notice.append(credit);}
  function close(){if(dialog.open)dialog.close();}
- button.addEventListener('click',()=>{render();dialog.showModal();button.setAttribute('aria-expanded','true');closeButton.focus();});
+ button.addEventListener('click',()=>{if(dialog.open){close();return;}render();dialog.show();button.setAttribute('aria-expanded','true');closeButton.focus();});
  closeButton.addEventListener('click',close);
  dialog.addEventListener('cancel',event=>{event.preventDefault();close();});
+ dialog.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();close();}});
  dialog.addEventListener('close',()=>{button.setAttribute('aria-expanded','false');button.focus();});
  if(win.MutationObserver)new win.MutationObserver(render).observe(doc.documentElement,{attributes:true,attributeFilter:['lang']});
  render();return {button,dialog,closeButton};

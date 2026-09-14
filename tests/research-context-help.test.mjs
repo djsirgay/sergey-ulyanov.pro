@@ -6,6 +6,12 @@ const root=new URL('../',import.meta.url),file=new URL('research/context-help.js
 const source=fs.existsSync(file)?fs.readFileSync(file,'utf8'):'';
 const api=source?await import(file):{};
 const requireAPI=()=>assert.equal(typeof api.helpFor,'function','Contextual static help must exist');
+test('Research helper opens as a corner bubble rather than blocking the page',()=>{
+ assert.match(source,/dialog\.show\(\)/);assert.doesNotMatch(source,/dialog\.showModal\(\)/);
+ const css=fs.readFileSync(new URL('research/context-help.css',root),'utf8');
+ assert.match(css,/left:16px/);assert.match(css,/position:fixed/);
+ assert.match(css,/--research-player-inset/);
+});
 
 test('every existing project gets three relevant EN/BE steps, not a chat or a ranking claim',()=>{
  requireAPI();
@@ -72,6 +78,7 @@ function dom(){
   replaceChildren(...nodes){this.children=[...nodes];}
   focus(){focus=this;}
   showModal(){this.open=true;}
+  show(){this.open=true;}
   close(){this.open=false;this.emit('close');}
   emit(type,extra={}){const event={preventDefault(){this.prevented=true;},...extra};for(const fn of this.events[type]||[])fn(event);return event;}
  }

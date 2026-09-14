@@ -14,7 +14,7 @@ test('post and story exports have exact high-resolution dimensions',()=>{
 test('the export contains count and a fixed public link, never entered weight or a personalized URL',()=>{
  const m=model({weight:70,unit:'kg'});
  assert.equal(m.count,'1,400');
- assert.equal(m.url,'https://research.sergey-ulyanov.pro/playground/dranik-meter/');
+ assert.equal(m.url,'https://research.sergey-ulyanov.pro/dranik/');
  assert.equal('weight' in m,false);assert.equal('unit' in m,false);
  assert.equal(new URL(m.url).search,'');assert.equal(new URL(m.url).hash,'');
  assert.match(m.assumption,/50/);
@@ -43,7 +43,7 @@ test('drawing sets the actual canvas size; PNG export requests PNG and rejects a
  api.drawShareCard(canvas,model({format:'story'}));
  assert.deepEqual([canvas.width,canvas.height],[1080,1920]);
  assert.ok(calls.some(([method,text])=>method==='fillText'&&String(text).includes('1,400')));
- const linkRows=calls.filter(([method,text])=>method==='fillText'&&/research\.sergey|\/playground\//.test(text));
+ const linkRows=calls.filter(([method,text])=>method==='fillText'&&/research\.sergey|\/dranik\//.test(text));
  assert.equal(linkRows.length,2);
  assert.ok(linkRows.every(([,text,x,y])=>y+24<=1920-240),'The Story link stays above the bottom app-control area');
  assert.equal((await api.cardToPng(canvas)).type,'image/png');

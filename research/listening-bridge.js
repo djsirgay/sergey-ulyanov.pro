@@ -30,6 +30,11 @@ export function mountListeningBridge({win=globalThis.window,doc=globalThis.docum
  const report=()=>{const url=publicURL(win.location.href);if(url)send('unmute:research-location',{url});};
  report();win.addEventListener('hashchange',report);win.addEventListener('popstate',report);
  win.addEventListener('message',event=>{
+  if(event.source===win.parent&&event.origin===LISTENING_ORIGIN&&event.data?.type==='unmute:research-player-layout'){
+   const inset=event.data.inset;
+   if(Number.isInteger(inset)&&inset>=0&&inset<=2400)doc.documentElement?.style?.setProperty('--research-player-inset',Math.min(inset,Math.max(0,(win.innerHeight||800)-150))+'px');
+   return;
+  }
   if(event.source!==win.parent||event.origin!==LISTENING_ORIGIN||event.data?.type!=='unmute:research-context'||!Number.isSafeInteger(event.data.generation)||event.data.generation<0)return;
   generation=event.data.generation;report();
  });
