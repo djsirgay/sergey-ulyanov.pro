@@ -35,6 +35,17 @@ function nav(html, className) {
   return block[1];
 }
 
+test('every research page exposes GUCHNA and MAPA in its primary menu', () => {
+  for (const api of [legacy, migrated]) for (const lang of ['en', 'be']) {
+    for (const route of Object.values(api.routes)) {
+      const primary = anchors(nav(api.shellHTML(api.routeFor(route.path), lang), 'research-primary'));
+      assert.ok(primary.some(a => a.href === 'https://unmute.sergey-ulyanov.pro/login/?lang=' + lang), route.path + ': direct music entry');
+      assert.ok(primary.some(a => new URL(a.href, 'https://example.test').pathname === api.routes.mapa.path && a.label === 'MAPA'), route.path + ': direct map entry');
+      assert.equal(primary.filter(a => a.active).length, 1);
+    }
+  }
+});
+
 for (const [label, api, root] of [['portfolio mount', legacy, '/research/'], ['research domain', migrated, '/']]) {
   test(`${label}: every real page has an unambiguous functional name and group`, () => {
     assert.equal(api.ROOT, root);
@@ -95,7 +106,7 @@ for (const [label, api, root] of [['portfolio mount', legacy, '/research/'], ['r
           }
         }
         const primary = anchors(nav(html, 'research-primary'));
-        const destination = current.group === 'tools' ? api.routes.tools.path : current.group === 'help' ? api.routes.help.path : root;
+        const destination = current.id === 'mapa' ? api.routes.mapa.path : current.group === 'tools' ? api.routes.tools.path : current.group === 'help' ? api.routes.help.path : root;
         assert.equal(new URL(primary.find(anchor => anchor.active).href, 'https://example.test').pathname, destination);
         if (current.guide) {
           const guide = anchors(html).find(anchor => /class="research-guide-link"/.test(anchor.attributes));

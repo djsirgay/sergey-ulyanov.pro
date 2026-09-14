@@ -36,7 +36,7 @@ export function shellHTML(current, lang = 'en') {
   const t = words[lang], href = path => escape(languageURL(path, lang));
   const link = (path, label, active, extra = '') => `<a href="${href(path)}"${active ? ' aria-current="page"' : ''}${extra}>${escape(label)}</a>`;
   const guchna=link(guchnaEntry,lang==='be'?'Гучна · пошук музыкі':'GUCHNA · music discovery',false,' class="research-guchna-entry"');
-  const primary = [link(ROOT, routes.home[lang], current.group === 'home'), link(routes.tools.path, t.tools, current.group === 'tools'), link(ROOT + '#research-program', t.about, current.group === 'about'), link(routes.help.path, t.help, current.group === 'help')].join('');
+  const primary = [link(ROOT, routes.home[lang], current.group === 'home'), link(guchnaEntry, lang === 'be' ? 'ГУЧНА' : 'GUCHNA', false), link(routes.mapa.path, 'MAPA', current.id === 'mapa'), link(routes.tools.path, t.tools, current.group === 'tools' && current.id !== 'mapa'), link(ROOT + '#research-program', t.about, current.group === 'about'), link(routes.help.path, t.help, current.group === 'help')].join('');
   let crumbs = link(ROOT, routes.home[lang], current.id === 'home');
   if (current.group === 'tools' && current.id !== 'tools') crumbs += `<span aria-hidden="true">/</span>${link(routes.tools.path, t.tools, false)}`;
   if (current.id !== 'home') crumbs += `<span aria-hidden="true">/</span><span aria-current="page">${escape(current[lang])}</span>`;
