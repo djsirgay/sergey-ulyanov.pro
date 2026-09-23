@@ -5,7 +5,8 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
 #work .rail-shell{width:100%;overflow:hidden}
 #work .rail{width:100%;max-width:100%;min-width:0;box-sizing:border-box}
 #work .case,#work .case-visual,#work .case-body{min-width:0}
-#work .case-body{overflow-wrap:anywhere}
+#work .case-body{overflow-wrap:normal;word-break:normal}
+#work .case h3{text-wrap:balance;overflow-wrap:normal;hyphens:none}
 
 .case-visual.visual-image{
   --case-photo:none;
@@ -24,7 +25,7 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
   background-image:linear-gradient(180deg,rgba(7,9,7,.05),rgba(7,9,7,.4)),var(--case-photo);
   background-size:cover;
   background-position:center;
-  filter:blur(24px) brightness(.58) saturate(.9);
+  filter:blur(24px) brightness(.72) saturate(.92);
   transform:scale(1.08);
   pointer-events:none;
 }
@@ -37,14 +38,28 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
   width:100%;
   height:100%;
   object-fit:contain;
-  object-position:center center;
+  object-position:center;
   background:transparent;
 }
 
-.visual-mchappy-image{--case-photo:url("https://drive.google.com/thumbnail?id=1QUJ_j1JOsKPRoFKfj4nxE7-PtaQfDnWy&sz=w1600")}
-.visual-fanta-image{--case-photo:url("https://drive.google.com/thumbnail?id=188pC5us7521nsKzAIx5Qg6LZ85pCeygx&sz=w1600")}
-.visual-volkswagen-image{--case-photo:url("https://drive.google.com/thumbnail?id=1Su6jxTtAN3IcPB4aajrL5wvhhhBJurUe&sz=w1600")}
-.visual-sg-image{--case-photo:url("https://drive.google.com/thumbnail?id=1dUi48nTKn1K9AtrX_q2n5e7ken5xyMfN&sz=w1600")}
+.visual-calpoly-source{--case-photo:url("/assets/portfolio/folio-06-calpoly.webp")}
+.visual-scream-source{--case-photo:url("/assets/portfolio/folio-01-scream.webp")}
+.visual-vinyl-source{--case-photo:url("/assets/portfolio/folio-02-vinyl.webp")}
+.visual-mchappy-image{--case-photo:url("/assets/portfolio/case-mchappy.jpg")}
+.visual-fanta-image{--case-photo:url("/assets/portfolio/case-fanta.jpg")}
+.visual-volkswagen-image{--case-photo:url("/assets/portfolio/folio-05-volkswagen.webp")}
+.visual-sg-image{--case-photo:url("/assets/portfolio/case-societe-generale.jpg")}
+.visual-burning-source{--case-photo:url("/assets/portfolio/folio-14-burning-man.webp")}
+
+@media(min-width:981px){
+  #work .case{min-height:660px}
+  #work .case-body{padding:40px 42px;gap:22px}
+  #work .case h3{font-size:clamp(2.55rem,3.45vw,4.2rem);margin:14px 0}
+  #work .case-body>div>p{font-size:.93rem;line-height:1.55}
+  #work .impact{margin-top:18px}
+  #work .impact div{padding:12px 14px}
+  #work .case-visual.visual-image>img{padding:16px;box-sizing:border-box}
+}
 
 /* Clean vertical previews: visual evidence + large logos only. All project copy remains in the adjacent case body. */
 #work .case-visual.visual-ai,
@@ -88,7 +103,7 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
     width:100%;
     height:auto;
     min-height:0;
-    aspect-ratio:4/5;
+    aspect-ratio:3/2;
     padding:0;
   }
   #work .case-visual.visual-image>img{
@@ -96,4 +111,17 @@ main,#work,#work .rail-shell{min-width:0;max-width:100%}
     height:100%;
     object-fit:contain;
   }
+}
+
+.visual-xfactor-image{--case-photo:url("/assets/portfolio/case-xfactor.webp")}
+.visual-mageworx-image{--case-photo:url("/assets/portfolio/case-mageworx.webp")}
+.visual-unicef-image{--case-photo:url("/assets/portfolio/case-unicef.webp")}
+.visual-globalfund-image{--case-photo:url("/assets/portfolio/case-global-fund.webp")}
+
+@media(max-width:640px){
+  #work .case h3{font-size:clamp(1.78rem,8.1vw,2.15rem);line-height:.98;letter-spacing:-.052em}
+  #work .case-index{font-size:.62rem;line-height:1.35}
+  #work .case-body>div>p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  #work .impact div:nth-child(n+3),#work .tags .tag:nth-child(n+3),#work .case-meta{display:none}
+  #work .case-footer{justify-content:flex-start}
 }

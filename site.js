@@ -1,34 +1,129 @@
 (()=>{
-  const nav=document.getElementById('nav');
-  addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
-  const revealObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')}),{threshold:.12});
-  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
-  const track=(name,params={})=>{
-    const event={event:'portfolio_interaction',interaction:name,page_path:location.pathname,...params};
-    window.dataLayer=window.dataLayer||[];window.dataLayer.push(event);
-    window.dispatchEvent(new CustomEvent('sergey:analytics',{detail:event}));
-    if(typeof window.gtag==='function') window.gtag('event',name,params);
+  const boot=document.querySelector('[data-culture-boot]');
+  if(boot){
+    const bootKey='sergey-cultural-boot-seen-v3';
+    let seen=false;
+    try{seen=sessionStorage.getItem(bootKey)==='1'}catch(error){}
+    const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const finish=()=>{
+      if(!boot.isConnected)return;
+      document.documentElement.classList.remove('boot-active');
+      boot.classList.add('is-leaving');
+      setTimeout(()=>boot.remove(),360);
+    };
+    if(seen||reduceMotion||location.pathname.startsWith('/research/'))boot.remove();
+    else{
+      document.documentElement.classList.add('boot-active');
+      const rain=boot.querySelector('[data-boot-rain]');
+      const glyphs=['◆◇╳┼▰▱','◇◆┼╳▱▰','╳┼◇◆▰▱','▰◇┼◆╳▱','┼╳◆◇▱▰'];
+      if(rain){
+        for(let index=0;index<24;index+=1){
+          const column=document.createElement('span');
+          column.textContent=Array.from({length:12},(_,row)=>glyphs[(index+row)%glyphs.length]).join('\n');
+          column.style.setProperty('--column',String(index));
+          column.style.setProperty('--delay',`${-(index%7)*.17}s`);
+          column.style.setProperty('--speed',`${1.05+(index%5)*.13}s`);
+          rain.appendChild(column);
+        }
+      }
+      try{sessionStorage.setItem(bootKey,'1')}catch(error){}
+      boot.querySelector('[data-boot-skip]')?.addEventListener('click',finish);
+      setTimeout(finish,3200);
+    }
+  }
+
+  const GA4_ID='G-RQBHK9BCRX';
+  const consentKey='sergey-portfolio-analytics-consent';
+  const consent=document.getElementById('analytics-consent');
+  const loadAnalytics=()=>{
+    if(window.__sergeyAnalyticsLoaded)return;
+    window.__sergeyAnalyticsLoaded=true;
+    window.dataLayer=window.dataLayer||[];
+    window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+    window.gtag('js',new Date());
+    window.gtag('config',GA4_ID,{anonymize_ip:true,allow_google_signals:false,allow_ad_personalization_signals:false});
+    const script=document.createElement('script');script.async=true;script.src=`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`;document.head.appendChild(script);
   };
-  document.querySelectorAll('[data-track]').forEach(el=>el.addEventListener('click',()=>track(el.dataset.track,{label:(el.textContent||'').trim(),href:el.href||''})));
-  const setupRail=(rail)=>{
+  let choice='';
+  try{choice=localStorage.getItem(consentKey)||''}catch(error){}
+  if(choice==='accepted')loadAnalytics();
+  else if(!choice&&consent){consent.hidden=false;document.body.classList.add('consent-active')}
+  consent?.querySelectorAll('[data-consent]').forEach(button=>button.addEventListener('click',()=>{
+    const accepted=button.dataset.consent==='accept';
+    try{localStorage.setItem(consentKey,accepted?'accepted':'declined')}catch(error){}
+    consent.hidden=true;document.body.classList.remove('consent-active');if(accepted)loadAnalytics();
+  }));
+
+  const nav=document.getElementById('nav');
+  addEventListener('scroll',()=>nav?.classList.toggle('scrolled',scrollY>20),{passive:true});
+  const reveal=[...document.querySelectorAll('.reveal')];
+  if('IntersectionObserver' in window){
+    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target)}}),{threshold:.08});
+    reveal.forEach(element=>observer.observe(element));
+  }else reveal.forEach(element=>element.classList.add('visible'));
+
+  const track=(name,params={})=>{
+    const detail={event:name,page_path:location.pathname,...params};
+    window.dispatchEvent(new CustomEvent('sergey:analytics',{detail}));
+    if(window.__sergeyAnalyticsLoaded&&typeof window.gtag==='function')window.gtag('event',name,{page_path:location.pathname,...params});
+  };
+  const classifyLink=element=>{
+    if(element.dataset.track)return element.dataset.track;
+    const href=element.getAttribute('href')||'';
+    if(href.startsWith('/case-studies/'))return 'case_open';
+    if(href==='/hire/'||href==='/work/'||href==='/research/'||href==='/press/')return 'route_open';
+    if(href.startsWith('/evidence/'))return 'evidence_open';
+    if(element.closest('.press-card'))return 'press_open';
+    if(/drive\.google\.com/.test(href)&&/résumé|resume/i.test(element.textContent||''))return 'resume_open';
+    if(href.startsWith('mailto:'))return 'contact_open';
+    return 'link_click';
+  };
+  document.querySelectorAll('a[href],button[data-track]').forEach(element=>element.addEventListener('click',()=>track(classifyLink(element),{
+    label:(element.textContent||'').trim().replace(/\s+/g,' ').slice(0,100),
+    href:element.href||'',
+    link_domain:element.href?new URL(element.href,location.href).hostname:''
+  })));
+
+  const depthMarks=[25,50,75,90],seenDepth=new Set();
+  const reportDepth=()=>{
+    const available=document.documentElement.scrollHeight-innerHeight;
+    if(available<=0)return;
+    const depth=Math.min(100,Math.round(scrollY/available*100));
+    depthMarks.forEach(mark=>{if(depth>=mark&&!seenDepth.has(mark)){seenDepth.add(mark);track('scroll_depth',{percent_scrolled:mark})}});
+  };
+  addEventListener('scroll',reportDepth,{passive:true});
+
+  const setupRail=rail=>{
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
     if(!items.length)return;
-    const gap=()=>parseFloat(getComputedStyle(rail).gap||0);
-    const go=dir=>{const width=items[0].getBoundingClientRect().width+gap();rail.scrollBy({left:dir*width,behavior:'smooth'});track(`rail_${name}_${dir>0?'next':'prev'}`);};
-    document.querySelectorAll(`[data-prev="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(-1)));
-    document.querySelectorAll(`[data-next="${name}"]`).forEach(b=>b.addEventListener('click',()=>go(1)));
-    const update=()=>{let best=0,min=Infinity;const left=rail.getBoundingClientRect().left;items.forEach((item,i)=>{const d=Math.abs(item.getBoundingClientRect().left-left);if(d<min){min=d;best=i}});if(current)current.textContent=String(best+1).padStart(2,'0')};
+    const update=()=>{let best=0,min=Infinity,left=rail.getBoundingClientRect().left;items.forEach((item,index)=>{const distance=Math.abs(item.getBoundingClientRect().left-left);if(distance<min){min=distance;best=index}});if(current)current.textContent=String(best+1).padStart(2,'0')};
+    const go=direction=>{const gap=parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:direction*(items[0].getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});track(`rail_${name}_${direction>0?'next':'prev'}`)};
+    document.querySelectorAll(`[data-prev="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(-1)));
+    document.querySelectorAll(`[data-next="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(1)));
     rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
-    let down=false,startX=0,startScroll=0;
-    rail.addEventListener('pointerdown',e=>{if(e.pointerType==='touch')return;down=true;rail.classList.add('dragging');startX=e.clientX;startScroll=rail.scrollLeft;rail.setPointerCapture?.(e.pointerId)});
-    rail.addEventListener('pointermove',e=>{if(down)rail.scrollLeft=startScroll-(e.clientX-startX)});
-    const stop=()=>{down=false;rail.classList.remove('dragging')};rail.addEventListener('pointerup',stop);rail.addEventListener('pointercancel',stop);
-    rail.addEventListener('wheel',e=>{if(Math.abs(e.deltaY)>Math.abs(e.deltaX)&&rail.scrollWidth>rail.clientWidth){const atStart=rail.scrollLeft<=1&&e.deltaY<0,atEnd=rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1&&e.deltaY>0;if(!atStart&&!atEnd){e.preventDefault();rail.scrollLeft+=e.deltaY}}},{passive:false});
   };
   document.querySelectorAll('[data-rail]').forEach(setupRail);
-  document.querySelectorAll('#work .case').forEach(card=>{
-    const link=card.querySelector('.case-link');if(!link)return;
-    card.addEventListener('click',e=>{if(!e.target.closest('a,button')&&matchMedia('(min-width:641px)').matches){track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
-    card.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&!e.target.closest('a,button')){e.preventDefault();track(card.dataset.track||'case_open');window.open(link.href,'_blank','noopener,noreferrer')}});
-  });
+
+  const form=document.getElementById('inquiry');
+  if(form){
+    const status=document.getElementById('inquiry-status');
+    form.addEventListener('focusin',()=>track('inquiry_start'),{once:true});
+    form.addEventListener('submit',async event=>{
+      event.preventDefault();if(!form.reportValidity())return;
+      const data=new FormData(form);if(String(data.get('_honey')||''))return;
+      const button=form.querySelector('button[type=submit]');button.disabled=true;
+      if(status)status.textContent='Sending…';
+      data.append('_subject',`Website inquiry: ${String(data.get('inquiry_type')||'New opportunity')} — ${String(data.get('name')||'Visitor')}`);
+      data.append('_template','table');data.append('_captcha','false');
+      try{
+        const response=await fetch('https://formsubmit.co/ajax/5fbc3aa60c7f89f0edb8afa14702e228',{method:'POST',headers:{Accept:'application/json'},body:data});
+        if(!response.ok)throw new Error('Submission failed');
+        const result=await response.json();
+        if(result.success!==true&&result.success!=='true')throw new Error('Submission was not confirmed');
+        form.reset();if(status)status.textContent='Thank you — your inquiry has been sent.';track('inquiry_sent',{inquiry_type:String(data.get('inquiry_type')||'')});
+      }catch(error){
+        if(status)status.innerHTML='The secure form could not send. Please <a href="mailto:ulyanoow@gmail.com">email Sergéy directly</a>.';
+      }finally{button.disabled=false}
+    });
+  }
 })();

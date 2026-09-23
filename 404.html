@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#07111c">
+  <meta name="color-scheme" content="dark">
+  <meta name="robots" content="noindex,follow">
+  <title>Page not found | Sergéy Ulyanov</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <style>
+    :root{--navy:#07111c;--ink:#eff3ef;--muted:#a8b5bc;--blue:#5aa5cb;--line:#274052}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--navy);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    body{min-height:100svh;display:grid;place-items:center;padding:28px;background:radial-gradient(circle at 82% 12%,rgba(90,165,203,.2),transparent 31%),linear-gradient(145deg,#07111c,#0d202e)}
+    main{width:min(980px,100%);border:1px solid var(--line);background:rgba(5,14,23,.72);box-shadow:0 30px 90px rgba(0,0,0,.35);padding:clamp(28px,6vw,72px)}
+    .eyebrow{display:flex;align-items:center;gap:12px;color:var(--blue);font-size:.7rem;font-weight:850;letter-spacing:.16em;text-transform:uppercase}.eyebrow::before{content:"";width:38px;height:1px;background:currentColor}
+    h1{margin:28px 0 0;font-family:Arial,"Helvetica Neue",sans-serif;font-size:clamp(5rem,18vw,12rem);line-height:.74;letter-spacing:-.09em}h1 span{display:block;color:var(--blue);font-family:Georgia,serif;font-size:.24em;font-weight:400;letter-spacing:0}
+    p{max-width:600px;margin:34px 0 0;color:var(--muted);font-family:Georgia,serif;font-size:clamp(1.05rem,2.3vw,1.4rem);line-height:1.55}
+    .actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}.button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border:1px solid var(--ink);color:var(--ink);font-size:.7rem;font-weight:850;letter-spacing:.11em;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer}.button-primary{background:var(--ink);color:var(--navy)}
+    footer{margin-top:58px;padding-top:18px;border-top:1px solid var(--line);color:#708593;font-size:.62rem;font-weight:750;letter-spacing:.12em;text-transform:uppercase}
+    :focus-visible{outline:3px solid var(--blue);outline-offset:4px}
+    @media(max-width:560px){main{padding:28px 22px}.actions{display:grid}.button{width:100%}footer{margin-top:42px}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="eyebrow">Error / 404</div>
+    <h1>404<span>This page left the set.</span></h1>
+    <p>The address may be outdated or mistyped. The current reel, campaigns, headshots, résumé and representation are all available from the homepage.</p>
+    <div class="actions">
+      <a class="button button-primary" href="/">Return to homepage →</a>
+      <button class="button" type="button" id="back" hidden>Go back</button>
+    </div>
+    <footer>Sergéy Ulyanov · Commercial Actor · Los Angeles</footer>
+  </main>
+  <script>
+    const back = document.querySelector('#back');
+    if (document.referrer) {
+      try {
+        if (new URL(document.referrer).origin === location.origin) {
+          back.hidden = false;
+          back.addEventListener('click', () => history.back());
+        }
+      } catch {}
+    }
+  </script>
+</body>
+</html>

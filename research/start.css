@@ -1,0 +1,19 @@
+.research-page{--research-lime:#b8ff35}
+.research-page .detail-label{color:var(--research-lime)}
+.research-start-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.research-start-card{display:flex;flex-direction:column;gap:16px;padding:30px;border:1px solid #36473b;border-radius:18px;background:#10221a;color:#f3f4e9;text-decoration:none;transition:background .18s,border-color .18s,transform .18s;min-width:0}
+.research-start-card:hover{background:#183022;border-color:var(--research-lime);transform:translateY(-3px)}
+.research-start-card:focus-visible,.research-start-footer a:focus-visible{outline:3px solid var(--research-lime);outline-offset:5px}
+.research-start-number{color:var(--research-lime);font:700 12px/1.6 'Space Mono',monospace;letter-spacing:.025em}
+.research-start-card h3{font-size:clamp(25px,3vw,35px);line-height:1.18;margin:0;letter-spacing:-.035em}
+.research-start-card p{color:#c5d1c7;font-size:16px;line-height:1.7;max-width:58ch;margin:0}
+.research-start-card strong{color:var(--research-lime);font-size:14px;margin-top:auto;padding-top:8px}
+.research-start-footer{display:grid;grid-template-columns:1.5fr 1fr;gap:32px;padding:26px 0 0}
+.research-start-footer p{font-size:15px;line-height:1.75;max-width:72ch;margin:0}
+.research-start-footer>div{display:flex;flex-direction:column;align-items:flex-start;gap:4px}
+.research-start-footer a{color:var(--research-lime);padding:10px 0;font-size:14px;text-underline-offset:5px}
+.research-hero-context>.detail-deck,.research-hero-context>div{min-width:0}
+.research-hero-context>div>.btn{margin-top:24px}
+@media(max-width:680px){.research-start-grid,.research-start-footer{grid-template-columns:1fr}.research-start-card{padding:24px}.research-start-footer{gap:12px}.research-page .detail-deck{font-size:17px;line-height:1.7}}
+@media(prefers-reduced-motion:reduce){.research-start-card{transition:none}.research-start-card:hover{transform:none}}
+@media(max-width:640px){.research-page .detail-nav .detail-nav-cta{position:relative;font-size:0;width:44px;min-width:44px;height:44px;padding:0}.research-page .detail-nav .detail-nav-cta::after{position:absolute;inset:0;display:grid;place-items:center;font-size:22px;color:#071007}}

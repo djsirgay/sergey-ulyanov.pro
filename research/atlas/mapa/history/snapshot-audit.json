@@ -1,0 +1,77 @@
+{
+  "reviewed": "2026-09-08",
+  "scope": "Screening of licensed country-level snapshots within a fixed contemporary Belarus comparison window. This is not vertex-level certification, a complete restoration of MAPA, or a digitization of internal GDL/BSSR boundaries.",
+  "sourceRevision": "62d8f1a03a71f2d3ff17f2d166f7553f256bce68",
+  "displayedYears": [1492, 1600, 1700, 1914, 1938, 1945, 1994],
+  "controlLocations": "Nineteen present-day location coordinates, stored in audit-snapshots.mjs. Modern names and locations are orientation references, not claims that every settlement existed at every date.",
+  "additions": [
+    {
+      "year": 1492,
+      "status": "selected-approximate",
+      "sourceName": "Poland-Lithuania",
+      "localAffiliation": {
+        "en": "Grand Duchy of Lithuania",
+        "be": "Вялікае Княства Літоўскае",
+        "ru": "Великое княжество Литовское"
+      },
+      "widerSourceGrouping": {
+        "en": "Poland and Lithuania — combined source grouping",
+        "be": "Польшча і Літва — аб'яднаная група ў крыніцы",
+        "ru": "Польша и Литва — объединённая группа в источнике"
+      },
+      "politicalContext": "Belarusian locations shown lie in the Grand Duchy, not in the Polish Crown. Casimir IV died in 1492; thereafter different Jagiellonian brothers ruled Poland and Lithuania. Do not call the whole year a single personal union or a Polish-Lithuanian Commonwealth. The source does not separate the Crown and the Grand Duchy geometrically.",
+      "screening": "All 19 control locations intersect the source grouping. The small Teutonic Knights intersection with the modern reference is not independently resolved and must remain neutral rather than becoming an asserted enclave.",
+      "sources": [
+        "https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_17.pdf",
+        "https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf",
+        "https://bip.brpo.gov.pl/pliki/12289971420.pdf",
+        "https://gulevich.net/statiy.files/temushev_gomel.files/Temushev-Gomel.pdf"
+      ]
+    },
+    {
+      "year": 1600,
+      "status": "selected-approximate",
+      "sourceName": "Poland-Llituania",
+      "localAffiliation": {
+        "en": "Grand Duchy of Lithuania within the Polish–Lithuanian Commonwealth",
+        "be": "Вялікае Княства Літоўскае ў складзе Рэчы Паспалітай",
+        "ru": "Великое княжество Литовское в составе Речи Посполитой"
+      },
+      "widerSourceGrouping": {
+        "en": "Polish–Lithuanian Commonwealth",
+        "be": "Рэч Паспалітая",
+        "ru": "Речь Посполитая"
+      },
+      "politicalContext": "The Union of Lublin in 1569 established the Commonwealth, while the Grand Duchy retained a distinct constituent political identity. The source polygon combines the Crown and the Grand Duchy; the local GDL label is historical context, not an independently digitized internal border.",
+      "screening": "All 19 control locations intersect the Commonwealth grouping. The source spelling Poland-Llituania is preserved for reproducibility but should be normalized in display labels. Small source Muscovy fragments at the modern eastern reference edge remain unresolved, not certified political enclaves.",
+      "sources": [
+        "https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_17.pdf",
+        "https://hungarian-geography.hu/inmaps/pdf/Belarus-in-Maps_39.pdf",
+        "https://gulevich.net/statiy.files/temushev_gomel.files/Temushev-Gomel.pdf"
+      ]
+    }
+  ],
+  "additionalCandidates": [
+    {"year": 1400, "status": "rejected-metadata-error", "reason": "The Poland-Lithuania polygon has PARTOF=Riazan. Its grouping and metadata are not trustworthy enough to add a redundant earlier frame."},
+    {"year": 1500, "status": "context-only", "reason": "Homiel changed allegiance during 1500; the annual source does not establish which dated state it represents."},
+    {"year": 1650, "status": "not-selected", "reason": "Belarus control points pass, but the surrounding Smolensk assignment has already failed historical review. Do not imply the regional source is fully verified."},
+    {"year": 1715, "status": "not-selected-continuity", "reason": "Repeats Commonwealth affiliation and does not provide Great Northern War fronts or occupation zones."},
+    {"year": 1783, "status": "rejected-boundary-error", "reason": "Fails the post-1772 Viciebsk transfer check."},
+    {"year": 1800, "status": "context-only", "reason": "Sapoćkin is assigned to Russia although it was Prussian. No invented correcting line is supplied."},
+    {"year": 1815, "status": "not-selected", "reason": "Imperial-level Russian membership alone cannot show the distinct status of Congress Poland near Sapoćkin or date the within-year transition."},
+    {"year": 1880, "status": "not-selected-continuity", "reason": "All 19 locations fall within the Russian Empire; no additional division of Belarusian lands compared with the existing imperial frame is established."},
+    {"year": 1900, "status": "not-selected-continuity", "reason": "All 19 locations fall within the Russian Empire; no additional useful state affiliation compared with 1914."},
+    {"year": 1920, "status": "rejected-anachronism", "reason": "The source uses USSR before its establishment in 1922 and a White Russia outline that does not resolve the shifting, dated 1920 military and Soviet-republic situation."},
+    {"year": 1930, "status": "rejected-republic-outline", "reason": "White Russia includes Smolensk and cannot be presented as a verified BSSR boundary."},
+    {"year": 1960, "status": "not-selected-continuity", "reason": "All 19 locations fall within the USSR; no new Belarusian territorial division beyond the existing postwar frame."},
+    {"year": 2000, "status": "not-selected-continuity", "reason": "Repeats independent Belarus membership rather than adding a historical transition."},
+    {"year": 2010, "status": "not-selected-continuity", "reason": "Repeats independent Belarus membership rather than adding a historical transition."}
+  ],
+  "regionalLabelCorrections": [
+    {"year": 1492, "sourceName": "Imperial Hungary", "en": "Kingdom of Hungary", "be": "Венгерскае каралеўства", "ru": "Венгерское королевство"},
+    {"year": 1600, "sourceName": "Prussia", "en": "Duchy of Prussia", "be": "Прускае герцагства", "ru": "Прусское герцогство", "source": "https://germanhistorydocs.org/en/the-holy-roman-empire-1648-1815/growth-of-brandenburg-prussia-1600-1795"},
+    {"year": 1700, "sourceName": "Prussia", "en": "Brandenburg–Prussia", "be": "Брандэнбург-Прусія", "ru": "Бранденбург-Пруссия", "source": "https://germanhistorydocs.org/en/the-holy-roman-empire-1648-1815/growth-of-brandenburg-prussia-1600-1795"},
+    {"year": 1700, "sourceName": "Austrian Empire", "en": "Habsburg Monarchy", "be": "Манархія Габсбургаў", "ru": "Габсбургская монархия", "source": "https://www.habsburger.net/en/events/foundation-empire-austria-1804"},
+    {"years": [1600, 1700], "sourceName": "Tsardom of Muscovy", "en": "Tsardom of Russia", "be": "Рускае царства", "ru": "Русское царство", "note": "Tsardom of Muscovy is also an established scholarly term; this is a display normalization, not correction of an anachronism.", "source": "https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118455074.wbeoe425"}
+  ]
+}

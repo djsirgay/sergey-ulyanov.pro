@@ -1,7 +1,13 @@
 User-agent: *
 Allow: /
-Disallow: /version-review/
-Disallow: /base-site/
-Disallow: /refinement-preview/
-Disallow: /site-fragments/
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
 Sitemap: https://sergey-ulyanov.pro/sitemap.xml
