@@ -1,0 +1,72 @@
+@import url("styles-v12.css?v=12");
+
+/* Commercial actor site refresh — August 2026 */
+.brand-marquee-head span{letter-spacing:.04em}
+.marquee-track{animation-duration:52s;gap:12px}
+.brand-chip{min-width:176px;height:76px;padding:0 20px;line-height:1.05;text-align:center;white-space:nowrap}
+.brand-chip.world-tanks,.brand-chip.world-warplanes{background:#20282c;color:#fff;font-size:.87rem}
+.brand-chip.socgen{background:linear-gradient(to bottom,#ed1c24 0 47%,#fff 47% 53%,#151515 53% 100%);color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.75)}
+.brand-chip.epam{background:#f4f6f6;color:#303438;border:1px solid #22bfd0;font-size:1.2rem;letter-spacing:-.04em}
+.brand-chip.windows{background:#0078d4;color:#fff}
+.brand-chip.xbox{background:#107c10;color:#fff;font-size:1.15rem}
+.brand-chip.ps5{background:#101827;color:#fff;font-size:1.15rem}
+.brand-chip.nintendo{background:#e60012;color:#fff;font-size:.8rem}
+.brand-chip.intuit-dome{background:#25335a;color:#fff}
+.brand-chip.apple-vision{background:linear-gradient(135deg,#111,#626262);color:#fff}
+.brand-chip.samsung{font-size:.92rem}
+
+.work-intro p{max-width:850px}
+.campaign-turbotax{grid-column:span 5;grid-row:span 2}
+.campaign-turbotax img{object-position:center center}
+.campaign-turbotax::before{display:none}
+.campaign-card::after{inset:50% 0 0;background:linear-gradient(transparent,rgba(5,8,7,.94))}
+.campaign-caption{left:16px;right:16px;bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,.72)}
+.campaign-caption strong{font-size:1.17rem}
+.campaign-caption span{font-size:.69rem}
+
+.roles-board{grid-template-columns:repeat(3,1fr);gap:12px}
+.role-card.visual-role{position:relative;min-height:232px;padding:0;background:#101615!important;color:#fff;border-color:rgba(15,20,18,.18)}
+.role-card.visual-role>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .3s ease,filter .3s ease}
+.role-card.visual-role:hover>img{transform:scale(1.018);filter:saturate(1.05)}
+.role-card.visual-role::before{content:"";position:absolute;z-index:1;inset:35% 0 0;background:linear-gradient(transparent,rgba(5,8,7,.94))}
+.role-card.visual-role::after{z-index:3;color:#fff;right:13px;bottom:11px}
+.role-copy{position:absolute;z-index:2;left:15px;right:15px;bottom:14px;padding-right:62px;text-shadow:0 2px 12px rgba(0,0,0,.75)}
+.role-card.visual-role small,.role-card.visual-role strong,.role-card.visual-role p{position:static;margin-left:0;margin-right:0}
+.role-card.visual-role small{color:rgba(255,255,255,.82)}
+.role-card.visual-role strong{margin-top:5px;font-size:1.06rem}
+.role-card.visual-role p{margin-top:4px;color:rgba(255,255,255,.82);font-size:.68rem}
+.role-card.vision-role>img{object-position:center}
+.role-card.epam-role>img{object-position:center}
+.role-card.warplanes-role>img{object-position:center}
+.role-card.ericsson-role>img{object-position:center}
+.role-card.clippers-role>img{object-position:center}
+
+/* All current casting photos are visible; navigation lives only in the lightbox. */
+.casting-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(12px,1.8vw,24px);margin-top:28px}
+.casting-card{position:relative;margin:0;aspect-ratio:4/5;overflow:hidden;background:#e5e2db;border:1px solid var(--line);cursor:zoom-in}
+.casting-card img{width:100%;height:100%;object-fit:cover;transition:transform .28s ease}
+.casting-card:hover img{transform:scale(1.012)}
+.casting-card.fullbody img{object-fit:contain;background:#e8e4dc}
+.casting-card figcaption{position:absolute;left:11px;right:11px;bottom:11px;display:flex;justify-content:space-between;gap:10px;padding:10px 11px;background:rgba(10,10,10,.78);color:#fff;font-size:.61rem;font-weight:800;letter-spacing:.09em;text-transform:uppercase;backdrop-filter:blur(8px);pointer-events:none}
+.casting-card figcaption span:last-child{color:#d8ff42}
+.lightbox-meta{position:absolute;left:20px;bottom:18px;z-index:6;padding:8px 10px;background:rgba(0,0,0,.65);color:#fff;font-size:.66rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase}
+
+.mobile-quick{background:#111417!important;border:1px solid #5d6266!important;box-shadow:0 16px 48px rgba(0,0,0,.62)!important}
+.mobile-quick a:first-child{background:#d8ff42!important;color:#111!important}
+
+@media(max-width:900px){
+  .campaign-turbotax{grid-column:span 1;grid-row:span 2}
+  .roles-board{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:650px){
+  .marquee-track{animation-duration:34s}
+  .brand-chip{min-width:145px;height:66px;font-size:.75rem}
+  .brand-chip.epam,.brand-chip.xbox,.brand-chip.ps5{font-size:.94rem}
+  .campaign-wot,.campaign-turbotax,.campaign-lays,.campaign-samsung,.campaign-socgen{grid-column:auto;grid-row:auto;min-height:278px}
+  .campaign-wot,.campaign-turbotax{min-height:330px}
+  .roles-board{grid-template-columns:1fr}
+  .role-card.visual-role{min-height:240px}
+  .casting-grid{grid-template-columns:1fr;gap:16px}
+  .casting-card{aspect-ratio:4/5}
+  body{padding-bottom:82px}
+}

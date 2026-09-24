@@ -1,0 +1,30 @@
+name: Validate and package independent actor site
+on:
+  pull_request:
+  push:
+    branches: [main]
+    paths:
+      - 'actor-final/**'
+      - 'tests/site-boundaries.test.mjs'
+      - '.github/workflows/actor-artifact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: actor-artifact-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  actor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate site separation
+        run: node --test tests/site-boundaries.test.mjs
+      - name: Build actor-only artifact
+        run: node actor-final/build.mjs --out "$RUNNER_TEMP/actor-site"
+      - name: Store independently deployable actor site
+        uses: actions/upload-artifact@v4
+        with:
+          name: actor-site
+          path: ${{ runner.temp }}/actor-site
+          retention-days: 14
