@@ -69,6 +69,8 @@ jobs:
             --include 'LICENSE*.md' \
             --exclude '*.md'
           node scripts/build-legacy-research-redirects.mjs --artifact _site
+          python3 scripts/finalize-seo.py --artifact _site
+          cmp index.html _site/index.html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -1,39 +1,22 @@
-# Two websites, one canonical source branch
+# Independent website sources and SEO publication
 
-## Source boundary
+## Ownership (since 2026-09-28)
 
-- Repository: djsirgay/sergey-ulyanov.pro. Canonical source branch: main.
-- Professional site: root index.html, site-fragments/, site.js, professional styles and routes. Existing GitHub Pages build stays unchanged.
-- Actor site: actor-final/. Current actor HTML and existing runtime assets were recovered byte-for-byte from gh-pages@288fc2154bdac418cd8925eb1b62446eb60df8d3 (the actor tree from the September 20 update). It contains Snapchat and the explicit Intuit TurboTax / The Tax Breakup credit.
-- actor-final-preview/, actor-preview/, actor-preview-v2/ are compatibility paths only. Do not edit them as independent actor sources.
-- gh-pages is not an editing source. Do not restore main wholesale from an old gh-pages checkout. Do not publish a branch merely because it contains a newer actor edit.
+- Professional site: djsirgay/sergey-ulyanov.pro, main, GitHub Pages. Root index.html, site-fragments/, site.js and professional routes belong only to sergey-ulyanov.pro.
+- Actor site: djsirgay/heyitissergey, main, existing Vercel project heyitissergey. Root Directory is EMPTY; build is node build.mjs; output is dist. The actual actor domain was verified on actor commit d4ac85d72d1f3828520a9809788bea280a24bae1 after the split.
+- Never deploy this repository to the actor domain or restore an old gh-pages checkout over main. Actor changes belong only in the separate actor repository.
+- actor-final/, actor-final-preview/, actor-preview/, actor-preview-v2/ are archival sources only. Keep their bytes for recovery; never use them as the live actor source. The historical actor-artifact workflow only packages the archive, not the actual actor site.
 
-## Independent actor deployment
+## SEO artifact finalization
 
-The actor directory owns its own build and output. `node actor-final/build.mjs --out NEW_DIRECTORY` produces only actor files; it cannot copy professional routes and does not mutate either source. The Vercel project settings required are:
+The professional Pages workflow runs build-production.py, prepares _site, generates the existing research redirects, THEN runs scripts/finalize-seo.py --artifact _site.
 
-- Git repository: djsirgay/sergey-ulyanov.pro
-- Production branch: main
-- Root Directory: actor-final
-- Framework: Other
-- Build Command: node build.mjs
-- Output Directory: dist
-- Domains: heyitissergey.com and its existing www alias
+The finalizer replaces published HTML under the four legacy actor directories with an immediate HTML redirect to heyitissergey.com and a matching canonical. Query parameters and supported section anchors are preserved. GitHub Pages is static: these are zero-delay meta-refresh/client redirects, NOT server-side HTTP 301 responses. Original source files, assets and the professional homepage remain unchanged.
 
-Do not attach sergey-ulyanov.pro to this Vercel project. Do not add rewrites or runtime fetches to the professional site. The actor build uses its own canonical URL and emits deployment.json with a content hash and source commit.
+The published sitemap is filtered against the FINAL artifact: only existing professional HTML with a matching canonical and no noindex or refresh remains. This removes legacy research paths pointing to research.sergey-ulyanov.pro and any other noncanonical, missing, or redirected entries. Source dates are retained; no fabricated lastmod dates are added. The source sitemap is input; the deployed sitemap is the checked result.
 
-The actor-artifact workflow validates and packages an independently deployable actor-site artifact. It does NOT deploy to Vercel and does NOT alter DNS. The connected Vercel team returned no projects on September 23, 2026, so changing the existing heyitissergey.com project's settings and redeploying requires authorization to that actual team/project. Until then, do not claim the actor domain is updated merely because the GitHub preview is correct.
+## Verification and safeguards
 
-## Publishing safety
+Run python3 scripts/build-production.py, node scripts/check-research.mjs, and node --test tests/*.test.mjs. SEO regression tests exercise redirect targets, legacy anchors/query strings, preservation of source/assets, sitemap filtering and idempotence. The deployment step compares source and artifact index.html byte-for-byte.
 
-Both sources now live on main, so a professional build cannot silently omit the latest actor compatibility files. Regression tests guard current actor campaigns, current professional homepage, isolated actor output, local dependencies, non-mutation, and rejection of production actor builds from gh-pages.
-
-GitHub Pages should ultimately use GitHub Actions only and the github-pages environment should allow main only. Those repository-admin settings are NOT changed by these files and must be verified separately. Legacy branch publishing can still bypass workflow validation until disabled.
-
-## Required completion checks
-
-1. Run python3 scripts/build-production.py and node --test tests/*.test.mjs.
-2. Build the standalone actor artifact and verify deployment.json against the intended commit.
-3. Confirm the actual heyitissergey.com domain contains Snapchat and Intuit TurboTax · The Tax Breakup, not only the /actor-final/ compatibility URL.
-4. Check both domains on desktop and mobile. Do not treat HTTP 200 as version verification.
-5. Never delete or reset an unmerged actor change: compare and preserve it before updating source or deployment branches.
+After publication, verify the actual two domains; a successful GitHub preview is not proof of Vercel production. Do not claim Google indexing or ranking based on HTTP 200. GitHub Pages environment restrictions and branch protection require separate administrative verification; this SEO fix does not change or claim them.
