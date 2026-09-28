@@ -3,12 +3,12 @@
 ## Site ownership and publishing
 
 - Read SITE_DEPLOYMENT.md before any publishing change.
-- main is the canonical editing branch for BOTH websites. Never make actor edits directly on gh-pages or restore a whole legacy branch to fix one page.
-- The professional homepage and professional routes belong to sergey-ulyanov.pro.
-- actor-final/ is the actor source for heyitissergey.com. It has its own build.mjs, vercel.json, and dist output. Keep the two outputs separate. Do not add runtime dependencies between domains.
-- Preserve current actor content (including Snapchat and the explicit The Tax Breakup credit) and professional content together. Run tests/site-boundaries.test.mjs before publishing.
-- Retain actor preview paths for compatibility, but do not treat them as separate editing sources.
-- Publishing a GitHub preview does not prove that heyitissergey.com was deployed. Verify the actual domain and source commit. Hosting authorization and branch-protection settings must be checked explicitly, not assumed from documentation.
+- This repository's main is the source ONLY for the professional website sergey-ulyanov.pro.
+- The actor site heyitissergey.com now belongs to djsirgay/heyitissergey, main, repository root. Never publish this repository to that Vercel project.
+- actor-final/, actor-final-preview/, actor-preview/, actor-preview-v2/ are archival copies, not editing sources. Preserve them; published HTML is converted to redirects by scripts/finalize-seo.py.
+- Never edit gh-pages or restore a whole legacy branch to fix one page. Never introduce runtime or build-time dependencies between the two websites.
+- Run tests/site-boundaries.test.mjs and tests/seo-artifact.test.mjs before publishing. Finalize SEO only on a disposable artifact after generating research redirects, never on the source tree.
+- Verify real domains after deployment. Hosting authorization and branch-protection settings must be checked explicitly, not assumed from documentation.
 
 ## Research website working agreements
 
