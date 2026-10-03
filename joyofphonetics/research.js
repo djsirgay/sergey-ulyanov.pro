@@ -9,11 +9,11 @@ function sampleList(){
  return [...priority,...rest]
 }
 function refreshSelect(){
- const s=document.getElementById("researchSample"),cur=s.value;
+ const s=document.getElementById("researchSample"),cur=JP.state.researchSample||s.value;
  const rows=sampleList();s.innerHTML='<option value="">Choose sample</option>'+rows.map(JP.sampleOption).join("");if(rows.some(x=>x.id===cur))s.value=cur
 }
 function loadAnnotation(){
- const id=document.getElementById("researchSample").value,r=JP.record(id),a=getAnn(id);
+ const id=document.getElementById("researchSample").value;JP.state.researchSample=id;JP.save();const r=JP.record(id),a=getAnn(id);
  document.getElementById("researchSourceCard").innerHTML=JP.sourceCard(r);
  document.getElementById("annRhoticity").value=a.rhoticity||"";document.getElementById("annRhythm").value=a.rhythm||"";document.getElementById("annTh").value=a.th||"";document.getElementById("annR").value=a.rQuality||"";document.getElementById("annVowels").value=a.vowels||"";document.getElementById("annConsonants").value=a.consonants||"";document.getElementById("annProsody").value=a.prosody||"";document.getElementById("annSocio").value=a.socio||"";document.getElementById("annConfidence").value=a.confidence||"";document.getElementById("annReview").checked=!!a.review
 }
