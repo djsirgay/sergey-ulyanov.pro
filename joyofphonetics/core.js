@@ -1,7 +1,7 @@
 (()=>{"use strict";
 const KEY="joyofphonetics-v4";
 const defaults={favorites:[],lab:[],annotations:{},sessions:[],activity:[],coder:"Sergey",coachDraft:{},blind:false};
-const JP=window.JP={idea:[],gmu:[],all:[],byId:new Map(),state:{...defaults},ready:false};
+const JP=window.JP={idea:[],gmu:[],all:[],byId:new Map(),state:{...defaults},ready:false,metaCache:new Map()};
 function loadLocal(){try{const raw=localStorage.getItem(KEY);if(raw)JP.state={...defaults,...JSON.parse(raw)}}catch(e){}}
 function save(){localStorage.setItem(KEY,JSON.stringify(JP.state))}
 function esc(v){return String(v??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
@@ -17,6 +17,22 @@ function download(name,text,type="application/json"){const blob=new Blob([text],
 async function copyText(text){try{await navigator.clipboard.writeText(text);return true}catch(e){const ta=document.createElement("textarea");ta.value=text;document.body.appendChild(ta);ta.select();const ok=document.execCommand("copy");ta.remove();return ok}}
 function normalizedRecord(r,source){if(source==="idea")return {...r,source_kind:"idea",search_blob:[r.label,r.country,r.area,r.region,r.title,r.description].filter(Boolean).join(" ").toLowerCase()};return {...r,source_kind:"gmu",region:"GMU standardized corpus",country:"",area:r.native_language,search_blob:[r.label,r.native_language,r.title,r.description].filter(Boolean).join(" ").toLowerCase()}}
 async function loadArchives(){const [a,b]=await Promise.all([fetch("./archive-index.json").then(r=>{if(!r.ok)throw new Error("IDEA index failed");return r.json()}),fetch("./gmu-index.json").then(r=>{if(!r.ok)throw new Error("GMU index failed");return r.json()})]);JP.idea=(a.records||[]).map(r=>normalizedRecord(r,"idea"));JP.gmu=(b.records||[]).map(r=>normalizedRecord(r,"gmu"));JP.all=[...JP.idea,...JP.gmu];JP.byId=new Map(JP.all.map(r=>[r.id,r]));JP.ready=true;document.getElementById("statIdea").textContent=JP.idea.length.toLocaleString();document.getElementById("statGmu").textContent=JP.gmu.length.toLocaleString();document.getElementById("statLang").textContent=new Set(JP.gmu.map(x=>x.native_language)).size.toLocaleString();updateLabCount()}
+
+async function fetchGmuMeta(r){
+ if(!r||r.source_kind!=="gmu")return null;
+ if(JP.metaCache.has(r.id))return JP.metaCache.get(r.id);
+ const where=`"filename"='${r.slug}.mp3'`;
+ const url="https://datasets-server.huggingface.co/filter?dataset=HamdanXI%2Fspeech-accent-archive&config=default&split=train&where="+encodeURIComponent(where)+"&offset=0&length=1";
+ try{
+  const res=await fetch(url);if(!res.ok)throw new Error("metadata lookup failed");
+  const j=await res.json(),m=j.rows?.[0]?.row||null;JP.metaCache.set(r.id,m);return m
+ }catch(e){JP.metaCache.set(r.id,null);return null}
+}
+function metaSummary(m){
+ if(!m)return "Detailed speaker metadata not available in the derived index.";
+ return [m.sex&&String(m.sex),Number.isFinite(m.age)&&`age ${m.age}`,m.birthplace&&`born ${m.birthplace}`,Number.isFinite(m.age_onset)&&`English onset ${m.age_onset}`,m.country&&`country ${m.country}`].filter(Boolean).join(" · ")
+}
+
 function sampleOption(r){const meta=r.source_kind==="gmu"?`GMU · ${r.native_language}`:`IDEA · ${r.area||r.country}`;return `<option value="${esc(r.id)}">${esc(r.label)} — ${esc(meta)}</option>`}
 function sourceCard(r){if(!r)return '<div class="sourcecard empty">Choose a sample.</div>';const meta=r.source_kind==="gmu"?`${r.native_language} · standardized passage · playable here`:`${r.area||r.country} · ${r.region} · opens at IDEA`;return `<strong>${esc(r.label)}</strong><br><span>${esc(meta)}</span><br><a href="${esc(r.source_url)}" target="_blank" rel="noreferrer">Open source ↗</a>`}
 function sharePayload(obj){return btoa(unescape(encodeURIComponent(JSON.stringify(obj))))}
@@ -24,5 +40,5 @@ function parseShare(s){try{return JSON.parse(decodeURIComponent(escape(atob(s)))
 function checkSharedSession(){const h=location.hash.match(/^#session=(.+)$/);if(!h)return;const data=parseShare(h[1]);if(!data)return;JP.state.coachDraft={...JP.state.coachDraft,...data};save();setTimeout(()=>{go("coach");window.JPCoach?.render()},400)}
 loadLocal();
 document.addEventListener("DOMContentLoaded",async()=>{document.querySelectorAll(".tab").forEach(b=>b.addEventListener("click",()=>go(b.dataset.view)));document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));const coder=document.getElementById("coderSelect");coder.value=JP.state.coder||"Sergey";coder.addEventListener("change",()=>{JP.state.coder=coder.value;save();document.getElementById("activeCoderLabel").textContent=coder.value;log("coder:switch",coder.value);window.JPResearch?.render()});document.getElementById("activeCoderLabel").textContent=JP.state.coder;try{await loadArchives();window.JPDiscover?.init();window.JPLab?.init();window.JPCoach?.init();window.JPResearch?.init();checkSharedSession()}catch(e){document.getElementById("resultCount").textContent="Could not load archive indexes";document.getElementById("resultHint").textContent=e.message}if("serviceWorker"in navigator)navigator.serviceWorker.register("./sw.js").catch(()=>{})});
-Object.assign(JP,{save,esc,title,record,log,favorite,addLab,removeLab,go,download,copyText,sampleOption,sourceCard,sharePayload,parseShare,updateLabCount});
+Object.assign(JP,{save,esc,title,record,log,favorite,addLab,removeLab,go,download,copyText,sampleOption,sourceCard,sharePayload,parseShare,updateLabCount,fetchGmuMeta,metaSummary});
 })();
