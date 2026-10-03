@@ -6,13 +6,13 @@ function slot(r,i){
  const blind=JP.state.blind&&!blindRevealed;
  const title=blind?`Reference ${String.fromCharCode(65+i)}`:r.label;
  const meta=blind?"Identity hidden for ear training":r.source_kind==="gmu"?`${r.native_language} · GMU standardized sample`:`${r.area||r.country} · IDEA`;
- return `<article class="labslot"><span class="sourcepill ${r.source_kind}">${r.source_kind==="gmu"?"GMU":"IDEA"}</span><h3>${JP.esc(title)}</h3><p class="resultmeta">${JP.esc(meta)}</p>${r.source_kind==="gmu"?`<audio controls preload="metadata" src="${JP.esc(r.audio_url)}"></audio><div class="slotrate" data-rate-for="${JP.esc(r.id)}"></div>`:`<p class="muted">IDEA audio remains on the source page.</p>`}<div class="resultactions"><a class="btn small" href="${JP.esc(r.source_url)}" target="_blank" rel="noreferrer">Source ↗</a><button class="btn small" data-remove-lab="${JP.esc(r.id)}">Remove</button></div></article>`;
+ return `<article class="labslot"><span class="sourcepill ${r.source_kind}">${r.source_kind==="gmu"?"GMU":"IDEA"}</span><h3>${JP.esc(title)}</h3><p class="resultmeta">${JP.esc(meta)}</p><p class="muted" data-labmeta="${JP.esc(r.id)}"></p>${r.source_kind==="gmu"?`<audio controls preload="metadata" src="${JP.esc(r.audio_url)}"></audio><div class="slotrate" data-rate-for="${JP.esc(r.id)}"></div>`:`<p class="muted">IDEA audio remains on the source page.</p>`}<div class="resultactions"><a class="btn small" href="${JP.esc(r.source_url)}" target="_blank" rel="noreferrer">Source ↗</a><button class="btn small" data-remove-lab="${JP.esc(r.id)}">Remove</button></div></article>`;
 }
 function render(){
  const rows=JP.state.lab.map(JP.record).filter(Boolean);
  document.getElementById("labSlots").innerHTML=rows.length?rows.map(slot).join(""):'<div class="panel">Add references from Discover. GMU samples can play directly here; IDEA samples open at the source.</div>';
  document.querySelectorAll("[data-remove-lab]").forEach(b=>b.onclick=()=>JP.removeLab(b.dataset.removeLab));
- document.querySelectorAll(".labslot audio").forEach(a=>rateControl(a,a.closest(".labslot").querySelector(".slotrate")));
+ document.querySelectorAll(".labslot audio").forEach(a=>rateControl(a,a.closest(".labslot").querySelector(".slotrate")));rows.forEach(async r=>{if(r.source_kind!=="gmu")return;const m=await JP.fetchGmuMeta(r),el=document.querySelector(`[data-labmeta="${r.id}"]`);if(el)el.textContent=JP.metaSummary(m)});
  document.getElementById("blindPanel").hidden=!JP.state.blind;
  document.getElementById("blindToggle").textContent=JP.state.blind?"Exit blind mode":"Blind ear-test mode";
  if(!JP.state.blind)blindRevealed=false;
