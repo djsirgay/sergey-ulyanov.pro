@@ -1,0 +1,18 @@
+{
+  "name": "Joy of Phonetics — Global English Accent Lab",
+  "short_name": "Joy of Phonetics",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f4f0e8",
+  "theme_color": "#f4f0e8",
+  "description": "Source-grounded accent discovery, comparison, coaching, and research workspace.",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
