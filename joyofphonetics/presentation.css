@@ -1,0 +1,147 @@
+/* One app, two art directions. The source artwork is supplied by Sergey. */
+:root {
+  --paper: #f7efdf;
+  --panel: #fffaf1;
+  --ink: #1c211c;
+  --muted: #54584f;
+  --line: #d2caba;
+  --warm: #b73816;
+  --tint: #e7ebdf;
+  --nav: #f7efdf;
+  --accent: #d9401c;
+  --display: 'Helvetica Neue', Arial, sans-serif;
+}
+html[data-theme="book"] {
+  --paper: #8e94cc;
+  --panel: #f3f1fc;
+  --ink: #17191f;
+  --muted: #282a38;
+  --line: #676c9d;
+  --warm: #54170f;
+  --tint: #dcdff4;
+  --nav: #bfc3e6;
+  --accent: #e7422e;
+}
+[hidden] { display: none !important; }
+button, a, input, select, textarea { touch-action: manipulation; }
+:focus-visible { outline: 3px solid var(--ink); outline-offset: 4px; }
+.topbar { grid-template-columns: auto minmax(0, 1fr) auto; background: var(--nav); gap: 14px; }
+.brand { min-width: 154px; }
+.brand-home { display: block; border: 0; padding: 0; background: transparent; cursor: pointer; }
+.brand-home img { display: block; width: 144px; height: 72px; object-fit: contain; }
+.brand strong { font-size: 13px; text-transform: uppercase; letter-spacing: .09em; }
+.header-tools { display: flex; gap: 12px; align-items: center; }
+.theme-switch { display: flex; gap: 2px; padding: 3px; border: 1px solid var(--line); border-radius: 999px; }
+.theme-switch button { border: 0; border-radius: 999px; padding: 6px 10px; background: transparent; cursor: pointer; font-size: 11px; font-weight: 750; }
+.theme-switch button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+.tab { font-size: 12px; padding: 9px; }
+.tab.active, .tab:hover { background: var(--tint); }
+.shell { max-width: 1420px; }
+.hero { grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: 48px; padding: 42px 0 30px; }
+.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 5.5vw, 78px); line-height: 1.04; letter-spacing: -.045em; }
+.hero h1 em { font-style: normal; font-weight: inherit; color: var(--warm); }
+html[data-theme="book"] .hero h1 em { color: #882017; }
+.hero .lede { max-width: 640px; font-size: 17px; color: var(--ink); line-height: 1.65; }
+.heroactions { gap: 10px; margin-top: 25px; }
+.hero .btn { padding: 12px 17px; }
+.hero .textbtn { display: inline-block; margin-top: 20px; font-size: 12px; padding: 0; }
+.hero-art { margin: 0; justify-self: end; width: 100%; max-width: 630px; }
+.hero-art img { display: block; width: 100%; height: auto; background: transparent; border: 0; border-radius: 0; box-shadow: none; }
+.archive-strip { display: grid; grid-template-columns: repeat(3, minmax(100px, .6fr)) minmax(220px, 1.5fr); align-items: center; gap: 18px; padding: 18px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 24px; }
+.archive-strip .stat { background: transparent; padding: 0; }
+.archive-strip .stat strong { font-family: var(--display); font-size: 32px; font-weight: 800; }
+.archive-strip p { font-size: 11px; color: var(--muted); margin: 0; }
+.feature-path { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 24px 0; }
+.feature-path button { display: flex; align-items: center; gap: 15px; text-align: left; border: 1px solid var(--line); border-radius: 12px; background: var(--tint); padding: 18px; cursor: pointer; }
+.feature-path button > span:first-child { font: 800 28px/1 var(--display); color: var(--warm); }
+.feature-path strong { display: block; font-size: 14px; }
+.feature-path small { display: block; font-size: 12px; margin-top: 4px; color: var(--muted); }
+.btn { text-decoration: none; display: inline-block; }
+.btn.primary { background: var(--ink); color: #fff; }
+.resultcard { background: var(--panel); }
+.agreement, .stat { background: var(--tint); }
+h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.025em; }
+.course-intro { max-width: 720px; }
+.course-grid { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 22px; align-items: start; }
+.course-menu { display: flex; flex-direction: column; gap: 8px; }
+.course-menu button { text-align: left; padding: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px; cursor: pointer; }
+.course-menu button[aria-pressed="true"] { background: var(--ink); color: white; }
+.course-menu strong, .course-menu small { display: block; }
+.course-menu small { margin-top: 5px; font-size: 11px; }
+.lesson { padding: 30px; min-height: 360px; }
+.lesson h3 { font-size: 31px; }
+.lesson li { margin: 12px 0; }
+.lesson .lesson-prompt { border-left: 3px solid var(--warm); padding: 7px 0 7px 18px; margin: 22px 0; font-size: 18px; }
+.lesson .lesson-note { font-size: 12px; color: var(--muted); }
+.louis-card { display: grid; grid-template-columns: 196px minmax(0, 1fr) minmax(240px, 1fr); gap: 28px; align-items: center; padding: 32px; margin-top: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; }
+.louis-portrait { position: relative; width: 180px; height: 220px; isolation: isolate; justify-self: center; }
+.louis-portrait::before { content: ''; position: absolute; inset: -12px -10px 8px; border-radius: 46% 54% 61% 39% / 58% 40% 60% 42%; background: #b8b1a5; transform: rotate(-12deg); z-index: -1; }
+html[data-theme="book"] .louis-portrait::before { background: #c5c8df; }
+.louis-portrait img { display: block; width: 180px; height: 220px; object-fit: cover; object-position: 50% 29%; border-radius: 49% 51% 47% 53% / 44% 45% 55% 56%; }
+.louis-card h3 { font-family: var(--display); font-size: 30px; font-weight: 800; }
+.louis-card p { font-size: 13px; }
+.louis-card .book-links { border-left: 1px solid var(--line); padding-left: 28px; }
+.book-links a { font-weight: 750; text-underline-offset: 4px; }
+.book-links small { display: block; font-size: 11px; margin-top: 6px; color: var(--muted); }
+.prototype-label { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; margin-bottom: 5px; }
+@media (min-width: 1600px) { .hero { padding-top: 50px; } }
+@media (max-width: 1150px) {
+  .topbar { grid-template-columns: 1fr auto; }
+  .tabs { grid-column: 1/-1; grid-row: 2; justify-content: flex-start; }
+  .header-tools { grid-column: 2; grid-row: 1; }
+  .hero { grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr); gap: 28px; }
+  .hero h1 { font-size: clamp(48px, 6vw, 66px); }
+  .archive-strip { grid-template-columns: repeat(3, 1fr); }
+  .archive-strip p { grid-column: 1/-1; }
+  .louis-card { grid-template-columns: 166px minmax(0, 1fr); }
+  .louis-portrait, .louis-portrait img { width: 150px; height: 184px; }
+  .louis-card .book-links { grid-column: 1/-1; padding: 18px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+@media (max-width: 760px) {
+  .hero { grid-template-columns: 1fr; gap: 24px; padding-top: 28px; }
+  .hero-art { justify-self: center; width: min(100%, 530px); }
+  .hero h1 { font-size: clamp(46px, 9vw, 64px); }
+  .hero .lede { font-size: 16px; }
+  .feature-path { grid-template-columns: 1fr; }
+  .feature-path button { padding: 14px 18px; }
+  .course-grid { grid-template-columns: 1fr; }
+  .course-menu { flex-direction: row; gap: 6px; }
+  .course-menu button { flex: 1; padding: 12px 8px; min-width: 0; }
+  .course-menu strong { font-size: 12px; }
+  .course-menu small { display: none; }
+  .lesson { padding: 20px; }
+}
+@media (max-width: 480px) {
+  .topbar { gap: 9px; }
+  .brand { gap: 6px; min-width: 0; }
+  .brand-home img { width: 118px; height: 59px; }
+  .brand strong { font-size: 10px; letter-spacing: .03em; }
+  .header-tools { gap: 6px; }
+  .header-tools { flex-direction: column; align-items: flex-end; }
+  .profilebox { display: flex; }
+  .profilebox select { padding: 4px 8px; }
+  .theme-switch button { padding: 6px 8px; }
+  .tabs { gap: 0; }
+  .tab { padding: 8px; font-size: 11px; }
+  .louis-card { grid-template-columns: 110px minmax(0, 1fr); padding: 24px 18px; gap: 18px; }
+  .louis-portrait, .louis-portrait img { width: 100px; height: 134px; }
+  .louis-card h3 { font-size: 25px; }
+  .louis-card p { font-size: 12px; }
+  .archive-strip { gap: 10px; }
+  .archive-strip .stat strong { font-size: 28px; }
+  .archive-strip .stat span { font-size: 9px; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+/* Readable supporting copy in both palettes, including inherited app controls. */
+.brand strong, .brand span, .tab, .profilebox, .theme-switch button,
+.eyebrow, .hero .textbtn, .hero-art figcaption, .archive-strip p,
+.archive-strip .stat span, .feature-path small, .course-menu small,
+.course-menu strong, .lesson .lesson-note, .louis-card p, .book-links small,
+.prototype-label, .resulthead span, .resultmeta, .resultdesc, .sourcepill,
+.localbadge, .sourcecredit, .muted, .panel label, .sourcecard, .notice,
+.rate, .ipaTools > span, .historyitem, .queueitem, .activityitem,
+.metric span, .looptools [data-loopread], .sourcecard small, footer {
+  font-size: 14px;
+}
+.btn.small, .chip, .featurechips button, .lexsets button { font-size: 14px; }

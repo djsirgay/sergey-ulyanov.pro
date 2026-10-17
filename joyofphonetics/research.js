@@ -20,11 +20,11 @@ function loadAnnotation(){
 function saveAnnotation(){
  const id=document.getElementById("researchSample").value;if(!id){alert("Choose a sample first.");return}
  const a={rhoticity:document.getElementById("annRhoticity").value,rhythm:document.getElementById("annRhythm").value,th:document.getElementById("annTh").value,rQuality:document.getElementById("annR").value,vowels:document.getElementById("annVowels").value,consonants:document.getElementById("annConsonants").value,prosody:document.getElementById("annProsody").value,socio:document.getElementById("annSocio").value,confidence:document.getElementById("annConfidence").value,review:document.getElementById("annReview").checked,updatedAt:new Date().toISOString(),coder:JP.state.coder};
- setAnn(id,a);JP.log("research:annotation",`${JP.state.coder} · ${id}`);render()
+ setAnn(id,a);JP.log("research:annotation",`${JP.coderLabel(JP.state.coder)} · ${id}`);render()
 }
 function metrics(){
  const a=Object.values(coderMap()),review=a.filter(x=>x.review).length,common=commonSamples().length;
- document.getElementById("researchMetrics").innerHTML=[[JP.idea.length,"IDEA indexed"],[JP.gmu.length,"GMU playable"],[a.length,`${JP.state.coder} coded`],[review,"Needs review"],[common,"Dual-coded"]].map(([n,l])=>`<div class="metric"><strong>${Number(n).toLocaleString()}</strong><span>${JP.esc(l)}</span></div>`).join("")
+ document.getElementById("researchMetrics").innerHTML=[[JP.idea.length,"IDEA indexed"],[JP.gmu.length,"GMU indexed"],[a.length,`${JP.coderLabel(JP.state.coder)} coded`],[review,"Needs review"],[common,"Paired local profiles"]].map(([n,l])=>`<div class="metric"><strong>${Number(n).toLocaleString()}</strong><span>${JP.esc(l)}</span></div>`).join("")
 }
 function commonSamples(){const A=coderMap("Sergey"),B=coderMap("Louis");return Object.keys(A).filter(id=>B[id])}
 function kappaFor(field){
@@ -33,18 +33,18 @@ function kappaFor(field){
  const match=pairs.filter(([a,b])=>a===b).length,po=match/n,ca={},cb={};
  pairs.forEach(([a,b])=>{ca[a]=(ca[a]||0)+1;cb[b]=(cb[b]||0)+1});
  const cats=new Set([...Object.keys(ca),...Object.keys(cb)]);let pe=0;cats.forEach(c=>pe+=(ca[c]||0)/n*(cb[c]||0)/n);
- const k=(1-pe)===0?1:(po-pe)/(1-pe);return {n,po,kappa:k}
+ const k=(1-pe)===0?null:(po-pe)/(1-pe);return {n,po,kappa:k}
 }
 function agreement(){
  const ids=commonSamples(),r=kappaFor("rhoticity"),t=kappaFor("rhythm");
  const fmt=x=>x===null?"—":(Math.round(x*100)/100).toFixed(2);
- document.getElementById("agreementBox").innerHTML=`<strong>${ids.length}</strong> dual-coded samples.<br><small>Rhoticity: n=${r.n}, observed agreement ${r.po===null?"—":Math.round(r.po*100)+"%"}, Cohen’s κ ${fmt(r.kappa)}.<br>Rhythm: n=${t.n}, observed agreement ${t.po===null?"—":Math.round(t.po*100)+"%"}, Cohen’s κ ${fmt(t.kappa)}.</small><details style="margin-top:9px"><summary>Codebook discipline</summary><small>Code only what the audio/source supports; keep source commentary separate from your own observation; use “Uncertain” rather than forcing a category; flag disagreements for reconciliation.</small></details>`;
+ document.getElementById("agreementBox").innerHTML=`<strong>${ids.length}</strong> samples paired across local profiles; independent people are not verified.<br><small>Rhoticity: n=${r.n}, observed agreement ${r.po===null?"—":Math.round(r.po*100)+"%"}, Cohen’s κ ${fmt(r.kappa)}${r.n&&r.kappa===null?" (undefined: no category variation)":""}.<br>Rhythm: n=${t.n}, observed agreement ${t.po===null?"—":Math.round(t.po*100)+"%"}, Cohen’s κ ${fmt(t.kappa)}${t.n&&t.kappa===null?" (undefined: no category variation)":""}.</small><details style="margin-top:9px"><summary>Codebook discipline</summary><small>Code only what the audio/source supports; keep source commentary separate from your own observation; use “Uncertain” rather than forcing a category; flag disagreements for reconciliation. Agreement is not evidence of learning gains.</small></details>`;
 }
 function annotationsCSV(){
- const rows=[["coder","sample_id","source","label","rhoticity","rhythm","th","r_quality","vowels","consonants","prosody","socio","confidence","needs_review","updated_at"]];
+ const rows=[["local_profile_key_not_verified_identity","local_profile_label","sample_id","source","label","rhoticity","rhythm","th","r_quality","vowels","consonants","prosody","socio","confidence","needs_review","updated_at"]];
  for(const [coder,map] of Object.entries(JP.state.annotations||{})){
   if(!map||typeof map!=="object")continue;
-  for(const [id,a] of Object.entries(map)){const r=JP.record(id);if(!r||!a||typeof a!=="object")continue;rows.push([coder,id,r.source_kind,r.label,a.rhoticity||"",a.rhythm||"",a.th||"",a.rQuality||"",a.vowels||"",a.consonants||"",a.prosody||"",a.socio||"",a.confidence||"",a.review?"true":"false",a.updatedAt||""])}
+  for(const [id,a] of Object.entries(map)){const r=JP.record(id);if(!r||!a||typeof a!=="object")continue;rows.push([coder,JP.coderLabel(coder),id,r.source_kind,r.label,a.rhoticity||"",a.rhythm||"",a.th||"",a.rQuality||"",a.vowels||"",a.consonants||"",a.prosody||"",a.socio||"",a.confidence||"",a.review?"true":"false",a.updatedAt||""])}
  }
  const q=v=>{v=String(v??"");return /[",\n]/.test(v)?`"${v.replaceAll('"','""')}"`:v};return rows.map(row=>row.map(q).join(",")).join("\n")
 }
@@ -58,16 +58,16 @@ async function importBundle(file){
 }
 function reviewQueue(){
  const rows=Object.entries(coderMap()).filter(([,a])=>a.review).map(([id,a])=>({r:JP.record(id),a})).filter(x=>x.r);
- const h=document.getElementById("reviewQueue");h.innerHTML=rows.length?rows.map(x=>`<div class="queueitem"><button class="btn small" data-review-open="${JP.esc(x.r.id)}">Open</button><strong>${JP.esc(x.r.label)}</strong><br><span>${JP.esc(x.a.confidence||"Unrated")} confidence · ${JP.esc(JP.state.coder)}</span></div>`).join(""):'<p class="muted">No review flags for this coder.</p>';
+ const h=document.getElementById("reviewQueue");h.innerHTML=rows.length?rows.map(x=>`<div class="queueitem"><button class="btn small" data-review-open="${JP.esc(x.r.id)}">Open</button><strong>${JP.esc(x.r.label)}</strong><br><span>${JP.esc(x.a.confidence||"Unrated")} confidence · ${JP.esc(JP.coderLabel(JP.state.coder))}</span></div>`).join(""):'<p class="muted">No review flags for this coder.</p>';
  document.querySelectorAll("[data-review-open]").forEach(b=>b.onclick=()=>{document.getElementById("researchSample").value=b.dataset.reviewOpen;loadAnnotation()})
 }
 function renderActivity(){
- const h=document.getElementById("activityLog"),rows=JP.state.activity||[];h.innerHTML=rows.length?rows.slice(0,150).map(x=>`<div class="activityitem"><time>${new Date(x.t).toLocaleString()}</time><strong>${JP.esc(x.action)}</strong> ${JP.esc(x.detail)}</div>`).join(""):'<p class="muted">No activity yet.</p>'
+ const h=document.getElementById("activityLog"),rows=JP.state.activity||[];h.innerHTML=rows.length?rows.slice(0,150).map(x=>{const detail=String(x.detail||"").replace(/^(Sergey|Louis|Guest)(?= ·|$)/,name=>JP.coderLabel(name));return `<div class="activityitem"><time>${new Date(x.t).toLocaleString()}</time><strong>${JP.esc(x.action)}</strong> ${JP.esc(detail)}</div>`}).join(""):'<p class="muted">No activity yet.</p>'
 }
 function exportResearch(){
- const bundle={exportedAt:new Date().toISOString(),sources:{ideaIndexed:JP.idea.length,gmuIndexed:JP.gmu.length},annotations:JP.state.annotations,sessions:JP.state.sessions,favorites:JP.state.favorites,lab:JP.state.lab,activity:JP.state.activity,method_note:"Speaker-level exemplars. Categorical agreement is exact observed agreement, not a reliability coefficient."};JP.download(`joy-of-phonetics-research-${Date.now()}.json`,JSON.stringify(bundle,null,2));JP.log("research:export","bundle")
+ const bundle={prototypeVersion:JP.VERSION,exportedAt:new Date().toISOString(),sources:{ideaIndexed:JP.idea.length,gmuIndexed:JP.gmu.length},annotations:JP.state.annotations,sessions:JP.state.sessions,favorites:JP.state.favorites,lab:JP.state.lab,activity:JP.state.activity,method_note:"Speaker-level exemplars; local Sergey/Louis profile keys are retained for compatibility, not verified identities or independent experts. Report paired n and observed agreement; Cohen kappa is undefined with no category variation. No learning outcome is measured."};JP.download(`joy-of-phonetics-research-${Date.now()}.json`,JSON.stringify(bundle,null,2));JP.log("research:export","bundle")
 }
-function render(){document.getElementById("activeCoderLabel").textContent=JP.state.coder;refreshSelect();metrics();agreement();reviewQueue();renderActivity();loadAnnotation()}
+function render(){document.getElementById("activeCoderLabel").textContent=JP.coderLabel(JP.state.coder);refreshSelect();metrics();agreement();reviewQueue();renderActivity();loadAnnotation()}
 function init(){
  refreshSelect();document.getElementById("researchSample").onchange=loadAnnotation;document.getElementById("saveAnnotation").onclick=saveAnnotation;document.getElementById("exportResearch").onclick=exportResearch;document.getElementById("clearActivity").onclick=()=>{if(confirm("Clear the local activity log?")){JP.state.activity=[];JP.save();renderActivity()}};
  const primary=document.getElementById("exportResearch"),wrap=primary.parentElement;

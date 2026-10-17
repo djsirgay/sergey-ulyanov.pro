@@ -39,7 +39,7 @@ function readForm(){
 }
 function writeForm(){
  const d=D();["roleProject","targetOutcome","customTarget","drillText","coachNotes","studentNotes","coachConfidence"].forEach(id=>document.getElementById(id).value=d[id]||"");
- document.getElementById("selfRating").value=d.selfRating||3;document.getElementById("selfRatingValue").textContent=`${d.selfRating||3} / 5`;
+ document.getElementById("selfRating").value=d.selfRating??"";document.getElementById("selfRatingValue").textContent=d.selfRating?`${d.selfRating} / 5`:"Not rated";
  refreshSamples();renderTargets();renderHistory()
 }
 function buildDrill(){
@@ -58,12 +58,12 @@ function renderHistory(){
 async function share(){
  readForm();const d={sampleId:D().sampleId,roleProject:D().roleProject,targetOutcome:D().targetOutcome,features:D().features||[],sets:D().sets||[],customTarget:D().customTarget,drillText:D().drillText,coachNotes:D().coachNotes};const url=`${location.origin}${location.pathname}#session=${JP.sharePayload(d)}`;const ok=await JP.copyText(url);alert(ok?"Share link copied. Audio is not included.":"Could not copy the link.");JP.log("coach:share",d.sampleId||"")
 }
-function exportSession(){readForm();JP.download(`joy-of-phonetics-session-${Date.now()}.json`,JSON.stringify({session:D(),exportedAt:new Date().toISOString()},null,2))}
-function clearDraft(){JP.state.coachDraft={features:[],sets:[],selfRating:3};JP.save();writeForm()}
+function exportSession(){readForm();const r=JP.record(D().sampleId);JP.download(`joy-of-phonetics-session-${Date.now()}.json`,JSON.stringify({prototypeVersion:JP.VERSION,session:D(),source:r?{sampleId:r.id,label:r.label,indexSource:r.source_kind,sourceURL:r.source_url}:null,exportedAt:new Date().toISOString(),method_note:"Prototype session notes, not a measured learning outcome. Self-ratings are subjective. Local profile keys do not verify expert identity or independent participation. Expert comments require permission; public attribution requires separate agreement."},null,2))}
+function clearDraft(){JP.state.coachDraft={features:[],sets:[],selfRating:""};JP.save();writeForm()}
 function init(){
  const sel=document.getElementById("coachSample");sel.onchange=()=>{set("sampleId",sel.value);updateSource()};
  ["roleProject","targetOutcome","customTarget","drillText","coachNotes","studentNotes","coachConfidence"].forEach(id=>document.getElementById(id).oninput=e=>set(id,e.target.value));
- document.getElementById("selfRating").oninput=e=>{set("selfRating",e.target.value);document.getElementById("selfRatingValue").textContent=`${e.target.value} / 5`};
+ document.getElementById("selfRating").oninput=e=>{set("selfRating",e.target.value);document.getElementById("selfRatingValue").textContent=e.target.value?`${e.target.value} / 5`:"Not rated"};
  document.getElementById("buildDrill").onclick=buildDrill;const saveBtn=document.getElementById("saveCoachSession");saveBtn.onclick=saveSession;if(!document.getElementById("copyDrill")){const cp=document.createElement("button");cp.className="btn";cp.id="copyDrill";cp.textContent="Copy drill";cp.onclick=async()=>{const txt=document.getElementById("drillText").value;if(!txt){alert("Build or write a drill first.");return}const ok=await JP.copyText(txt);if(ok)JP.log("coach:copy-drill",D().sampleId||"")};saveBtn.insertAdjacentElement("afterend",cp)};document.getElementById("shareSession").onclick=share;document.getElementById("exportSession").onclick=exportSession;document.getElementById("newSession").onclick=clearDraft;
  document.getElementById("clearSessions").onclick=()=>{if(confirm("Clear saved coaching sessions?")){JP.state.sessions=[];JP.save();renderHistory()}};
  document.getElementById("ipaKeyboard").innerHTML=IPA.map(x=>`<button type="button" data-ipa="${x}">${x}</button>`).join("");document.querySelectorAll("[data-ipa]").forEach(b=>b.onclick=()=>{const ta=document.getElementById("drillText"),start=ta.selectionStart,end=ta.selectionEnd;ta.value=ta.value.slice(0,start)+b.dataset.ipa+ta.value.slice(end);ta.focus();ta.selectionStart=ta.selectionEnd=start+b.dataset.ipa.length;set("drillText",ta.value)});
