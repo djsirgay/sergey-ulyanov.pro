@@ -1,5 +1,5 @@
 const CACHE_PREFIX = 'joyofphonetics-';
-const CACHE = CACHE_PREFIX + 'v14-20261017-comparison';
+const CACHE = CACHE_PREFIX + 'v15-20261018-practitioner-feedback';
 const ASSETS = ['./', './index.html', './base.css', './catalog.css', './workspace.css', './responsive.css', './presentation.css', './presentation.js', './assets/joy-logo-cream.webp', './assets/joy-logo-lavender.webp', './assets/joy-mouth-32.png', './assets/joy-mouth-192.png', './assets/joy-mouth-512.png', './assets/louis-colaianni.webp', './core.js', './discover.js', './lab.js', './coach.js', './research.js', './archive-index.json', './gmu-index.json', './manifest.webmanifest'];
 const staticPaths = new Set(ASSETS.map(path => new URL(path, self.registration.scope).pathname));
 self.addEventListener('install', event => {
