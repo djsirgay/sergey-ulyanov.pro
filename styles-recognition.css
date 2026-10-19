@@ -30,3 +30,27 @@
 .detail-page .detail-nav-links .btn.primary:focus-visible {
   color: #0a0c09;
 }
+
+.detail-page .evidence-legend span,
+.detail-page .ledger-levels b,
+.detail-page .ledger-row > div:first-child span,
+.detail-page .ledger-row > a,
+.detail-page .research-spotlight-copy > span,
+.detail-page .research-evidence-note,
+.press-page .speaking-facts dt,
+.press-page .speaking-background dt,
+.press-page .speaking-story small,
+.press-page .speaking-story em,
+.press-page .speaking-reach-note,
+.press-page .media-language,
+.press-page .press-source-mark,
+.press-page .press-radio-caption,
+.press-page .speaking-eyebrow {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+#research-record .detail-card p {
+  font-size: 16px;
+  line-height: 1.65;
+}

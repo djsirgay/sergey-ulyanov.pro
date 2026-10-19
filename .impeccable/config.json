@@ -74,6 +74,24 @@
         ],
         "createdAt": "2026-10-19T09:18:37.904Z",
         "reason": "Preserved incumbent bounded cultural code-rain loading artwork; current task updates evidence and copy, not the loading-animation design. No new glow effect added."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "site-fragments/00-head.html"
+        ],
+        "createdAt": "2026-10-19T09:50:52.706Z",
+        "reason": "Head-only template fragment contains metadata and shared stylesheet imports, not visible text or effects. Inspect the assembled index and real page DOM; do not treat this fragment as an independent rendered page."
+      },
+      {
+        "rule": "tiny-text",
+        "value": "*",
+        "files": [
+          "site-fragments/00-head.html"
+        ],
+        "createdAt": "2026-10-19T09:50:54.889Z",
+        "reason": "Head-only template fragment contains metadata and shared stylesheet imports, not visible text or effects. Inspect the assembled index and real page DOM; do not treat this fragment as an independent rendered page."
       }
     ]
   }
