@@ -1,0 +1,80 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "case-studies/ai-compliance-platform/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:20.247Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "case-studies/scream-7-complex/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:22.650Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "case-studies/societe-generale/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:24.999Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "evidence/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:27.695Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "hire/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:30.025Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "press/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:32.821Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "work/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:35.274Z",
+        "reason": "Reviewed inherited CSS: these content routes contain no status-dot or culture-boot nodes; the detected shared-sheet glow is not rendered. Preserve unrelated homepage styling."
+      },
+      {
+        "rule": "dark-glow",
+        "value": "*",
+        "files": [
+          "research/index.html"
+        ],
+        "createdAt": "2026-10-19T09:18:37.904Z",
+        "reason": "Preserved incumbent bounded cultural code-rain loading artwork; current task updates evidence and copy, not the loading-animation design. No new glow effect added."
+      }
+    ]
+  }
+}

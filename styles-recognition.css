@@ -1,0 +1,32 @@
+/* Readability fixes scoped to the pages reviewed with the recognition update. */
+.detail-page .detail-kicker,
+.detail-page .detail-label,
+.detail-page .detail-summary dt,
+.detail-page .result span,
+.detail-page .source-list b,
+.detail-page .detail-card a,
+.detail-page .detail-footer,
+.detail-page .detail-footer a,
+.detail-page .detail-nav-links a,
+.compact-home .proof-card span,
+.compact-home .proof-card p,
+.compact-home .proof-card b,
+.compact-home #recognition .rail-footer {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.detail-page .detail-summary dt {
+  color: #aeb6ae;
+}
+
+.detail-page .result b,
+.compact-home .proof-card h3 {
+  overflow-wrap: anywhere;
+}
+
+/* The generic nav hover must not turn primary-button text lime on lime. */
+.detail-page .detail-nav-links .btn.primary:hover,
+.detail-page .detail-nav-links .btn.primary:focus-visible {
+  color: #0a0c09;
+}
