@@ -32,9 +32,9 @@ function app() {
   return {fields,search,cards,groups,handlers,form,result,empty};
 }
 
-test('media library preserves selected coverage and adds eleven distinct archive groups', () => {
-  assert.equal(entries.length,24);
-  const a=app();assert.deepEqual(a.groups.map(g=>g.children.length),[7,6,11]);
+test('media library preserves coverage and groups the October media update without duplicates', () => {
+  assert.equal(entries.length,27);
+  const a=app();assert.deepEqual(a.groups.map(g=>g.children.length),[9,7,11]);
   assert.equal(new Set(a.groups.flatMap(g=>g.children)).size,entries.length,'Every card belongs to a real library section');
   for (const url of ['nashaniva.com/346625','nashaniva.com/327900','youtu','bTn2yMBUBG0','8n55Zgr8SaI','news.zerkalo.io/life/64426.html','charter97.org/ru/news/2016/10/19/228176/','gay-refugee-belarus-hollywood/']) assert.ok(html.includes(url), url);
   assert.match(html, /paid audience work for Rockin’ Eve with Ryan Seacrest/);
@@ -47,7 +47,7 @@ test('legacy URLs, jump anchors, genuine images and boundaries remain explicit',
   for(const [,url] of html.matchAll(/src="(\/[^"?]+)(?:\?[^" ]*)?"/g)) assert.ok(existsSync(new URL(url.slice(1),root)),url);
   assert.match(html,/7\.5 years of LGBTQ\+ communications and community outreach/);
   assert.match(html,/Welcomed into the Refugee Storytellers Collective community in September 2026/);
-  assert.match(html,/English written profile/);
+  assert.match(html,/English · Written profile/);
   assert.match(html,/pre-order/);
   assert.doesNotMatch(html,/winner\.png|cutout-1|crop-20|keynotes|Stanford researcher|professional speaker for 7\.5/);
 });
@@ -74,8 +74,8 @@ test('related Russian video conversations remain discoverable with video filter'
   assert.ok(gpress2025);
   assert.doesNotMatch(gpress2025.body,/S8V_GCyhZRQ|LORfxNFFtfE|LGBxk5ojf9I/,'The 2023 conversations are not falsely grouped as 2025 content');
 });
-test('Belarusian audio is discoverable and native details provide working themes', () => {
-  const a=app();a.fields[0].value='be';a.fields[2].value='audio';a.handlers.change();assert.equal(a.cards.filter(c=>!c.hidden).length,1);
+test('Russian guest audio is discoverable and native details provide working themes', () => {
+  const a=app();a.fields[0].value='ru';a.fields[2].value='audio';a.handlers.change();assert.equal(a.cards.filter(c=>!c.hidden).length,1);
   const themes=html.match(/<div class="speaking-theme-list">([\s\S]*?)<\/div>/)?.[1];
   assert.ok(themes);assert.equal((themes.match(/<details\b/g)||[]).length,5);
   assert.match(html,/Marketing &amp; creative strategy/);
@@ -91,8 +91,37 @@ test('RAY profile is featured and the radio card points honestly to the station 
   assert.match(radio.body,/src="\/assets\/press\/belarus-podcast-2026.webp"/,'The original photo supplies Vasil’s unchanged half');
   assert.match(radio.body,/src="\/assets\/press\/belarus-podcast-retouched-20260910.jpg"/);
   assert.match(radio.body,/Retouched preview/);
+  assert.match(radio.body,/Russian-language guest conversation|Русский/);
+  assert.doesNotMatch(radio.body,/A Belarusian-language conversation/);
   assert.equal(declarations('.press-page .press-card .press-radio-preview .press-radio-retouch')['clip-path'],'inset(0 50% 0 0)','Retouch must affect only Sergey’s left half');
   assert.equal(declarations('.press-page .press-card .press-radio-preview img').transform,'none','Hover must not move the seam between original and retouched halves');
+});
+test('new media are credited by original source, format and actual segment rather than inflated counts',()=>{
+  const podcast=entries.filter(e=>e.body.includes('reallyfrompod.com/podcast/episode-21-sergey-ulyanov-belarus-ukraine-asylum'));
+  assert.equal(podcast.length,1);
+  assert.equal(podcast[0].dataset.mediaLanguage,'en');
+  assert.deepEqual(tokens(podcast[0].dataset.mediaFormat),['audio','article']);
+  assert.match(podcast[0].body,/Oct 21, 2026/);
+  assert.match(podcast[0].body,/one feature/);
+  const rubic=entries.filter(e=>e.body.includes('idbFPaIkMn8'));
+  assert.equal(rubic.length,1);
+  assert.equal(rubic[0].dataset.mediaLanguage,'ru','Automatic dubbing is not counted as an original English interview');
+  assert.deepEqual(tokens(rubic[0].dataset.mediaFormat),['article','video']);
+  assert.match(rubic[0].body,/Sep 4 \/ 17, 2026/);
+  assert.match(rubic[0].body,/zhizn-posle-ubezhishha/);
+  const belsat=entries.filter(e=>e.body.includes('72s0KSqwcVo'));
+  assert.equal(belsat.length,1);
+  assert.match(belsat[0].body,/\?t=2108/);
+  assert.match(belsat[0].body,/35:08/);
+  assert.match(belsat[0].body,/September 2026/);
+  assert.doesNotMatch(belsat[0].body,/Sep 26|55 tracks|research validation/);
+  assert.match(html,/"dateModified":"2026-10-21"/);
+});
+test('press metadata has readable page-scoped type and primary hover text stays dark',()=>{
+  assert.match(css,/\.press-page \.press-source-mark\{font-size:14px/);
+  assert.equal(declarations('.press-page .media-language')['font-size'],'14px');
+  assert.equal(declarations('.press-page .speaking-story small')['font-size'],'14px');
+  assert.equal(declarations('.press-page .btn.primary:hover').color,'#0a0c09');
 });
 test('multilingual articles appear under each supplied language without duplicate cards',()=>{
   const a=app(), bilingual=a.cards.find(c=>tokens(c.dataset.mediaLanguage).includes('en')&&tokens(c.dataset.mediaLanguage).includes('ru'));
