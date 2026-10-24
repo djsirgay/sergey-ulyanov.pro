@@ -313,8 +313,8 @@
     },
     {
       "id": "cornetto_together_apart",
-      "title": "Cornetto — Together Apart",
-      "brand": "Unilever / Cornetto",
+      "title": "Unilever — Together Apart",
+      "brand": "Unilever",
       "route": "/case-studies/together-apart/",
       "card_summary": "A brand story carried from digital campaign to short film presented in Cannes and a later series format.",
       "task": "Build an entertainment story that could keep reaching an audience beyond its first brand-campaign format.",
@@ -322,7 +322,7 @@
       "stages": [
         {
           "title": "Frame the brand story",
-          "text": "Developed promotional concepts and creative around the Cornetto digital campaign."
+          "text": "Developed promotional concepts and creative around the Unilever digital campaign."
         },
         {
           "title": "Present it as film",
@@ -335,24 +335,24 @@
       ],
       "result": "One story moved through a digital brand campaign, a Cannes presentation and a later series format.",
       "scope_note": "Presented in Cannes. The cinema audience image is a screening visualization; the poster is an English portfolio adaptation.",
-      "hero": "/assets/work-2026/cornetto_together_apart-hero.webp",
-      "hero_caption": "Together Apart / English Cornetto film-poster adaptation",
-      "preview": "/assets/work-2026/cornetto_together_apart-hero.webp",
+      "hero": "/assets/work-2026/unilever_together_apart-hero.webp",
+      "hero_caption": "Together Apart / English Unilever film-poster adaptation",
+      "preview": "/assets/work-2026/unilever_together_apart-hero.webp",
       "images": [
         {
-          "src": "/assets/work-2026/cornetto_together_apart-1.webp",
-          "caption": "Cornetto / Together Apart"
+          "src": "/assets/work-2026/unilever_together_apart-1.webp",
+          "caption": "Unilever / Together Apart"
         },
         {
-          "src": "/assets/work-2026/cornetto_together_apart-3.webp",
+          "src": "/assets/work-2026/unilever_together_apart-3.webp",
           "caption": "Series / Music Without Make-Up"
         },
         {
-          "src": "/assets/work-2026/cornetto_together_apart-4.webp",
+          "src": "/assets/work-2026/unilever_together_apart-4.webp",
           "caption": "Launch / media and premiere PR"
         }
       ],
-      "logo": "/assets/work-2026/cornetto_together_apart-logo.png"
+      "logo": "/assets/work-2026/unilever-full-white.svg"
     },
     {
       "id": "mageworx_commerce",
