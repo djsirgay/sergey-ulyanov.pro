@@ -95,12 +95,41 @@
 
   const setupRail=rail=>{
     const name=rail.dataset.rail,items=[...rail.children],current=document.querySelector(`[data-current="${name}"]`);
+    const previous=[...document.querySelectorAll(`[data-prev="${name}"]`)],next=[...document.querySelectorAll(`[data-next="${name}"]`)];
     if(!items.length)return;
-    const update=()=>{let best=0,min=Infinity,left=rail.getBoundingClientRect().left;items.forEach((item,index)=>{const distance=Math.abs(item.getBoundingClientRect().left-left);if(distance<min){min=distance;best=index}});if(current)current.textContent=String(best+1).padStart(2,'0')};
-    const go=direction=>{const gap=parseFloat(getComputedStyle(rail).gap||0);rail.scrollBy({left:direction*(items[0].getBoundingClientRect().width+gap),behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});track(`rail_${name}_${direction>0?'next':'prev'}`)};
-    document.querySelectorAll(`[data-prev="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(-1)));
-    document.querySelectorAll(`[data-next="${name}"]`).forEach(button=>button.addEventListener('click',()=>go(1)));
-    rail.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});update();
+    let active=0,pending=false;
+    const reduced=()=>matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const positions=()=>items.map(item=>item.getBoundingClientRect().left-rail.getBoundingClientRect().left+rail.scrollLeft);
+    const update=()=>{
+      pending=false;
+      const max=Math.max(0,rail.scrollWidth-rail.clientWidth),left=rail.scrollLeft,points=positions();
+      active=points.reduce((best,point,index)=>Math.abs(point-left)<Math.abs(points[best]-left)?index:best,0);
+      if(left>=max-3&&max>3)active=items.length-1;
+      if(current)current.textContent=String(active+1).padStart(2,'0');
+      const status=document.querySelector(`[data-rail-status="${name}"]`);
+      if(status)status.hidden=max<=3;
+      previous.forEach(button=>button.disabled=left<=3);
+      next.forEach(button=>button.disabled=left>=max-3);
+      [...previous,...next].forEach(button=>{button.parentElement.hidden=max<=3});
+    };
+    const schedule=()=>{if(!pending){pending=true;requestAnimationFrame(update)}};
+    const go=direction=>{
+      const left=rail.scrollLeft,points=positions();
+      const target=direction>0?points.find(point=>point>left+5):points.findLast(point=>point<left-5);
+      rail.scrollTo({left:target??(direction>0?rail.scrollWidth:0),behavior:reduced()?'auto':'smooth'});
+      track(`rail_${name}_${direction>0?'next':'prev'}`);
+    };
+    previous.forEach(button=>button.addEventListener('click',()=>go(-1)));
+    next.forEach(button=>button.addEventListener('click',()=>go(1)));
+    rail.addEventListener('keydown',event=>{
+      if(event.target!==rail)return;
+      if(event.key==='ArrowRight'||event.key==='ArrowLeft'){event.preventDefault();go(event.key==='ArrowRight'?1:-1)}
+      else if(event.key==='Home'||event.key==='End'){event.preventDefault();rail.scrollTo({left:event.key==='Home'?0:rail.scrollWidth,behavior:reduced()?'auto':'smooth'})}
+    });
+    rail.addEventListener('scroll',schedule,{passive:true});
+    addEventListener('resize',schedule,{passive:true});
+    if('ResizeObserver' in window)new ResizeObserver(schedule).observe(rail);
+    update();
   };
   document.querySelectorAll('[data-rail]').forEach(setupRail);
 
