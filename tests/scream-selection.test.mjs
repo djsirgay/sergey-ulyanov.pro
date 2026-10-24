@@ -7,11 +7,11 @@ const read=path=>readFileSync(new URL(path,root),'utf8');
 
 test('SCREAM case distinguishes the five works created from one selected gallery work',()=>{
  const html=read('case-studies/scream-7-complex/index.html');
- assert.match(html,/Five-piece campaign-art series · one work selected/);
- assert.match(html,/Official competition winner: “IN PROGRESS\.”/);
- assert.match(html,/One work, “IN PROGRESS,” was selected for the official Los Angeles gallery exhibition from the five-piece series I created/);
- assert.match(html,/<b>5<\/b>\s*<span>distinct but connected visual directions/);
- assert.match(html,/<b>1 selected<\/b>\s*<span>“IN PROGRESS” chosen for the gallery/);
+ assert.match(html,/A five-work poster series/);
+ assert.match(html,/Official competition winner; “IN PROGRESS” was selected/);
+ assert.match(html,/one selected work from the original five-work series/);
+ assert.match(html,/Created a five-work competition series/);
+ assert.match(html,/independent competition entry/);
  assert.doesNotMatch(html,/The five works were presented|A coherent series selected for exhibition/);
 });
 
@@ -22,12 +22,12 @@ test('case metadata and work/hire summaries do not claim that all five pieces we
   assert.ok(meta?.includes('IN PROGRESS'));
   assert.match(meta,/five-work/);
  }
- for(const path of ['work/index.html','hire/index.html']){
+ for(const path of ['work/index.html']){
   const page=read(path);
-  assert.match(page,/“IN PROGRESS” selected for the official Los Angeles gallery exhibition from a five-work series/);
+  assert.match(page,/A five-work poster series; “IN PROGRESS” selected for the official Complex Los Angeles exhibition/);
   assert.doesNotMatch(page,/Five suspense-driven (?:visual )?directions selected/);
  }
  const evidence=read('evidence/index.html');
- assert.match(evidence,/“IN PROGRESS” was selected from the original five-work series/);
+ assert.match(evidence,/one selected work from the original five-work series/);
  assert.doesNotMatch(evidence,/Exhibited visual series/);
 });

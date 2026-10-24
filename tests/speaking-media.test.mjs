@@ -36,7 +36,7 @@ test('media library preserves coverage and groups the October media update witho
   assert.equal(entries.length,27);
   const a=app();assert.deepEqual(a.groups.map(g=>g.children.length),[9,7,11]);
   assert.equal(new Set(a.groups.flatMap(g=>g.children)).size,entries.length,'Every card belongs to a real library section');
-  for (const url of ['nashaniva.com/346625','nashaniva.com/327900','youtu','bTn2yMBUBG0','8n55Zgr8SaI','news.zerkalo.io/life/64426.html','charter97.org/ru/news/2016/10/19/228176/','gay-refugee-belarus-hollywood/']) assert.ok(html.includes(url), url);
+  for (const url of ['nashaniva.com/346625','nashaniva.com/327900','Unfiltered Stories','SlavicSac','news.zerkalo.io/life/64426.html','charter97.org/ru/news/2016/10/19/228176/','gay-refugee-belarus-hollywood/']) assert.ok(html.includes(url), url);
   assert.match(html, /paid audience work for Rockin’ Eve with Ryan Seacrest/);
   assert.doesNotMatch(html,/A Belarusian creator in an American series/);
   assert.doesNotMatch(html,/TeachBK|Laskatukhi/i);
@@ -69,7 +69,8 @@ test('related Russian video conversations remain discoverable with video filter'
   const a=app();a.fields[0].value='ru';a.fields[2].value='video';a.handlers.change();
   const visible=a.cards.filter(c=>!c.hidden);assert.ok(visible.length>=4);
   assert.ok(visible.every(c=>tokens(c.dataset.mediaFormat).includes('video')&&tokens(c.dataset.mediaLanguage).includes('ru')));
-  for(const id of ['S8V_GCyhZRQ','LORfxNFFtfE','LGBxk5ojf9I']) assert.ok(html.includes(id));
+  assert.ok(entries.some(e=>/Minsk, displacement, and a new creative chapter/.test(e.textContent)));
+  assert.doesNotMatch(html, /href="https?:\/\/(?:www\.)?(?:youtube\.com|youtu\.be|vimeo\.com)\//, 'Public video links are omitted at Sergey’s request');
   const gpress2025=entries.find(e=>e.body.includes('gpress.info/2025/02/04/'));
   assert.ok(gpress2025);
   assert.doesNotMatch(gpress2025.body,/S8V_GCyhZRQ|LORfxNFFtfE|LGBxk5ojf9I/,'The 2023 conversations are not falsely grouped as 2025 content');
@@ -103,15 +104,15 @@ test('new media are credited by original source, format and actual segment rathe
   assert.deepEqual(tokens(podcast[0].dataset.mediaFormat),['audio','article']);
   assert.match(podcast[0].body,/Oct 21, 2026/);
   assert.match(podcast[0].body,/one feature/);
-  const rubic=entries.filter(e=>e.body.includes('idbFPaIkMn8'));
+  const rubic=entries.filter(e=>e.body.includes('zhizn-posle-ubezhishha'));
   assert.equal(rubic.length,1);
   assert.equal(rubic[0].dataset.mediaLanguage,'ru','Automatic dubbing is not counted as an original English interview');
   assert.deepEqual(tokens(rubic[0].dataset.mediaFormat),['article','video']);
   assert.match(rubic[0].body,/Sep 4 \/ 17, 2026/);
   assert.match(rubic[0].body,/zhizn-posle-ubezhishha/);
-  const belsat=entries.filter(e=>e.body.includes('72s0KSqwcVo'));
+  const belsat=entries.filter(e=>e.body.includes('Раніца з Белсатам'));
   assert.equal(belsat.length,1);
-  assert.match(belsat[0].body,/\?t=2108/);
+  assert.equal(belsat[0].dataset.mediaFormat, 'video');
   assert.match(belsat[0].body,/35:08/);
   assert.match(belsat[0].body,/September 2026/);
   assert.doesNotMatch(belsat[0].body,/Sep 26|55 tracks|research validation/);

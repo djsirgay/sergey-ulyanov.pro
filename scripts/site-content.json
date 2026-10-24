@@ -1,0 +1,589 @@
+{
+  "created": "2026-10-23",
+  "home_case_priority": [
+    "calpoly_aws_ehs",
+    "mcdonalds_mchappy_day",
+    "cornetto_together_apart",
+    "nostalgai_music_releases",
+    "mageworx_commerce",
+    "volkswagen_tiguan"
+  ],
+  "case_plans": [
+    {
+      "id": "mcdonalds_mchappy_day",
+      "title": "McDonald’s — McHappy Day & Campaign Creative",
+      "brand": "McDonald’s",
+      "route": "/case-studies/mchappy-day/",
+      "card_summary": "Campaign concepts, scripts and channel creative that connected awareness with participation.",
+      "task": "Give a seasonal fundraising campaign a clear path from attention to registration and giving, alongside ongoing product launches.",
+      "role": "Digital strategy, concept and messaging; scripts, banners, social copy, voiceovers and campaign coordination through the agency context.",
+      "stages": [
+        {
+          "title": "Map the action",
+          "text": "Connected paid social, website and CRM around one participation journey."
+        },
+        {
+          "title": "Build the message",
+          "text": "Developed the campaign concept and copy, with channel-specific creative and production direction."
+        },
+        {
+          "title": "Carry it through delivery",
+          "text": "Coordinated partners and campaign operations; across product launches, managed up to three concurrent campaigns in peak weeks."
+        }
+      ],
+      "result": "McHappy Day recorded 200K registrations, $230K+ in donations and +20% year-on-year social-audience growth.",
+      "scope_note": "Campaign-wide reported outcomes across the fundraising journey.",
+      "hero": "/assets/work-2026/mcdonalds_mchappy_day-hero.webp",
+      "hero_caption": "McHappy Day / campaign hero",
+      "preview": "/assets/work-2026/mcdonalds_mchappy_day-2.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-1.webp",
+          "caption": "Outdoor / campaign key visual"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-2.webp",
+          "caption": "Mobile / character builder"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-3.webp",
+          "caption": "YouTube / animation"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-4.webp",
+          "caption": "Instagram Stories"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-1.webp",
+          "caption": "Social / product messages / portfolio adaptation"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-2.webp",
+          "caption": "Chicken / outdoor campaign / portfolio adaptation"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-3.webp",
+          "caption": "Packaging / gift activation / portfolio adaptation"
+        },
+        {
+          "src": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-4.webp",
+          "caption": "Restaurant / launch concept / portfolio adaptation"
+        }
+      ],
+      "logo": "/assets/work-2026/mcdonalds_mchappy_day-logo.png"
+    },
+    {
+      "id": "volkswagen_tiguan",
+      "title": "Volkswagen — Wow! Tiguan",
+      "brand": "Volkswagen / Leo Burnett",
+      "route": "/case-studies/volkswagen/",
+      "card_summary": "One campaign idea carried through TV, digital, outdoor and social with three production houses.",
+      "task": "Make global campaign standards locally relevant without losing a recognizable central idea.",
+      "role": "Agency creative-pod lead and production coordinator; copy, key visuals, banners, radio scripts and localized toolkits.",
+      "stages": [
+        {
+          "title": "Adapt the idea",
+          "text": "Translated global toolkits into useful market concepts, including “Wow! Tiguan.”"
+        },
+        {
+          "title": "Plan the system",
+          "text": "Developed copy, key visuals and production guidance across formats."
+        },
+        {
+          "title": "Coordinate the delivery",
+          "text": "Led the creative pod and coordinated three external production houses across TV, digital, outdoor and social."
+        }
+      ],
+      "result": "A coordinated multi-channel campaign toolkit and production workflow.",
+      "scope_note": "Agency campaign work, shown alongside labeled portfolio adaptations and format studies.",
+      "hero": "/assets/work-2026/volkswagen_tiguan-hero.webp",
+      "hero_caption": "Wow! Tiguan / original outdoor creative",
+      "preview": "/assets/work-2026/volkswagen_tiguan-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/volkswagen_tiguan-1.webp",
+          "caption": "Outdoor / campaign hero"
+        },
+        {
+          "src": "/assets/work-2026/volkswagen_tiguan-2.webp",
+          "caption": "Print / editorial adaptation"
+        },
+        {
+          "src": "/assets/work-2026/volkswagen_tiguan-3.webp",
+          "caption": "Film / human-moment study"
+        },
+        {
+          "src": "/assets/work-2026/volkswagen_tiguan-4.webp",
+          "caption": "Digital / journey study"
+        }
+      ],
+      "logo": "/assets/work-2026/volkswagen_tiguan-logo.png"
+    },
+    {
+      "id": "fanta_winter",
+      "title": "Coca-Cola / Fanta — Taste This Winter",
+      "brand": "Coca-Cola / Fanta",
+      "route": "/case-studies/fanta/",
+      "card_summary": "A multi-video animated campaign built from concepts, scripts, storyboards and a repeatable visual world.",
+      "task": "Expand one seasonal idea into distinct short stories with clear product moments.",
+      "role": "Concepts, scripts, key visuals, storyboards and creative direction for animated storytelling.",
+      "stages": [
+        {
+          "title": "Find the story engine",
+          "text": "Developed campaign concepts and scripts for the multi-video “Taste This Winter” series."
+        },
+        {
+          "title": "Make the world",
+          "text": "Shaped key visuals and storyboards so each episode shared a recognizable visual language."
+        },
+        {
+          "title": "Shape the cut",
+          "text": "Directed pacing, product reveal and brand hold; explored a tighter proposed 15-second CTV presentation study."
+        }
+      ],
+      "result": "A multi-video creative system with material adapted for television, digital and outdoor contexts.",
+      "scope_note": "Original film frames and campaign creative; the 15-second CTV edit is a proposed portfolio study.",
+      "hero": "/assets/work-2026/fanta_winter-hero.webp",
+      "hero_caption": "Fanta / English end-frame monitor adaptation",
+      "preview": "/assets/work-2026/fanta_winter-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/fanta_winter-1.webp",
+          "caption": "Product cue"
+        },
+        {
+          "src": "/assets/work-2026/fanta_winter-2.webp",
+          "caption": "Build the world"
+        },
+        {
+          "src": "/assets/work-2026/fanta_winter-3.webp",
+          "caption": "Product reveal"
+        },
+        {
+          "src": "/assets/work-2026/fanta_winter-4.webp",
+          "caption": "Brand hold"
+        }
+      ],
+      "logo": "/assets/work-2026/coca-cola.svg"
+    },
+    {
+      "id": "scream7_complex",
+      "title": "SCREAM 7 — Paramount Pictures × Complex Art Competition",
+      "brand": "Paramount Pictures / Complex",
+      "route": "/case-studies/scream-7-complex/",
+      "card_summary": "A five-work poster series; “IN PROGRESS” selected for the official Complex Los Angeles exhibition.",
+      "task": "Create fresh tension inside a familiar film franchise without relying on the same mask image every time.",
+      "role": "Concept development, visual storytelling, art direction and design for an independent competition entry.",
+      "stages": [
+        {
+          "title": "Explore the tension",
+          "text": "Developed visual metaphors around the phone, surveillance, identity and the audience’s role in watching."
+        },
+        {
+          "title": "Build the series",
+          "text": "Created a five-work competition series with reusable image and type elements."
+        },
+        {
+          "title": "Refine for impact",
+          "text": "Reviewed legibility, franchise recognition and the strength of each idea in a gallery setting."
+        }
+      ],
+      "result": "Official competition winner; “IN PROGRESS” was selected for the Complex Los Angeles exhibition in February 2026.",
+      "scope_note": "Competition entry: one selected work from the original five-work series. Paramount and Complex identify the competition context.",
+      "hero": "/assets/work-2026/scream7_complex-hero.webp",
+      "hero_caption": "Cloud Ghostface / landscape adaptation of original poster",
+      "preview": "/assets/work-2026/scream7_complex-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/scream-0.webp",
+          "caption": "Selected / IN PROGRESS"
+        },
+        {
+          "src": "/assets/work-2026/scream-1.webp",
+          "caption": "Visual tension"
+        },
+        {
+          "src": "/assets/work-2026/scream-2.webp",
+          "caption": "Who’s watching now?"
+        },
+        {
+          "src": "/assets/work-2026/scream-3.webp",
+          "caption": "Falling into fear"
+        },
+        {
+          "src": "/assets/work-2026/scream-4.webp",
+          "caption": "Unknown caller"
+        }
+      ],
+      "logo": "/assets/work-2026/scream7_complex-logo.svg"
+    },
+    {
+      "id": "nostalgai_music_releases",
+      "title": "NostalgAI Recordz — Releases, Artwork & Commerce",
+      "brand": "Universal / Interscope",
+      "route": "/case-studies/release-to-commerce/",
+      "card_summary": "An independent release workflow linking artwork and launch content with physical products and Shopify commerce.",
+      "task": "Make the release journey coherent from creative development and production files to a product an audience can discover and buy.",
+      "role": "Founder, creative direction, artwork and prepress, release planning, Shopify workflows and production coordination.",
+      "stages": [
+        {
+          "title": "Prepare the release",
+          "text": "Connected source material, production coordination, metadata and partner communication."
+        },
+        {
+          "title": "Develop the visual identity",
+          "text": "Directed artwork, prepress and launch content. An independent t.A.T.u. anniversary study compared 20 cover alternatives before developing selected vinyl packaging."
+        },
+        {
+          "title": "Connect the store",
+          "text": "Built repeatable processes for product data, Shopify, launch assets and fulfillment coordination."
+        }
+      ],
+      "result": "A repeatable release-to-commerce workflow; 500+ release and content assets coordinated across music projects.",
+      "scope_note": "500+ is an aggregate across music projects. The t.A.T.u. anniversary packaging is an independent visual-development concept.",
+      "hero": "/assets/work-2026/nostalgai_music_releases-hero.webp",
+      "hero_caption": "Selected anniversary cover / vinyl packaging concept",
+      "preview": "/assets/work-2026/nostalgai_music_releases-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/nostalgai_music_releases-1.webp",
+          "caption": "Selected / cover and vinyl"
+        },
+        {
+          "src": "/assets/work-2026/nostalgai_music_releases-2.webp",
+          "caption": "Alternative / photography"
+        },
+        {
+          "src": "/assets/work-2026/nostalgai_music_releases-3.webp",
+          "caption": "Alternative / composition"
+        },
+        {
+          "src": "/assets/work-2026/nostalgai_music_releases-4.webp",
+          "caption": "Alternative / image treatment"
+        }
+      ],
+      "logo": "/assets/work-2026/nostalgai_music_releases-logo.png"
+    },
+    {
+      "id": "sony_entertainment",
+      "title": "Artist Releases — Sony Music-Related Projects",
+      "brand": "Sony Music / Artist releases",
+      "route": "/case-studies/artist-releases/",
+      "card_summary": "Release concepts, artwork and PR across music, television and live entertainment.",
+      "task": "Carry an artist’s identity and story consistently across release artwork, promotion and entertainment formats.",
+      "role": "Creative preparation, release concepts, cover art and PR through EK Publishing & Production, a Sony Music partner.",
+      "stages": [
+        {
+          "title": "Shape the release story",
+          "text": "Connected the artist’s identity with a creative direction and audience-facing messages."
+        },
+        {
+          "title": "Create the material",
+          "text": "Developed release concepts, cover artwork and PR across artist releases, television and live entertainment."
+        },
+        {
+          "title": "Coordinate across formats",
+          "text": "Worked with creative teams and external production partners, including creative preparation with 2× GRAMMY-winning producer Walter Afanasieff."
+        }
+      ],
+      "result": "Related releases reached 100M+ streams; original release artwork and entertainment work form the project record.",
+      "scope_note": "Sony Music-related partner projects. Streams refer to the related releases. Email, streaming and merchandise extensions are portfolio concepts.",
+      "hero": "/assets/work-2026/sony_entertainment-hero.webp",
+      "hero_caption": "Multiple-artist release catalogue",
+      "preview": "/assets/work-2026/sony_entertainment-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/sony_entertainment-1.webp",
+          "caption": "Original artwork / release catalogue"
+        },
+        {
+          "src": "/assets/work-2026/sony_entertainment-2.webp",
+          "caption": "Email / release discovery"
+        },
+        {
+          "src": "/assets/work-2026/sony_entertainment-3.webp",
+          "caption": "Streaming / artist catalogue"
+        },
+        {
+          "src": "/assets/work-2026/sony_entertainment-4.webp",
+          "caption": "Merchandise / identity extension"
+        }
+      ],
+      "logo": "/assets/work-2026/sony_entertainment-logo.svg"
+    },
+    {
+      "id": "cornetto_together_apart",
+      "title": "Cornetto — Together Apart",
+      "brand": "Unilever / Cornetto",
+      "route": "/case-studies/together-apart/",
+      "card_summary": "A brand story carried from digital campaign to short film presented in Cannes and a later series format.",
+      "task": "Build an entertainment story that could keep reaching an audience beyond its first brand-campaign format.",
+      "role": "Promotional concepts, trailers, key art and PR across the project’s changing formats.",
+      "stages": [
+        {
+          "title": "Frame the brand story",
+          "text": "Developed promotional concepts and creative around the Cornetto digital campaign."
+        },
+        {
+          "title": "Present it as film",
+          "text": "Adapted key art, trailers and PR for “Together Apart,” a short film presented in Cannes."
+        },
+        {
+          "title": "Extend the audience",
+          "text": "Carried the story into a later “Music Without Make-Up” episode and related promotional material."
+        }
+      ],
+      "result": "One story moved through a digital brand campaign, a Cannes presentation and a later series format.",
+      "scope_note": "Presented in Cannes. The cinema audience image is a screening visualization; the poster is an English portfolio adaptation.",
+      "hero": "/assets/work-2026/cornetto_together_apart-hero.webp",
+      "hero_caption": "Together Apart / English Cornetto film-poster adaptation",
+      "preview": "/assets/work-2026/cornetto_together_apart-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/cornetto_together_apart-1.webp",
+          "caption": "Cornetto / Together Apart"
+        },
+        {
+          "src": "/assets/work-2026/cornetto_together_apart-3.webp",
+          "caption": "Series / Music Without Make-Up"
+        },
+        {
+          "src": "/assets/work-2026/cornetto_together_apart-4.webp",
+          "caption": "Launch / media and premiere PR"
+        }
+      ],
+      "logo": "/assets/work-2026/cornetto_together_apart-logo.png"
+    },
+    {
+      "id": "mageworx_commerce",
+      "title": "MageWorx — E-Commerce Product & Campaign Creative",
+      "brand": "MageWorx / Shopify platform",
+      "route": "/case-studies/mageworx/",
+      "card_summary": "Feature-led product stories, social ads and reusable layouts for an e-commerce extension portfolio.",
+      "task": "Make a portfolio of commerce extensions easy to understand without reducing every product to a dense feature list.",
+      "role": "Product-benefit copy, social concepts, ad variations, reusable Figma layouts and creative direction.",
+      "stages": [
+        {
+          "title": "Clarify the benefit",
+          "text": "Translated extension features into clear product messages and offers."
+        },
+        {
+          "title": "Build the campaign language",
+          "text": "Created feature-led social advertising with a consistent background palette, visual hierarchy and product emphasis."
+        },
+        {
+          "title": "Make it repeatable",
+          "text": "Developed reusable layouts and presentation studies for components, landing pages and additional ad formats."
+        }
+      ],
+      "result": "A connected creative system for web and social, with distinct product messages and repeatable production assets.",
+      "scope_note": "Original social advertisements, extended through component, campaign-format and landing-page portfolio studies.",
+      "hero": "/assets/work-2026/mageworx_commerce-hero.webp",
+      "hero_caption": "MageWorx / campaign-wall visualization in lilac brand palette",
+      "preview": "/assets/work-2026/mageworx_commerce-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/mageworx_commerce-1.webp",
+          "caption": "Original ads / campaign-card mockup"
+        },
+        {
+          "src": "/assets/work-2026/mageworx_commerce-2.webp",
+          "caption": "Components / reusable layout study"
+        },
+        {
+          "src": "/assets/work-2026/mageworx_commerce-3.webp",
+          "caption": "Variations / campaign format study"
+        },
+        {
+          "src": "/assets/work-2026/mageworx_commerce-4.webp",
+          "caption": "Landing / commerce experience study"
+        }
+      ],
+      "logo": "/assets/work-2026/mageworx_commerce-logo.png"
+    },
+    {
+      "id": "calpoly_aws_ehs",
+      "title": "Cal Poly DxHub × AWS — EHS Mentor",
+      "brand": "Cal Poly DxHub × AWS",
+      "route": "/case-studies/ai-compliance-platform/",
+      "card_summary": "A working training and compliance workflow prototype, from problem framing to a presented system.",
+      "task": "Turn disconnected safety documents and training records into clearer assignments, reporting states and human-review workflows.",
+      "role": "Problem framing, workflow mapping, prototype design, AI-assisted implementation, testing and presentation during the AI Summer Camp.",
+      "stages": [
+        {
+          "title": "Map the work",
+          "text": "Defined users, training requirements, assignments, administrative views and reporting states."
+        },
+        {
+          "title": "Build and revise",
+          "text": "Developed the prototype with Python/FastAPI, PostgreSQL, Docker and Render, using AI-assisted implementation and iterative testing."
+        },
+        {
+          "title": "Present the operating model",
+          "text": "Demonstrated the system, reviewed the workflow and explored Amazon Bedrock at concept/prototype level."
+        }
+      ],
+      "result": "Developed and presented a working prototype. Selected for a cohort of 100 from nearly 1,300 applicants.",
+      "scope_note": "Python/FastAPI, PostgreSQL, Docker and Render prototype. Amazon Bedrock explored at concept/prototype level during the program.",
+      "hero": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
+      "hero_caption": "EHS Mentor / interface and device visualization",
+      "preview": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/calpoly_aws_ehs-1.webp",
+          "caption": "Platform / dashboard and devices"
+        },
+        {
+          "src": "/assets/work-2026/calpoly_aws_ehs-2.webp",
+          "caption": "AI / document-to-training workflow"
+        },
+        {
+          "src": "/assets/work-2026/calpoly_aws_ehs-3.webp",
+          "caption": "Audit / progress and compliance"
+        },
+        {
+          "src": "/assets/work-2026/calpoly_aws_ehs-4.webp",
+          "caption": "Self-service / merchandise concept"
+        }
+      ],
+      "logo": "/assets/work-2026/calpoly_aws_ehs-logo.png"
+    },
+    {
+      "id": "societe_generale",
+      "title": "Société Générale / BelRosBank — Campaigns & Website Delivery",
+      "brand": "Société Générale",
+      "route": "/case-studies/societe-generale/",
+      "card_summary": "Bank-side research, creative and website delivery across a changing brand.",
+      "task": "Keep products, campaigns and digital touchpoints coherent through the BelRosBank to Alfa-Bank transition.",
+      "role": "Bank-side competitor and feature research, developer evaluation and selection, delivery oversight, campaign concepts and photography art direction.",
+      "stages": [
+        {
+          "title": "Research the options",
+          "text": "Compared competitors and website features, evaluated developers and helped shape the solution."
+        },
+        {
+          "title": "Direct the experience",
+          "text": "Oversaw implementation with external developer Novy Site and worked through feedback."
+        },
+        {
+          "title": "Carry the brand into campaigns",
+          "text": "Developed product messaging and art-directed photography, brochures, editorial advertising and retail communications."
+        }
+      ],
+      "result": "The broader digital work recorded 4× year-on-year conversions. Website team recognition: BelRosBank — third place, TIBO 2012; successor Alfa-Bank — first place, Best Bank Website 2013, and second place, TIBO 2014.",
+      "scope_note": "Conversions refer to the broader digital work. Website awards are team recognition for the named bank projects.",
+      "hero": "/assets/work-2026/societe_generale-hero.webp",
+      "hero_caption": "Société Générale / print identity",
+      "preview": "/assets/work-2026/societe_generale-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/societe_generale-1.webp",
+          "caption": "Editorial / magazine spread"
+        },
+        {
+          "src": "/assets/work-2026/societe_generale-2.webp",
+          "caption": "Print / trifold brochure"
+        },
+        {
+          "src": "/assets/work-2026/societe_generale-3.webp",
+          "caption": "Retail / branch posters"
+        },
+        {
+          "src": "/assets/work-2026/societe_generale-4.webp",
+          "caption": "Leaflets / point of sale"
+        }
+      ],
+      "logo": "/assets/work-2026/societe_generale-logo.svg"
+    },
+    {
+      "id": "basf_frandesa",
+      "title": "BASF / Frandesa — The Battle for the Harvest",
+      "brand": "BASF / Frandesa",
+      "route": "/case-studies/battle-for-the-harvest/",
+      "card_summary": "A technical crop-protection story developed into a 14-minute corporate spy film.",
+      "task": "Make a specialist agricultural subject engaging enough to work as a narrative film.",
+      "role": "Script development, shot planning, actor selection and production-partner selection in the Frandesa employment context.",
+      "stages": [
+        {
+          "title": "Turn the brief into a story",
+          "text": "Developed the corporate spy-film script around the technical subject."
+        },
+        {
+          "title": "Plan the production",
+          "text": "Planned shots and selected actors and production partners."
+        },
+        {
+          "title": "Deliver the film",
+          "text": "Carried the story into a 14-minute film with English subtitles, supported by original scene and shot-planning material."
+        }
+      ],
+      "result": "The team project received the HR Brand Silver Screen special partner prize.",
+      "scope_note": "Corporate-film team project in the BASF / Frandesa context. HR Brand recognition was a Silver Screen special partner prize.",
+      "hero": "/assets/work-2026/basf_frandesa-hero.webp",
+      "hero_caption": "Frandesa film / title-free cover adaptation",
+      "preview": "/assets/work-2026/basf_frandesa-hero.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/basf_frandesa-1.webp",
+          "caption": "Storyboard / original shot planning"
+        },
+        {
+          "src": "/assets/work-2026/basf_frandesa-2.webp",
+          "caption": "Character / laboratory scene"
+        },
+        {
+          "src": "/assets/work-2026/basf_frandesa-3.webp",
+          "caption": "Location / production at night"
+        },
+        {
+          "src": "/assets/work-2026/basf_frandesa-4.webp",
+          "caption": "Dialogue / another character"
+        }
+      ],
+      "logo": "/assets/work-2026/basf_frandesa-logo.svg"
+    },
+    {
+      "id": "community_campaigns",
+      "title": "Community & Advocacy — Health, Youth and Immigrant Stories",
+      "brand": "Community and advocacy",
+      "route": "/case-studies/community-advocacy/",
+      "card_summary": "Communication and community work across LGBTQ+ health, youth initiatives and immigrant storytelling.",
+      "task": "Make sensitive information accessible and useful while creating room for people’s own voices.",
+      "role": "Print, web and social content; outreach; youth initiatives and partner communication; public immigrant storytelling.",
+      "stages": [
+        {
+          "title": "LGBTQ+ health and outreach",
+          "text": "At Vstrecha, a Global Fund partner, created and maintained web and print communication, annual reports and informational materials, alongside direct community outreach. The outreach role ran from June 2007 to December 2014."
+        },
+        {
+          "title": "Youth initiatives",
+          "text": "Supported youth initiatives, media, mentoring and volunteer work in BELAU / UNICEF contexts. "
+        },
+        {
+          "title": "Immigrant storytelling",
+          "text": "Created public communication around immigration, asylum and adaptation; shared a personal LGBTQ+ asylee story with Human Rights First and other publishers. Human Rights First supported the public storytelling."
+        }
+      ],
+      "result": "A body of practical communication and advocacy spanning community health, youth support and public immigrant storytelling.",
+      "scope_note": "Vstrecha / Global Fund, BELAU / UNICEF and Human Rights First are separate activity contexts. Images include illustrative and symbolic portfolio adaptations.",
+      "hero": "/assets/work-2026/community-1.webp",
+      "hero_caption": "Immigrant advocacy / symbolic adaptation of my photograph",
+      "preview": "/assets/work-2026/community-1.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/community-0.webp",
+          "caption": "LGBTQ+ health and outreach / illustrative portfolio image"
+        },
+        {
+          "src": "/assets/work-2026/community-1.webp",
+          "caption": "Immigrant advocacy / symbolic adaptation of my photograph"
+        },
+        {
+          "src": "/assets/work-2026/community-2.webp",
+          "caption": "Youth initiatives / illustrative portfolio image"
+        }
+      ],
+      "logo": "/assets/work-2026/community_campaigns-logo.svg"
+    }
+  ]
+}

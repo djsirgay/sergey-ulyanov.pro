@@ -42,3 +42,16 @@ Pull requests and pushes to `main` run:
 - navigation, storage-safety, and historical-map tests.
 
 GitHub Pages deploys only from `main` after validation succeeds.
+
+
+## Personal-brand refresh — October 2026
+
+- `scripts/site-content.json` holds the reviewed case registry: titles, tasks, roles, stages, results and artifact captions.
+- `python3 scripts/build-personal-site.py` builds the editable homepage fragments and professional work, hire, evidence and case pages from that registry. It preserves the existing inquiry form in the final fragment.
+- `python3 scripts/build-production.py` assembles and validates the homepage, as before.
+- `styles-personal.css` is the professional homepage and case-library visual system: Manrope / Space Mono, charcoal-to-green backgrounds, lime accents, the shared bolt-circle emblem and reduced-motion-aware orbital animation.
+- `assets/work-2026/` contains optimized still artwork. Original project colors are retained; brand marks are displayed in white through presentation CSS. Images distinguish original work from portfolio adaptations in their captions.
+- `/downloads/Sergey_Ulyanov_Portfolio.pdf` and `/downloads/Sergey_Ulyanov_Resume.pdf` are stable public download URLs for the approved general personal-brand files.
+- The speaking/media source groupings, research tools, research palette builds and separate actor-site deployment remain independent. Video descriptions may remain as press history; outbound video URLs are omitted from the professional pages.
+
+Review the native Google Doc working copy before publishing revised prose. Then run the production build, research route check, and repository tests. Finalize SEO only on the disposable deployment artifact according to `SITE_DEPLOYMENT.md`.
