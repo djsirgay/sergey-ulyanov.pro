@@ -16,13 +16,14 @@ function harness(saved = {}) {
   const context = {
     window: {}, document: {
       addEventListener() {}, getElementById: id => elements.get(id) || null,
-      querySelectorAll: () => [], createElement: () => ({style: {}, querySelector: () => ({}), appendChild() {}})
+      querySelectorAll: () => [], querySelector: () => null, createElement: () => ({style: {}, querySelector: () => ({}), appendChild() {}})
     }, localStorage: {getItem: key => storage.get(key) || null, setItem: (key, value) => storage.set(key, value)},
     URL, Blob, Map, Set, Date, setTimeout, clearTimeout, alert() {}, confirm: () => false,
     navigator: {}, location: {hash: '', origin: 'https://example.test', pathname: '/joyofphonetics/'}
   };
   vm.createContext(context);
   vm.runInContext(read('core.js'), context);
+  context.window.scrollTo = () => {};
   const JP = context.window.JP;
   JP.all = [{id: 'test-voice', label: 'Example voice', source_kind: 'idea', area: 'California', region: 'USA', source_url: 'https://www.dialectsarchive.com/california-6'}];
   JP.byId = new Map(JP.all.map(r => [r.id, r]));
@@ -81,6 +82,73 @@ test('a saved subjective rating stays selected rather than being reset during re
   h.elements.get('saveCoachSession').onclick();
   const restored = harness(Object.fromEntries(h.storage));
   assert.equal(restored.elements.get('selfRating').value, '2');
+});
+
+test('a permitted local recording can become the Coach reference without an archive sample or audio export', () => {
+  const h = harness();
+  h.JP.state.lab = [];
+  h.context.URL = class extends URL { static createObjectURL() { return 'blob:test-local-only'; } };
+  h.context.CSS = {escape: value => value};
+  vm.runInContext(read('lab.js'), h.context);
+  h.context.window.JPLab.init();
+  const next = h.elements.get('useLocalReference');
+  assert.ok(next, 'The local recording needs a handoff to Coach');
+  assert.equal(next.disabled, true);
+  h.elements.get('localReference').onchange({target: {files: [{name: 'Teacher reference.wav'}]}});
+  assert.equal(next.disabled, false);
+  next.onclick();
+  assert.equal(h.elements.get('sourceReference').value, 'Teacher reference.wav');
+  enter(h, 'practicePhrase', 'Where are we going?');
+  enter(h, 'soundTarget1', 'Explore the final rise');
+  h.elements.get('exportSession').onclick();
+  const bundle = h.downloads[0].body;
+  assert.equal(bundle.source.reference, 'Teacher reference.wav');
+  assert.equal(bundle.audioIncluded, false);
+  assert.doesNotMatch(JSON.stringify(bundle), /blob:test-local-only/);
+});
+
+test('three task-specific sound targets and a scene phrase survive saving, export, and reload', () => {
+  const h = harness();
+  enter(h, 'sourceReference', 'Permitted rehearsal reference, opening line');
+  enter(h, 'practicePhrase', 'Where are we going?');
+  enter(h, 'soundTarget1', 'Explore the final rise');
+  enter(h, 'soundTarget2', 'Notice the /r/ in where');
+  enter(h, 'soundTarget3', 'Try a longer first syllable in going');
+  h.elements.get('buildDrill').onclick();
+  const drill = h.elements.get('drillText').value;
+  assert.ok(drill.includes('Where are we going?'));
+  assert.ok(drill.includes('1. Explore the final rise'));
+  assert.ok(drill.includes('2. Notice the /r/ in where'));
+  assert.ok(drill.includes('3. Try a longer first syllable in going'));
+  h.elements.get('saveCoachSession').onclick();
+  h.elements.get('exportSession').onclick();
+  assert.equal(h.downloads[0].body.session.soundTarget3, 'Try a longer first syllable in going');
+  const restored = harness(Object.fromEntries(h.storage));
+  assert.equal(restored.elements.get('practicePhrase').value, 'Where are we going?');
+  assert.equal(restored.elements.get('soundTarget2').value, 'Notice the /r/ in where');
+  assert.equal(restored.elements.get('sourceReference').value, 'Permitted rehearsal reference, opening line');
+});
+
+test('a shared practice link carries the source, phrase and three targets as text, without student observations', async () => {
+  const h = harness();
+  h.context.btoa = text => Buffer.from(text, 'binary').toString('base64');
+  h.context.atob = text => Buffer.from(text, 'base64').toString('binary');
+  h.context.unescape = unescape;
+  h.context.escape = escape;
+  let copied;
+  h.JP.copyText = async text => {copied = text; return true;};
+  enter(h, 'sourceReference', 'Teacher-approved reference');
+  enter(h, 'practicePhrase', 'Where are we going?');
+  enter(h, 'soundTarget1', 'Final rise');
+  enter(h, 'soundTarget2', '/r/ in where');
+  enter(h, 'soundTarget3', 'First syllable duration');
+  enter(h, 'studentNotes', 'Private learner observation');
+  await h.elements.get('shareSession').onclick();
+  const session = h.JP.parseShare(new URL(copied).hash.slice('#session='.length));
+  assert.equal(session.sourceReference, 'Teacher-approved reference');
+  assert.equal(session.practicePhrase, 'Where are we going?');
+  assert.equal(session.soundTarget3, 'First syllable duration');
+  assert.equal(session.studentNotes, undefined);
 });
 
 function agreement(a, b, coder = 'Sergey') {
