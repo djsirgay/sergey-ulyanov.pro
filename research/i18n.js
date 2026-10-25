@@ -75,7 +75,7 @@
     ["Context", "Кантэкст"],
     ["Belarusian adults, artists, and cultural workers living across borders", "Беларускія дарослыя, артысты і дзеячы культуры, якія жывуць па-за межамі краіны"],
     ["Status", "Статус"],
-    ["Public protocol v0.1 · 36-prompt bank v0.2 · no findings claimed", "Публічны пратакол v0.1 · банк з 36 запытаў v0.2 · вынікі пакуль не заяўлены"],
+    ["Public protocol v0.2 · 36-prompt bank v0.3 · no findings claimed", "Публічны пратакол v0.2 · банк з 36 запытаў v0.3 · вынікі пакуль не заяўлены"],
     ["01 · System", "01 · Сістэма"],
     ["02 · Protocol", "02 · Пратакол"],
     ["03 · Program", "03 · Праграма"],

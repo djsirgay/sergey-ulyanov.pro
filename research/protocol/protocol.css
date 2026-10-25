@@ -1,0 +1,17 @@
+.protocol-page .prompt-bank ol{list-style:none;padding:18px 26px}
+.protocol-page .prompt-bank li{scroll-margin-top:150px;margin:0 0 2rem;padding:0 0 1.5rem;border-bottom:1px solid var(--line,rgba(200,206,200,.2))}
+.protocol-page .prompt-bank p{max-width:76ch;white-space:pre-line;overflow-wrap:anywhere;font-size:16px;line-height:1.75}
+.protocol-page .prompt-id{display:inline-block;margin-bottom:.35rem;font:700 14px 'Space Mono',monospace}
+.protocol-page .prompt-reading{padding-left:1rem;border-left:3px solid currentColor}
+.protocol-page .prompt-reading strong{font-size:14px}
+.protocol-page .protocol-downloads{display:flex;flex-wrap:wrap;gap:12px 24px;margin:18px 0}
+.protocol-page #instrument-sha256{display:block;max-width:100%;overflow-wrap:anywhere;white-space:normal;font-size:14px;line-height:1.6}
+.protocol-page .protocol-source-key{padding:20px;border:1px solid var(--line,rgba(200,206,200,.2));margin:24px 0}
+.protocol-page .protocol-hero::after{content:none}
+.protocol-page .detail-summary dt,.protocol-page .detail-kicker,.protocol-page .detail-label,.protocol-page .section-jump a,.protocol-page .prompt-group summary em,.protocol-page .protocol-table th,.protocol-page .protocol-table td,.protocol-page .protocol-flags span,.protocol-page .protocol-timeline time,.protocol-page .protocol-timeline span,.protocol-page .protocol-version{font-size:14px;line-height:1.6}
+.protocol-page .detail-summary dt,.protocol-page .prompt-group summary em{color:#aeb7ae}
+.protocol-page .prompt-group summary{grid-template-columns:36px minmax(0,1fr) auto}
+.protocol-page .prompt-group summary b{overflow-wrap:anywhere}
+.protocol-page .protocol-downloads .btn:hover,.protocol-page .protocol-downloads .btn:focus-visible{color:#080a08;background:#b8ff35}
+html[lang=be] .protocol-page .prompt-reading{display:none}
+@media(max-width:600px){.protocol-page .prompt-bank p{font-size:15px}.protocol-page .protocol-source-key{padding:14px}.protocol-page .prompt-reading{padding-left:.75rem}}

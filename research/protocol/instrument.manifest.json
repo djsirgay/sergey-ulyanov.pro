@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "protocolVersion": "0.2",
+  "promptBankVersion": "0.3",
+  "revisionDate": "2026-10-25",
+  "status": "review-draft",
+  "collectionFrozen": false,
+  "scoredLanguage": "be",
+  "englishReadingOnly": true,
+  "promptCount": 36,
+  "instrumentFile": "instrument.v0.3.json",
+  "instrumentFileSha256": "8834f48a4f7c6487fa50ee357a140e4d41ceb89cd9a64ba96f4a2587b7133e88",
+  "scoredPromptsSha256": "7ca9841458129220abcb47e7a630302170b2f6e475900d7207db5d07d8e473d9",
+  "scoredHashSerialization": "UTF-8 JSON.stringify of the ordered array of objects with keys id, be; no added whitespace",
+  "previousSnapshot": "https://github.com/djsirgay/sergey-ulyanov.pro/blob/77154e4af800580529bfda5b5a2d51be5a6b689b/research/protocol/index.html"
+}
