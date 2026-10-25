@@ -1,6 +1,6 @@
 const CACHE_PREFIX = 'joyofphonetics-';
-const CACHE = CACHE_PREFIX + 'v17-20261025-recording-workflow';
-const ASSETS = ['./', './index.html', './base.css', './catalog.css', './workspace.css', './responsive.css', './presentation.css', './presentation.js', './assets/joy-logo-cream.webp', './assets/joy-logo-lavender.webp', './assets/joy-mouth-32.png', './assets/joy-mouth-192.png', './assets/joy-mouth-512.png', './assets/louis-colaianni.webp', './core.js', './discover.js', './lab.js', './coach.js', './research.js', './archive-index.json', './gmu-index.json', './manifest.webmanifest'];
+const CACHE = CACHE_PREFIX + 'v20-20261025-published-guides';
+const ASSETS = ['./', './index.html', './base.css', './catalog.css', './workspace.css', './responsive.css', './presentation.css', './presentation.js', './assets/joy-logo-cream.webp', './assets/joy-logo-lavender.webp', './assets/joy-mouth-32.png', './assets/joy-mouth-192.png', './assets/joy-mouth-512.png', './assets/louis-colaianni.webp', './core.js', './guides.js', './media/teacher-v2-poster.jpg', './media/student-v2-poster.jpg', './media/teacher-v2.vtt', './media/student-v2.vtt', './discover.js', './lab.js', './coach.js', './research.js', './archive-index.json', './gmu-index.json', './manifest.webmanifest'];
 const staticPaths = new Set(ASSETS.map(path => new URL(path, self.registration.scope).pathname));
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(ASSETS)).then(() => self.skipWaiting()));

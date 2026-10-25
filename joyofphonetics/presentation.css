@@ -145,3 +145,13 @@ html[data-theme="book"] .louis-portrait::before { background: #c5c8df; }
   font-size: 14px;
 }
 .btn.small, .chip, .featurechips button, .lexsets button { font-size: 14px; }
+
+/* Video instructions use the existing panel and palette system. */
+.guide-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; margin: 24px 0; align-items: start; }
+.guide-card { min-width: 0; scroll-margin-top: 190px; }
+.guide-card video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; background: #171816; color: #fff; border-radius: 10px; }
+.guide-card > p { overflow-wrap: anywhere; }
+.guide-transcript { margin-top: 16px; }
+.guide-transcript summary { cursor: pointer; font-weight: 700; }
+.guide-transcript p { font-size: 15px; line-height: 1.65; }
+@media (max-width: 760px) { .guide-grid { grid-template-columns: 1fr; } }

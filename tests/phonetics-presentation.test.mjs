@@ -103,7 +103,7 @@ test('course steps show only the selected real text lesson and expose its select
   assert.equal(h.lessonButtons[1].attributes['aria-pressed'], 'false');
 });
 
-test('the offline installation includes every local page dependency and all precached files exist', async () => {
+test('the offline shell includes small page dependencies without downloading or intercepting tutorial video streams', async () => {
   const handlers = {};
   let assets;
   vm.runInNewContext(read('sw.js'), {
@@ -124,5 +124,14 @@ test('the offline installation includes every local page dependency and all prec
     assert.ok(fs.existsSync(new URL('../joyofphonetics/' + path, import.meta.url)), 'Missing precache asset: ' + asset);
   }
   const dependencies = [...read('index.html').matchAll(/(?:src|href)="(\.\/[^"#?]+)(?:\?[^"#]*)?"/g)].map(([, path]) => path);
-  for (const dependency of dependencies) assert.ok(assets.includes(dependency), 'Page dependency missing from offline shell: ' + dependency);
+  for (const dependency of dependencies) {
+    if (dependency.endsWith('.mp4')) {
+      assert.ok(!assets.includes(dependency), 'Video must load only when requested, not during installation');
+      let intercepted = false;
+      handlers.fetch({request: {method: 'GET', url: new URL(dependency, 'https://example.test/joyofphonetics/').href}, respondWith() { intercepted = true; }});
+      assert.equal(intercepted, false, 'Leave media range requests to the network');
+    } else {
+      assert.ok(assets.includes(dependency), 'Page dependency missing from offline shell: ' + dependency);
+    }
+  }
 });

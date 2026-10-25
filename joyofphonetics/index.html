@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="./catalog.css?v=20261017-brand2">
   <link rel="stylesheet" href="./workspace.css?v=20261017-brand2">
   <link rel="stylesheet" href="./responsive.css?v=20261017-brand2">
-  <link rel="stylesheet" href="./presentation.css?v=20261017-brand2">
+  <link rel="stylesheet" href="./presentation.css?v=20261025-published">
 </head>
 <body>
 <a class="skip" href="#appMain">Skip to content</a>
@@ -23,7 +23,7 @@
   <div class="brand"><button class="brand-home" data-go="discover" aria-label="Joy of Phonetics home"><img data-theme-art data-art-cream="./assets/joy-logo-cream.webp" data-art-book="./assets/joy-logo-lavender.webp" src="./assets/joy-logo-cream.webp" width="1400" height="700" alt=""></button></div>
   <nav class="tabs" aria-label="Workspaces">
     <button class="tab active" data-view="discover">Discover</button>
-    <button class="tab" data-view="learn">Course preview</button>
+    <button class="tab" data-view="learn">Guides &amp; lesson</button>
     <button class="tab" data-view="lab">Audio Lab <span id="labCount"></span></button>
     <button class="tab" data-view="coach">Coach</button>
     <button class="tab" data-view="research">Research</button>
@@ -45,7 +45,7 @@
       <div class="eyebrow">Real speakers. Curious ears.</div>
       <h1>Find the voice.<br><em>Then train the ear.</em></h1>
       <p class="lede">What recordings are you working with? Start with an archive example or your own permitted audio. Compare what you hear, choose sound targets, and turn a short phrase or scene into focused practice.</p>
-      <div class="heroactions"><button class="btn primary" data-go="lab">Start with my own recording →</button><button class="btn" data-go="learn">Teacher / student guide →</button><button class="btn" id="jumpAllSamples">Explore archive examples →</button></div>
+      <div class="heroactions"><button class="btn primary" data-go="lab">Start with my own recording →</button><a class="btn" href="?guide=teacher" data-guide="teacher">Teacher video · 4:01 →</a><a class="btn" href="?guide=student" data-guide="student">Student video · 5:07 →</a><button class="btn" id="jumpAllSamples">Explore archive examples →</button></div>
       <button class="textbtn" data-go="coach">Presenting the prototype? Start an expert walkthrough ↗</button>
     </div>
     <div class="hero-art"><img id="heroArtwork" data-theme-art data-art-cream="./assets/joy-logo-cream.webp" data-art-book="./assets/joy-logo-lavender.webp" src="./assets/joy-logo-cream.webp" width="1400" height="700" alt="Joy of Phonetics: an open mouth projects the project name and sound marks." fetchpriority="high"></div>
@@ -55,7 +55,7 @@
     <p>IDEA and GMU are discovery examples, not the limits of the practice workflow. You can also load a local reference in Audio Lab. Counts describe indexed records, not verified playable audio. External recordings require internet access.</p>
   </div>
   <div class="feature-path" aria-label="Ways to explore">
-    <button data-go="learn"><span aria-hidden="true">01</span><span><strong>Start with a listening task</strong><small>A three-step text lesson to try.</small></span></button>
+    <button data-go="learn"><span aria-hidden="true">01</span><span><strong>Start with a listening task</strong><small>Two video guides and a three-step text lesson.</small></span></button>
     <button data-go="lab"><span aria-hidden="true">02</span><span><strong>Compare real voices</strong><small>Up to four references in Audio Lab.</small></span></button>
     <button data-go="coach"><span aria-hidden="true">03</span><span><strong>Make practice personal</strong><small>Keep targets, feedback, and observations.</small></span></button>
   </div>
@@ -63,10 +63,96 @@
 </section>
 
 <section class="view" id="view-learn">
-  <div class="sectiontitle"><div class="course-intro"><span class="prototype-label">Course preview · draft for discussion</span><h2>Listen first.<br>Notice more.</h2><p>One short learning sequence connects a text lesson to the working sound library, Audio Lab, and Coach. No video or account is needed.</p></div><button class="btn" data-go="discover">Back to the library</button></div>
+  <div class="sectiontitle"><div class="course-intro"><span class="prototype-label">Video guides · prototype walkthroughs</span><h2>Listen first.<br>Notice more.</h2><p>Watch the teacher or student guide, then try the workflow yourself. The optional text lesson below connects Discover, Audio Lab, and Coach. No account is needed.</p></div><button class="btn" data-go="discover">Back to the library</button></div>
   <p class="notice">Draft text lesson by Sergey Ulyanov. Louis Colaianni advises the project's phonetics and pedagogical design; this does not make the lesson a published or author-approved course, an excerpt from his books, or evidence of measured learning gains.</p>
-  <details class="notice"><summary>For speech teachers · lesson preparation and homework</summary><ol><li>Ask: what recording or scene is the student working with? Choose an archive example, or load permitted local reference audio in Audio Lab. Arbitrary archive imports are not automatic.</li><li>Name up to three sound changes for that task. In Coach, enter the recording reference, a short phrase, the teaching context, and up to three sound targets. Build and edit a short drill. An indexed sample is optional for a manual task.</li><li>Listen and practise in the lesson. Keep your feedback separate from the student's observations. Export the session as homework; audio is not included in a session link, so share recordings separately only with permission.</li></ol><p><button class="btn" data-go="lab">Choose a teaching reference →</button> <button class="btn" data-go="coach">Plan the phrase and three targets →</button></p><p>This is a text walkthrough. A short teacher video is planned, not yet published.</p></details>
-  <details class="notice"><summary>For acting students · independent practice between lessons</summary><ol><li>Choose a role, scene or communication task. Use a teacher's reference, your own permitted audio, or an archive example. Load local audio in Audio Lab; browser format support may vary.</li><li>Listen to one short phrase. Describe one feature in this recording, rather than generalizing about a whole country. In Coach, keep the recording reference and scene line, name up to three sound targets, and build or edit a drill.</li><li>Optionally record a local practice take, note what you hear, and write one question for your teacher. Export a backup and bring your observations to the next lesson. Self-ratings are subjective; the app does not automatically grade your accent.</li></ol><p><button class="btn" data-go="lab">Listen to my reference →</button> <button class="btn" data-go="coach">Plan my scene practice →</button></p><p>This is a text walkthrough. A short student video is planned, not yet published.</p></details>
+  <div class="notice">These independent prototype walkthroughs use synthetic male narration and the example “Discover the joy of phonetics.” They show the controls, not an accent model or automatic assessment. Notes save in this browser; audio is not included in session exports. Videos need an internet connection. Review with Louis is still pending.</div>
+  <div class="guide-grid" aria-label="Teacher and student video guides">
+    <article class="panel guide-card" id="guide-teacher" aria-labelledby="guide-teacher-title">
+      <span class="eyebrow">4:01 · English · step by step</span>
+      <h3 id="guide-teacher-title" tabindex="-1">For speech teachers</h3>
+      <p>Turn one permitted recording into a teaching task: load a reference, choose targets, edit a drill, and save a session.</p>
+      <video controls playsinline preload="none" poster="./media/teacher-v2-poster.jpg" aria-label="For speech teachers video">
+        <source src="./media/joy-of-phonetics-teacher-v2-male.mp4" type="video/mp4">
+        <track kind="captions" src="./media/teacher-v2.vtt" srclang="en" label="English">
+        Your browser cannot play this video. <a href="./media/joy-of-phonetics-teacher-v2-male.mp4">Open the teacher video</a>.
+      </video>
+      <p class="muted"><a href="./media/joy-of-phonetics-teacher-v2-male.mp4">Open video separately ↗</a> · <a href="./media/teacher-v2.vtt" download>English captions</a> · <a href="https://youtu.be/KvqaoOVnZBM" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p>
+      <details class="guide-transcript"><summary>Read the teacher video transcript</summary>
+        <p>Let's turn a recording into a practice exercise. We'll load one file, create a drill for one line, and save the result.</p>
+        <p>On the Discover page, click Start with my own recording. This opens Audio Lab. You can also reach it from the top menu.</p>
+        <p>Find the section called Your recording. Under Choose local reference audio, click the file chooser and select the audio file on your computer.</p>
+        <p>Its name and a player should now appear. The file stays in this tab; it is not uploaded.</p>
+        <p>Press the triangular Play button. This synthetic clip demonstrates the workflow, not an accent model.</p>
+        <p>Discover the joy of phonetics.</p>
+        <p>Now click Use this reference in Coach.</p>
+        <p>Coach Workspace opens with the filename in the recording reference field. Leave Archive sample empty; we're using our own file.</p>
+        <p>In Short phrase or scene line, type Discover the joy of phonetics.</p>
+        <p>Under Teaching context, give the session a name.</p>
+        <p>In Teaching task, write Invite a colleague to explore the resource.</p>
+        <p>In Sound target one, write Explore the J sound at the start of joy.</p>
+        <p>In target two, write Move the main emphasis from JOY to PHONETICS.</p>
+        <p>In target three, write Try a rising ending, then a falling ending. One target is enough for a first session; the other two are optional.</p>
+        <p>Click Build drill. The draft appears in the third panel, Drill.</p>
+        <p>This copies your phrase and targets into a starting structure. It has not analysed your recording.</p>
+        <p>Click inside the drill text and add your own teaching directions: Listen once. Practise one feature at a time. Then say the whole line to your imagined colleague.</p>
+        <p>Have the student try one choice, then return to the whole line. Choose what serves the invitation; these are not universal accent rules.</p>
+        <p>Scroll down to Observations and next changes. Write what was actually heard and one question for the next lesson.</p>
+        <p>Keep the teacher's comments in Expert feedback, and only with permission. This demonstration does not invent student observations or expert comments.</p>
+        <p>Return to the Drill panel and click Save session.</p>
+        <p>Check for Session saved in this browser. This saves notes locally in this browser, not the audio file.</p>
+        <p>Your session should also appear below under Saved sessions. Use Open to return to it later in this browser.</p>
+        <p>At the top of Coach Workspace, click Export session. Your browser downloads a JSON backup of the session notes.</p>
+        <p>Keep this backup and the original recording separately. Audio is not included in the backup or a share link.</p>
+        <p>After a reload, choose the audio file again in Audio Lab. Review your notes before sharing anything.</p>
+        <p>You now have a recording reference, a clear practice task, and a saved backup. The teacher and student make the performance choices; the prototype does not give an automatic accent score.</p>
+      </details>
+      <p><button class="btn" data-go="lab">Choose a teaching reference →</button></p>
+    </article>
+    <article class="panel guide-card" id="guide-student" aria-labelledby="guide-student-title">
+      <span class="eyebrow">5:07 · English · step by step</span>
+      <h3 id="guide-student-title" tabindex="-1">For acting students</h3>
+      <p>Practise one line between lessons: listen, explore one sound target, save observations, and export a backup.</p>
+      <video controls playsinline preload="none" poster="./media/student-v2-poster.jpg" aria-label="For acting students video">
+        <source src="./media/joy-of-phonetics-student-v2-male.mp4" type="video/mp4">
+        <track kind="captions" src="./media/student-v2.vtt" srclang="en" label="English">
+        Your browser cannot play this video. <a href="./media/joy-of-phonetics-student-v2-male.mp4">Open the student video</a>.
+      </video>
+      <p class="muted"><a href="./media/joy-of-phonetics-student-v2-male.mp4">Open video separately ↗</a> · <a href="./media/student-v2.vtt" download>English captions</a> · <a href="https://youtu.be/_mzNjDhJqCY" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></p>
+      <details class="guide-transcript"><summary>Read the student video transcript</summary>
+        <p>Let's practise one line between lessons. We'll choose a recording, make a short exercise, and save our notes. You can pause this video at any step.</p>
+        <p>On the Discover page, click Start with my own recording. Audio Lab opens. You can also choose Audio Lab from the top menu.</p>
+        <p>Under Your recording, find Choose local reference audio. Click the file chooser and select a recording you have permission to use.</p>
+        <p>Check that the filename and an audio player appear. The file stays in this tab; it is not uploaded.</p>
+        <p>Press the triangular Play button and listen once. Our short example is synthetic: a workflow demonstration, not an accent model.</p>
+        <p>Discover the joy of phonetics.</p>
+        <p>Click Use this reference in Coach. Coach Workspace opens with the filename in the recording reference field. Leave Archive sample empty.</p>
+        <p>In Short phrase or scene line, type Discover the joy of phonetics.</p>
+        <p>In Teaching context, name your practice: Invitation practice, between lessons. This is a session title, not an account name.</p>
+        <p>The next field is called Teaching task. Use it for your intention: Invite a colleague to explore the resource.</p>
+        <p>In Sound target one, write Compare emphasis on JOY and PHONETICS. We are exploring one performance choice, not trying to copy an entire accent.</p>
+        <p>Leave targets two and three blank for this first exercise. You can add another focus later with your teacher.</p>
+        <p>Click Build drill. Your phrase and target appear in the third panel, Drill. This is a starting structure, not an analysis of your voice.</p>
+        <p>Click inside the drill text and add these steps: Listen once. Say the line with emphasis on JOY. Then say it with emphasis on PHONETICS.</p>
+        <p>Now say the whole line to an imagined colleague. Which emphasis better serves your invitation? Pause the video and try both. There is no automatic right answer.</p>
+        <p>You do not need to record yourself to finish. If you want to explore the optional recorder, click Listen or record a practice take.</p>
+        <p>In Audio Lab, scroll down to Record locally. This video shows the controls only; it does not turn on your microphone or claim a recorded take.</p>
+        <p>Choose Coach in the top menu to return to your exercise. Your draft is still there.</p>
+        <p>Scroll to Observations and next changes. Write one thing you actually heard and one question for your teacher. Our screen shows an example question, not a real learner result.</p>
+        <p>Leave Expert feedback blank unless your teacher has given comments and permission to keep them. Skip the optional ratings if they are not useful.</p>
+        <p>Return to the Drill panel and click Save session. Check for Session saved in this browser.</p>
+        <p>Scroll to Saved sessions. Your named entry should appear. Click Open to return to that saved version in this browser.</p>
+        <p>For ordinary exercise text, click Copy drill, then paste it into your own notes. It copies the drill, not your audio or all the session fields.</p>
+        <p>For a structured backup, go to the top of Coach Workspace and click Export session. Your browser downloads a JSON file containing the session notes.</p>
+        <p>This is a data file, not a PDF or an audio recording. Keep the original audio separately. Coach has no import button for this single-session file.</p>
+        <p>Saved sessions belong to this browser, not an online account. Do not rely on them surviving cleared browser data or appearing on another device. Keep your exported files.</p>
+        <p>After reloading, choose your audio file again in Audio Lab. Review your notes before sharing them with anyone.</p>
+        <p>Bring your observation and question to the next lesson. Keep your own voice, and choose what helps your performance.</p>
+      </details>
+      <p><button class="btn" data-go="lab">Listen to my reference →</button></p>
+    </article>
+  </div>
+  <details class="notice"><summary>For speech teachers · lesson preparation and homework</summary><ol><li>Ask: what recording or scene is the student working with? Choose an archive example, or load permitted local reference audio in Audio Lab. Arbitrary archive imports are not automatic.</li><li>Name up to three sound changes for that task. In Coach, enter the recording reference, a short phrase, the teaching context, and up to three sound targets. Build and edit a short drill. An indexed sample is optional for a manual task.</li><li>Listen and practise in the lesson. Keep your feedback separate from the student's observations. Export the session as homework; audio is not included in a session link, so share recordings separately only with permission.</li></ol><p><button class="btn" data-go="lab">Choose a teaching reference →</button> <button class="btn" data-go="coach">Plan the phrase and three targets →</button></p></details>
+  <details class="notice"><summary>For acting students · independent practice between lessons</summary><ol><li>Choose a role, scene or communication task. Use a teacher's reference, your own permitted audio, or an archive example. Load local audio in Audio Lab; browser format support may vary.</li><li>Listen to one short phrase. Describe one feature in this recording, rather than generalizing about a whole country. In Coach, keep the recording reference and scene line, name up to three sound targets, and build or edit a drill.</li><li>Optionally record a local practice take, note what you hear, and write one question for your teacher. Export a backup and bring your observations to the next lesson. Self-ratings are subjective; the app does not automatically grade your accent.</li></ol><p><button class="btn" data-go="lab">Listen to my reference →</button> <button class="btn" data-go="coach">Plan my scene practice →</button></p></details>
   <div class="course-grid">
     <div class="course-menu" role="group" aria-label="Sample lesson steps">
       <button data-lesson="listen" aria-pressed="true" aria-controls="lesson-listen"><strong>01 · Listen &amp; notice</strong><small>Begin with one real speaker</small></button>
@@ -114,4 +200,4 @@ Agreed next changes:"></textarea><label>Subjective self-rating (optional)<select
 
 <section class="view" id="view-research"><div class="sectiontitle"><div><div class="eyebrow">Reproducible annotation</div><h2>Research Mode</h2><p>Local annotation profiles, provenance, review flags, and exports. Profiles do not verify independent people; agreement is not a learner outcome.</p></div><button class="btn" id="exportResearch">Export research bundle</button></div><div id="researchMetrics" class="metricgrid"></div><div class="twocol"><article class="panel"><h3>Code a sample</h3><label>Sample<select id="researchSample"><option value="">Choose sample</option></select></label><div id="researchSourceCard" class="sourcecard empty">Choose a sample.</div><div class="formgrid"><label>Rhoticity<select id="annRhoticity"><option value="">Uncoded</option><option>Rhotic</option><option>Non-rhotic</option><option>Mixed</option><option>Uncertain</option></select></label><label>Rhythm<select id="annRhythm"><option value="">Uncoded</option><option>Stress-timed tendency</option><option>Syllable-timed tendency</option><option>Mixed</option><option>Uncertain</option></select></label><label>TH realization<input id="annTh"></label><label>R quality<input id="annR"></label><label class="wide">Vowels<textarea id="annVowels" rows="3"></textarea></label><label class="wide">Consonants<textarea id="annConsonants" rows="3"></textarea></label><label class="wide">Prosody<textarea id="annProsody" rows="3"></textarea></label><label class="wide">Sociolinguistic / provenance note<textarea id="annSocio" rows="3"></textarea></label><label>Confidence<select id="annConfidence"><option value="">Unrated</option><option>Low</option><option>Medium</option><option>High</option></select></label><label class="checklabel"><input id="annReview" type="checkbox"> Needs expert review</label></div><button class="btn primary" id="saveAnnotation">Save as <span id="activeCoderLabel">Coder A</span></button></article><article class="panel"><h3>Local profile agreement</h3><div id="agreementBox" class="agreement"></div><h4>Review queue</h4><div id="reviewQueue" class="queue"></div></article></div><article class="panel"><div class="panelhead"><h3>Activity log</h3><button class="textbtn" id="clearActivity">Clear log</button></div><div id="activityLog" class="activity"></div></article></section>
 
-<section class="view" id="view-about"><div class="about"><div class="eyebrow">Why this exists</div><h2>Recordings are evidence.<br>A workflow makes them usable.</h2><p class="leadabout">Joy of Phonetics helps teachers and actors turn recordings into documented listening and practice. IDEA and GMU provide discovery examples; users can also load permitted local reference audio in Audio Lab and create a manual Coach task. It does not automatically import every archive, generate accents, or score whether a voice is “correct.”</p><div class="aboutgrid"><article><h3>IDEA</h3><p>Roughly 1,800 primary-source accent and dialect samples from around the world, with biographical details, transcriptions, and commentary on many records.</p><a href="https://www.dialectsarchive.com/" target="_blank">Open IDEA ↗</a></article><article><h3>GMU Speech Accent Archive</h3><p>Thousands of speakers reading one standardized passage. Consult the archive’s current terms before reuse; access and licensing are separate from indexing.</p><a href="https://accent.gmu.edu/" target="_blank">Open GMU archive ↗</a></article><article><h3>Method</h3><p>Each speaker is an exemplar, never a proxy for a nation or social group. Observation, source commentary, inference, and coaching hypothesis should remain distinct. A practice task can use a short scene as well as an archive passage.</p></article><article><h3>Project and practitioner advising</h3><p><strong>Sergey Ulyanov</strong> — research framing, product design and AI-assisted implementation.<br><strong>Louis Colaianni</strong> — practitioner adviser on phonetics and pedagogical design. His October 18, 2026 formative review informed clearer source-independent framing and teacher/student guidance. This is an independent prototype, not a university-endorsed program; learner outcomes and classroom adoption remain untested.</p></article></div><div class="notice"><strong>Provenance.</strong> IDEA audio is not copied or re-hosted here. GMU audio URLs point to the original archive; optional detailed metadata comes from a third-party mirror. Consult the Speech Accent Archive for provenance and terms. Availability is not verified by index counts. Use local recordings only when you have permission; session links do not include audio.</div><h3>Research question</h3><blockquote>How can a source-visible recording-to-practice workflow support teachers and self-directed learners without collapsing speaker variation into stereotypes?</blockquote></div></section></main><footer><span>Joy of Phonetics · prototype · 2026-10-25 recording-to-practice revision</span><span>Archive examples: IDEA + George Mason University Speech Accent Archive</span></footer><script src="./core.js?v=20261025-workflow" defer></script><script src="./discover.js?v=20261017-brand2" defer></script><script src="./lab.js?v=20261025-workflow" defer></script><script src="./coach.js?v=20261025-workflow" defer></script><script src="./research.js?v=20261017-brand2" defer></script></body></html>
+<section class="view" id="view-about"><div class="about"><div class="eyebrow">Why this exists</div><h2>Recordings are evidence.<br>A workflow makes them usable.</h2><p class="leadabout">Joy of Phonetics helps teachers and actors turn recordings into documented listening and practice. IDEA and GMU provide discovery examples; users can also load permitted local reference audio in Audio Lab and create a manual Coach task. It does not automatically import every archive, generate accents, or score whether a voice is “correct.”</p><div class="aboutgrid"><article><h3>IDEA</h3><p>Roughly 1,800 primary-source accent and dialect samples from around the world, with biographical details, transcriptions, and commentary on many records.</p><a href="https://www.dialectsarchive.com/" target="_blank">Open IDEA ↗</a></article><article><h3>GMU Speech Accent Archive</h3><p>Thousands of speakers reading one standardized passage. Consult the archive’s current terms before reuse; access and licensing are separate from indexing.</p><a href="https://accent.gmu.edu/" target="_blank">Open GMU archive ↗</a></article><article><h3>Method</h3><p>Each speaker is an exemplar, never a proxy for a nation or social group. Observation, source commentary, inference, and coaching hypothesis should remain distinct. A practice task can use a short scene as well as an archive passage.</p></article><article><h3>Project and practitioner advising</h3><p><strong>Sergey Ulyanov</strong> — research framing, product design and AI-assisted implementation.<br><strong>Louis Colaianni</strong> — practitioner adviser on phonetics and pedagogical design. His October 18, 2026 formative review informed clearer source-independent framing and teacher/student guidance. This is an independent prototype, not a university-endorsed program; learner outcomes and classroom adoption remain untested.</p></article></div><div class="notice"><strong>Provenance.</strong> IDEA audio is not copied or re-hosted here. GMU audio URLs point to the original archive; optional detailed metadata comes from a third-party mirror. Consult the Speech Accent Archive for provenance and terms. Availability is not verified by index counts. Use local recordings only when you have permission; session links do not include audio.</div><h3>Research question</h3><blockquote>How can a source-visible recording-to-practice workflow support teachers and self-directed learners without collapsing speaker variation into stereotypes?</blockquote></div></section></main><footer><span>Joy of Phonetics · prototype · 2026-10-25 video-guide revision</span><span>Archive examples: IDEA + George Mason University Speech Accent Archive</span></footer><script src="./core.js?v=20261025-guides" defer></script><script src="./discover.js?v=20261017-brand2" defer></script><script src="./lab.js?v=20261025-workflow" defer></script><script src="./coach.js?v=20261025-workflow" defer></script><script src="./research.js?v=20261017-brand2" defer></script><script src="./guides.js?v=20261025-guides" defer></script></body></html>
