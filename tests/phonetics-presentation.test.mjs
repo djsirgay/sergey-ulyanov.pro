@@ -43,17 +43,23 @@ function presentation({saved = {}, search = '', blocked = false} = {}) {
   return {attributes, buttons, lessonButtons, lessons, storage, meta, images};
 }
 
-test('poster is the default and a book-theme click changes presentation without touching lab data', () => {
+test('purple is the default and theme switches preserve lab data and the chosen lesson', () => {
   const original = JSON.stringify({lab: ['fixture'], coachDraft: {studentNotes: 'Keep this'}});
   const h = presentation({saved: {'joyofphonetics-v4': original}});
+  assert.equal(h.attributes.get('data-theme'), 'book');
+  assert.equal(h.meta.content, '#b7a2dc');
+  h.lessonButtons[1].click();
+  h.buttons[0].click();
   assert.equal(h.attributes.get('data-theme'), 'poster');
+  assert.equal(h.meta.content, '#f7efdf');
   h.buttons[1].click();
   assert.equal(h.attributes.get('data-theme'), 'book');
   assert.equal(h.buttons[1].attributes['aria-pressed'], 'true');
   assert.equal(h.buttons[0].attributes['aria-pressed'], 'false');
   assert.equal(h.storage.get('joyofphonetics-theme-v1'), 'book');
   assert.equal(h.storage.get('joyofphonetics-v4'), original);
-  assert.equal(h.meta.content, '#8e94cc');
+  assert.equal(h.meta.content, '#b7a2dc');
+  assert.deepEqual(h.lessons.map(panel => panel.hidden), [true, false, true]);
 });
 
 test('a selected theme survives reload and an explicit preview URL overrides it without overwriting storage', () => {
@@ -64,8 +70,8 @@ test('a selected theme survives reload and an explicit preview URL overrides it 
   assert.equal(preview.storage.get('joyofphonetics-theme-v1'), 'book');
 });
 
-test('invalid theme values fall back to poster and unavailable storage does not break the switch', () => {
-  assert.equal(presentation({saved: {'joyofphonetics-theme-v1': '<invalid>'}, search: '?theme=bad'}).attributes.get('data-theme'), 'poster');
+test('invalid theme values fall back to purple and unavailable storage does not break the switch', () => {
+  assert.equal(presentation({saved: {'joyofphonetics-theme-v1': '<invalid>'}, search: '?theme=bad'}).attributes.get('data-theme'), 'book');
   const h = presentation({blocked: true});
   assert.doesNotThrow(() => h.buttons[1].click());
   assert.equal(h.attributes.get('data-theme'), 'book');

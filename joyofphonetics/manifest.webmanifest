@@ -4,8 +4,8 @@
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f7efdf",
-  "theme_color": "#f7efdf",
+  "background_color": "#b7a2dc",
+  "theme_color": "#b7a2dc",
   "description": "Source-grounded accent discovery, comparison, coaching, and research workspace.",
   "icons": [
     {

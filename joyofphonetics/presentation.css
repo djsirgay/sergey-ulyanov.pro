@@ -12,15 +12,15 @@
   --display: 'Helvetica Neue', Arial, sans-serif;
 }
 html[data-theme="book"] {
-  --paper: #8e94cc;
-  --panel: #f3f1fc;
-  --ink: #17191f;
-  --muted: #282a38;
-  --line: #676c9d;
-  --warm: #54170f;
-  --tint: #dcdff4;
-  --nav: #bfc3e6;
-  --accent: #e7422e;
+  --paper: #b7a2dc;
+  --panel: #f5f0fc;
+  --ink: #21152e;
+  --muted: #43364f;
+  --line: #80689e;
+  --warm: #542d7a;
+  --tint: #e8ddf4;
+  --nav: #d0bee9;
+  --accent: #5c2d91;
 }
 [hidden] { display: none !important; }
 button, a, input, select, textarea { touch-action: manipulation; }
@@ -40,7 +40,7 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .hero { grid-template-columns: minmax(0, 1.15fr) minmax(300px, .85fr); align-items: center; gap: 48px; padding: 42px 0 30px; }
 .hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(52px, 5.5vw, 78px); line-height: 1.04; letter-spacing: -.045em; }
 .hero h1 em { font-style: normal; font-weight: inherit; color: var(--warm); }
-html[data-theme="book"] .hero h1 em { color: #882017; }
+html[data-theme="book"] .hero h1 em { color: var(--warm); }
 .hero .lede { max-width: 640px; font-size: 17px; color: var(--ink); line-height: 1.65; }
 .heroactions { gap: 10px; margin-top: 25px; }
 .hero .btn { padding: 12px 17px; }
@@ -76,7 +76,7 @@ h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.025em; }
 .louis-card { display: grid; grid-template-columns: 196px minmax(0, 1fr) minmax(240px, 1fr); gap: 28px; align-items: center; padding: 32px; margin-top: 28px; background: var(--panel); border: 1px solid var(--line); border-radius: 18px; }
 .louis-portrait { position: relative; width: 180px; height: 220px; isolation: isolate; justify-self: center; }
 .louis-portrait::before { content: ''; position: absolute; inset: -12px -10px 8px; border-radius: 46% 54% 61% 39% / 58% 40% 60% 42%; background: #b8b1a5; transform: rotate(-12deg); z-index: -1; }
-html[data-theme="book"] .louis-portrait::before { background: #c5c8df; }
+html[data-theme="book"] .louis-portrait::before { background: var(--tint); }
 .louis-portrait img { display: block; width: 180px; height: 220px; object-fit: cover; object-position: 50% 29%; border-radius: 49% 51% 47% 53% / 44% 45% 55% 56%; }
 .louis-card h3 { font-family: var(--display); font-size: 30px; font-weight: 800; }
 .louis-card p { font-size: 13px; }

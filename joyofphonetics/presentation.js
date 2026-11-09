@@ -5,11 +5,11 @@
   let saved;
   try { saved = localStorage.getItem(key); } catch (_) { /* Private/blocked storage is optional. */ }
   const requested = new URLSearchParams(location.search).get('theme');
-  let theme = valid(requested) ? requested : valid(saved) ? saved : 'poster';
+  let theme = valid(requested) ? requested : valid(saved) ? saved : 'book';
   function applyTheme() {
     document.documentElement.setAttribute('data-theme', theme);
     const meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.content = theme === 'book' ? '#8e94cc' : '#f7efdf';
+    if (meta) meta.content = theme === 'book' ? '#b7a2dc' : '#f7efdf';
     document.querySelectorAll('[data-theme-art]').forEach(image => {
       image.src = theme === 'book' ? image.dataset.artBook : image.dataset.artCream;
     });
