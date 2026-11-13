@@ -20,3 +20,7 @@
 @media(prefers-reduced-motion:reduce){.card-rail{scroll-behavior:auto}}
 /* Clip decorative orbit edges without creating a second page scroll container. */
 html,body{overflow-x:clip}
+
+.case-feature-poster img{width:100%;height:clamp(340px,68vw,760px);object-fit:contain;background:radial-gradient(ellipse at center,#38291f,#101410 72%)}
+.recognition-rail .recognition-poster>img{object-fit:contain;background:#272019}
+.gallery-grid figcaption .text-link,.result-panel .text-link{display:table;margin-top:12px}

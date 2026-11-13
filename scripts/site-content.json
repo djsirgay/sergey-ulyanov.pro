@@ -2,11 +2,13 @@
   "created": "2026-10-23",
   "home_case_priority": [
     "calpoly_aws_ehs",
+    "video_editing",
+    "web_design",
     "mcdonalds_mchappy_day",
+    "volkswagen_tiguan",
     "cornetto_together_apart",
-    "nostalgai_music_releases",
-    "mageworx_commerce",
-    "volkswagen_tiguan"
+    "x_factor",
+    "nostalgai_music_releases"
   ],
   "case_plans": [
     {
@@ -74,47 +76,43 @@
     },
     {
       "id": "volkswagen_tiguan",
-      "title": "Volkswagen — Wow! Tiguan",
+      "title": "Volkswagen — One Tiguan, Four Takes",
       "brand": "Volkswagen / Leo Burnett",
       "route": "/case-studies/volkswagen/",
-      "card_summary": "One campaign idea carried through TV, digital, outdoor and social with three production houses.",
-      "task": "Make global campaign standards locally relevant without losing a recognizable central idea.",
-      "role": "Agency creative-pod lead and production coordinator; copy, key visuals, banners, radio scripts and localized toolkits.",
+      "card_summary": "Four Tiguan concepts, from holiday humor to visual storytelling for winter driving.",
+      "task": "Create distinct Tiguan campaigns for outdoor, TV, digital and paid social.",
+      "role": "Created campaign concepts and localized copy. Led a creative pod and coordinated three production houses.",
       "stages": [
         {
-          "title": "Adapt the idea",
-          "text": "Translated global toolkits into useful market concepts, including “Wow! Tiguan.”"
+          "title": "Find four angles",
+          "text": "Use an oversized holiday tree, a portal into another world, a husky in the snow and a 360° driving concept to give each execution a distinct story."
         },
         {
-          "title": "Plan the system",
-          "text": "Developed copy, key visuals and production guidance across formats."
-        },
-        {
-          "title": "Coordinate the delivery",
-          "text": "Led the creative pod and coordinated three external production houses across TV, digital, outdoor and social."
+          "title": "Adapt each campaign",
+          "text": "Developed copy, key visuals and production guidance for outdoor, TV, digital and paid social."
         }
       ],
-      "result": "A coordinated multi-channel campaign toolkit and production workflow.",
-      "scope_note": "Agency campaign work, shown alongside labeled portfolio adaptations and format studies.",
-      "hero": "/assets/work-2026/volkswagen_tiguan-hero.webp",
-      "hero_caption": "Wow! Tiguan / original outdoor creative",
-      "preview": "/assets/work-2026/volkswagen_tiguan-hero.webp",
+      "result": "A set of four creative directions and campaign executions across formats.",
+      "scope_note": "Agency campaign work for Volkswagen through Leo Burnett.",
+      "hero": "/assets/work-2026/volkswagen-holiday-hero.webp",
+      "hero_caption": "Holiday Tiguan / Outdoor",
+      "preview": "/assets/work-2026/volkswagen-holiday-hero.webp",
       "images": [
         {
-          "src": "/assets/work-2026/volkswagen_tiguan-1.webp",
-          "caption": "Outdoor / campaign hero"
+          "src": "/assets/work-2026/volkswagen-holiday.webp",
+          "caption": "Holiday Tiguan / Outdoor"
         },
         {
-          "src": "/assets/work-2026/volkswagen_tiguan-2.webp",
-          "caption": "Print / editorial adaptation"
+          "src": "/assets/work-2026/volkswagen-wow.webp",
+          "caption": "Wow! Tiguan / Launch creative"
         },
         {
-          "src": "/assets/work-2026/volkswagen_tiguan-3.webp",
-          "caption": "Film / human-moment study"
+          "src": "/assets/work-2026/volkswagen-winter.webp",
+          "caption": "Tiguan Winter Edition / Paid social"
         },
         {
-          "src": "/assets/work-2026/volkswagen_tiguan-4.webp",
-          "caption": "Digital / journey study"
+          "src": "/assets/work-2026/volkswagen-360.webp",
+          "caption": "Freedom in 360° / Campaign concept"
         }
       ],
       "logo": "/assets/work-2026/volkswagen_tiguan-logo.png"
@@ -219,12 +217,12 @@
     },
     {
       "id": "nostalgai_music_releases",
-      "title": "NostalgAI Recordz — Releases, Artwork & Commerce",
-      "brand": "Universal / Interscope",
+      "title": "Music Releases — Artwork, Prepress & Vinyl",
+      "brand": "Nostalgai Recordz / Independent release work",
       "route": "/case-studies/release-to-commerce/",
-      "card_summary": "An independent release workflow linking artwork and launch content with physical products and Shopify commerce.",
+      "card_summary": "Independent release creative, production and prepress, including the t.A.T.u. anniversary cover study.",
       "task": "Make the release journey coherent from creative development and production files to a product an audience can discover and buy.",
-      "role": "Founder, creative direction, artwork and prepress, release planning, Shopify workflows and production coordination.",
+      "role": "Creative direction, cover artwork, prepress, release planning and production coordination.",
       "stages": [
         {
           "title": "Prepare the release",
@@ -232,15 +230,11 @@
         },
         {
           "title": "Develop the visual identity",
-          "text": "Directed artwork, prepress and launch content. An independent t.A.T.u. anniversary study compared 20 cover alternatives before developing selected vinyl packaging."
-        },
-        {
-          "title": "Connect the store",
-          "text": "Built repeatable processes for product data, Shopify, launch assets and fulfillment coordination."
+          "text": "Directed cover art, prepress and launch content. An independent t.A.T.u. anniversary study compared 20 alternatives before developing the selected vinyl packaging."
         }
       ],
-      "result": "A repeatable release-to-commerce workflow; 500+ release and content assets coordinated across music projects.",
-      "scope_note": "500+ is an aggregate across music projects. The t.A.T.u. anniversary packaging is an independent visual-development concept.",
+      "result": "Coordinated 500+ release and content assets across music projects.",
+      "scope_note": "The t.A.T.u. anniversary packaging is an independent visual-development concept. Universal Music Group is the original label group.",
       "hero": "/assets/work-2026/nostalgai_music_releases-hero.webp",
       "hero_caption": "Selected anniversary cover / vinyl packaging concept",
       "preview": "/assets/work-2026/nostalgai_music_releases-hero.webp",
@@ -408,23 +402,23 @@
       "route": "/case-studies/ai-compliance-platform/",
       "card_summary": "A working training and compliance workflow prototype, from problem framing to a presented system.",
       "task": "Turn disconnected safety documents and training records into clearer assignments, reporting states and human-review workflows.",
-      "role": "Problem framing, workflow mapping, prototype design, AI-assisted implementation, testing and presentation during the AI Summer Camp.",
+      "role": "Designed the full interface, set up servers and configured Amazon Bedrock. Built and presented a Python/FastAPI prototype.",
       "stages": [
         {
-          "title": "Map the work",
-          "text": "Defined users, training requirements, assignments, administrative views and reporting states."
+          "title": "Design the workflow and interface",
+          "text": "Defined user roles, safety-training requirements, assignments, administrative views and progress reporting."
         },
         {
-          "title": "Build and revise",
-          "text": "Developed the prototype with Python/FastAPI, PostgreSQL, Docker and Render, using AI-assisted implementation and iterative testing."
+          "title": "Configure the AI environment",
+          "text": "Set up servers and configured Amazon Bedrock during the program."
         },
         {
-          "title": "Present the operating model",
-          "text": "Demonstrated the system, reviewed the workflow and explored Amazon Bedrock at concept/prototype level."
+          "title": "Build and test the prototype",
+          "text": "Implemented document processing, assignment tracking and completion reporting with Python/FastAPI, PostgreSQL, Docker and Render."
         }
       ],
       "result": "Developed and presented a working prototype. Selected for a cohort of 100 from nearly 1,300 applicants.",
-      "scope_note": "Python/FastAPI, PostgreSQL, Docker and Render prototype. Amazon Bedrock explored at concept/prototype level during the program.",
+      "scope_note": "Working Python/FastAPI prototype with hands-on Amazon Bedrock configuration completed during the program.",
       "hero": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
       "hero_caption": "EHS Mentor / interface and device visualization",
       "preview": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
@@ -584,6 +578,173 @@
         }
       ],
       "logo": "/assets/work-2026/community_campaigns-logo.svg"
+    },
+    {
+      "id": "web_design",
+      "route": "/case-studies/web-design/",
+      "title": "Web Design & E-commerce",
+      "brand": "Sergéy Studio",
+      "card_summary": "Four web projects, from a working vinyl store to an interactive artist site.",
+      "task": "Give each project a clear path to action: browse and buy records, find services, review editorial work, or explore an artist’s music.",
+      "role": "Site structure, interface and visual design. Built the Nostalgai storefront and created an interactive desktop-style artist site.",
+      "stages": [
+        {
+          "title": "Nostalgai Recordz",
+          "text": "Designed and launched a vinyl store with a searchable product catalogue, a bundle builder and Stripe checkout."
+        },
+        {
+          "title": "Louis Colaianni",
+          "text": "Designed a services site with distinct paths to coaching, books and client work."
+        },
+        {
+          "title": "Chakravision",
+          "text": "Developed a portfolio concept for editor and producer Charles Kramer that organizes credits and editorial work."
+        },
+        {
+          "title": "DJ Sir Gay",
+          "text": "Created a desktop-style artist site with a music player, project archive, press kit and booking entry point."
+        }
+      ],
+      "result": "Three live websites and one editor portfolio concept.",
+      "scope_note": "Chakravision is a portfolio concept. Use the links to open the public project pages.",
+      "hero": "/assets/work-2026/web-nostalgai.webp",
+      "hero_caption": "Nostalgai Recordz storefront",
+      "preview": "/assets/work-2026/web-nostalgai.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/web-nostalgai.webp",
+          "caption": "Nostalgai Recordz / Vinyl storefront",
+          "href": "https://www.nostalgairecordz.com/"
+        },
+        {
+          "src": "/assets/work-2026/web-louis.webp",
+          "caption": "Louis Colaianni / Services site",
+          "href": "https://joyofphonetics.com/"
+        },
+        {
+          "src": "/assets/work-2026/web-chakravision.webp",
+          "caption": "Chakravision / Charles Kramer portfolio concept",
+          "href": "http://chakravision.sergey-ulyanov.pro/"
+        },
+        {
+          "src": "/assets/work-2026/web-djsirgay.webp",
+          "caption": "DJ Sir Gay / Interactive artist site",
+          "href": "https://djsirgay.com/"
+        }
+      ],
+      "logo": "/assets/sergey-bolt-circle.svg"
+    },
+    {
+      "id": "video_editing",
+      "route": "/case-studies/video-editing/",
+      "title": "Video Editing & Motion",
+      "brand": "Sergéy Studio",
+      "card_summary": "Four short-form edits showing visual hooks, pacing, product motion and captions.",
+      "task": "Shape the first seconds, develop a clear visual beat and carry the story through to the ending.",
+      "role": "Concept development, short-form editing, animated typography, captions and production coordination.",
+      "stages": [
+        {
+          "title": "RentPrimeRoom",
+          "text": "Built an AI-assisted rental spot around a visual hook, a story turn and a branded ending."
+        },
+        {
+          "title": "ArtPeel",
+          "text": "Animated a product offer using typography, timed reveals and a clear promotion."
+        },
+        {
+          "title": "Actor showreel",
+          "text": "Cut performance footage together with split screens and animated type."
+        },
+        {
+          "title": "Deep Rest",
+          "text": "Conceived the shoot, sourced the camera operator and edited the vertical piece with captions around an excerpt from Jim Carrey."
+        }
+      ],
+      "result": "Four edits for product, social and performance contexts.",
+      "scope_note": "Selected stills show the framing, typography and edit concepts for each project.",
+      "hero": "/assets/work-2026/editing-rentprimeroom.webp",
+      "hero_caption": "RentPrimeRoom / Branded end scene",
+      "preview": "/assets/work-2026/editing-rentprimeroom.webp",
+      "images": [
+        {
+          "src": "/assets/work-2026/editing-rentprimeroom.webp",
+          "caption": "RentPrimeRoom / AI-assisted rental ad"
+        },
+        {
+          "src": "/assets/work-2026/editing-artpeel.webp",
+          "caption": "ArtPeel / Product motion"
+        },
+        {
+          "src": "/assets/work-2026/editing-showreel.webp",
+          "caption": "Actor showreel / Split screens and animated type"
+        },
+        {
+          "src": "/assets/work-2026/editing-deep-rest.webp",
+          "caption": "Deep Rest / Vertical edit and captions"
+        }
+      ],
+      "logo": "/assets/sergey-bolt-circle.svg"
+    },
+    {
+      "id": "x_factor",
+      "route": "/case-studies/x-factor/",
+      "title": "X-Factor / Main Stage",
+      "brand": "EK Publishing & Production",
+      "card_summary": "Creative preparation and staging with two-time GRAMMY-winning producer Walter Afanasieff.",
+      "task": "Develop performance concepts for the televised competition and prepare material for the stage.",
+      "role": "Creative preparation and staging in the EK Publishing & Production context, working with Walter Afanasieff.",
+      "stages": [
+        {
+          "title": "Develop the performance concept",
+          "text": "Prepared creative ideas for how the performance would read on stage and on television."
+        },
+        {
+          "title": "Prepare the staging",
+          "text": "Worked on creative preparation and staging with Walter Afanasieff’s team."
+        }
+      ],
+      "result": "Ksenia Dezhneva, a performer on Walter Afanasieff’s team, reached the superfinal.",
+      "scope_note": "The superfinal was a performer and team result.",
+      "hero": "/assets/portfolio/case-xfactor.webp",
+      "hero_caption": "X-Factor / Main Stage project archive",
+      "preview": "/assets/portfolio/case-xfactor.webp",
+      "images": [
+        {
+          "src": "/assets/portfolio/case-xfactor.webp",
+          "caption": "X-Factor / Main Stage project archive"
+        }
+      ],
+      "logo": "/assets/sergey-bolt-circle.svg"
+    },
+    {
+      "id": "collodi_poster",
+      "route": "/case-studies/carlo-collodi-200/",
+      "title": "VERIFY YOU ARE HUMAN",
+      "brand": "Museo MAGMA / 200 per Carlo Collodi",
+      "card_summary": "A Pinocchio poster that turns a familiar verification screen into a question about being human.",
+      "task": "Reinterpret Pinocchio for an international poster exhibition marking 200 years since Carlo Collodi’s birth.",
+      "role": "Poster concept, art direction, typography and final artwork.",
+      "stages": [
+        {
+          "title": "Find a contemporary test",
+          "text": "Used the familiar “I’m human” checkbox to connect Pinocchio’s wish to become human with the way screens ask us to prove it."
+        },
+        {
+          "title": "Put the metaphor in the image",
+          "text": "Paired a wooden hand and a lengthening nose with a smartphone, using the nose as the pointer for the verification screen."
+        }
+      ],
+      "result": "Selected for the international exhibition and catalogue.",
+      "scope_note": "Museo MAGMA’s selection notice named exhibitions in Italy, Argentina and Cuba and inclusion in the catalogue and archive. The international jury selected 200 posters from more than 500 submissions.",
+      "hero": "/assets/work-2026/collodi-verify-you-are-human.webp",
+      "preview": "/assets/work-2026/collodi-verify-you-are-human.webp",
+      "hero_caption": "VERIFY YOU ARE HUMAN / poster by Sergéy Ulyanov",
+      "images": [],
+      "source": {
+        "href": "https://aiap.it/pinocchio-una-metafora-contemporanea/",
+        "label": "Exhibition details from AIAP"
+      },
+      "logo": "/assets/sergey-bolt-circle.svg"
     }
   ]
 }

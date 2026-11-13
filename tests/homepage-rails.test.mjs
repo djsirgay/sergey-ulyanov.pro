@@ -218,8 +218,8 @@ test('generated homepage provides named, keyboard-focusable rails with correctly
       assert.ok(attr(button,'aria-label'));
     }
   }
-  assert.equal((html.match(/class="case-card feature-case"/g)||[]).length,6);
-  assert.equal((html.match(/class="recognition-card"/g)||[]).length,3);
+  assert.equal((html.match(/class="case-card feature-case"/g)||[]).length,8);
+  assert.equal((html.match(/class="recognition-card(?: recognition-poster)?"/g)||[]).length,4);
   const library=read('work/index.html');
   assert.match(library,/class="case-grid"/);
   assert.doesNotMatch(library,/data-rail=/,'The full work library must keep its browsable grid');
