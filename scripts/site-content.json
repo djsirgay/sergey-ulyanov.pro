@@ -645,19 +645,23 @@
       "stages": [
         {
           "title": "RentPrimeRoom",
-          "text": "Built an AI-assisted rental spot around a visual hook, a story turn and a branded ending."
+          "text": "Built an AI-assisted rental spot around a visual hook, a story turn and a branded ending.",
+          "anchor": "rentprimeroom"
         },
         {
           "title": "ArtPeel",
-          "text": "Animated a product offer using typography, timed reveals and a clear promotion."
+          "text": "Animated a product offer using typography, timed reveals and a clear promotion.",
+          "anchor": "artpeel"
         },
         {
           "title": "Actor showreel",
-          "text": "Cut performance footage together with split screens and animated type."
+          "text": "Cut performance footage together with split screens and animated type.",
+          "anchor": "actor-showreel"
         },
         {
           "title": "Deep Rest",
-          "text": "Conceived the shoot, sourced the camera operator and edited the vertical piece with captions around an excerpt from Jim Carrey."
+          "text": "Conceived the shoot, sourced the camera operator and edited the vertical piece with captions around an excerpt from Jim Carrey.",
+          "anchor": "deep-rest"
         }
       ],
       "result": "Four edits for product, social and performance contexts.",
@@ -736,15 +740,123 @@
       ],
       "result": "Selected for the international exhibition and catalogue.",
       "scope_note": "Museo MAGMA’s selection notice named exhibitions in Italy, Argentina and Cuba and inclusion in the catalogue and archive. The international jury selected 200 posters from more than 500 submissions.",
-      "hero": "/assets/work-2026/collodi-verify-you-are-human.webp",
-      "preview": "/assets/work-2026/collodi-verify-you-are-human.webp",
-      "hero_caption": "VERIFY YOU ARE HUMAN / poster by Sergéy Ulyanov",
-      "images": [],
+      "hero": "/assets/work-2026/recognition-collodi.webp",
+      "preview": "/assets/work-2026/recognition-collodi.webp",
+      "hero_caption": "Sergéy Ulyanov alongside VERIFY YOU ARE HUMAN in the creative portrait published with his exhibition announcement.",
+      "images": [
+        {
+          "src": "/assets/work-2026/collodi-verify-you-are-human.webp",
+          "caption": "Original poster artwork / VERIFY YOU ARE HUMAN",
+          "framing": "poster"
+        }
+      ],
       "source": {
         "href": "https://aiap.it/pinocchio-una-metafora-contemporanea/",
         "label": "Exhibition details from AIAP"
       },
       "logo": "/assets/sergey-bolt-circle.svg"
+    }
+  ],
+  "recognition": [
+    {
+      "id": "complex",
+      "year": "2026",
+      "title": "SCREAM 7 Art Competition",
+      "issuer": "Paramount Pictures × Complex",
+      "description": "Competition winner. IN PROGRESS was exhibited at Complex LA.",
+      "href": "/case-studies/scream-7-complex/",
+      "image": "/assets/portfolio/award-scream.jpg",
+      "alt": "Sergéy Ulyanov and director Kevin Williamson",
+      "inset": "/assets/work-2026/recognition-scream-fog.webp",
+      "inset_alt": "Ghostface in the fog, a separate key-art concept from the SCREAM 7 series"
+    },
+    {
+      "id": "collodi",
+      "year": "2026",
+      "title": "200 per Carlo Collodi",
+      "issuer": "Museo MAGMA",
+      "description": "VERIFY YOU ARE HUMAN selected for the international exhibition and catalogue.",
+      "href": "/case-studies/carlo-collodi-200/",
+      "image": "/assets/work-2026/recognition-collodi.webp",
+      "alt": "Sergéy Ulyanov beside his Pinocchio poster in his exhibition announcement"
+    },
+    {
+      "id": "cci",
+      "year": "2026",
+      "title": "CCI Quick Grant",
+      "issuer": "Center for Cultural Innovation",
+      "description": "Professional-development funding supporting A2IM Artist Pro annual membership.",
+      "href": "https://cciarts.org/quick-grant/"
+    },
+    {
+      "id": "aws",
+      "year": "2025",
+      "title": "AI Summer Camp",
+      "issuer": "Cal Poly DxHub × AWS",
+      "description": "Selected for a 100-person cohort from nearly 1,300 applicants.",
+      "href": "/case-studies/ai-compliance-platform/",
+      "image": "/assets/portfolio/award-calpoly.jpg",
+      "alt": "Cal Poly DxHub and AWS AI Summer Camp cohort"
+    },
+    {
+      "id": "hr",
+      "year": "2019",
+      "title": "Silver Screen Partner Prize",
+      "issuer": "HR Brand Belarus",
+      "description": "Special partner prize in Corporate Video for the Frandesa film team.",
+      "href": "/case-studies/battle-for-the-harvest/",
+      "image": "/assets/portfolio/award-hr.jpg",
+      "alt": "Frandesa corporate film recognition"
+    },
+    {
+      "id": "tuzin",
+      "year": "2016",
+      "title": "Heroes of the Year",
+      "issuer": "TuzinFM",
+      "description": "Discovery shortlist for original Belarusian-language music, under the artist name RAY.",
+      "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html"
+    },
+    {
+      "id": "ministry",
+      "year": "2016",
+      "title": "Professional creative-worker status",
+      "issuer": "Belarus Ministry of Culture",
+      "description": "An expert commission confirmed professional creative-worker status in December 2016."
+    },
+    {
+      "id": "white-square",
+      "year": "2014",
+      "title": "White Square Award",
+      "issuer": "White Square Advertising Festival",
+      "description": "Award for the Alfa-Bank corporate calendar.",
+      "href": "/case-studies/societe-generale/",
+      "image": "/assets/portfolio/award-white-square.jpg",
+      "alt": "White Square advertising festival award evidence"
+    },
+    {
+      "id": "bank",
+      "year": "2012–2014",
+      "title": "Bank Website Awards",
+      "issuer": "TIBO and Best Bank Website",
+      "description": "Team awards for BelRosBank and successor Alfa-Bank. TIBO 2012 third place, Best Bank Website 2013 first place and TIBO 2014 second place.",
+      "href": "/case-studies/societe-generale/",
+      "image": "/assets/portfolio/award-bank.jpg",
+      "alt": "Bank website and campaign work in the Société Générale case"
+    },
+    {
+      "id": "innovation",
+      "year": "2012",
+      "title": "Innovation Ideas Contest",
+      "issuer": "BelRosBank / Société Générale",
+      "description": "Winner for a strategic banking product and digital concept.",
+      "href": "/case-studies/societe-generale/"
+    },
+    {
+      "id": "motor",
+      "year": "2011",
+      "title": "Best Advertising Game",
+      "issuer": "International Motor Show",
+      "description": "Award winner in the advertising-game category."
     }
   ]
 }

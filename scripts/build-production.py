@@ -18,7 +18,7 @@ checks = {
     "no iframe": "<iframe" not in html.lower(),
     "no dynamic code execution": "new Function" not in html,
     "eight visual flagship projects": html.count('class="case-card feature-case"') == 8,
-    "four priority recognition cards": html.count('class="recognition-card') == 4,
+    "full recognition rail": html.count('class="recognition-card"') == 11,
     "research follows community": html.index('id="research"') > html.index('id="community"'),
     "no homepage press dump": "Do Gay Men and Straight Men Think Same?" not in html,
     "canonical URL": '<link rel="canonical" href="https://sergey-ulyanov.pro/">' in html,

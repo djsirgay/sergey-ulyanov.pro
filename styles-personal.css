@@ -21,6 +21,34 @@
 /* Clip decorative orbit edges without creating a second page scroll container. */
 html,body{overflow-x:clip}
 
-.case-feature-poster img{width:100%;height:clamp(340px,68vw,760px);object-fit:contain;background:radial-gradient(ellipse at center,#38291f,#101410 72%)}
-.recognition-rail .recognition-poster>img{object-fit:contain;background:#272019}
 .gallery-grid figcaption .text-link,.result-panel .text-link{display:table;margin-top:12px}
+
+/* Shared ratios keep the work and recognition imagery predictable. */
+.case-card .card-art{aspect-ratio:16 / 10}
+.project-rail .card-art>img{object-fit:cover}
+.case-feature{padding:0}
+.case-feature img{width:100%;height:auto;max-height:none;aspect-ratio:16 / 10;object-fit:cover}
+.gallery-grid figure img{width:100%;height:auto;aspect-ratio:16 / 10;object-fit:cover;max-height:none}
+.gallery-grid.portraits figure img,.gallery-grid .gallery-poster img{height:auto;max-height:none;aspect-ratio:2 / 3;object-fit:cover}
+.recognition-art{position:relative;isolation:isolate;overflow:hidden;width:100%;aspect-ratio:16 / 10;background:#192519}
+.recognition-art>img{width:100%;height:100%;object-fit:cover;object-position:center 31%}
+.recognition-art-scream{display:grid;grid-template-columns:52% 48%;align-items:center;background:linear-gradient(115deg,#18221c,#101511)}
+.recognition-art-scream>img:first-child{min-height:0;object-position:42% 28%}
+.recognition-art-scream>img:nth-child(2){height:auto;aspect-ratio:16 / 10;padding:3px;background:#070907;border:1px solid #839180;width:calc(100% - 20px);margin:0 auto;box-shadow:0 7px 15px #0009;object-fit:cover}
+.recognition-type{display:grid;place-items:center;background:radial-gradient(ellipse at 25% 35%,#2b442a,#141f15 72%)}
+.recognition-type span{font:700 clamp(36px,5vw,66px)/1 var(--mono);letter-spacing:-.08em;color:#ddf1ca}
+.collaborator-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.collaborator-grid figure{margin:0;display:flex;flex-direction:column;justify-content:space-between;gap:28px;padding:30px;background:radial-gradient(ellipse at top left,#1a2a1b,var(--panel) 75%);border:1px solid var(--line);border-radius:20px}
+.collaborator-grid blockquote{margin:0;font-size:clamp(17px,2vw,22px);line-height:1.5}
+.collaborator-grid figcaption{display:grid;gap:4px;font-size:13px;color:var(--muted)}
+.collaborator-grid figcaption strong{color:var(--lime)}
+.case-grid.mobile-library-rail{grid-auto-flow:row;grid-auto-columns:auto;overflow:visible;scroll-snap-type:none;padding:0}
+:is(#campaigns,#products) .rail-controls,.mobile-library-rail+.rail-footer{display:none}
+@media(max-width:720px){
+ .nav-links{gap:7px;justify-content:space-between;flex-wrap:wrap;line-height:1.2}
+ .collaborator-grid{grid-template-columns:1fr}
+ .collaborator-grid figure{padding:23px}
+ .case-grid.mobile-library-rail{grid-auto-flow:column;grid-template-columns:none;grid-auto-columns:86%;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;gap:14px;padding:2px 2px 14px}
+ .case-grid.mobile-library-rail>.case-card{min-width:0}
+ :is(#campaigns,#products) .rail-controls:not([hidden]),.mobile-library-rail+.rail-footer{display:flex}
+}

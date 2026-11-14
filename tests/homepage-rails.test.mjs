@@ -219,10 +219,20 @@ test('generated homepage provides named, keyboard-focusable rails with correctly
     }
   }
   assert.equal((html.match(/class="case-card feature-case"/g)||[]).length,8);
-  assert.equal((html.match(/class="recognition-card(?: recognition-poster)?"/g)||[]).length,4);
+  const registry=JSON.parse(read('scripts/site-content.json'));
+  assert.equal((html.match(/class="recognition-card"/g)||[]).length,registry.recognition.length);
+  assert.match(html,/href="\/press\/#articles">Articles<\/a>/);
+  assert.match(html,/href="\/evidence\/#awards">Full recognition record/);
+  const evidence=read('evidence/index.html');
+  for(const item of registry.recognition) assert.ok(evidence.includes(`id="award-${item.id}"`),item.id);
+  assert.match(html,/recognition-scream-fog\.webp/);
+  assert.match(html,/recognition-collodi\.webp/);
   const library=read('work/index.html');
-  assert.match(library,/class="case-grid"/);
-  assert.doesNotMatch(library,/data-rail=/,'The full work library must keep its browsable grid');
+  for(const group of ['campaigns','products']){
+    const name=`library-${group}`;
+    assert.ok(library.includes(`class="card-rail case-grid mobile-library-rail" id="rail-${name}" data-rail="${name}"`));
+    assert.ok(library.includes(`data-next="${name}" aria-label=`));
+  }
 });
 
 test('community cards have four independent destinations and link to real publications, youth work and research',()=>{
