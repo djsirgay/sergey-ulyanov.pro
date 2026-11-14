@@ -42,8 +42,11 @@ html,body{overflow-x:clip}
 .collaborator-grid blockquote{margin:0;font-size:clamp(17px,2vw,22px);line-height:1.5}
 .collaborator-grid figcaption{display:grid;gap:4px;font-size:13px;color:var(--muted)}
 .collaborator-grid figcaption strong{color:var(--lime)}
-.case-grid.mobile-library-rail{grid-auto-flow:row;grid-auto-columns:auto;overflow:visible;scroll-snap-type:none;padding:0}
+.case-grid.mobile-library-rail{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;scroll-snap-type:none;padding:0}
 :is(#campaigns,#products) .rail-controls,.mobile-library-rail+.rail-footer{display:none}
+@media(max-width:1050px){
+ .case-grid.mobile-library-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 @media(max-width:720px){
  .nav-links{gap:7px;justify-content:space-between;flex-wrap:wrap;line-height:1.2}
  .collaborator-grid{grid-template-columns:1fr}
