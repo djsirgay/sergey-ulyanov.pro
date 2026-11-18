@@ -1,23 +1,23 @@
 {
   "created": "2026-10-23",
   "home_case_priority": [
-    "calpoly_aws_ehs",
-    "video_editing",
-    "web_design",
+    "scream7_complex",
     "mcdonalds_mchappy_day",
-    "volkswagen_tiguan",
+    "calpoly_aws_ehs",
     "cornetto_together_apart",
-    "x_factor",
-    "nostalgai_music_releases"
+    "volkswagen_tiguan",
+    "nostalgai_music_releases",
+    "video_editing",
+    "web_design"
   ],
   "case_plans": [
     {
       "id": "mcdonalds_mchappy_day",
-      "title": "McDonald’s — McHappy Day & Campaign Creative",
+      "title": "McDonald’s — McHappy Day",
       "brand": "McDonald’s",
       "route": "/case-studies/mchappy-day/",
-      "card_summary": "Campaign concepts, scripts and channel creative that connected awareness with participation.",
-      "task": "Give a seasonal fundraising campaign a clear path from attention to registration and giving, alongside ongoing product launches.",
+      "card_summary": "A fundraising campaign that led people from a mobile character builder to registration and giving.",
+      "task": "Give a seasonal fundraising campaign a clear path from attention to registration and giving.",
       "role": "Digital strategy, concept and messaging; scripts, banners, social copy, voiceovers and campaign coordination through the agency context.",
       "stages": [
         {
@@ -30,7 +30,7 @@
         },
         {
           "title": "Carry it through delivery",
-          "text": "Coordinated partners and campaign operations; across product launches, managed up to three concurrent campaigns in peak weeks."
+          "text": "Coordinated production partners and channel delivery across paid social, web and CRM."
         }
       ],
       "result": "McHappy Day recorded 200K registrations, $230K+ in donations and +20% year-on-year social-audience growth.",
@@ -54,7 +54,44 @@
         {
           "src": "/assets/work-2026/mcdonalds_mchappy_day-4.webp",
           "caption": "Instagram Stories"
+        }
+      ],
+      "logo": "/assets/work-2026/mcdonalds_mchappy_day-logo.png",
+      "sources": [
+        {
+          "href": "/case-studies/mcdonalds-campaigns/",
+          "label": "See separate McDonald’s product campaigns"
+        }
+      ]
+    },
+    {
+      "id": "mcdonalds_campaigns",
+      "title": "McDonald’s — Product Campaigns",
+      "brand": "McDonald’s",
+      "route": "/case-studies/mcdonalds-campaigns/",
+      "card_summary": "Original and localized product campaigns for social, outdoor, packaging and restaurants.",
+      "task": "Give each menu or restaurant promotion a recognizable idea that would still work across different placements.",
+      "role": "Developed concepts and scripts, wrote copy, recorded voiceovers and coordinated creative across the agency, client and production partners.",
+      "stages": [
+        {
+          "title": "Create and localize",
+          "text": "Developed some campaigns from scratch and adapted others for the local market. Wrote channel copy and scripts and helped adapt video creative across languages."
         },
+        {
+          "title": "Take the message into the restaurant",
+          "text": "Worked across social, outdoor, packaging and in-restaurant communications. The gallery shows a chicken campaign, a packaging activation and a restaurant launch concept."
+        },
+        {
+          "title": "Run campaigns in parallel",
+          "text": "Coordinated creative across up to three active campaigns in peak weeks."
+        }
+      ],
+      "result": "A collection of product, packaging and restaurant launch work.",
+      "scope_note": "Agency work for McDonald’s. The gallery includes portfolio adaptations. McHappy Day’s fundraising results are reported separately.",
+      "hero": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-2.webp",
+      "hero_caption": "McDonald’s chicken promotion / outdoor campaign layout",
+      "preview": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-2.webp",
+      "images": [
         {
           "src": "/assets/work-2026/mcdonalds_mchappy_day-ongoing-1.webp",
           "caption": "Social / product messages / portfolio adaptation"
@@ -72,7 +109,13 @@
           "caption": "Restaurant / launch concept / portfolio adaptation"
         }
       ],
-      "logo": "/assets/work-2026/mcdonalds_mchappy_day-logo.png"
+      "logo": "/assets/work-2026/mcdonalds_mchappy_day-logo.png",
+      "sources": [
+        {
+          "href": "/case-studies/mchappy-day/",
+          "label": "Read the McHappy Day fundraising case"
+        }
+      ]
     },
     {
       "id": "volkswagen_tiguan",
@@ -94,28 +137,62 @@
       ],
       "result": "A set of four creative directions and campaign executions across formats.",
       "scope_note": "Agency campaign work for Volkswagen through Leo Burnett.",
-      "hero": "/assets/work-2026/volkswagen-holiday-hero.webp",
-      "hero_caption": "Holiday Tiguan / Outdoor",
-      "preview": "/assets/work-2026/volkswagen-holiday-hero.webp",
+      "hero": "/assets/work-2026/volkswagen-holiday-billboard-source.webp",
+      "hero_caption": "Holiday Tiguan outdoor creative: an oversized tree on a Tiguan.",
+      "preview": "/assets/work-2026/volkswagen-holiday-billboard-768.webp",
       "images": [
         {
-          "src": "/assets/work-2026/volkswagen-holiday.webp",
-          "caption": "Holiday Tiguan / Outdoor"
+          "src": "/assets/work-2026/volkswagen-holiday-source.webp",
+          "caption": "“It’s not about size. It’s about character.” Holiday outdoor creative.",
+          "title": "Holiday Tiguan",
+          "dimensions": [
+            1372,
+            684
+          ],
+          "full": "/assets/work-2026/volkswagen-holiday-source.webp",
+          "framing": "native"
         },
         {
-          "src": "/assets/work-2026/volkswagen-wow.webp",
-          "caption": "Wow! Tiguan / Launch creative"
+          "src": "/assets/work-2026/volkswagen-wow-billboard-source.webp",
+          "caption": "A portal in an outdoor execution for the Tiguan launch.",
+          "title": "WOW! TIGUAN!",
+          "dimensions": [
+            1144,
+            792
+          ],
+          "full": "/assets/work-2026/volkswagen-wow-billboard-source.webp",
+          "framing": "native"
         },
         {
-          "src": "/assets/work-2026/volkswagen-winter.webp",
-          "caption": "Tiguan Winter Edition / Paid social"
+          "src": "/assets/work-2026/volkswagen-winter-source.webp",
+          "caption": "“Your dynamic crossover.” A husky and a Tiguan share the frame in this paid social ad.",
+          "title": "Tiguan Winter Edition",
+          "dimensions": [
+            1242,
+            1242
+          ],
+          "full": "/assets/work-2026/volkswagen-winter-source.webp",
+          "framing": "native"
         },
         {
-          "src": "/assets/work-2026/volkswagen-360.webp",
-          "caption": "Freedom in 360° / Campaign concept"
+          "src": "/assets/work-2026/volkswagen-360-preview.webp",
+          "caption": "“Freedom in 360°.” The concept puts three driving environments in the same frame.",
+          "title": "Freedom in 360°",
+          "dimensions": [
+            1240,
+            620
+          ],
+          "full": "/assets/work-2026/volkswagen-360-source.webp",
+          "framing": "native"
         }
       ],
-      "logo": "/assets/work-2026/volkswagen_tiguan-logo.png"
+      "logo": "/assets/work-2026/volkswagen_tiguan-logo.png",
+      "hero_dimensions": [
+        1835,
+        1080
+      ],
+      "hero_full": "/assets/work-2026/volkswagen-holiday-billboard-source.webp",
+      "hero_srcset": "/assets/work-2026/volkswagen-holiday-billboard-768.webp 768w, /assets/work-2026/volkswagen-holiday-billboard-source.webp 1835w"
     },
     {
       "id": "fanta_winter",
@@ -170,20 +247,16 @@
       "brand": "Paramount Pictures / Complex",
       "route": "/case-studies/scream-7-complex/",
       "card_summary": "A five-work poster series; “IN PROGRESS” selected for the official Complex Los Angeles exhibition.",
-      "task": "Create fresh tension inside a familiar film franchise without relying on the same mask image every time.",
+      "task": "Create key art for the SCREAM 7 competition that fans would recognize before they saw the title.",
       "role": "Concept development, visual storytelling, art direction and design for an independent competition entry.",
       "stages": [
         {
-          "title": "Explore the tension",
-          "text": "Developed visual metaphors around the phone, surveillance, identity and the audience’s role in watching."
+          "title": "Turn the mask into an idea",
+          "text": "Built five posters around familiar SCREAM motifs: the phone, surveillance, identity and the feeling of being watched. Created a five-work competition series with a common typographic treatment."
         },
         {
-          "title": "Build the series",
-          "text": "Created a five-work competition series with reusable image and type elements."
-        },
-        {
-          "title": "Refine for impact",
-          "text": "Reviewed legibility, franchise recognition and the strength of each idea in a gallery setting."
+          "title": "Choose what the viewer sees first",
+          "text": "Made the mask emerge from a fog bank in one design. For IN PROGRESS, used a phone-list concept to turn the franchise’s recurring call into a threat before the viewer sees a face."
         }
       ],
       "result": "Official competition winner; “IN PROGRESS” was selected for the Complex Los Angeles exhibition in February 2026.",
@@ -211,9 +284,20 @@
         {
           "src": "/assets/work-2026/scream-4.webp",
           "caption": "Unknown caller"
+        },
+        {
+          "src": "/assets/work-2026/recognition/scream-exhibition.webp",
+          "caption": "At the Complex LA exhibition with IN PROGRESS, the poster selected from my five entries.",
+          "title": "The selected work at Complex LA"
         }
       ],
-      "logo": "/assets/work-2026/scream7_complex-logo.svg"
+      "logo": "/assets/work-2026/scream7_complex-logo.svg",
+      "sources": [
+        {
+          "href": "https://www.complex.com/pop-culture/a/complexstaff3/scream-7-complex-la-event",
+          "label": "Read the official Complex event recap"
+        }
+      ]
     },
     {
       "id": "nostalgai_music_releases",
@@ -400,47 +484,75 @@
       "title": "Cal Poly DxHub × AWS — EHS Mentor",
       "brand": "Cal Poly DxHub × AWS",
       "route": "/case-studies/ai-compliance-platform/",
-      "card_summary": "A working training and compliance workflow prototype, from problem framing to a presented system.",
-      "task": "Turn disconnected safety documents and training records into clearer assignments, reporting states and human-review workflows.",
+      "card_summary": "I designed and built a safety-training prototype that turns documents into assignments and lets administrators track completion.",
+      "task": "Give safety administrators a way to go from source documents and training requirements to course assignments and completion records in one place.",
       "role": "Designed the full interface, set up servers and configured Amazon Bedrock. Built and presented a Python/FastAPI prototype.",
       "stages": [
         {
-          "title": "Design the workflow and interface",
-          "text": "Defined user roles, safety-training requirements, assignments, administrative views and progress reporting."
+          "title": "Design for administrators and learners",
+          "text": "Mapped who assigns courses, who completes them, and what each person needs to see. Designed the interface for assignments, progress reporting and administrative review."
         },
         {
-          "title": "Configure the AI environment",
-          "text": "Set up servers and configured Amazon Bedrock during the program."
+          "title": "Set up the AI and server infrastructure",
+          "text": "Configured Amazon Bedrock and set up servers during the program. Built the app with Python/FastAPI, PostgreSQL, Docker and Render."
         },
         {
-          "title": "Build and test the prototype",
-          "text": "Implemented document processing, assignment tracking and completion reporting with Python/FastAPI, PostgreSQL, Docker and Render."
+          "title": "Connect documents to the training workflow",
+          "text": "Used Amazon Bedrock to extract training requirements from safety documents. Built screens to turn requirements into assignments and track completion. Screenshots show example data from the prototype."
         }
       ],
-      "result": "Developed and presented a working prototype. Selected for a cohort of 100 from nearly 1,300 applicants.",
-      "scope_note": "Working Python/FastAPI prototype with hands-on Amazon Bedrock configuration completed during the program.",
-      "hero": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
-      "hero_caption": "EHS Mentor / interface and device visualization",
-      "preview": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
+      "result": "I presented a working prototype at the Cal Poly DxHub × AWS AI Summer Camp.",
+      "scope_note": "Prototype built during the program. I designed the interface, configured servers and Amazon Bedrock, and built the Python/FastAPI application. The public demo is a prototype, not a deployed compliance product.",
+      "hero": "/assets/work-2026/ehs-admin-screen.webp",
+      "hero_caption": "EHS Mentor administrator prototype: document processing, training assignments and progress",
+      "preview": "/assets/work-2026/ehs-admin-screen.webp",
       "images": [
         {
-          "src": "/assets/work-2026/calpoly_aws_ehs-1.webp",
-          "caption": "Platform / dashboard and devices"
+          "src": "/assets/work-2026/ehs-admin-screen.webp",
+          "caption": "Document processing with Amazon Bedrock and training assignments.",
+          "title": "Administrator dashboard",
+          "dimensions": [
+            1800,
+            897
+          ],
+          "full": "/assets/work-2026/ehs-admin-screen.webp",
+          "framing": "native"
         },
         {
-          "src": "/assets/work-2026/calpoly_aws_ehs-2.webp",
-          "caption": "AI / document-to-training workflow"
+          "src": "/assets/work-2026/ehs-learner-screen.webp",
+          "caption": "Assigned training and the learner’s safety assistant.",
+          "title": "Learner dashboard",
+          "dimensions": [
+            1550,
+            943
+          ],
+          "full": "/assets/work-2026/ehs-learner-screen.webp",
+          "framing": "native"
         },
         {
-          "src": "/assets/work-2026/calpoly_aws_ehs-3.webp",
-          "caption": "Audit / progress and compliance"
-        },
-        {
-          "src": "/assets/work-2026/calpoly_aws_ehs-4.webp",
-          "caption": "Self-service / merchandise concept"
+          "src": "/assets/work-2026/ehs-faculty-screen.webp",
+          "caption": "Progress checks, assignment management and reminders.",
+          "title": "Faculty dashboard",
+          "dimensions": [
+            1550,
+            733
+          ],
+          "full": "/assets/work-2026/ehs-faculty-screen.webp",
+          "framing": "native"
         }
       ],
-      "logo": "/assets/work-2026/calpoly_aws_ehs-logo.png"
+      "logo": "/assets/work-2026/calpoly_aws_ehs-logo.png",
+      "sources": [
+        {
+          "href": "https://calpoly.sergey-ulyanov.pro/",
+          "label": "Open the EHS Mentor demo"
+        }
+      ],
+      "hero_dimensions": [
+        1800,
+        897
+      ],
+      "hero_full": "/assets/work-2026/ehs-admin-screen.webp"
     },
     {
       "id": "societe_generale",
@@ -534,49 +646,73 @@
           "caption": "Dialogue / another character"
         }
       ],
-      "logo": "/assets/work-2026/basf_frandesa-logo.svg"
+      "logo": "/assets/work-2026/basf_frandesa-logo.svg",
+      "sources": [
+        {
+          "href": "/evidence/#award-hr",
+          "label": "See the ceremony photograph and team recognition"
+        }
+      ]
     },
     {
       "id": "community_campaigns",
-      "title": "Community & Advocacy — Health, Youth and Immigrant Stories",
+      "title": "Community Work — Health Outreach, Youth Media and Refugee Storytelling",
       "brand": "Community and advocacy",
       "route": "/case-studies/community-advocacy/",
-      "card_summary": "Communication and community work across LGBTQ+ health, youth initiatives and immigrant storytelling.",
-      "task": "Make sensitive information accessible and useful while creating room for people’s own voices.",
-      "role": "Print, web and social content; outreach; youth initiatives and partner communication; public immigrant storytelling.",
+      "card_summary": "Public-health materials, youth media and first-person stories about rebuilding after displacement.",
+      "task": "Help people find useful health information, share what they have made, and tell stories in their own words.",
+      "role": "I made web and print materials, volunteered in health and youth programs, and shared my experience through interviews and community networks.",
       "stages": [
         {
-          "title": "LGBTQ+ health and outreach",
-          "text": "At Vstrecha, a Global Fund partner, created and maintained web and print communication, annual reports and informational materials, alongside direct community outreach. The outreach role ran from June 2007 to December 2014."
+          "title": "Public-health materials and outreach",
+          "text": "At Vstrecha, a Global Fund partner in Belarus, I made public-health booklets, posters, web pages and annual reports. I also helped people find information on prevention and testing. This work ran from June 2007 to December 2014.",
+          "anchor": "health",
+          "links": [
+            {
+              "href": "/press/#bio",
+              "label": "Read the background and press sources"
+            }
+          ],
+          "visual": {
+            "src": "/assets/work-2026/vstrecha-report-cover.webp",
+            "caption": "Vstrecha community health research report, published with the Center for Independent Social Research and amfAR.",
+            "dimensions": [
+              1200,
+              869
+            ]
+          }
         },
         {
-          "title": "Youth initiatives",
-          "text": "Supported youth initiatives, media, mentoring and volunteer work in BELAU / UNICEF contexts. "
+          "title": "Youth media and mentoring",
+          "text": "In separate BELAU and UNICEF contexts, I supported youth media, mentoring and volunteer initiatives. That work is separate from my health outreach and U.S. storytelling.",
+          "anchor": "youth"
         },
         {
-          "title": "Immigrant storytelling",
-          "text": "Created public communication around immigration, asylum and adaptation; shared a personal LGBTQ+ asylee story with Human Rights First and other publishers. Human Rights First supported the public storytelling."
+          "title": "Refugee storytelling in the U.S.",
+          "text": "I shared what it took to start over in the U.S. through interviews and practical information for newcomers. Human Rights First published my story. In September 2026 I joined the Refugee Storytellers Collective speaker pool for future opportunities; talks are agreed individually.",
+          "anchor": "migration",
+          "links": [
+            {
+              "href": "https://www.humanrightsfirst.org/library/never-lose-yourself-how-music-helped-sergey-reclaim-his-future",
+              "label": "Read the Human Rights First profile"
+            },
+            {
+              "href": "https://www.reallyfrompod.com/podcast/episode-21-sergey-ulyanov-belarus-ukraine-asylum",
+              "label": "Listen to Eleven Attempts"
+            },
+            {
+              "href": "https://tsosrefugees.org/programs/storyrise",
+              "label": "See the StoryRise mentorship program"
+            }
+          ]
         }
       ],
-      "result": "A body of practical communication and advocacy spanning community health, youth support and public immigrant storytelling.",
-      "scope_note": "Vstrecha / Global Fund, BELAU / UNICEF and Human Rights First are separate activity contexts. Images include illustrative and symbolic portfolio adaptations.",
-      "hero": "/assets/work-2026/community-1.webp",
-      "hero_caption": "Immigrant advocacy / symbolic adaptation of my photograph",
-      "preview": "/assets/work-2026/community-1.webp",
-      "images": [
-        {
-          "src": "/assets/work-2026/community-0.webp",
-          "caption": "LGBTQ+ health and outreach / illustrative portfolio image"
-        },
-        {
-          "src": "/assets/work-2026/community-1.webp",
-          "caption": "Immigrant advocacy / symbolic adaptation of my photograph"
-        },
-        {
-          "src": "/assets/work-2026/community-2.webp",
-          "caption": "Youth initiatives / illustrative portfolio image"
-        }
-      ],
+      "result": "Health information in print and online, youth media work, and published stories about rebuilding a creative life.",
+      "scope_note": "Vstrecha / Global Fund, BELAU / UNICEF and the U.S. storytelling organizations are separate contexts. StoryRise mentorship is in progress.",
+      "hero": "/assets/press/human-rights-first-2026.webp",
+      "hero_caption": "Sergéy Ulyanov, photographed for the Human Rights First profile",
+      "preview": "/assets/press/human-rights-first-2026.webp",
+      "images": [],
       "logo": "/assets/work-2026/community_campaigns-logo.svg"
     },
     {
@@ -584,52 +720,79 @@
       "route": "/case-studies/web-design/",
       "title": "Web Design & E-commerce",
       "brand": "Sergéy Studio",
-      "card_summary": "Four web projects, from a working vinyl store to an interactive artist site.",
+      "card_summary": "Four interfaces I designed: a working record store, a coaching site, an editor portfolio and an interactive artist site.",
       "task": "Give each project a clear path to action: browse and buy records, find services, review editorial work, or explore an artist’s music.",
       "role": "Site structure, interface and visual design. Built the Nostalgai storefront and created an interactive desktop-style artist site.",
       "stages": [
         {
           "title": "Nostalgai Recordz",
-          "text": "Designed and launched a vinyl store with a searchable product catalogue, a bundle builder and Stripe checkout."
+          "text": "Designed and launched a vinyl store with a searchable product catalogue, a bundle builder and Stripe checkout.",
+          "links": [
+            {
+              "href": "https://www.nostalgairecordz.com/",
+              "label": "Visit the site"
+            }
+          ]
         },
         {
           "title": "Louis Colaianni",
-          "text": "Designed a services site with distinct paths to coaching, books and client work."
+          "text": "Designed a services site with distinct paths to coaching, books and client work.",
+          "links": [
+            {
+              "href": "https://joyofphonetics.com/",
+              "label": "Visit the site"
+            }
+          ]
         },
         {
           "title": "Chakravision",
-          "text": "Developed a portfolio concept for editor and producer Charles Kramer that organizes credits and editorial work."
+          "text": "Designed a portfolio concept for editor and producer Charles Kramer. The homepage organizes reel, credits and editorial work so viewers can move quickly from a first impression to project details.",
+          "anchor": "chakravision"
         },
         {
           "title": "DJ Sir Gay",
-          "text": "Created a desktop-style artist site with a music player, project archive, press kit and booking entry point."
+          "text": "Created a desktop-style artist site with a music player, project archive, press kit and booking entry point.",
+          "links": [
+            {
+              "href": "https://djsirgay.com/",
+              "label": "Visit the site"
+            }
+          ]
         }
       ],
       "result": "Three live websites and one editor portfolio concept.",
-      "scope_note": "Chakravision is a portfolio concept. Use the links to open the public project pages.",
+      "scope_note": "Nostalgai Recordz, Louis Colaianni’s site and DJ Sir Gay are live. See the Chakravision concept here in the portfolio.",
       "hero": "/assets/work-2026/web-nostalgai.webp",
       "hero_caption": "Nostalgai Recordz storefront",
       "preview": "/assets/work-2026/web-nostalgai.webp",
       "images": [
         {
           "src": "/assets/work-2026/web-nostalgai.webp",
-          "caption": "Nostalgai Recordz / Vinyl storefront",
-          "href": "https://www.nostalgairecordz.com/"
+          "caption": "Searchable vinyl catalogue, bundle builder and checkout.",
+          "href": "https://www.nostalgairecordz.com/",
+          "title": "Nostalgai Recordz",
+          "action": "Visit the site"
         },
         {
           "src": "/assets/work-2026/web-louis.webp",
-          "caption": "Louis Colaianni / Services site",
-          "href": "https://joyofphonetics.com/"
+          "caption": "Coaching, publications and client information.",
+          "href": "https://joyofphonetics.com/",
+          "title": "Louis Colaianni",
+          "action": "Visit the site"
         },
         {
           "src": "/assets/work-2026/web-chakravision.webp",
-          "caption": "Chakravision / Charles Kramer portfolio concept",
-          "href": "http://chakravision.sergey-ulyanov.pro/"
+          "caption": "Credits, editorial work and project navigation.",
+          "href": "#chakravision",
+          "title": "Chakravision",
+          "action": "See the concept"
         },
         {
           "src": "/assets/work-2026/web-djsirgay.webp",
-          "caption": "DJ Sir Gay / Interactive artist site",
-          "href": "https://djsirgay.com/"
+          "caption": "A desktop-style site with a music player, archive and press kit.",
+          "href": "https://djsirgay.com/",
+          "title": "DJ Sir Gay",
+          "action": "Visit the site"
         }
       ],
       "logo": "/assets/sergey-bolt-circle.svg"
@@ -639,52 +802,88 @@
       "route": "/case-studies/video-editing/",
       "title": "Video Editing & Motion",
       "brand": "Sergéy Studio",
-      "card_summary": "Four short-form edits showing visual hooks, pacing, product motion and captions.",
-      "task": "Shape the first seconds, develop a clear visual beat and carry the story through to the ending.",
-      "role": "Concept development, short-form editing, animated typography, captions and production coordination.",
+      "card_summary": "Four watchable edits: a rental ad, a product promo, a performance reel and a vertical short.",
+      "task": "Four briefs called for different opening shots, pacing and endings. Each clip shows the edit in motion.",
+      "role": "I developed concepts and edited the four pieces. Work included production coordination, type animation, captions and AI-assisted visuals.",
       "stages": [
         {
           "title": "RentPrimeRoom",
-          "text": "Built an AI-assisted rental spot around a visual hook, a story turn and a branded ending.",
-          "anchor": "rentprimeroom"
+          "text": "Opened the rental ad with a pest-infested apartment, then cut to the couple arriving at a new place. I used AI-assisted scenes to make the before-and-after story legible in a short spot.",
+          "anchor": "rentprimeroom",
+          "links": [
+            {
+              "href": "https://youtube.com/shorts/Si3cF-w06IU",
+              "label": "Watch RentPrimeRoom"
+            }
+          ]
         },
         {
           "title": "ArtPeel",
-          "text": "Animated a product offer using typography, timed reveals and a clear promotion.",
-          "anchor": "artpeel"
+          "text": "Timed the product reveals, animated type and offer to guide the eye from what the product is to the promotion.",
+          "anchor": "artpeel",
+          "links": [
+            {
+              "href": "https://youtube.com/shorts/x0K94uUbcEE",
+              "label": "Watch ArtPeel"
+            }
+          ]
         },
         {
           "title": "Actor showreel",
-          "text": "Cut performance footage together with split screens and animated type.",
-          "anchor": "actor-showreel"
+          "text": "Cut performance clips into a reel with split screens and animated type. The edits put the range of performances up front.",
+          "anchor": "actor-showreel",
+          "links": [
+            {
+              "href": "https://youtu.be/BT2fksGo6S0",
+              "label": "Watch Actor showreel"
+            }
+          ]
         },
         {
           "title": "Deep Rest",
-          "text": "Conceived the shoot, sourced the camera operator and edited the vertical piece with captions around an excerpt from Jim Carrey.",
-          "anchor": "deep-rest"
+          "text": "Conceived the shoot, brought in a camera operator, and edited a vertical piece around an excerpt from Jim Carrey. I paced the shots to the speech and added captions.",
+          "anchor": "deep-rest",
+          "links": [
+            {
+              "href": "https://youtube.com/shorts/XkWH1pLDH08",
+              "label": "Watch Deep Rest"
+            }
+          ]
         }
       ],
-      "result": "Four edits for product, social and performance contexts.",
-      "scope_note": "Selected stills show the framing, typography and edit concepts for each project.",
+      "result": "Watch each cut to see how the opening, type and pacing change with the brief.",
+      "scope_note": "Project roles vary by clip. The work notes above identify the scenes, edits and production tasks I handled.",
       "hero": "/assets/work-2026/editing-rentprimeroom.webp",
       "hero_caption": "RentPrimeRoom / Branded end scene",
       "preview": "/assets/work-2026/editing-rentprimeroom.webp",
       "images": [
         {
           "src": "/assets/work-2026/editing-rentprimeroom.webp",
-          "caption": "RentPrimeRoom / AI-assisted rental ad"
+          "caption": "AI-assisted rental ad",
+          "title": "RentPrimeRoom",
+          "href": "https://youtube.com/shorts/Si3cF-w06IU",
+          "action": "Watch RentPrimeRoom"
         },
         {
           "src": "/assets/work-2026/editing-artpeel.webp",
-          "caption": "ArtPeel / Product motion"
+          "caption": "Product promo and motion typography",
+          "title": "ArtPeel",
+          "href": "https://youtube.com/shorts/x0K94uUbcEE",
+          "action": "Watch ArtPeel"
         },
         {
           "src": "/assets/work-2026/editing-showreel.webp",
-          "caption": "Actor showreel / Split screens and animated type"
+          "caption": "Performance reel with split screens",
+          "title": "Actor showreel",
+          "href": "https://youtu.be/BT2fksGo6S0",
+          "action": "Watch Actor showreel"
         },
         {
           "src": "/assets/work-2026/editing-deep-rest.webp",
-          "caption": "Deep Rest / Vertical edit and captions"
+          "caption": "Vertical short with captions",
+          "title": "Deep Rest",
+          "href": "https://youtube.com/shorts/XkWH1pLDH08",
+          "action": "Watch Deep Rest"
         }
       ],
       "logo": "/assets/sergey-bolt-circle.svg"
@@ -694,31 +893,31 @@
       "route": "/case-studies/x-factor/",
       "title": "X-Factor / Main Stage",
       "brand": "EK Publishing & Production",
-      "card_summary": "Creative preparation and staging with two-time GRAMMY-winning producer Walter Afanasieff.",
-      "task": "Develop performance concepts for the televised competition and prepare material for the stage.",
-      "role": "Creative preparation and staging in the EK Publishing & Production context, working with Walter Afanasieff.",
+      "card_summary": "Rehearsals, contestant coordination, graphics and backstage video for Ksenia’s 2015 X-Factor run.",
+      "task": "Help prepare a performer for live rounds while the staging, production and backstage work moved on different schedules.",
+      "role": "I assisted producer Elena Kiper on Walter Afanasieff’s team, working across rehearsals, contestant coordination, graphics and backstage video.",
       "stages": [
         {
-          "title": "Develop the performance concept",
-          "text": "Prepared creative ideas for how the performance would read on stage and on television."
+          "title": "Support rehearsals and staging",
+          "text": "Worked with the producer and team on rehearsal preparation and coordination with the contestant."
         },
         {
-          "title": "Prepare the staging",
-          "text": "Worked on creative preparation and staging with Walter Afanasieff’s team."
+          "title": "Prepare graphics and backstage video",
+          "text": "Contributed production graphics and backstage video alongside the work going into each live round."
         }
       ],
-      "result": "Ksenia Dezhneva, a performer on Walter Afanasieff’s team, reached the superfinal.",
-      "scope_note": "The superfinal was a performer and team result.",
-      "hero": "/assets/portfolio/case-xfactor.webp",
-      "hero_caption": "X-Factor / Main Stage project archive",
+      "result": "Ksenia reached the superfinal. I supported the production team during her run.",
+      "scope_note": "Production support through EK Publishing & Production. The competition result belongs to the performer and team.",
+      "hero": "/assets/work-2026/xfactor-event-poster.webp",
+      "hero_caption": "Archival event poster featuring Walter Afanasieff and Main Stage finalists",
       "preview": "/assets/portfolio/case-xfactor.webp",
-      "images": [
-        {
-          "src": "/assets/portfolio/case-xfactor.webp",
-          "caption": "X-Factor / Main Stage project archive"
-        }
+      "images": [],
+      "logo": "/assets/sergey-bolt-circle.svg",
+      "hero_dimensions": [
+        900,
+        610
       ],
-      "logo": "/assets/sergey-bolt-circle.svg"
+      "hero_full": "/assets/work-2026/xfactor-event-poster.webp"
     },
     {
       "id": "collodi_poster",
@@ -765,10 +964,19 @@
       "issuer": "Paramount Pictures × Complex",
       "description": "Competition winner. IN PROGRESS was exhibited at Complex LA.",
       "href": "/case-studies/scream-7-complex/",
-      "image": "/assets/portfolio/award-scream.jpg",
-      "alt": "Sergéy Ulyanov and director Kevin Williamson",
-      "inset": "/assets/work-2026/recognition-scream-fog.webp",
-      "inset_alt": "Ghostface in the fog, a separate key-art concept from the SCREAM 7 series"
+      "image": "/assets/work-2026/recognition/scream-williamson.webp",
+      "alt": "Sergéy Ulyanov with SCREAM 7 director Kevin Williamson at the Complex LA exhibition",
+      "inset": "/assets/work-2026/recognition/scream-fog-poster.webp",
+      "inset_alt": "Original Ghostface in the fog concept; the poster selected for the exhibition was IN PROGRESS",
+      "kind": "Competition winner",
+      "sources": [
+        {
+          "href": "https://www.complex.com/pop-culture/a/complexstaff3/scream-7-complex-la-event",
+          "label": "Read the official Complex event recap"
+        }
+      ],
+      "proof_image": "/assets/work-2026/recognition/scream-exhibition.webp",
+      "proof_alt": "Sergéy Ulyanov beside the selected IN PROGRESS poster at the official Complex LA exhibition"
     },
     {
       "id": "collodi",
@@ -778,15 +986,18 @@
       "description": "VERIFY YOU ARE HUMAN selected for the international exhibition and catalogue.",
       "href": "/case-studies/carlo-collodi-200/",
       "image": "/assets/work-2026/recognition-collodi.webp",
-      "alt": "Sergéy Ulyanov beside his Pinocchio poster in his exhibition announcement"
-    },
-    {
-      "id": "cci",
-      "year": "2026",
-      "title": "CCI Quick Grant",
-      "issuer": "Center for Cultural Innovation",
-      "description": "Professional-development funding supporting A2IM Artist Pro annual membership.",
-      "href": "https://cciarts.org/quick-grant/"
+      "alt": "Illustrated portrait of Sergéy Ulyanov beside his poster, from his own exhibition selection announcement",
+      "kind": "Exhibition selection",
+      "sources": [
+        {
+          "href": "https://aiap.it/pinocchio-una-metafora-contemporanea/",
+          "label": "Exhibition details from AIAP"
+        },
+        {
+          "href": "https://www.museomagma.com/call-for-artists-2026/",
+          "label": "Read Museo MAGMA’s exhibition call"
+        }
+      ]
     },
     {
       "id": "aws",
@@ -795,8 +1006,15 @@
       "issuer": "Cal Poly DxHub × AWS",
       "description": "Selected for a 100-person cohort from nearly 1,300 applicants.",
       "href": "/case-studies/ai-compliance-platform/",
-      "image": "/assets/portfolio/award-calpoly.jpg",
-      "alt": "Cal Poly DxHub and AWS AI Summer Camp cohort"
+      "image": "/assets/work-2026/recognition/calpoly-aws-camp.webp",
+      "alt": "Cal Poly DxHub and AWS AI Summer Camp: original group photograph",
+      "kind": "Cohort selection",
+      "sources": [
+        {
+          "href": "/case-studies/ai-compliance-platform/",
+          "label": "Read the cohort project case"
+        }
+      ]
     },
     {
       "id": "hr",
@@ -805,23 +1023,24 @@
       "issuer": "HR Brand Belarus",
       "description": "Special partner prize in Corporate Video for the Frandesa film team.",
       "href": "/case-studies/battle-for-the-harvest/",
-      "image": "/assets/portfolio/award-hr.jpg",
-      "alt": "Frandesa corporate film recognition"
+      "image": "/assets/work-2026/recognition/hr-brand-ceremony.webp",
+      "alt": "Sergéy Ulyanov and a colleague holding their team diploma at the HR Brand Belarus ceremony",
+      "kind": "Team award"
     },
     {
-      "id": "tuzin",
-      "year": "2016",
-      "title": "Heroes of the Year",
-      "issuer": "TuzinFM",
-      "description": "Discovery shortlist for original Belarusian-language music, under the artist name RAY.",
-      "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html"
-    },
-    {
-      "id": "ministry",
-      "year": "2016",
-      "title": "Professional creative-worker status",
-      "issuer": "Belarus Ministry of Culture",
-      "description": "An expert commission confirmed professional creative-worker status in December 2016."
+      "id": "cci",
+      "year": "2026",
+      "title": "CCI Quick Grant",
+      "issuer": "Center for Cultural Innovation",
+      "description": "Professional-development funding supporting A2IM Artist Pro annual membership.",
+      "href": "https://cciarts.org/quick-grant/",
+      "kind": "Grant",
+      "sources": [
+        {
+          "href": "https://cciarts.org/quick-grant/",
+          "label": "Read about the CCI Quick Grant program"
+        }
+      ]
     },
     {
       "id": "white-square",
@@ -831,17 +1050,44 @@
       "description": "Award for the Alfa-Bank corporate calendar.",
       "href": "/case-studies/societe-generale/",
       "image": "/assets/portfolio/award-white-square.jpg",
-      "alt": "White Square advertising festival award evidence"
+      "alt": "White Square advertising festival award evidence",
+      "kind": "Team award"
     },
     {
       "id": "bank",
       "year": "2012–2014",
       "title": "Bank Website Awards",
       "issuer": "TIBO and Best Bank Website",
-      "description": "Team awards for BelRosBank and successor Alfa-Bank. TIBO 2012 third place, Best Bank Website 2013 first place and TIBO 2014 second place.",
+      "description": "Team awards for BelRosBank and successor Alfa-Bank. TIBO 2012 third place, Best Bank Website 2013 first place and TIBO 2014 second place. The archival photograph shows a BelRosBank diploma presentation.",
       "href": "/case-studies/societe-generale/",
-      "image": "/assets/portfolio/award-bank.jpg",
-      "alt": "Bank website and campaign work in the Société Générale case"
+      "image": "/assets/work-2026/recognition/belrosbank-diploma-presentation.webp",
+      "alt": "Archival photograph of a BelRosBank diploma being presented to Sergéy Ulyanov",
+      "kind": "Team awards",
+      "sources": [
+        {
+          "href": "/case-studies/societe-generale/",
+          "label": "Read the banking case and award history"
+        }
+      ]
+    },
+    {
+      "id": "tuzin",
+      "year": "2016",
+      "title": "Heroes of the Year",
+      "issuer": "TuzinFM",
+      "description": "Discovery shortlist for original Belarusian-language music, under the artist name RAY.",
+      "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html",
+      "kind": "Music shortlist",
+      "sources": [
+        {
+          "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html",
+          "label": "See the published shortlist"
+        },
+        {
+          "href": "https://www.svaboda.org/a/patencyjnyja-hieroi-hodu/28134934.html",
+          "label": "Read the contemporary Radio Svaboda coverage"
+        }
+      ]
     },
     {
       "id": "innovation",
@@ -849,14 +1095,27 @@
       "title": "Innovation Ideas Contest",
       "issuer": "BelRosBank / Société Générale",
       "description": "Winner for a strategic banking product and digital concept.",
-      "href": "/case-studies/societe-generale/"
+      "href": "/case-studies/societe-generale/",
+      "kind": "Contest winner"
     },
     {
       "id": "motor",
       "year": "2011",
       "title": "Best Advertising Game",
       "issuer": "International Motor Show",
-      "description": "Award winner in the advertising-game category."
+      "description": "Award winner in the advertising-game category.",
+      "kind": "Category winner",
+      "image": "/assets/work-2026/recognition/motoshow-diploma.webp",
+      "alt": "Framed diploma for Best Advertising Game at the International Motor Show",
+      "document": true
+    },
+    {
+      "id": "ministry",
+      "year": "2016",
+      "title": "Professional creative-worker status",
+      "issuer": "Belarus Ministry of Culture",
+      "description": "An expert commission confirmed professional creative-worker status in December 2016.",
+      "kind": "Professional recognition"
     }
   ]
 }

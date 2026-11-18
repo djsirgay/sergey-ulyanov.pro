@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+from portfolio_links import mark_outbound, professional_pages
+
 ROOT = Path(__file__).resolve().parents[1]
 FRAGMENTS = ROOT / "site-fragments"
 OUTPUT = ROOT / "index.html"
@@ -10,7 +12,7 @@ parts = sorted(FRAGMENTS.glob("*.html"))
 if not parts:
     raise SystemExit("No production HTML fragments found")
 
-html = "".join(part.read_text(encoding="utf-8") for part in parts)
+html = mark_outbound("".join(part.read_text(encoding="utf-8") for part in parts))
 
 checks = {
     "doctype": html.startswith("<!doctype html>"),
@@ -31,4 +33,11 @@ if failed:
     raise SystemExit("Production validation failed: " + ", ".join(failed))
 
 OUTPUT.write_text(html, encoding="utf-8")
+for page in professional_pages(ROOT):
+    if page == OUTPUT:
+        continue
+    source = page.read_text(encoding="utf-8")
+    updated = mark_outbound(source)
+    if updated != source:
+        page.write_text(updated, encoding="utf-8")
 print(f"Built {OUTPUT.name} from {len(parts)} fragments ({len(html):,} characters)")

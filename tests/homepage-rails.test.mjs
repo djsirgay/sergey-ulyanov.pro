@@ -225,7 +225,7 @@ test('generated homepage provides named, keyboard-focusable rails with correctly
   assert.match(html,/href="\/evidence\/#awards">Full recognition record/);
   const evidence=read('evidence/index.html');
   for(const item of registry.recognition) assert.ok(evidence.includes(`id="award-${item.id}"`),item.id);
-  assert.match(html,/recognition-scream-fog\.webp/);
+  assert.match(html,/scream-fog-poster\.webp/);
   assert.match(html,/recognition-collodi\.webp/);
   const library=read('work/index.html');
   for(const group of ['campaigns','products']){
@@ -243,8 +243,8 @@ test('community cards have four independent destinations and link to real public
   assert.equal(cards.length,4,'Every community card must be its own link');
   const destinations=cards.map(([,attrs])=>attr(attrs,'href'));
   assert.equal(new Set(destinations).size,4);
-  assert.ok(destinations.includes('/press/#bio'));
-  assert.ok(destinations.includes('/press/#public-work'));
+  assert.ok(destinations.includes('/case-studies/community-advocacy/#health'));
+  assert.ok(destinations.includes('/case-studies/community-advocacy/#migration'));
   assert.ok(destinations.includes('/case-studies/community-advocacy/#youth'));
   const research=destinations.filter(href=>new URL(href,'https://sergey-ulyanov.pro/').hostname==='research.sergey-ulyanov.pro');
   assert.equal(research.length,1,'Only the cultural-research card points to the research project');
@@ -259,5 +259,7 @@ test('community cards have four independent destinations and link to real public
   assert.match(press,/id="public-work"/);
   assert.match(youth,/id="youth"/,'The youth link must land on actual youth work');
   assert.match(section,/Unmute Belarus/);
-  assert.match(section,/Broader diaspora use is a future research direction/);
+  assert.match(youth,/id="health"/);
+  assert.match(youth,/id="migration"/);
+  assert.match(youth,/humanrightsfirst\.org\/library/);
 });

@@ -14,7 +14,7 @@ test('both current sites are present in the canonical source branch',()=>{
   for(const text of ['Snapchat','Intuit TurboTax · The Tax Breakup','Wife Wife','Sara Werner','xgd7Q4ECHSE'])assert.ok(actor.includes(text),'Actor regression: '+text);
   assert.equal((actor.match(/class="project-card"/g)||[]).length,8);
   assert.ok(read('index.html').includes('CREATIVE LEADERSHIP × APPLIED AI × CULTURE'));
-  assert.ok(read('index.html').includes('Working systems.'));
+  assert.match(read('index.html'), /<link rel="canonical" href="https:\/\/sergey-ulyanov\.pro\/">/);
   assert.ok(!read('index.html').includes('document.write'));
 });
 
