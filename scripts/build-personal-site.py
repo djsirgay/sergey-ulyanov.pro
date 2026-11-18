@@ -187,7 +187,7 @@ ET.register_namespace('',ns['s']);tree.write(sp,encoding='utf-8',xml_declaration
 print(f'Built homepage fragments, work library, hire page and {len(CASES)} detailed case studies.')
 # Compact current source guide. No obsolete targets are retained as performance claims.
 body='<main id="main"><section class="library-hero"><div class="wrap"><div class="eyebrow">Project records</div><h1>Recognition &amp; credits</h1><p>A record of awards, selections, funding and project credits.</p><nav class="library-tabs" aria-label="Record categories"><a href="#awards">Recognition</a><a href="#credits">Project credits</a><a href="#affiliations">Affiliations</a></nav></div></section>'
-body+='<section class="section" id="awards"><div class="wrap">'+section_head('Recognition','Awards, exhibitions and selections')+'<div class="compact-experience">'
+body+='<section class="section" id="awards"><div class="wrap">'+section_head('Recognition','Awards, exhibitions and selections')+'<div class="compact-experience recognition-records">'
 for record in recognitions:
     items=record.get('sources') or ([{'href':record['href'],'label':'Read the related case'}] if record.get('href') else [])
     proof_image=record.get('proof_image',record.get('image'))

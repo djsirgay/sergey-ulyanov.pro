@@ -88,6 +88,7 @@ html{scroll-padding-top:100px}
 .record-proof-link .record-proof{height:auto;aspect-ratio:auto;max-height:560px;object-fit:contain;background:#0b100b;margin-bottom:8px}
 .record-proof-link>span{display:block;font:11px/1.6 var(--mono);text-align:right}
 .record-proof-link:focus-visible{outline:2px solid var(--lime);outline-offset:6px;border-radius:12px}
+.recognition-records{align-items:start}
 @media(max-width:720px){
   .case-trail{padding-top:18px}
   .case-trail + .case-hero{padding-top:22px}
