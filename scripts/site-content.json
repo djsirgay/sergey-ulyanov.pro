@@ -1097,6 +1097,31 @@
       ]
     },
     {
+      "id": "authentic-voice",
+      "year": "2026",
+      "title": "Authentic Voice and Speech",
+      "issuer": "Louis Colaianni & Peter Marciano · Routledge",
+      "description": "Named in the book’s acknowledgments for inspiration and participation in the authors’ work.",
+      "href": "/evidence/#award-authentic-voice",
+      "kind": "Book acknowledgment",
+      "proof_image": "/assets/work-2026/recognition/authentic-voice-acknowledgments.webp",
+      "proof_alt": "Acknowledgments excerpt from Authentic Voice and Speech listing Sergey Ulyanov",
+      "proof_dimensions": [
+        1290,
+        2796
+      ],
+      "sources": [
+        {
+          "href": "/assets/work-2026/recognition/authentic-voice-acknowledgments-intro.webp",
+          "label": "View the acknowledgments introduction"
+        },
+        {
+          "href": "https://www.routledge.com/Authentic-Voice-and-Speech-A-Non-Prescriptive-Student-Centered-Approach/Colaianni-Marciano/p/book/9781041294825",
+          "label": "See the book at Routledge"
+        }
+      ]
+    },
+    {
       "id": "white-square",
       "year": "2014",
       "title": "White Square Award",
