@@ -90,3 +90,12 @@ html{scroll-padding-top:100px}
 .step-art{margin:20px 0 0;max-width:480px}
 .step-art img{display:block;width:100%;height:auto;border-radius:12px}
 .step-art figcaption,.source-caption{margin-top:8px;font-size:12px;color:var(--muted)}
+
+/* Match the approved Articles display treatment on the homepage. */
+.hero-text h1{font-weight:700;line-height:.92;letter-spacing:-.075em}
+.hero-text h1 span{display:block;color:transparent;-webkit-text-stroke:1.5px rgba(245,247,244,.72);word-spacing:.1em}
+:is(#work,#approach,#community,#recognition) .section-head h2{line-height:.95;letter-spacing:-.065em}
+@media(max-width:760px){
+ .hero-text h1{line-height:.95}
+ .hero-text h1 span{-webkit-text-stroke:1px rgba(245,247,244,.8)}
+}
