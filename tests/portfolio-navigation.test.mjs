@@ -14,14 +14,14 @@ const cases = readdirSync(join(root, 'case-studies'), {withFileTypes:true})
   .map(entry => 'case-studies/'+entry.name+'/index.html');
 const professionalPages = ['index.html','hire/index.html','press/index.html','work/index.html','evidence/index.html',...cases];
 
-test('professional external sources and PDFs stay in a separate tab without an opener', () => {
+test('professional external sources, PDFs and image previews stay in a separate tab without an opener', () => {
   let count = 0;
   for (const page of professionalPages) {
     for (const a of tags(read(page), 'a')) {
       const href = attr(a, 'href');
       if (!href || !/^(?:https?:|\/)/.test(href)) continue;
       const url = new URL(href, 'https://sergey-ulyanov.pro');
-      if (url.hostname === 'sergey-ulyanov.pro' && !url.pathname.endsWith('.pdf') && !url.pathname.startsWith('/research/')) continue;
+      if (url.hostname === 'sergey-ulyanov.pro' && !/\.(?:pdf|jpe?g|png|webp|avif)$/i.test(url.pathname) && !url.pathname.startsWith('/research/')) continue;
       assert.equal(attr(a,'target'), '_blank', page+' '+href);
       assert.ok(attr(a,'rel')?.split(/\s+/).includes('noopener'), page+' '+href);
       count++;

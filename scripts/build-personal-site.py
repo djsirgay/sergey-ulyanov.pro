@@ -13,7 +13,7 @@ PORT='/downloads/Sergey_Ulyanov_Portfolio.pdf'
 CV='/downloads/Sergey_Ulyanov_Resume.pdf'
 HEADLINE='Creative Lead & Creative Technologist'
 def head(title,description,route='/',image='/assets/work-2026/sergey-green-portrait.webp'):
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080A08"><meta name="color-scheme" content="dark"><meta name="description" content="{e(description)}"><meta name="author" content="Sergéy Ulyanov"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="google-site-verification" content="koKB_BiwCWkfpYI-QJKp0bZKgwkoBjAumQz3xi5W_uU"><link rel="canonical" href="https://sergey-ulyanov.pro{route}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><title>{e(title)} — Sergéy Ulyanov</title><meta property="og:type" content="website"><meta property="og:url" content="https://sergey-ulyanov.pro{route}"><meta property="og:title" content="{e(title)} — Sergéy Ulyanov"><meta property="og:description" content="{e(description)}"><meta property="og:image" content="https://sergey-ulyanov.pro{image}"><meta property="og:image:alt" content="{e(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)} — Sergéy Ulyanov"><meta name="twitter:description" content="{e(description)}"><meta name="twitter:image" content="https://sergey-ulyanov.pro{image}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles-personal.css?v=20261118-articles-type"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'WebPage','name':title,'url':'https://sergey-ulyanov.pro'+route,'dateModified':'2026-11-17','author':{'@type':'Person','name':'Sergéy Ulyanov','url':'https://sergey-ulyanov.pro/','jobTitle':HEADLINE,'sameAs':['https://www.linkedin.com/in/charaunic/']}},ensure_ascii=False)}</script></head><body><a class="skip-link" href="#main">Skip to content</a>'''
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#080A08"><meta name="color-scheme" content="dark"><meta name="description" content="{e(description)}"><meta name="author" content="Sergéy Ulyanov"><meta name="robots" content="index,follow,max-image-preview:large"><meta name="google-site-verification" content="koKB_BiwCWkfpYI-QJKp0bZKgwkoBjAumQz3xi5W_uU"><link rel="canonical" href="https://sergey-ulyanov.pro{route}"><link rel="icon" href="/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><title>{e(title)} — Sergéy Ulyanov</title><meta property="og:type" content="website"><meta property="og:url" content="https://sergey-ulyanov.pro{route}"><meta property="og:title" content="{e(title)} — Sergéy Ulyanov"><meta property="og:description" content="{e(description)}"><meta property="og:image" content="https://sergey-ulyanov.pro{image}"><meta property="og:image:alt" content="{e(title)}"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="{e(title)} — Sergéy Ulyanov"><meta name="twitter:description" content="{e(description)}"><meta name="twitter:image" content="https://sergey-ulyanov.pro{image}"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"><link rel="stylesheet" href="/styles-personal.css?v=20261118-proof-audit"><script type="application/ld+json">{json.dumps({'@context':'https://schema.org','@type':'WebPage','name':title,'url':'https://sergey-ulyanov.pro'+route,'dateModified':'2026-11-17','author':{'@type':'Person','name':'Sergéy Ulyanov','url':'https://sergey-ulyanov.pro/','jobTitle':HEADLINE,'sameAs':['https://www.linkedin.com/in/charaunic/']}},ensure_ascii=False)}</script></head><body><a class="skip-link" href="#main">Skip to content</a>'''
 def nav(route='/'):
     items=[('/work/','Work'),('/case-studies/community-advocacy/','Community'),('/research/','Research'),('/press/#articles','Articles'),('/hire/','About')]
     current=route if route=='/case-studies/community-advocacy/' else ('/work/' if route.startswith('/case-studies/') else route)
@@ -78,8 +78,8 @@ comm=community_section()
 (frag/'05b-public-work.html').write_text(research_block())
 recognitions=DATA['recognition']
 def recognition_card(record):
-    tag='a' if record.get('href') else 'article'
-    href=f' href="{e(record["href"])}"' if tag=='a' else ''
+    tag='a'
+    href=f' href="{e(record.get("href", "/evidence/#award-"+record["id"]))}"'
     image=record.get('image')
     if record.get('inset'):
         visual=f'<div class="recognition-art recognition-art-scream"><img src="{record["image"]}" alt="{e(record["alt"])}" loading="lazy" width="1024" height="1280"><img src="{record["inset"]}" alt="{e(record["inset_alt"])}" loading="lazy" width="1024" height="576"></div>'
@@ -123,9 +123,9 @@ for cid,c in CASES.items():
     body=f"""<main id="main"><nav class="wrap case-trail" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/work/#{anchor}">{e(group)}</a><span aria-hidden="true">/</span><span aria-current="page">{e(SHORT[cid])}</span></nav><section class="case-hero"><div class="wrap"><div class="case-heading">{case_mark(c)}<div class="eyebrow">{e(c['brand'])}</div><h1>{e(SHORT[cid])}</h1><p class="deck">{e(c['card_summary'])}</p></div><div class="case-meta"><div><div class="detail-label">The task</div><p>{e(clean(c['task']))}</p></div><div><div class="detail-label">My role</div><p>{e(clean(c['role']))}</p></div></div></div></section>"""
     body+=f'<div class="wrap"><figure class="case-feature">{hero_img}<figcaption>{e(c["hero_caption"])}</figcaption></figure></div>'
     if cid=='community_campaigns':
-        body+='<nav class="wrap library-tabs case-jumps" aria-label="Community topics"><a href="#health">Health outreach</a><a href="#youth">Youth media</a><a href="#migration">Refugee storytelling</a></nav>'
+        body+='<nav class="wrap library-tabs case-jumps" aria-label="Community topics"><a href="#health">Health outreach</a><a href="#youth">Youth media</a><a href="#migration">Refugee storytelling</a><a href="#charity">Charity events</a></nav>'
     if c['images']:
-        body+='<section class="section case-gallery"><div class="wrap">'+section_head('Project gallery','Watch the edits' if cid=='video_editing' else ('Explore the sites' if cid=='web_design' else 'Selected work'))+f'<div class="gallery-grid{" portraits" if cid=="scream7_complex" else ""}">'
+        body+='<section class="section case-gallery"><div class="wrap">'+section_head('Project gallery','Watch the edits' if cid=='video_editing' else ('Explore the sites' if cid=='web_design' else 'Selected work'))+f'<div class="gallery-grid{" portraits" if cid=="scream7_complex" else ""}{" interface-gallery" if cid=="calpoly_aws_ehs" else ""}">'
         for g in c['images']:
             title=g.get('title',g['caption'])
             action=g.get('action','Open full image' if g.get('full') else 'Open project')
@@ -149,7 +149,7 @@ for cid,c in CASES.items():
         art=''
         if visual:
             vw,vh=visual['dimensions']
-            art=f'<figure class="step-art"><img src="{e(visual["src"])}" alt="{e(visual["caption"])}" width="{vw}" height="{vh}" loading="lazy" decoding="async"><figcaption>{e(visual["caption"])}</figcaption></figure>'
+            art=f'<figure class="step-art"><a class="case-image-link" href="{e(visual["src"])}" target="_blank" rel="noopener" aria-label="View full image: {e(visual["caption"])}"><img src="{e(visual["src"])}" alt="{e(visual["caption"])}" width="{vw}" height="{vh}" loading="lazy" decoding="async"><span aria-hidden="true">View full image ↗</span></a><figcaption>{e(visual["caption"])}</figcaption></figure>'
         body+=f'<article class="process-step"{step_anchor}><span>{n:02d}</span><div><h3>{e(step["title"])}</h3><p>{e(clean(step["text"]))}</p>{links(step.get("links"))}{art}</div></article>'
     sources=c.get('sources') or ([c['source']] if c.get('source') else [])
     body+=f'<section class="result-panel"><div class="eyebrow">Result / Project status</div><h2>{e(clean(c["result"]))}</h2><p class="scope">{e(clean(c["scope_note"]))}</p>{links(sources)}</section></div></div></section>'
@@ -193,9 +193,10 @@ for record in recognitions:
     proof_image=record.get('proof_image',record.get('image'))
     proof_alt=record.get('proof_alt',record.get('alt',''))
     proof_class=" proof-document" if record.get('document') else ""
-    proof=f'<img class="record-proof{proof_class}" src="{e(proof_image)}" alt="{e(proof_alt)}" width="960" height="600" loading="lazy" decoding="async">' if proof_image else ''
+    proof_width,proof_height=record.get('proof_dimensions',(960,600))
+    proof=f'<a class="record-proof-link" href="{e(proof_image)}" target="_blank" rel="noopener" aria-label="View full image: {e(proof_alt)}"><img class="record-proof{proof_class}" src="{e(proof_image)}" alt="{e(proof_alt)}" width="{proof_width}" height="{proof_height}" loading="lazy" decoding="async"><span>View full image ↗</span></a>' if proof_image else ''
     if record['id']=='collodi':
-        proof+='<p class="source-caption">Illustration from the artist’s selection announcement.</p>'
+        proof+='<p class="source-caption">Selected poster artwork: VERIFY YOU ARE HUMAN.</p>'
     if record['id']=='complex':
         proof+='<p class="source-caption">Sergéy with the selected poster, IN PROGRESS, at Complex LA.</p>'
     body+=f'<article class="record-card" id="award-{record["id"]}">{proof}<span class="detail-label">{e(record["kind"]+" · "+record["year"])}</span><h3>{e(record["title"])}</h3><p><strong>{e(record["issuer"])}</strong></p><p>{e(record["description"])}</p>{links(items)}</article>'

@@ -28,8 +28,8 @@ class PortfolioLinks(HTMLParser):
         external = url.hostname and url.hostname not in ('sergey-ulyanov.pro', 'www.sergey-ulyanov.pro')
         # The live professional artifact redirects the legacy research subtree to a different site.
         research_redirect = url.path.startswith('/research/') and not url.query.startswith('stay=1')
-        pdf = url.path.lower().endswith('.pdf')
-        if not (external or research_redirect or pdf):
+        preview = url.path.lower().endswith(('.pdf', '.jpg', '.jpeg', '.png', '.webp', '.avif'))
+        if not (external or research_redirect or preview):
             return
         rel = (attributes.get('rel') or '').split()
         if attributes.get('target') == '_blank' and 'noopener' in rel:

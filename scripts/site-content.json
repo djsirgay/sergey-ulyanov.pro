@@ -516,17 +516,6 @@
       "preview": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
       "images": [
         {
-          "src": "/assets/work-2026/ehs-admin-screen.webp",
-          "caption": "Document processing with Amazon Bedrock and training assignments.",
-          "title": "Administrator dashboard",
-          "dimensions": [
-            1800,
-            897
-          ],
-          "full": "/assets/work-2026/ehs-admin-screen.webp",
-          "framing": "native"
-        },
-        {
           "src": "/assets/work-2026/ehs-learner-screen.webp",
           "caption": "Assigned training and the learner’s safety assistant.",
           "title": "Learner dashboard",
@@ -695,8 +684,16 @@
         },
         {
           "title": "Youth media and mentoring",
-          "text": "In separate BELAU and UNICEF contexts, I supported youth media, mentoring and volunteer initiatives. That work is separate from my health outreach and U.S. storytelling.",
-          "anchor": "youth"
+          "text": "Supported youth media and mentoring in BELAU and UNICEF partner-initiative contexts. Volunteered as a mentor and speaker at international summer camps and created RAY, a youth magazine promoting healthy lifestyles and social awareness. The archive below documents this program work.",
+          "anchor": "youth",
+          "visual": {
+            "src": "/assets/work-2026/community-youth-archive.webp",
+            "caption": "Archival portfolio page documenting youth programs and volunteer mentoring.",
+            "dimensions": [
+              1800,
+              1200
+            ]
+          }
         },
         {
           "title": "Refugee storytelling in the U.S.",
@@ -714,6 +711,25 @@
             {
               "href": "https://tsosrefugees.org/programs/storyrise",
               "label": "See the StoryRise mentorship program"
+            }
+          ]
+        },
+        {
+          "title": "Charity events with BelRosBank",
+          "anchor": "charity",
+          "text": "Helped organize charity activities in the BelRosBank context, including a concert for children from orphanages. The archive contains a published article about the bank’s charity activities and a group photograph from the concert.",
+          "visual": {
+            "src": "/assets/work-2026/community-charity-article.webp",
+            "caption": "Published article on BelRosBank charity activities, preserved in the project archive.",
+            "dimensions": [
+              569,
+              1024
+            ]
+          },
+          "links": [
+            {
+              "href": "/assets/work-2026/community-charity-concert.webp",
+              "label": "View the archival concert photograph"
             }
           ]
         }
@@ -992,7 +1008,11 @@
         }
       ],
       "proof_image": "/assets/work-2026/recognition/scream-exhibition.webp",
-      "proof_alt": "Sergéy Ulyanov beside the selected IN PROGRESS poster at the official Complex LA exhibition"
+      "proof_alt": "Sergéy Ulyanov beside the selected IN PROGRESS poster at the official Complex LA exhibition",
+      "proof_dimensions": [
+        1260,
+        1680
+      ]
     },
     {
       "id": "collodi",
@@ -1014,8 +1034,12 @@
           "label": "Read Museo MAGMA’s exhibition call"
         }
       ],
-      "proof_image": "/assets/work-2026/recognition-collodi.webp",
-      "proof_alt": "Illustrated portrait of Sergéy Ulyanov beside his poster, from his own exhibition selection announcement"
+      "proof_image": "/assets/work-2026/collodi-verify-you-are-human.webp",
+      "proof_alt": "VERIFY YOU ARE HUMAN — original poster selected for 200 per Carlo Collodi",
+      "proof_dimensions": [
+        1200,
+        1715
+      ]
     },
     {
       "id": "aws",
@@ -1034,7 +1058,11 @@
         }
       ],
       "proof_image": "/assets/work-2026/recognition/calpoly-aws-camp.webp",
-      "proof_alt": "Cal Poly DxHub and AWS AI Summer Camp: original group photograph"
+      "proof_alt": "Cal Poly DxHub and AWS AI Summer Camp: original group photograph",
+      "proof_dimensions": [
+        1280,
+        616
+      ]
     },
     {
       "id": "hr",
@@ -1047,7 +1075,11 @@
       "alt": "Frandesa corporate film recognition",
       "kind": "Team award",
       "proof_image": "/assets/work-2026/recognition/hr-brand-ceremony.webp",
-      "proof_alt": "Sergéy Ulyanov and a colleague holding their team diploma at the HR Brand Belarus ceremony"
+      "proof_alt": "Sergéy Ulyanov and a colleague holding their team diploma at the HR Brand Belarus ceremony",
+      "proof_dimensions": [
+        1200,
+        1200
+      ]
     },
     {
       "id": "cci",
@@ -1074,8 +1106,12 @@
       "image": "/assets/portfolio/award-white-square.jpg",
       "alt": "White Square advertising festival award evidence",
       "kind": "Team award",
-      "proof_image": "/assets/portfolio/award-white-square.jpg",
-      "proof_alt": "White Square advertising festival award evidence"
+      "proof_image": "/assets/work-2026/recognition/white-square-trophy.webp",
+      "proof_alt": "Original photograph of the White Square trophy for the Alfa-Bank corporate calendar",
+      "proof_dimensions": [
+        1176,
+        1200
+      ]
     },
     {
       "id": "bank",
@@ -1094,7 +1130,11 @@
         }
       ],
       "proof_image": "/assets/work-2026/recognition/belrosbank-diploma-presentation.webp",
-      "proof_alt": "Archival photograph of a BelRosBank diploma being presented to Sergéy Ulyanov"
+      "proof_alt": "Archival photograph of a BelRosBank diploma being presented to Sergéy Ulyanov",
+      "proof_dimensions": [
+        900,
+        900
+      ]
     },
     {
       "id": "tuzin",
@@ -1102,16 +1142,12 @@
       "title": "Heroes of the Year",
       "issuer": "TuzinFM",
       "description": "Discovery shortlist for original Belarusian-language music, under the artist name RAY.",
-      "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html",
+      "href": "https://www.svaboda.org/a/patencyjnyja-hieroi-hodu/28134934.html",
       "kind": "Music shortlist",
       "sources": [
         {
-          "href": "https://old.tuzinfm.by/zhamerun/3477/hieroji-hodu-2016-sort-list-u-naminacyji-adkryccio.html",
-          "label": "See the published shortlist"
-        },
-        {
           "href": "https://www.svaboda.org/a/patencyjnyja-hieroi-hodu/28134934.html",
-          "label": "Read the contemporary Radio Svaboda coverage"
+          "label": "Read Radio Svaboda’s 2016 report on the TuzinFM shortlist"
         }
       ]
     },
@@ -1132,7 +1168,12 @@
       "description": "Award winner in the advertising-game category.",
       "kind": "Category winner",
       "proof_image": "/assets/work-2026/recognition/motoshow-diploma.webp",
-      "proof_alt": "Framed diploma for Best Advertising Game at the International Motor Show"
+      "proof_alt": "Framed diploma for Best Advertising Game at the International Motor Show",
+      "document": true,
+      "proof_dimensions": [
+        1200,
+        901
+      ]
     },
     {
       "id": "ministry",

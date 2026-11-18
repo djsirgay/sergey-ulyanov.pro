@@ -82,6 +82,12 @@ html{scroll-padding-top:100px}
 .case-gallery .native-art img{background:transparent}
 .record-proof{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover;object-position:center 35%;border-radius:12px;margin-bottom:20px}
 .record-proof.proof-document{object-fit:contain;background:#131b13}
+.case-gallery .interface-gallery{grid-template-columns:minmax(0,1fr);gap:36px}
+.case-gallery .interface-gallery figure img{height:auto;max-height:none;aspect-ratio:auto}
+.record-proof-link{display:block!important;width:100%;margin:0 0 20px!important}
+.record-proof-link .record-proof{height:auto;aspect-ratio:auto;max-height:560px;object-fit:contain;background:#0b100b;margin-bottom:8px}
+.record-proof-link>span{display:block;font:11px/1.6 var(--mono);text-align:right}
+.record-proof-link:focus-visible{outline:2px solid var(--lime);outline-offset:6px;border-radius:12px}
 @media(max-width:720px){
   .case-trail{padding-top:18px}
   .case-trail + .case-hero{padding-top:22px}
