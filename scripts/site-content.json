@@ -1,14 +1,14 @@
 {
   "created": "2026-10-23",
   "home_case_priority": [
-    "scream7_complex",
     "mcdonalds_mchappy_day",
-    "calpoly_aws_ehs",
     "cornetto_together_apart",
     "volkswagen_tiguan",
+    "scream7_complex",
     "nostalgai_music_releases",
-    "video_editing",
-    "web_design"
+    "calpoly_aws_ehs",
+    "web_design",
+    "video_editing"
   ],
   "case_plans": [
     {
@@ -62,7 +62,8 @@
           "href": "/case-studies/mcdonalds-campaigns/",
           "label": "See separate McDonald’s product campaigns"
         }
-      ]
+      ],
+      "preview_caption": "McHappy Day / campaign hero"
     },
     {
       "id": "mcdonalds_campaigns",
@@ -139,7 +140,7 @@
       "scope_note": "Agency campaign work for Volkswagen through Leo Burnett.",
       "hero": "/assets/work-2026/volkswagen-holiday-billboard-source.webp",
       "hero_caption": "Holiday Tiguan outdoor creative: an oversized tree on a Tiguan.",
-      "preview": "/assets/work-2026/volkswagen-holiday-billboard-768.webp",
+      "preview": "/assets/work-2026/volkswagen-holiday-hero.webp",
       "images": [
         {
           "src": "/assets/work-2026/volkswagen-holiday-source.webp",
@@ -192,7 +193,8 @@
         1080
       ],
       "hero_full": "/assets/work-2026/volkswagen-holiday-billboard-source.webp",
-      "hero_srcset": "/assets/work-2026/volkswagen-holiday-billboard-768.webp 768w, /assets/work-2026/volkswagen-holiday-billboard-source.webp 1835w"
+      "hero_srcset": "/assets/work-2026/volkswagen-holiday-billboard-768.webp 768w, /assets/work-2026/volkswagen-holiday-billboard-source.webp 1835w",
+      "preview_caption": "Holiday Tiguan / Outdoor"
     },
     {
       "id": "fanta_winter",
@@ -239,7 +241,8 @@
           "caption": "Brand hold"
         }
       ],
-      "logo": "/assets/work-2026/coca-cola.svg"
+      "logo": "/assets/work-2026/coca-cola.svg",
+      "preview_caption": "Fanta / English end-frame monitor adaptation"
     },
     {
       "id": "scream7_complex",
@@ -297,7 +300,8 @@
           "href": "https://www.complex.com/pop-culture/a/complexstaff3/scream-7-complex-la-event",
           "label": "Read the official Complex event recap"
         }
-      ]
+      ],
+      "preview_caption": "Cloud Ghostface / landscape adaptation of original poster"
     },
     {
       "id": "nostalgai_music_releases",
@@ -340,7 +344,8 @@
           "caption": "Alternative / image treatment"
         }
       ],
-      "logo": "/assets/work-2026/nostalgai_music_releases-logo.png"
+      "logo": "/assets/work-2026/nostalgai_music_releases-logo.png",
+      "preview_caption": "Selected anniversary cover / vinyl packaging concept"
     },
     {
       "id": "sony_entertainment",
@@ -387,7 +392,8 @@
           "caption": "Merchandise / identity extension"
         }
       ],
-      "logo": "/assets/work-2026/sony_entertainment-logo.svg"
+      "logo": "/assets/work-2026/sony_entertainment-logo.svg",
+      "preview_caption": "Multiple-artist release catalogue"
     },
     {
       "id": "cornetto_together_apart",
@@ -430,7 +436,8 @@
           "caption": "Launch / media and premiere PR"
         }
       ],
-      "logo": "/assets/work-2026/unilever-full-white.svg"
+      "logo": "/assets/work-2026/unilever-full-white.svg",
+      "preview_caption": "Together Apart / English Unilever film-poster adaptation"
     },
     {
       "id": "mageworx_commerce",
@@ -477,7 +484,8 @@
           "caption": "Landing / commerce experience study"
         }
       ],
-      "logo": "/assets/work-2026/mageworx_commerce-logo.png"
+      "logo": "/assets/work-2026/mageworx_commerce-logo.png",
+      "preview_caption": "MageWorx / campaign-wall visualization in lilac brand palette"
     },
     {
       "id": "calpoly_aws_ehs",
@@ -505,7 +513,7 @@
       "scope_note": "Prototype built during the program. I designed the interface, configured servers and Amazon Bedrock, and built the Python/FastAPI application. The public demo is a prototype, not a deployed compliance product.",
       "hero": "/assets/work-2026/ehs-admin-screen.webp",
       "hero_caption": "EHS Mentor administrator prototype: document processing, training assignments and progress",
-      "preview": "/assets/work-2026/ehs-admin-screen.webp",
+      "preview": "/assets/work-2026/calpoly_aws_ehs-hero.webp",
       "images": [
         {
           "src": "/assets/work-2026/ehs-admin-screen.webp",
@@ -552,7 +560,8 @@
         1800,
         897
       ],
-      "hero_full": "/assets/work-2026/ehs-admin-screen.webp"
+      "hero_full": "/assets/work-2026/ehs-admin-screen.webp",
+      "preview_caption": "EHS Mentor / interface and device visualization"
     },
     {
       "id": "societe_generale",
@@ -599,7 +608,8 @@
           "caption": "Leaflets / point of sale"
         }
       ],
-      "logo": "/assets/work-2026/societe_generale-logo.svg"
+      "logo": "/assets/work-2026/societe_generale-logo.svg",
+      "preview_caption": "Société Générale / print identity"
     },
     {
       "id": "basf_frandesa",
@@ -652,7 +662,8 @@
           "href": "/evidence/#award-hr",
           "label": "See the ceremony photograph and team recognition"
         }
-      ]
+      ],
+      "preview_caption": "Frandesa film / title-free cover adaptation"
     },
     {
       "id": "community_campaigns",
@@ -711,9 +722,10 @@
       "scope_note": "Vstrecha / Global Fund, BELAU / UNICEF and the U.S. storytelling organizations are separate contexts. StoryRise mentorship is in progress.",
       "hero": "/assets/press/human-rights-first-2026.webp",
       "hero_caption": "Sergéy Ulyanov, photographed for the Human Rights First profile",
-      "preview": "/assets/press/human-rights-first-2026.webp",
+      "preview": "/assets/work-2026/community-1.webp",
       "images": [],
-      "logo": "/assets/work-2026/community_campaigns-logo.svg"
+      "logo": "/assets/work-2026/community_campaigns-logo.svg",
+      "preview_caption": "Immigrant advocacy / symbolic adaptation of my photograph"
     },
     {
       "id": "web_design",
@@ -795,7 +807,8 @@
           "action": "Visit the site"
         }
       ],
-      "logo": "/assets/sergey-bolt-circle.svg"
+      "logo": "/assets/sergey-bolt-circle.svg",
+      "preview_caption": "Nostalgai Recordz storefront"
     },
     {
       "id": "video_editing",
@@ -886,7 +899,8 @@
           "action": "Watch Deep Rest"
         }
       ],
-      "logo": "/assets/sergey-bolt-circle.svg"
+      "logo": "/assets/sergey-bolt-circle.svg",
+      "preview_caption": "RentPrimeRoom / Branded end scene"
     },
     {
       "id": "x_factor",
@@ -917,7 +931,8 @@
         900,
         610
       ],
-      "hero_full": "/assets/work-2026/xfactor-event-poster.webp"
+      "hero_full": "/assets/work-2026/xfactor-event-poster.webp",
+      "preview_caption": "X-Factor / Main Stage project archive"
     },
     {
       "id": "collodi_poster",
@@ -953,7 +968,8 @@
         "href": "https://aiap.it/pinocchio-una-metafora-contemporanea/",
         "label": "Exhibition details from AIAP"
       },
-      "logo": "/assets/sergey-bolt-circle.svg"
+      "logo": "/assets/sergey-bolt-circle.svg",
+      "preview_caption": "Creative exhibition portrait of Sergéy Ulyanov beside VERIFY YOU ARE HUMAN, adapted from his announcement."
     }
   ],
   "recognition": [
@@ -964,10 +980,10 @@
       "issuer": "Paramount Pictures × Complex",
       "description": "Competition winner. IN PROGRESS was exhibited at Complex LA.",
       "href": "/case-studies/scream-7-complex/",
-      "image": "/assets/work-2026/recognition/scream-williamson.webp",
-      "alt": "Sergéy Ulyanov with SCREAM 7 director Kevin Williamson at the Complex LA exhibition",
-      "inset": "/assets/work-2026/recognition/scream-fog-poster.webp",
-      "inset_alt": "Original Ghostface in the fog concept; the poster selected for the exhibition was IN PROGRESS",
+      "image": "/assets/portfolio/award-scream.jpg",
+      "alt": "Sergéy Ulyanov and director Kevin Williamson",
+      "inset": "/assets/work-2026/recognition-scream-fog.webp",
+      "inset_alt": "Ghostface in the fog, a separate key-art concept from the SCREAM 7 series",
       "kind": "Competition winner",
       "sources": [
         {
@@ -986,7 +1002,7 @@
       "description": "VERIFY YOU ARE HUMAN selected for the international exhibition and catalogue.",
       "href": "/case-studies/carlo-collodi-200/",
       "image": "/assets/work-2026/recognition-collodi.webp",
-      "alt": "Illustrated portrait of Sergéy Ulyanov beside his poster, from his own exhibition selection announcement",
+      "alt": "Sergéy Ulyanov beside his Pinocchio poster in his exhibition announcement",
       "kind": "Exhibition selection",
       "sources": [
         {
@@ -997,7 +1013,9 @@
           "href": "https://www.museomagma.com/call-for-artists-2026/",
           "label": "Read Museo MAGMA’s exhibition call"
         }
-      ]
+      ],
+      "proof_image": "/assets/work-2026/recognition-collodi.webp",
+      "proof_alt": "Illustrated portrait of Sergéy Ulyanov beside his poster, from his own exhibition selection announcement"
     },
     {
       "id": "aws",
@@ -1006,15 +1024,17 @@
       "issuer": "Cal Poly DxHub × AWS",
       "description": "Selected for a 100-person cohort from nearly 1,300 applicants.",
       "href": "/case-studies/ai-compliance-platform/",
-      "image": "/assets/work-2026/recognition/calpoly-aws-camp.webp",
-      "alt": "Cal Poly DxHub and AWS AI Summer Camp: original group photograph",
+      "image": "/assets/portfolio/award-calpoly.jpg",
+      "alt": "Cal Poly DxHub and AWS AI Summer Camp cohort",
       "kind": "Cohort selection",
       "sources": [
         {
           "href": "/case-studies/ai-compliance-platform/",
           "label": "Read the cohort project case"
         }
-      ]
+      ],
+      "proof_image": "/assets/work-2026/recognition/calpoly-aws-camp.webp",
+      "proof_alt": "Cal Poly DxHub and AWS AI Summer Camp: original group photograph"
     },
     {
       "id": "hr",
@@ -1023,9 +1043,11 @@
       "issuer": "HR Brand Belarus",
       "description": "Special partner prize in Corporate Video for the Frandesa film team.",
       "href": "/case-studies/battle-for-the-harvest/",
-      "image": "/assets/work-2026/recognition/hr-brand-ceremony.webp",
-      "alt": "Sergéy Ulyanov and a colleague holding their team diploma at the HR Brand Belarus ceremony",
-      "kind": "Team award"
+      "image": "/assets/portfolio/award-hr.jpg",
+      "alt": "Frandesa corporate film recognition",
+      "kind": "Team award",
+      "proof_image": "/assets/work-2026/recognition/hr-brand-ceremony.webp",
+      "proof_alt": "Sergéy Ulyanov and a colleague holding their team diploma at the HR Brand Belarus ceremony"
     },
     {
       "id": "cci",
@@ -1051,24 +1073,28 @@
       "href": "/case-studies/societe-generale/",
       "image": "/assets/portfolio/award-white-square.jpg",
       "alt": "White Square advertising festival award evidence",
-      "kind": "Team award"
+      "kind": "Team award",
+      "proof_image": "/assets/portfolio/award-white-square.jpg",
+      "proof_alt": "White Square advertising festival award evidence"
     },
     {
       "id": "bank",
       "year": "2012–2014",
       "title": "Bank Website Awards",
       "issuer": "TIBO and Best Bank Website",
-      "description": "Team awards for BelRosBank and successor Alfa-Bank. TIBO 2012 third place, Best Bank Website 2013 first place and TIBO 2014 second place. The archival photograph shows a BelRosBank diploma presentation.",
+      "description": "Team awards for BelRosBank and successor Alfa-Bank. TIBO 2012 third place, Best Bank Website 2013 first place and TIBO 2014 second place.",
       "href": "/case-studies/societe-generale/",
-      "image": "/assets/work-2026/recognition/belrosbank-diploma-presentation.webp",
-      "alt": "Archival photograph of a BelRosBank diploma being presented to Sergéy Ulyanov",
+      "image": "/assets/portfolio/award-bank.jpg",
+      "alt": "Bank website and campaign work in the Société Générale case",
       "kind": "Team awards",
       "sources": [
         {
           "href": "/case-studies/societe-generale/",
           "label": "Read the banking case and award history"
         }
-      ]
+      ],
+      "proof_image": "/assets/work-2026/recognition/belrosbank-diploma-presentation.webp",
+      "proof_alt": "Archival photograph of a BelRosBank diploma being presented to Sergéy Ulyanov"
     },
     {
       "id": "tuzin",
@@ -1105,9 +1131,8 @@
       "issuer": "International Motor Show",
       "description": "Award winner in the advertising-game category.",
       "kind": "Category winner",
-      "image": "/assets/work-2026/recognition/motoshow-diploma.webp",
-      "alt": "Framed diploma for Best Advertising Game at the International Motor Show",
-      "document": true
+      "proof_image": "/assets/work-2026/recognition/motoshow-diploma.webp",
+      "proof_alt": "Framed diploma for Best Advertising Game at the International Motor Show"
     },
     {
       "id": "ministry",

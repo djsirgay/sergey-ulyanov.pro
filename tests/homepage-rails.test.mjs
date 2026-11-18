@@ -225,7 +225,7 @@ test('generated homepage provides named, keyboard-focusable rails with correctly
   assert.match(html,/href="\/evidence\/#awards">Full recognition record/);
   const evidence=read('evidence/index.html');
   for(const item of registry.recognition) assert.ok(evidence.includes(`id="award-${item.id}"`),item.id);
-  assert.match(html,/scream-fog-poster\.webp/);
+  assert.match(html,/recognition-scream-fog\.webp/);
   assert.match(html,/recognition-collodi\.webp/);
   const library=read('work/index.html');
   for(const group of ['campaigns','products']){

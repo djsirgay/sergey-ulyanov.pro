@@ -18,3 +18,10 @@
 - Restrict palette-specific styling to the preview build and its stylesheet. Do not replace the primary palette unless Sergey asks.
 - All research pages open in English when the URL has no supported language parameter, regardless of saved browser preferences. Explicit ?lang=be and the language switch remain supported; internal navigation retains the chosen language and route state.
 - MAPA mode controls are ordered Neighboring states, then Belarusian lands in both languages and palettes. Order does not change the selected map mode.
+
+## Approved professional-site presentation
+
+- Keep the approved Manrope / Space Mono typography, tall homepage cards, orbital decoration and cover artwork. Improving copy, sources or navigation does not authorize replacing that presentation.
+- Use the existing presentation covers in project and recognition cards. Original archival evidence, diplomas and full interface captures belong inside the case or evidence page; preserve their separate source fields.
+- Display the case title as SCREAM 7. IN PROGRESS is the title of the selected poster, not the status or name of the overall case.
+- Keep homepage ordering in scripts/site-content.json home_case_priority and match the relative priorities within the full case-library groups. Do not promote a general editing/web selection above a major campaign solely because it was added recently.
