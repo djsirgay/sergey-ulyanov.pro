@@ -1118,8 +1118,14 @@
         {
           "href": "https://www.routledge.com/Authentic-Voice-and-Speech-A-Non-Prescriptive-Student-Centered-Approach/Colaianni-Marciano/p/book/9781041294825",
           "label": "See the book at Routledge"
+        },
+        {
+          "href": "/downloads/Sergey_Ulyanov_Authentic_Voice_Acknowledgment.pdf",
+          "label": "Open the acknowledgment case slide"
         }
-      ]
+      ],
+      "image": "/assets/work-2026/recognition/authentic-voice-cover.webp",
+      "alt": "Authentic Voice and Speech: original acknowledgment excerpt with Sergey Ulyanov’s printed name"
     },
     {
       "id": "white-square",
